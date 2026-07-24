@@ -95,19 +95,14 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
     tables = ["CaseMaster", "HotspotCluster", "AnomalyFlag"]
 
     for tbl in tables:
-        rows = []
         err_msg = None
+        rows = []
         try:
             table = catalyst_app.datastore().table(tbl)
-            paged = table.get_paged_rows(max_rows=100)
+            paged = table.get_paged_rows(max_rows=10)
             rows = paged.get("data", [])
         except Exception as e:
-            try:
-                zcql = catalyst_app.zcql()
-                q_res = zcql.execute_query(f"SELECT * FROM {tbl} LIMIT 100")
-                rows = [r.get(tbl) for r in q_res if isinstance(r, dict) and tbl in r]
-            except Exception as e2:
-                err_msg = f"Datastore: {str(e)} | ZCQL: {str(e2)}"
+            err_msg = f"Datastore Query Error: {type(e).__name__} - {str(e)}"
 
         results[tbl] = {
             "count": len(rows),
