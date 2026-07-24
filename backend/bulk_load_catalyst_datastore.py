@@ -1,9 +1,12 @@
 import os
 import csv
-import json
+import sys
+import requests
 from typing import List, Dict, Any
 
 SEED_DIR = os.path.join(os.path.dirname(__file__), "..", "drishti_main", "seeds")
+if not os.path.exists(SEED_DIR):
+    SEED_DIR = os.path.join(os.path.dirname(__file__), "seeds")
 
 def load_csv_data(filepath: str) -> List[Dict[str, Any]]:
     if not os.path.exists(filepath):
@@ -18,7 +21,6 @@ def load_csv_data(filepath: str) -> List[Dict[str, Any]]:
                 if v is None or v == "":
                     parsed_row[k] = None
                     continue
-                # Parse numeric types
                 if v.isdigit() or (v.startswith("-") and v[1:].isdigit()):
                     parsed_row[k] = int(v)
                 else:
@@ -64,3 +66,13 @@ if __name__ == "__main__":
     print(f"Loaded {len(cases)} CaseMaster Records")
     print(f"Loaded {len(accused)} Accused Records")
     print(f"Loaded {len(victims)} Victim Records")
+
+    app_url = os.environ.get("APPSAIL_URL", "https://drishti-backend-50044277235.development.catalystappsail.in")
+    print(f"\nInitiating bulk insert into Catalyst Data Store via {app_url}/admin/bulk_load_datastore...")
+    try:
+        resp = requests.post(f"{app_url}/admin/bulk_load_datastore", timeout=120)
+        print(f"Response Status: {resp.status_code}")
+        print("Response Output:")
+        print(resp.text)
+    except Exception as e:
+        print(f"Error calling loader endpoint: {e}")

@@ -1,6 +1,7 @@
 import os
 import sys
 import csv
+import traceback
 from typing import Optional, List, Dict, Any
 
 print("Starting AppSail server...", flush=True)
@@ -9,14 +10,13 @@ import uvicorn
 from fastapi import FastAPI, Request, HTTPException, Depends
 from pydantic import BaseModel
 
-app = FastAPI(title="Drishti Backend API - Production Real Seed Data")
+app = FastAPI(title="Drishti Backend API - Catalyst Data Store Integration")
 
 SEED_DIR = os.path.join(os.path.dirname(__file__), "seeds")
 
 def load_seed_csv(relative_path: str) -> List[Dict[str, Any]]:
     full_path = os.path.normpath(os.path.join(SEED_DIR, relative_path))
     if not os.path.exists(full_path):
-        # Fallback to drishti_main/seeds if running locally
         alt_path = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "drishti_main", "seeds", relative_path))
         if os.path.exists(alt_path):
             full_path = alt_path
@@ -41,7 +41,7 @@ def load_seed_csv(relative_path: str) -> List[Dict[str, Any]]:
             records.append(parsed)
     return records
 
-# Preload Gamma seed data into memory
+# Preload Gamma seed data into memory for initial bulk loader
 SEED_HOTSPOTS = load_seed_csv("batch_e/HotspotCluster.csv")
 SEED_ANOMALIES = load_seed_csv("batch_e/AnomalyFlag.csv")
 SEED_CASES = load_seed_csv("batch_bc/CaseMaster.csv")
@@ -49,7 +49,7 @@ SEED_ACCUSED = load_seed_csv("batch_bc/Accused.csv")
 SEED_VICTIMS = load_seed_csv("batch_bc/Victim.csv")
 SEED_UNITS = load_seed_csv("batch_bc/Unit.csv")
 
-# Dynamic store for POST requests
+# Dynamic store for POST requests when Data Store is unavailable
 CREATED_INCIDENTS: List[Dict[str, Any]] = []
 
 def get_catalyst_app(request: Request):
@@ -87,6 +87,113 @@ class IncidentCreate(BaseModel):
 def read_root():
     return {"status": "ok"}
 
+@app.all("/admin/query_datastore")
+def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
+    if catalyst_app is None:
+        return {"status": "error", "message": "Catalyst SDK initialization returned None"}
+
+    results = {}
+    tables = ["CaseMaster", "HotspotCluster", "AnomalyFlag"]
+
+    for tbl in tables:
+        try:
+            zcql = catalyst_app.zcql()
+            q_res = zcql.execute_query(f"SELECT * FROM {tbl}")
+            rows = [r.get(tbl) for r in q_res if isinstance(r, dict) and tbl in r]
+            results[tbl] = {
+                "count": len(rows),
+                "raw_query_output": rows,
+                "error": None
+            }
+        except Exception as e:
+            try:
+                table = catalyst_app.datastore().table(tbl)
+                paged = table.get_paged_rows(max_rows=500)
+                rows = paged.get("data", [])
+                results[tbl] = {
+                    "count": len(rows),
+                    "raw_query_output": rows,
+                    "error": None
+                }
+            except Exception as e2:
+                results[tbl] = {
+                    "count": 0,
+                    "raw_query_output": [],
+                    "error": f"ZCQL error: {str(e)} | Datastore error: {str(e2)}"
+                }
+
+    return {"status": "ok", "data": results}
+
+@app.post("/admin/bulk_load_datastore")
+def admin_bulk_load_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
+    if catalyst_app is None:
+        raise HTTPException(status_code=500, detail="Catalyst SDK not initialized")
+
+    logs = []
+    batch_size = 50
+
+    # 1. HotspotCluster
+    try:
+        table_hotspot = catalyst_app.datastore().table("HotspotCluster")
+        inserted = 0
+        for i in range(0, len(SEED_HOTSPOTS), batch_size):
+            chunk = SEED_HOTSPOTS[i:i + batch_size]
+            table_hotspot.insert_rows(chunk)
+            inserted += len(chunk)
+        logs.append(f"Inserted {inserted} records into HotspotCluster")
+    except Exception as e:
+        logs.append(f"HotspotCluster insert error: {str(e)}\n{traceback.format_exc()}")
+
+    # 2. AnomalyFlag
+    try:
+        table_anomaly = catalyst_app.datastore().table("AnomalyFlag")
+        inserted = 0
+        for i in range(0, len(SEED_ANOMALIES), batch_size):
+            chunk = SEED_ANOMALIES[i:i + batch_size]
+            table_anomaly.insert_rows(chunk)
+            inserted += len(chunk)
+        logs.append(f"Inserted {inserted} records into AnomalyFlag")
+    except Exception as e:
+        logs.append(f"AnomalyFlag insert error: {str(e)}\n{traceback.format_exc()}")
+
+    # 3. CaseMaster
+    try:
+        table_cases = catalyst_app.datastore().table("CaseMaster")
+        inserted = 0
+        for i in range(0, len(SEED_CASES), batch_size):
+            chunk = SEED_CASES[i:i + batch_size]
+            table_cases.insert_rows(chunk)
+            inserted += len(chunk)
+        logs.append(f"Inserted {inserted} records into CaseMaster")
+    except Exception as e:
+        logs.append(f"CaseMaster insert error: {str(e)}\n{traceback.format_exc()}")
+
+    # 4. Accused
+    try:
+        table_accused = catalyst_app.datastore().table("Accused")
+        inserted = 0
+        for i in range(0, len(SEED_ACCUSED), batch_size):
+            chunk = SEED_ACCUSED[i:i + batch_size]
+            table_accused.insert_rows(chunk)
+            inserted += len(chunk)
+        logs.append(f"Inserted {inserted} records into Accused")
+    except Exception as e:
+        logs.append(f"Accused insert error: {str(e)}\n{traceback.format_exc()}")
+
+    # 5. Victim
+    try:
+        table_victim = catalyst_app.datastore().table("Victim")
+        inserted = 0
+        for i in range(0, len(SEED_VICTIMS), batch_size):
+            chunk = SEED_VICTIMS[i:i + batch_size]
+            table_victim.insert_rows(chunk)
+            inserted += len(chunk)
+        logs.append(f"Inserted {inserted} records into Victim")
+    except Exception as e:
+        logs.append(f"Victim insert error: {str(e)}\n{traceback.format_exc()}")
+
+    return {"status": "ok", "logs": logs}
+
 @app.get("/incidents")
 def get_incidents(catalyst_app: Any = Depends(get_catalyst_app)):
     data_store_rows = []
@@ -104,6 +211,7 @@ def get_incidents(catalyst_app: Any = Depends(get_catalyst_app)):
                 pass
 
     if not data_store_rows:
+        # Fallback to local memory seed if Data Store is empty
         data_store_rows = SEED_CASES[:200]
 
     all_rows = CREATED_INCIDENTS + data_store_rows
