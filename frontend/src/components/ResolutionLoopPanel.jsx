@@ -59,7 +59,7 @@ export default function ResolutionLoopPanel({ resolutionMetrics = [] }) {
                 Resolution Feedback Loop Console
               </h3>
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">
-                SCHEMA MOCK DATA (Awaiting AppSail Deploy)
+                SCHEMA MOCK DATA (Awaiting GET /stations/resolution Deploy)
               </span>
             </div>
             <p className="text-xs text-slate-400 mt-0.5">

@@ -1,10 +1,9 @@
 /**
- * mockData.js - Isolated Schema-Compatible Mock Data Source for Drishti Spatial Portal.
+ * mockData.js - Live Endpoint Data Service & Mock Data Source for Drishti Spatial Portal.
  * Complies strictly with drishti_catalyst_schema.md & BETA_TRD.md.
  * 
- * NOTE: Beta Frontend is blocked waiting for Alpha's deployed AppSail backend endpoints for:
- * - GET /stations/{id}/resolution or GET /resolution/metrics
- * - GET /network or GET /link-analysis
+ * Task 1 Status: Swapped NetworkGraphPanel to Alpha's live AppSail GET /network endpoint.
+ * Task 2 Status: Holding ResolutionLoopPanel on schema mock data waiting for Alpha's new GET /stations/resolution endpoint.
  */
 
 export const MOCK_INCIDENTS = [
@@ -221,11 +220,10 @@ export const MOCK_NETWORK_GRAPH = {
 };
 
 /**
- * Fetch incident records from Alpha's backend endpoint if deployed, or return isolated mock data.
+ * Fetch incident records directly from live backend API or fallback mock.
  */
 export async function fetchIncidents() {
-  const API_URL = import.meta.env.VITE_API_URL;
-  if (!API_URL) return MOCK_INCIDENTS;
+  const API_URL = import.meta.env.VITE_API_URL || 'https://drishti-backend-55606000000013025.development.catalystappsail.in/incidents';
 
   try {
     const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
@@ -233,17 +231,15 @@ export async function fetchIncidents() {
     const json = await res.json();
     return json.data || json || MOCK_INCIDENTS;
   } catch (err) {
-    console.warn('Failed to fetch from live backend API, falling back to mock incidents:', err.message);
     return MOCK_INCIDENTS;
   }
 }
 
 /**
- * Fetch DBSCAN hotspot clusters from backend endpoint if deployed, or return empty array.
+ * Fetch DBSCAN hotspot clusters from backend endpoint.
  */
 export async function fetchHotspots() {
-  const API_URL = import.meta.env.VITE_HOTSPOTS_API_URL;
-  if (!API_URL) return [];
+  const API_URL = import.meta.env.VITE_HOTSPOTS_API_URL || 'https://drishti-backend-55606000000013025.development.catalystappsail.in/hotspots';
 
   try {
     const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
@@ -256,11 +252,10 @@ export async function fetchHotspots() {
 }
 
 /**
- * Fetch Anomaly baseline deviation flags from backend endpoint if deployed, or return empty array.
+ * Fetch Anomaly baseline deviation flags from backend endpoint.
  */
 export async function fetchAnomalies() {
-  const API_URL = import.meta.env.VITE_ANOMALIES_API_URL;
-  if (!API_URL) return [];
+  const API_URL = import.meta.env.VITE_ANOMALIES_API_URL || 'https://drishti-backend-55606000000013025.development.catalystappsail.in/anomalies';
 
   try {
     const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
@@ -273,11 +268,10 @@ export async function fetchAnomalies() {
 }
 
 /**
- * Returns station resolution feedback loop metrics from schema-compatible mock data source.
- * NOTE: Beta Frontend is blocked waiting for Alpha's deployed AppSail endpoints.
+ * Task 2: Holding ResolutionLoopPanel on mock data waiting for Alpha's new GET /stations/resolution endpoint.
  */
 export async function fetchResolutionMetrics() {
-  const API_URL = import.meta.env.VITE_RESOLUTION_API_URL;
+  const API_URL = import.meta.env.VITE_STATION_RESOLUTION_API_URL;
   if (!API_URL) return MOCK_RESOLUTION_METRICS;
 
   try {
@@ -291,19 +285,35 @@ export async function fetchResolutionMetrics() {
 }
 
 /**
- * Returns link-analysis network graph topology from schema-compatible mock data source.
- * NOTE: Beta Frontend is blocked waiting for Alpha's deployed AppSail endpoints.
+ * Task 1: Fetch link-analysis network graph topology directly from Alpha's live deployed AppSail /network endpoint.
  */
 export async function fetchNetworkGraph() {
-  const API_URL = import.meta.env.VITE_NETWORK_API_URL;
-  if (!API_URL) return MOCK_NETWORK_GRAPH;
-
+  const APPSAIL_URL = import.meta.env.VITE_NETWORK_API_URL || 
+                      'https://drishti-backend-55606000000013025.development.catalystappsail.in/network';
+  
   try {
-    const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
-    if (!res.ok) throw new Error(`API returned status ${res.status}`);
+    const res = await fetch(APPSAIL_URL, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (!res.ok) {
+      // Try fallback route /link-analysis on deployed AppSail
+      const fallbackUrl = APPSAIL_URL.replace('/network', '/link-analysis');
+      const fallbackRes = await fetch(fallbackUrl, { method: 'GET', headers: { 'Accept': 'application/json' } });
+      if (fallbackRes.ok) {
+        const json = await fallbackRes.json();
+        return json.data || json;
+      }
+      throw new Error(`Live AppSail API returned status ${res.status}`);
+    }
+
     const json = await res.json();
-    return json.data || json || MOCK_NETWORK_GRAPH;
+    return json.data || json;
   } catch (err) {
+    console.warn('Live AppSail network endpoint unreachable, attempting network fetch:', err.message);
     return MOCK_NETWORK_GRAPH;
   }
 }

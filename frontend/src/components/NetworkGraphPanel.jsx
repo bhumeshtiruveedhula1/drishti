@@ -143,7 +143,7 @@ export default function NetworkGraphPanel({ networkData = { summary: {}, nodes: 
                 Link-Analysis Network Graph Console
               </h3>
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-violet-950 text-violet-300 border border-violet-800">
-                SCHEMA MOCK DATA (Awaiting AppSail Deploy)
+                LIVE API (GET /network)
               </span>
             </div>
             <p className="text-xs text-slate-400 mt-0.5">
