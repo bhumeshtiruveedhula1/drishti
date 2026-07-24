@@ -55,17 +55,23 @@ def get_units() -> List[Dict[str, Any]]:
     path = os.path.join(SEED_DIR, "batch_bc", "Unit.csv")
     return load_csv_data(path)
 
+def get_chargesheets() -> List[Dict[str, Any]]:
+    path = os.path.join(SEED_DIR, "batch_d", "ChargesheetDetails.csv")
+    return load_csv_data(path)
+
 if __name__ == "__main__":
     hotspots = get_hotspot_clusters()
     anomalies = get_anomaly_flags()
     cases = get_case_master()
     accused = get_accused()
     victims = get_victims()
+    chargesheets = get_chargesheets()
     print(f"Loaded {len(hotspots)} Hotspot Clusters")
     print(f"Loaded {len(anomalies)} Anomaly Flags")
     print(f"Loaded {len(cases)} CaseMaster Records")
     print(f"Loaded {len(accused)} Accused Records")
     print(f"Loaded {len(victims)} Victim Records")
+    print(f"Loaded {len(chargesheets)} ChargesheetDetails Records")
 
     app_url = os.environ.get("APPSAIL_URL", "https://drishti-backend-50044277235.development.catalystappsail.in")
     print(f"\nInitiating bulk insert into Catalyst Data Store via {app_url}/admin/bulk_load_datastore...")

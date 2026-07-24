@@ -53,6 +53,7 @@ SEED_CASES = load_seed_csv("batch_bc/CaseMaster.csv")
 SEED_ACCUSED = load_seed_csv("batch_bc/Accused.csv")
 SEED_VICTIMS = load_seed_csv("batch_bc/Victim.csv")
 SEED_UNITS = load_seed_csv("batch_bc/Unit.csv")
+SEED_CHARGESHEETS = load_seed_csv("batch_d/ChargesheetDetails.csv")
 
 CREATED_INCIDENTS: List[Dict[str, Any]] = []
 
@@ -211,7 +212,7 @@ def admin_bulk_load_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
     logs = []
     batch_size = 50
 
-    for tbl_name, data in [("HotspotCluster", SEED_HOTSPOTS), ("AnomalyFlag", SEED_ANOMALIES), ("CaseMaster", SEED_CASES), ("Accused", SEED_ACCUSED), ("Victim", SEED_VICTIMS)]:
+    for tbl_name, data in [("HotspotCluster", SEED_HOTSPOTS), ("AnomalyFlag", SEED_ANOMALIES), ("CaseMaster", SEED_CASES), ("Accused", SEED_ACCUSED), ("Victim", SEED_VICTIMS), ("ChargesheetDetails", SEED_CHARGESHEETS)]:
         try:
             table = catalyst_app.datastore().table(tbl_name)
             inserted = 0
@@ -374,6 +375,49 @@ def get_incident_victims(id: int, catalyst_app: Any = Depends(get_catalyst_app))
         victim_rows = [r for r in SEED_VICTIMS if str(r.get("CaseMasterID")) == str(id)]
 
     return {"status": "ok", "data": victim_rows}
+
+@app.get("/stations/resolution")
+def get_all_stations_resolution(catalyst_app: Any = Depends(get_catalyst_app)):
+    res_rows = []
+    if catalyst_app is not None:
+        try:
+            zcql = catalyst_app.zcql()
+            q_stmt = "SELECT * FROM StationResolutionMetric LIMIT 200"
+            q_res = zcql.execute_query(q_stmt)
+            res_rows = [r.get("StationResolutionMetric") for r in q_res if isinstance(r, dict) and "StationResolutionMetric" in r]
+        except Exception:
+            try:
+                table = catalyst_app.datastore().table("StationResolutionMetric")
+                paged_res = table.get_paged_rows(max_rows=200)
+                res_rows = paged_res.get("data", [])
+            except Exception:
+                pass
+
+    if not res_rows:
+        stations_map: Dict[int, Dict[str, Any]] = {}
+        for c in SEED_CASES:
+            unit_id = c.get("PoliceStationID") or c.get("UnitID") or 1
+            if unit_id not in stations_map:
+                unit_name = next((u.get("UnitName") for u in SEED_UNITS if u.get("UnitID") == unit_id), f"Station #{unit_id}")
+                stations_map[unit_id] = {
+                    "UnitID": unit_id,
+                    "UnitName": unit_name,
+                    "TotalCases": 0,
+                    "ResolvedCases": 0,
+                    "PendingCases": 0,
+                    "ConvictionRate": 0.0,
+                    "AvgDisposalDays": 45.5
+                }
+            stations_map[unit_id]["TotalCases"] += 1
+            if c.get("CaseStatusID") in [2, 3]:
+                stations_map[unit_id]["ResolvedCases"] += 1
+
+        for u_id, st in stations_map.items():
+            st["PendingCases"] = st["TotalCases"] - st["ResolvedCases"]
+            st["ConvictionRate"] = round((st["ResolvedCases"] / st["TotalCases"] * 100), 2) if st["TotalCases"] > 0 else 0.0
+            res_rows.append(st)
+
+    return {"status": "ok", "data": res_rows}
 
 @app.get("/stations/{id}/resolution")
 def get_station_resolution(id: int, catalyst_app: Any = Depends(get_catalyst_app)):
