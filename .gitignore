@@ -1,17 +1,22 @@
-# Byte-compiled / optimized / DLL files
+# Shared Environment and Tooling
+.env
+.catalystrc
+.vscode/
+.idea/
+*.log
+
+# Python Stack (Alpha & Gamma)
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 *.pyd
+venv/
+.venv/
+env/
+ENV/
 
-# Local environment and Catalyst CLI state
-.catalystrc
-.env
-.vscode/
-.idea/
-
-# Backend vendor/installed dependencies directory contents
+# Backend Vendor / Installed Python Dependencies
 backend/anyio/
 backend/anyio-*/
 backend/certifi/
@@ -44,3 +49,12 @@ backend/zcatalyst_sdk-*/
 backend/bin/
 backend/*.dist-info/
 backend/*.so
+
+# Node / Frontend Stack (Beta)
+node_modules/
+build/
+dist/
+.npm/
+.yarn/
+.next/
+*.tsbuildinfo
