@@ -171,20 +171,31 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
         return {"status": "error", "message": "Catalyst SDK initialization returned None"}
 
     results = {}
-    tables = ["CaseMaster", "HotspotCluster", "AnomalyFlag"]
+    tables = ["CaseMaster", "HotspotCluster", "AnomalyFlag", "Victim", "ChargesheetDetails"]
 
     for tbl in tables:
         err_msg = None
         rows = []
+        total_count = 0
         try:
             table = catalyst_app.datastore().table(tbl)
             paged = table.get_paged_rows(max_rows=10)
             rows = paged.get("data", [])
+            try:
+                zcql = catalyst_app.zcql()
+                cnt_res = zcql.execute_query(f"SELECT COUNT(ROWID) FROM {tbl}")
+                if cnt_res and isinstance(cnt_res[0], dict) and tbl in cnt_res[0]:
+                    total_count = int(cnt_res[0][tbl].get("ROWID", len(rows)))
+                else:
+                    total_count = len(rows)
+            except Exception:
+                total_count = len(rows)
         except Exception as e:
             err_msg = f"Datastore Query Error: {type(e).__name__} - {str(e)}"
 
         results[tbl] = {
-            "count": len(rows),
+            "total_count": total_count,
+            "sample_count": len(rows),
             "raw_query_output": rows,
             "error": err_msg
         }
