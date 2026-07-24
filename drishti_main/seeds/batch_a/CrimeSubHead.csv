@@ -1,0 +1,11 @@
+CrimeSubHeadID,CrimeHeadID,CrimeHeadName,SeqID
+1,1,Assault - General,1
+2,1,Assault - Aggravated / Organized,2
+3,2,Burglary - General,1
+4,2,Burglary - Aggravated / Organized,2
+5,3,Chain Snatching - General,1
+6,3,Chain Snatching - Aggravated / Organized,2
+7,4,Robbery - General,1
+8,4,Robbery - Aggravated / Organized,2
+9,5,Theft - General,1
+10,5,Theft - Aggravated / Organized,2

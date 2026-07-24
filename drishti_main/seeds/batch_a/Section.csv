@@ -1,0 +1,11 @@
+ActCode,SectionCode,SectionDescription,Active
+BNS,303,Theft (BNS 303),True
+BNS,309,Robbery (BNS 309),True
+BNS,305,Theft in dwelling house (BNS 305),True
+BNS,331,Lurking house-trespass or house-breaking (BNS 331),True
+BNS,115,Voluntarily causing hurt (BNS 115),True
+IPC,379,Theft (IPC 379),True
+IPC,392,Robbery (IPC 392),True
+IPC,380,Theft in dwelling house (IPC 380),True
+IPC,457,Lurking house-trespass or house-breaking by night (IPC 457),True
+IPC,323,Voluntarily causing hurt (IPC 323),True
