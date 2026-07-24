@@ -412,12 +412,31 @@ def get_incident_victims(id: int, catalyst_app: Any = Depends(get_catalyst_app))
     return {"status": "ok", "data": victim_rows}
 
 def compute_station_resolution_metrics(cs_list: List[Dict[str, Any]], cases_list: List[Dict[str, Any]], units_list: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    cs_dict = {int(c["CaseMasterID"]): c for c in cs_list if isinstance(c, dict) and "CaseMasterID" in c and c["CaseMasterID"] is not None}
-    unit_names = {int(u["UnitID"]): u["UnitName"] for u in units_list if isinstance(u, dict) and "UnitID" in u and u["UnitID"] is not None}
+    cs_dict = {}
+    for c in cs_list:
+        if isinstance(c, dict):
+            cid = c.get("CaseMasterID")
+            if cid is not None:
+                try:
+                    cs_dict[int(cid)] = c
+                except (ValueError, TypeError):
+                    pass
+
+    unit_names = {}
+    for u in units_list:
+        if isinstance(u, dict):
+            uid = u.get("UnitID")
+            if uid is not None:
+                try:
+                    unit_names[int(uid)] = u.get("UnitName")
+                except (ValueError, TypeError):
+                    pass
 
     station_metrics: Dict[int, Dict[str, Any]] = {}
 
     for c in cases_list:
+        if not isinstance(c, dict):
+            continue
         case_id = c.get("CaseMasterID")
         if case_id is None:
             continue
@@ -442,7 +461,8 @@ def compute_station_resolution_metrics(cs_list: List[Dict[str, Any]], cases_list
                 "Chargesheeted": 0,
                 "FalseCases": 0,
                 "Undetected": 0,
-                "TotalDisposalDays": 0.0
+                "TotalDisposalDays": 0.0,
+                "DisposalCount": 0
             }
 
         st = station_metrics[unit_id]
@@ -450,7 +470,7 @@ def compute_station_resolution_metrics(cs_list: List[Dict[str, Any]], cases_list
 
         cs = cs_dict.get(case_id)
         if cs:
-            cstype = str(cs.get("cstype", "")).upper()
+            cstype = str(cs.get("cstype", "")).strip().upper()
             if cstype in ("A", "CHARGESHEET", "CHARGESHEETED"):
                 st["Chargesheeted"] += 1
             elif cstype in ("B", "FALSE CASE"):
@@ -462,11 +482,12 @@ def compute_station_resolution_metrics(cs_list: List[Dict[str, Any]], cases_list
             cs_str = str(cs.get("csdate", ""))
             if reg_str and cs_str:
                 try:
-                    reg_dt = datetime.strptime(reg_str.split()[0], "%Y-%m-%d")
-                    cs_dt = datetime.strptime(cs_str.split()[0], "%Y-%m-%d")
+                    reg_dt = datetime.strptime(reg_str.strip().split()[0], "%Y-%m-%d")
+                    cs_dt = datetime.strptime(cs_str.strip().split()[0], "%Y-%m-%d")
                     days = (cs_dt - reg_dt).days
                     if days >= 0:
                         st["TotalDisposalDays"] += days
+                        st["DisposalCount"] += 1
                 except Exception:
                     pass
 
@@ -475,8 +496,9 @@ def compute_station_resolution_metrics(cs_list: List[Dict[str, Any]], cases_list
         total = st["TotalCases"]
         cs_cnt = st["Chargesheeted"]
         fc_cnt = st["FalseCases"]
+        disp_cnt = st["DisposalCount"]
         res_pct = round(((cs_cnt + fc_cnt) / total * 100), 2) if total > 0 else 0.0
-        avg_days = round(st["TotalDisposalDays"] / total, 1) if total > 0 else 30.0
+        avg_days = round(st["TotalDisposalDays"] / disp_cnt, 1) if disp_cnt > 0 else 30.0
 
         result.append({
             "MetricID": st["MetricID"],
@@ -499,10 +521,15 @@ def get_all_stations_resolution(catalyst_app: Any = Depends(get_catalyst_app)):
     cs_rows = []
     if catalyst_app is not None:
         try:
-            t_cs = catalyst_app.datastore().table("ChargesheetDetails")
-            cs_rows = t_cs.get_paged_rows(max_rows=5000).get("data", [])
+            zcql = catalyst_app.zcql()
+            q_res = zcql.execute_query("SELECT * FROM ChargesheetDetails LIMIT 5000")
+            cs_rows = [r.get("ChargesheetDetails") for r in q_res if isinstance(r, dict) and "ChargesheetDetails" in r]
         except Exception:
-            pass
+            try:
+                t_cs = catalyst_app.datastore().table("ChargesheetDetails")
+                cs_rows = t_cs.get_paged_rows(max_rows=5000).get("data", [])
+            except Exception:
+                pass
 
     if not cs_rows:
         cs_rows = SEED_CHARGESHEETS
@@ -515,10 +542,15 @@ def get_station_resolution(id: int, catalyst_app: Any = Depends(get_catalyst_app
     cs_rows = []
     if catalyst_app is not None:
         try:
-            t_cs = catalyst_app.datastore().table("ChargesheetDetails")
-            cs_rows = t_cs.get_paged_rows(max_rows=5000).get("data", [])
+            zcql = catalyst_app.zcql()
+            q_res = zcql.execute_query("SELECT * FROM ChargesheetDetails LIMIT 5000")
+            cs_rows = [r.get("ChargesheetDetails") for r in q_res if isinstance(r, dict) and "ChargesheetDetails" in r]
         except Exception:
-            pass
+            try:
+                t_cs = catalyst_app.datastore().table("ChargesheetDetails")
+                cs_rows = t_cs.get_paged_rows(max_rows=5000).get("data", [])
+            except Exception:
+                pass
 
     if not cs_rows:
         cs_rows = SEED_CHARGESHEETS
