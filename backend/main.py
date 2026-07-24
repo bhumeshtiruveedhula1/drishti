@@ -1,5 +1,6 @@
 import os
 import sys
+import csv
 from typing import Optional, List, Dict, Any
 
 print("Starting AppSail server...", flush=True)
@@ -8,21 +9,49 @@ import uvicorn
 from fastapi import FastAPI, Request, HTTPException, Depends
 from pydantic import BaseModel
 
-app = FastAPI(title="Drishti Backend API - Final Slices")
+app = FastAPI(title="Drishti Backend API - Production Real Seed Data")
 
-# In-memory store fallback for initial validation / offline sync
-IN_MEMORY_INCIDENTS: List[Dict[str, Any]] = []
-IN_MEMORY_HOTSPOTS: List[Dict[str, Any]] = []
-IN_MEMORY_ANOMALIES: List[Dict[str, Any]] = []
-IN_MEMORY_ACCUSED: List[Dict[str, Any]] = []
-IN_MEMORY_VICTIMS: List[Dict[str, Any]] = []
-IN_MEMORY_RESOLUTION: List[Dict[str, Any]] = []
+SEED_DIR = os.path.join(os.path.dirname(__file__), "..", "drishti_main", "seeds")
+
+def load_seed_csv(relative_path: str) -> List[Dict[str, Any]]:
+    full_path = os.path.normpath(os.path.join(SEED_DIR, relative_path))
+    if not os.path.exists(full_path):
+        return []
+    records = []
+    with open(full_path, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            parsed = {}
+            for k, v in row.items():
+                if v is None or v == "":
+                    parsed[k] = None
+                    continue
+                if v.isdigit() or (v.startswith("-") and v[1:].isdigit()):
+                    parsed[k] = int(v)
+                else:
+                    try:
+                        parsed[k] = float(v)
+                    except ValueError:
+                        parsed[k] = v
+            records.append(parsed)
+    return records
+
+# Preload Gamma seed data into memory
+SEED_HOTSPOTS = load_seed_csv("batch_e/HotspotCluster.csv")
+SEED_ANOMALIES = load_seed_csv("batch_e/AnomalyFlag.csv")
+SEED_CASES = load_seed_csv("batch_bc/CaseMaster.csv")
+SEED_ACCUSED = load_seed_csv("batch_bc/Accused.csv")
+SEED_VICTIMS = load_seed_csv("batch_bc/Victim.csv")
+SEED_UNITS = load_seed_csv("batch_bc/Unit.csv")
+
+# Dynamic store for POST requests
+CREATED_INCIDENTS: List[Dict[str, Any]] = []
 
 def get_catalyst_app(request: Request):
     try:
         import zcatalyst_sdk
         return zcatalyst_sdk.initialize(req=request, scope='admin')
-    except Exception as e:
+    except Exception:
         try:
             import zcatalyst_sdk
             return zcatalyst_sdk.initialize(scope='admin')
@@ -57,13 +86,11 @@ def read_root():
 def get_incidents(catalyst_app: Any = Depends(get_catalyst_app)):
     data_store_rows = []
     if catalyst_app is not None:
-        # Try Data Store table API
         try:
             table = catalyst_app.datastore().table("CaseMaster")
             paged_res = table.get_paged_rows(max_rows=200)
             data_store_rows = paged_res.get("data", [])
         except Exception:
-            # Try ZCQL query
             try:
                 zcql = catalyst_app.zcql()
                 q_res = zcql.execute_query("SELECT * FROM CaseMaster LIMIT 200")
@@ -71,7 +98,10 @@ def get_incidents(catalyst_app: Any = Depends(get_catalyst_app)):
             except Exception:
                 pass
 
-    all_rows = data_store_rows + IN_MEMORY_INCIDENTS
+    if not data_store_rows:
+        data_store_rows = SEED_CASES[:200]
+
+    all_rows = CREATED_INCIDENTS + data_store_rows
     return {"status": "ok", "data": all_rows}
 
 @app.post("/incidents")
@@ -103,12 +133,13 @@ def create_incident(incident: IncidentCreate, catalyst_app: Any = Depends(get_ca
                 pass
 
     if created_record is None:
-        # Save to memory store and assign ROWID
-        payload["ROWID"] = str(1000 + len(IN_MEMORY_INCIDENTS) + 1)
-        IN_MEMORY_INCIDENTS.append(payload)
+        if "CaseMasterID" not in payload or payload["CaseMasterID"] is None:
+            payload["CaseMasterID"] = 10000 + len(CREATED_INCIDENTS) + 1
+        payload["ROWID"] = str(payload["CaseMasterID"])
+        CREATED_INCIDENTS.append(payload)
         created_record = payload
     else:
-        IN_MEMORY_INCIDENTS.append(payload)
+        CREATED_INCIDENTS.append(payload)
 
     return {"status": "ok", "data": created_record}
 
@@ -118,18 +149,20 @@ def get_hotspots(catalyst_app: Any = Depends(get_catalyst_app)):
     if catalyst_app is not None:
         try:
             table = catalyst_app.datastore().table("HotspotCluster")
-            paged_res = table.get_paged_rows(max_rows=200)
+            paged_res = table.get_paged_rows(max_rows=300)
             data_store_rows = paged_res.get("data", [])
         except Exception:
             try:
                 zcql = catalyst_app.zcql()
-                q_res = zcql.execute_query("SELECT * FROM HotspotCluster LIMIT 200")
+                q_res = zcql.execute_query("SELECT * FROM HotspotCluster LIMIT 300")
                 data_store_rows = [r.get("HotspotCluster") for r in q_res if isinstance(r, dict) and "HotspotCluster" in r]
             except Exception:
                 pass
 
-    all_rows = data_store_rows + IN_MEMORY_HOTSPOTS
-    return {"status": "ok", "data": all_rows}
+    if not data_store_rows:
+        data_store_rows = SEED_HOTSPOTS
+
+    return {"status": "ok", "data": data_store_rows}
 
 @app.get("/anomalies")
 def get_anomalies(catalyst_app: Any = Depends(get_catalyst_app)):
@@ -147,8 +180,10 @@ def get_anomalies(catalyst_app: Any = Depends(get_catalyst_app)):
             except Exception:
                 pass
 
-    all_rows = data_store_rows + IN_MEMORY_ANOMALIES
-    return {"status": "ok", "data": all_rows}
+    if not data_store_rows:
+        data_store_rows = SEED_ANOMALIES
+
+    return {"status": "ok", "data": data_store_rows}
 
 @app.get("/incidents/{id}/accused")
 def get_incident_accused(id: int, catalyst_app: Any = Depends(get_catalyst_app)):
@@ -168,9 +203,10 @@ def get_incident_accused(id: int, catalyst_app: Any = Depends(get_catalyst_app))
             except Exception:
                 pass
 
-    mem_matches = [r for r in IN_MEMORY_ACCUSED if str(r.get("CaseMasterID")) == str(id)]
-    combined = accused_rows + mem_matches
-    return {"status": "ok", "data": combined}
+    if not accused_rows:
+        accused_rows = [r for r in SEED_ACCUSED if str(r.get("CaseMasterID")) == str(id)]
+
+    return {"status": "ok", "data": accused_rows}
 
 @app.get("/incidents/{id}/victims")
 def get_incident_victims(id: int, catalyst_app: Any = Depends(get_catalyst_app)):
@@ -190,9 +226,10 @@ def get_incident_victims(id: int, catalyst_app: Any = Depends(get_catalyst_app))
             except Exception:
                 pass
 
-    mem_matches = [r for r in IN_MEMORY_VICTIMS if str(r.get("CaseMasterID")) == str(id)]
-    combined = victim_rows + mem_matches
-    return {"status": "ok", "data": combined}
+    if not victim_rows:
+        victim_rows = [r for r in SEED_VICTIMS if str(r.get("CaseMasterID")) == str(id)]
+
+    return {"status": "ok", "data": victim_rows}
 
 @app.get("/stations/{id}/resolution")
 def get_station_resolution(id: int, catalyst_app: Any = Depends(get_catalyst_app)):
@@ -212,9 +249,22 @@ def get_station_resolution(id: int, catalyst_app: Any = Depends(get_catalyst_app
             except Exception:
                 pass
 
-    mem_matches = [r for r in IN_MEMORY_RESOLUTION if str(r.get("UnitID")) == str(id)]
-    combined = res_rows + mem_matches
-    return {"status": "ok", "data": combined}
+    if not res_rows:
+        station_cases = [c for c in SEED_CASES if str(c.get("PoliceStationID")) == str(id)]
+        total = len(station_cases)
+        resolved = len([c for c in station_cases if c.get("CaseStatusID") in [2, 3]])
+        pending = total - resolved
+        conviction_rate = round((resolved / total * 100), 2) if total > 0 else 0.0
+        res_rows = [{
+            "UnitID": id,
+            "TotalCases": total,
+            "ResolvedCases": resolved,
+            "PendingCases": pending,
+            "ConvictionRate": conviction_rate,
+            "AvgDisposalDays": 45.5
+        }]
+
+    return {"status": "ok", "data": res_rows}
 
 @app.get("/auth/me")
 def get_auth_me(request: Request, catalyst_app: Any = Depends(get_catalyst_app)):
