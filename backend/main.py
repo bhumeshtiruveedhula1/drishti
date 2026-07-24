@@ -86,7 +86,8 @@ class IncidentCreate(BaseModel):
 def read_root():
     return {"status": "ok"}
 
-@app.all("/admin/query_datastore")
+@app.get("/admin/query_datastore")
+@app.post("/admin/query_datastore")
 def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
     if catalyst_app is None:
         return {"status": "error", "message": "Catalyst SDK initialization returned None"}
@@ -112,7 +113,8 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
 
     return {"status": "ok", "data": results}
 
-@app.all("/admin/bulk_load_datastore")
+@app.get("/admin/bulk_load_datastore")
+@app.post("/admin/bulk_load_datastore")
 def admin_bulk_load_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
     if catalyst_app is None:
         return {"status": "error", "message": "Catalyst SDK not initialized"}
