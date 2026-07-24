@@ -32,7 +32,11 @@ def load_seed_csv(relative_path: str) -> List[Dict[str, Any]]:
                 if v is None or v == "":
                     parsed[k] = None
                     continue
-                if v.isdigit() or (v.startswith("-") and v[1:].isdigit()):
+                if v.lower() == "true":
+                    parsed[k] = True
+                elif v.lower() == "false":
+                    parsed[k] = False
+                elif v.isdigit() or (v.startswith("-") and v[1:].isdigit()):
                     parsed[k] = int(v)
                 else:
                     try:
@@ -420,6 +424,26 @@ def get_auth_me(request: Request, catalyst_app: Any = Depends(get_catalyst_app))
             pass
 
     return {"status": "ok", "user": user_info}
+
+def load_network_graph() -> Dict[str, Any]:
+    path = os.path.join(SEED_DIR, "batch_e", "network_graph.json")
+    if not os.path.exists(path):
+        alt_path = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "drishti_main", "seeds", "batch_e", "network_graph.json"))
+        if os.path.exists(alt_path):
+            path = alt_path
+        else:
+            return {"status": "error", "message": "network_graph.json artifact not found"}
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return {"status": "ok", "data": data}
+
+@app.get("/network")
+@app.get("/link-analysis")
+def get_network_graph():
+    res = load_network_graph()
+    if res.get("status") == "error":
+        raise HTTPException(status_code=404, detail=res["message"])
+    return res
 
 if __name__ == "__main__":
     port_env = os.environ.get("X_ZOHO_CATALYST_LISTEN_PORT")
