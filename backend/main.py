@@ -3,7 +3,6 @@ import sys
 import csv
 import json
 import traceback
-from datetime import datetime
 from typing import Optional, List, Dict, Any
 
 print("Starting AppSail server...", flush=True)
@@ -220,20 +219,36 @@ def admin_bulk_load_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
         try:
             table = catalyst_app.datastore().table(tbl_name)
             if tbl_name == "ChargesheetDetails":
+                cleared = 0
+                try:
+                    while True:
+                        p_data = table.get_paged_rows(max_rows=100).get("data", [])
+                        if not p_data:
+                            break
+                        row_ids = [r["ROWID"] for r in p_data if "ROWID" in r]
+                        if not row_ids:
+                            break
+                        table.delete_rows(row_ids)
+                        cleared += len(row_ids)
+                    logs.append(f"Cleared {cleared} existing rows from ChargesheetDetails")
+                except Exception as ex_c:
+                    logs.append(f"Clear ChargesheetDetails note: {ex_c}")
+
+                clean_data = []
+                for r in data:
+                    clean_data.append({
+                        "CSID": int(r["CSID"]),
+                        "CaseMasterID": int(r["CaseMasterID"]),
+                        "csdate": str(r["csdate"]),
+                        "cstype": str(r["cstype"])
+                    })
+
                 inserted = 0
-                for i in range(0, len(data), batch_size):
-                    chunk = data[i:i + batch_size]
-                    try:
-                        table.insert_rows(chunk)
-                        inserted += len(chunk)
-                    except Exception:
-                        for item in chunk:
-                            try:
-                                table.insert_rows([item])
-                                inserted += 1
-                            except Exception:
-                                pass
-                logs.append(f"Successfully inserted {inserted} records into {tbl_name}")
+                for i in range(0, len(clean_data), batch_size):
+                    chunk = clean_data[i:i + batch_size]
+                    table.insert_rows(chunk)
+                    inserted += len(chunk)
+                logs.append(f"Successfully loaded {inserted} Gamma ChargesheetDetails records into Data Store")
             else:
                 inserted = 0
                 for i in range(0, len(data), batch_size):
@@ -396,153 +411,136 @@ def get_incident_victims(id: int, catalyst_app: Any = Depends(get_catalyst_app))
 
     return {"status": "ok", "data": victim_rows}
 
-def compute_station_resolution_metrics(cases_records: List[Dict[str, Any]],
-                                       chargesheet_records: List[Dict[str, Any]],
-                                       unit_records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    cs_by_case: Dict[int, Dict[str, Any]] = {}
-    for cs in chargesheet_records:
-        cid = cs.get("CaseMasterID")
-        if cid is not None:
-            cs_by_case[int(cid)] = cs
+def compute_station_resolution_metrics(cs_list: List[Dict[str, Any]], cases_list: List[Dict[str, Any]], units_list: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    cs_dict = {int(c["CaseMasterID"]): c for c in cs_list if isinstance(c, dict) and "CaseMasterID" in c and c["CaseMasterID"] is not None}
+    unit_names = {int(u["UnitID"]): u["UnitName"] for u in units_list if isinstance(u, dict) and "UnitID" in u and u["UnitID"] is not None}
 
-    stations_map: Dict[int, Dict[str, Any]] = {}
+    station_metrics: Dict[int, Dict[str, Any]] = {}
 
-    for case in cases_records:
-        unit_id = case.get("PoliceStationID") or case.get("UnitID") or 1
-        cid = case.get("CaseMasterID")
-        reg_date_str = case.get("CrimeRegisteredDate")
+    for c in cases_list:
+        case_id = c.get("CaseMasterID")
+        if case_id is None:
+            continue
+        try:
+            case_id = int(case_id)
+        except (ValueError, TypeError):
+            continue
+        unit_id = c.get("PoliceStationID") or c.get("UnitID") or 1
+        try:
+            unit_id = int(unit_id)
+        except (ValueError, TypeError):
+            unit_id = 1
 
-        if unit_id not in stations_map:
-            unit_name = next((u.get("UnitName") for u in unit_records if u.get("UnitID") == unit_id), f"Station #{unit_id}")
-            district_id = case.get("DistrictID", 1)
-            stations_map[unit_id] = {
+        if unit_id not in station_metrics:
+            station_metrics[unit_id] = {
                 "MetricID": unit_id,
-                "DistrictID": district_id,
                 "UnitID": unit_id,
-                "UnitName": unit_name,
+                "UnitName": unit_names.get(unit_id, f"Station #{unit_id}"),
+                "PeriodStart": "2025-01-01",
+                "PeriodEnd": "2026-01-31",
                 "TotalCases": 0,
                 "Chargesheeted": 0,
                 "FalseCases": 0,
                 "Undetected": 0,
-                "ResolutionRatePct": 0.0,
-                "AvgDisposalDays": 0.0,
-                "_disposal_days_list": []
+                "TotalDisposalDays": 0.0
             }
 
-        st = stations_map[unit_id]
+        st = station_metrics[unit_id]
         st["TotalCases"] += 1
 
-        cs_info = cs_by_case.get(int(cid)) if cid is not None else None
-        if cs_info:
-            cstype = str(cs_info.get("cstype", "")).upper()
-            if cstype in ["A", "CHARGESHEET", "CHARGESHEETED"]:
+        cs = cs_dict.get(case_id)
+        if cs:
+            cstype = str(cs.get("cstype", "")).upper()
+            if cstype in ("A", "CHARGESHEET", "CHARGESHEETED"):
                 st["Chargesheeted"] += 1
-            elif cstype in ["B", "FALSE CASE", "FALSECASE"]:
+            elif cstype in ("B", "FALSE CASE"):
                 st["FalseCases"] += 1
-            elif cstype in ["C", "UNDETECTED"]:
+            elif cstype in ("C", "UNDETECTED"):
                 st["Undetected"] += 1
-            else:
-                st["Chargesheeted"] += 1
 
-            csdate_str = cs_info.get("csdate")
-            if csdate_str and reg_date_str:
+            reg_str = str(c.get("CrimeRegisteredDate", ""))
+            cs_str = str(cs.get("csdate", ""))
+            if reg_str and cs_str:
                 try:
-                    cs_dt = datetime.strptime(str(csdate_str).split()[0], "%Y-%m-%d")
-                    reg_dt = datetime.strptime(str(reg_date_str).split()[0], "%Y-%m-%d")
-                    days = max(1, (cs_dt - reg_dt).days)
-                    st["_disposal_days_list"].append(days)
+                    reg_dt = datetime.strptime(reg_str.split()[0], "%Y-%m-%d")
+                    cs_dt = datetime.strptime(cs_str.split()[0], "%Y-%m-%d")
+                    days = (cs_dt - reg_dt).days
+                    if days >= 0:
+                        st["TotalDisposalDays"] += days
                 except Exception:
                     pass
-        else:
-            status_id = case.get("CaseStatusID")
-            if status_id in [2, 3]:
-                st["Chargesheeted"] += 1
-            elif status_id == 4:
-                st["FalseCases"] += 1
-            elif status_id == 5:
-                st["Undetected"] += 1
 
-    result_rows = []
-    for u_id, st in sorted(stations_map.items()):
-        tot = st["TotalCases"]
-        resolved = st["Chargesheeted"] + st["FalseCases"]
-        st["ResolutionRatePct"] = round((resolved / tot * 100), 2) if tot > 0 else 0.0
-        
-        days_list = st.pop("_disposal_days_list", [])
-        if days_list:
-            st["AvgDisposalDays"] = round(sum(days_list) / len(days_list), 1)
-        else:
-            st["AvgDisposalDays"] = round(20.0 + (u_id * 3.7) % 35.0, 1)
+    result = []
+    for u_id, st in sorted(station_metrics.items()):
+        total = st["TotalCases"]
+        cs_cnt = st["Chargesheeted"]
+        fc_cnt = st["FalseCases"]
+        res_pct = round(((cs_cnt + fc_cnt) / total * 100), 2) if total > 0 else 0.0
+        avg_days = round(st["TotalDisposalDays"] / total, 1) if total > 0 else 30.0
 
-        result_rows.append(st)
+        result.append({
+            "MetricID": st["MetricID"],
+            "UnitID": st["UnitID"],
+            "UnitName": st["UnitName"],
+            "PeriodStart": st["PeriodStart"],
+            "PeriodEnd": st["PeriodEnd"],
+            "TotalCases": total,
+            "Chargesheeted": cs_cnt,
+            "FalseCases": fc_cnt,
+            "Undetected": st["Undetected"],
+            "AvgDaysToResolution": avg_days,
+            "ResolutionRatePct": res_pct
+        })
 
-    return result_rows
-
-@app.get("/admin/clear_chargesheets")
-@app.post("/admin/clear_chargesheets")
-def clear_chargesheets(catalyst_app: Any = Depends(get_catalyst_app)):
-    if catalyst_app is None:
-        return {"status": "error", "message": "SDK not initialized"}
-    try:
-        table = catalyst_app.datastore().table("ChargesheetDetails")
-        paged = table.get_paged_rows(max_rows=5000)
-        rows = paged.get("data", [])
-        row_ids = [r.get("ROWID") for r in rows if r.get("ROWID")]
-        deleted = 0
-        batch_size = 100
-        for i in range(0, len(row_ids), batch_size):
-            chunk = row_ids[i:i + batch_size]
-            table.delete_rows(chunk)
-            deleted += len(chunk)
-        return {"status": "ok", "deleted_count": deleted}
-    except Exception as e:
-        return {"status": "error", "message": str(e)}
+    return result
 
 @app.get("/stations/resolution")
 def get_all_stations_resolution(catalyst_app: Any = Depends(get_catalyst_app)):
-    res_rows = []
+    cs_rows = []
     if catalyst_app is not None:
         try:
-            zcql = catalyst_app.zcql()
-            q_stmt = "SELECT * FROM StationResolutionMetric LIMIT 200"
-            q_res = zcql.execute_query(q_stmt)
-            res_rows = [r.get("StationResolutionMetric") for r in q_res if isinstance(r, dict) and "StationResolutionMetric" in r]
+            t_cs = catalyst_app.datastore().table("ChargesheetDetails")
+            cs_rows = t_cs.get_paged_rows(max_rows=5000).get("data", [])
         except Exception:
-            try:
-                table = catalyst_app.datastore().table("StationResolutionMetric")
-                paged_res = table.get_paged_rows(max_rows=200)
-                res_rows = paged_res.get("data", [])
-            except Exception:
-                pass
+            pass
 
-    if not res_rows:
-        res_rows = compute_station_resolution_metrics(SEED_CASES, SEED_CHARGESHEETS, SEED_UNITS)
+    if not cs_rows:
+        cs_rows = SEED_CHARGESHEETS
 
-    return {"status": "ok", "data": res_rows}
+    metrics = compute_station_resolution_metrics(cs_rows, SEED_CASES, SEED_UNITS)
+    return {"status": "ok", "data": metrics}
 
 @app.get("/stations/{id}/resolution")
 def get_station_resolution(id: int, catalyst_app: Any = Depends(get_catalyst_app)):
-    res_rows = []
+    cs_rows = []
     if catalyst_app is not None:
         try:
-            zcql = catalyst_app.zcql()
-            q_stmt = f"SELECT * FROM StationResolutionMetric WHERE UnitID = {id} LIMIT 200"
-            q_res = zcql.execute_query(q_stmt)
-            res_rows = [r.get("StationResolutionMetric") for r in q_res if isinstance(r, dict) and "StationResolutionMetric" in r]
+            t_cs = catalyst_app.datastore().table("ChargesheetDetails")
+            cs_rows = t_cs.get_paged_rows(max_rows=5000).get("data", [])
         except Exception:
-            try:
-                table = catalyst_app.datastore().table("StationResolutionMetric")
-                paged_res = table.get_paged_rows(max_rows=200)
-                all_rows = paged_res.get("data", [])
-                res_rows = [r for r in all_rows if str(r.get("UnitID")) == str(id)]
-            except Exception:
-                pass
+            pass
 
-    if not res_rows:
-        all_metrics = compute_station_resolution_metrics(SEED_CASES, SEED_CHARGESHEETS, SEED_UNITS)
-        res_rows = [r for r in all_metrics if str(r.get("UnitID")) == str(id)]
+    if not cs_rows:
+        cs_rows = SEED_CHARGESHEETS
 
-    return {"status": "ok", "data": res_rows}
+    metrics = compute_station_resolution_metrics(cs_rows, SEED_CASES, SEED_UNITS)
+    st_metric = [m for m in metrics if m["UnitID"] == id]
+    if not st_metric:
+        st_metric = [{
+            "MetricID": id,
+            "UnitID": id,
+            "UnitName": next((u.get("UnitName") for u in SEED_UNITS if str(u.get("UnitID")) == str(id)), f"Station #{id}"),
+            "PeriodStart": "2025-01-01",
+            "PeriodEnd": "2026-01-31",
+            "TotalCases": 0,
+            "Chargesheeted": 0,
+            "FalseCases": 0,
+            "Undetected": 0,
+            "AvgDaysToResolution": 30.0,
+            "ResolutionRatePct": 0.0
+        }]
+
+    return {"status": "ok", "data": st_metric}
 
 @app.get("/auth/me")
 def get_auth_me(request: Request, catalyst_app: Any = Depends(get_catalyst_app)):
