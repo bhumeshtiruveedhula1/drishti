@@ -11,12 +11,17 @@ from pydantic import BaseModel
 
 app = FastAPI(title="Drishti Backend API - Production Real Seed Data")
 
-SEED_DIR = os.path.join(os.path.dirname(__file__), "..", "drishti_main", "seeds")
+SEED_DIR = os.path.join(os.path.dirname(__file__), "seeds")
 
 def load_seed_csv(relative_path: str) -> List[Dict[str, Any]]:
     full_path = os.path.normpath(os.path.join(SEED_DIR, relative_path))
     if not os.path.exists(full_path):
-        return []
+        # Fallback to drishti_main/seeds if running locally
+        alt_path = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "drishti_main", "seeds", relative_path))
+        if os.path.exists(alt_path):
+            full_path = alt_path
+        else:
+            return []
     records = []
     with open(full_path, "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)

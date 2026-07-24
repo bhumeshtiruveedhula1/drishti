@@ -1,0 +1,28 @@
+CourtID,CourtName,DistrictID,StateID,Active
+1,"District and Sessions Court, Bagalkot",1,1,True
+2,"District and Sessions Court, Bangalore Rural",2,1,True
+3,"District and Sessions Court, Bangalore Urban",3,1,True
+4,"District and Sessions Court, Belgaum",4,1,True
+5,"District and Sessions Court, Bellary",5,1,True
+6,"District and Sessions Court, Bidar",6,1,True
+7,"District and Sessions Court, Bijapur",7,1,True
+8,"District and Sessions Court, Chamrajnagar",8,1,True
+9,"District and Sessions Court, Chikmagalur",9,1,True
+10,"District and Sessions Court, Chitradurga",10,1,True
+11,"District and Sessions Court, Dakshin Kannad",11,1,True
+12,"District and Sessions Court, Davanagere",12,1,True
+13,"District and Sessions Court, Dharwad",13,1,True
+14,"District and Sessions Court, Gadag",14,1,True
+15,"District and Sessions Court, Gulbarga",15,1,True
+16,"District and Sessions Court, Hassan",16,1,True
+17,"District and Sessions Court, Haveri",17,1,True
+18,"District and Sessions Court, Kodagu",18,1,True
+19,"District and Sessions Court, Kolar",19,1,True
+20,"District and Sessions Court, Koppal",20,1,True
+21,"District and Sessions Court, Mandya",21,1,True
+22,"District and Sessions Court, Mysore",22,1,True
+23,"District and Sessions Court, Raichur",23,1,True
+24,"District and Sessions Court, Shimoga",24,1,True
+25,"District and Sessions Court, Tumkur",25,1,True
+26,"District and Sessions Court, Udupi",26,1,True
+27,"District and Sessions Court, Uttar Kannand",27,1,True

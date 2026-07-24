@@ -1,0 +1,28 @@
+DistrictID,DistrictName,StateID,Active
+1,Bagalkot,1,True
+2,Bangalore Rural,1,True
+3,Bangalore Urban,1,True
+4,Belgaum,1,True
+5,Bellary,1,True
+6,Bidar,1,True
+7,Bijapur,1,True
+8,Chamrajnagar,1,True
+9,Chikmagalur,1,True
+10,Chitradurga,1,True
+11,Dakshin Kannad,1,True
+12,Davanagere,1,True
+13,Dharwad,1,True
+14,Gadag,1,True
+15,Gulbarga,1,True
+16,Hassan,1,True
+17,Haveri,1,True
+18,Kodagu,1,True
+19,Kolar,1,True
+20,Koppal,1,True
+21,Mandya,1,True
+22,Mysore,1,True
+23,Raichur,1,True
+24,Shimoga,1,True
+25,Tumkur,1,True
+26,Udupi,1,True
+27,Uttar Kannand,1,True
