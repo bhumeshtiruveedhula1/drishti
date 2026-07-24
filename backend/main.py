@@ -178,8 +178,15 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
         err_msg = None
         rows = []
         total_count = 0
+        table_cols = []
         try:
             table = catalyst_app.datastore().table(tbl)
+            try:
+                dtls = table.get_table_details()
+                if isinstance(dtls, dict) and "columns" in dtls:
+                    table_cols = [c.get("column_name") for c in dtls["columns"]]
+            except Exception as ex:
+                table_cols = [str(ex)]
             paged = table.get_paged_rows(max_rows=10)
             rows = paged.get("data", [])
             try:
@@ -197,6 +204,7 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
         results[tbl] = {
             "total_count": total_count,
             "sample_count": len(rows),
+            "columns": table_cols,
             "raw_query_output": rows,
             "error": err_msg
         }
