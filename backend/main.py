@@ -86,6 +86,76 @@ class IncidentCreate(BaseModel):
 def read_root():
     return {"status": "ok"}
 
+@app.get("/admin/list_tables")
+@app.post("/admin/list_tables")
+def admin_list_tables(catalyst_app: Any = Depends(get_catalyst_app)):
+    if catalyst_app is None:
+        return {"status": "error", "message": "Catalyst SDK initialization returned None"}
+    try:
+        tables = catalyst_app.datastore().get_all_tables()
+        tbl_info = [{"table_name": getattr(t, "table_name", str(t)), "table_id": getattr(t, "table_id", None)} for t in tables]
+        return {"status": "ok", "count": len(tbl_info), "tables": tbl_info}
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
+
+@app.get("/admin/create_tables")
+@app.post("/admin/create_tables")
+def admin_create_tables(catalyst_app: Any = Depends(get_catalyst_app)):
+    if catalyst_app is None:
+        return {"status": "error", "message": "Catalyst SDK initialization returned None"}
+
+    table_schemas = [
+        # Batch A
+        {"table_name": "State", "columns": [{"column_name": "StateID", "data_type": "INT"}, {"column_name": "StateName", "data_type": "VARCHAR"}, {"column_name": "NationalityID", "data_type": "INT"}, {"column_name": "Active", "data_type": "BOOLEAN"}]},
+        {"table_name": "District", "columns": [{"column_name": "DistrictID", "data_type": "INT"}, {"column_name": "DistrictName", "data_type": "VARCHAR"}, {"column_name": "StateID", "data_type": "INT"}, {"column_name": "Active", "data_type": "BOOLEAN"}]},
+        {"table_name": "UnitType", "columns": [{"column_name": "UnitTypeID", "data_type": "INT"}, {"column_name": "UnitTypeName", "data_type": "VARCHAR"}, {"column_name": "CityDistState", "data_type": "VARCHAR"}, {"column_name": "Hierarchy", "data_type": "INT"}, {"column_name": "Active", "data_type": "BOOLEAN"}]},
+        {"table_name": "Rank", "columns": [{"column_name": "RankID", "data_type": "INT"}, {"column_name": "RankName", "data_type": "VARCHAR"}, {"column_name": "Hierarchy", "data_type": "INT"}, {"column_name": "Active", "data_type": "BOOLEAN"}]},
+        {"table_name": "Designation", "columns": [{"column_name": "DesignationID", "data_type": "INT"}, {"column_name": "DesignationName", "data_type": "VARCHAR"}, {"column_name": "Active", "data_type": "BOOLEAN"}, {"column_name": "SortOrder", "data_type": "INT"}]},
+        {"table_name": "CaseCategory", "columns": [{"column_name": "CaseCategoryID", "data_type": "INT"}, {"column_name": "LookupValue", "data_type": "VARCHAR"}]},
+        {"table_name": "GravityOffence", "columns": [{"column_name": "GravityOffenceID", "data_type": "INT"}, {"column_name": "LookupValue", "data_type": "VARCHAR"}]},
+        {"table_name": "CrimeHead", "columns": [{"column_name": "CrimeHeadID", "data_type": "INT"}, {"column_name": "CrimeGroupName", "data_type": "VARCHAR"}, {"column_name": "Active", "data_type": "BOOLEAN"}]},
+        {"table_name": "CrimeSubHead", "columns": [{"column_name": "CrimeSubHeadID", "data_type": "INT"}, {"column_name": "CrimeHeadID", "data_type": "INT"}, {"column_name": "CrimeHeadName", "data_type": "VARCHAR"}, {"column_name": "SeqID", "data_type": "INT"}]},
+        {"table_name": "CaseStatusMaster", "columns": [{"column_name": "CaseStatusID", "data_type": "INT"}, {"column_name": "CaseStatusName", "data_type": "VARCHAR"}]},
+        {"table_name": "CasteMaster", "columns": [{"column_name": "caste_master_id", "data_type": "INT"}, {"column_name": "caste_master_name", "data_type": "VARCHAR"}]},
+        {"table_name": "ReligionMaster", "columns": [{"column_name": "ReligionID", "data_type": "INT"}, {"column_name": "ReligionName", "data_type": "VARCHAR"}]},
+        {"table_name": "OccupationMaster", "columns": [{"column_name": "OccupationID", "data_type": "INT"}, {"column_name": "OccupationName", "data_type": "VARCHAR"}]},
+        {"table_name": "Act", "columns": [{"column_name": "ActCode", "data_type": "VARCHAR"}, {"column_name": "ActDescription", "data_type": "VARCHAR"}, {"column_name": "ShortName", "data_type": "VARCHAR"}, {"column_name": "Active", "data_type": "BOOLEAN"}]},
+        {"table_name": "Section", "columns": [{"column_name": "ActCode", "data_type": "VARCHAR"}, {"column_name": "SectionCode", "data_type": "VARCHAR"}, {"column_name": "SectionDescription", "data_type": "VARCHAR"}, {"column_name": "Active", "data_type": "BOOLEAN"}]},
+        # Batch B
+        {"table_name": "Unit", "columns": [{"column_name": "UnitID", "data_type": "INT"}, {"column_name": "UnitName", "data_type": "VARCHAR"}, {"column_name": "TypeID", "data_type": "INT"}, {"column_name": "ParentUnit", "data_type": "INT"}, {"column_name": "NationalityID", "data_type": "INT"}, {"column_name": "StateID", "data_type": "INT"}, {"column_name": "DistrictID", "data_type": "INT"}, {"column_name": "Active", "data_type": "BOOLEAN"}]},
+        {"table_name": "Employee", "columns": [{"column_name": "EmployeeID", "data_type": "INT"}, {"column_name": "DistrictID", "data_type": "INT"}, {"column_name": "UnitID", "data_type": "INT"}, {"column_name": "RankID", "data_type": "INT"}, {"column_name": "DesignationID", "data_type": "INT"}, {"column_name": "KGID", "data_type": "VARCHAR"}, {"column_name": "FirstName", "data_type": "VARCHAR"}, {"column_name": "EmployeeDOB", "data_type": "DATE"}, {"column_name": "GenderID", "data_type": "INT"}, {"column_name": "BloodGroupID", "data_type": "INT"}, {"column_name": "PhysicallyChallenged", "data_type": "BOOLEAN"}, {"column_name": "AppointmentDate", "data_type": "DATE"}]},
+        {"table_name": "Court", "columns": [{"column_name": "CourtID", "data_type": "INT"}, {"column_name": "CourtName", "data_type": "VARCHAR"}, {"column_name": "DistrictID", "data_type": "INT"}, {"column_name": "StateID", "data_type": "INT"}, {"column_name": "Active", "data_type": "BOOLEAN"}]},
+        # Batch C
+        {"table_name": "CaseMaster", "columns": [{"column_name": "CaseMasterID", "data_type": "INT"}, {"column_name": "CrimeNo", "data_type": "VARCHAR"}, {"column_name": "CaseNo", "data_type": "VARCHAR"}, {"column_name": "CrimeRegisteredDate", "data_type": "DATE"}, {"column_name": "PolicePersonID", "data_type": "INT"}, {"column_name": "PoliceStationID", "data_type": "INT"}, {"column_name": "CaseCategoryID", "data_type": "INT"}, {"column_name": "GravityOffenceID", "data_type": "INT"}, {"column_name": "CrimeMajorHeadID", "data_type": "INT"}, {"column_name": "CrimeMinorHeadID", "data_type": "INT"}, {"column_name": "CaseStatusID", "data_type": "INT"}, {"column_name": "CourtID", "data_type": "INT"}, {"column_name": "IncidentFromDate", "data_type": "DATETIME"}, {"column_name": "IncidentToDate", "data_type": "DATETIME"}, {"column_name": "InfoReceivedPSDate", "data_type": "DATETIME"}, {"column_name": "latitude", "data_type": "DOUBLE"}, {"column_name": "longitude", "data_type": "DOUBLE"}, {"column_name": "BriefFacts", "data_type": "TEXT"}]},
+        {"table_name": "ComplainantDetails", "columns": [{"column_name": "ComplainantID", "data_type": "INT"}, {"column_name": "CaseMasterID", "data_type": "INT"}, {"column_name": "ComplainantName", "data_type": "VARCHAR"}, {"column_name": "AgeYear", "data_type": "INT"}, {"column_name": "OccupationID", "data_type": "INT"}, {"column_name": "ReligionID", "data_type": "INT"}, {"column_name": "CasteID", "data_type": "INT"}, {"column_name": "GenderID", "data_type": "INT"}]},
+        {"table_name": "Victim", "columns": [{"column_name": "VictimMasterID", "data_type": "INT"}, {"column_name": "CaseMasterID", "data_type": "INT"}, {"column_name": "VictimName", "data_type": "VARCHAR"}, {"column_name": "AgeYear", "data_type": "INT"}, {"column_name": "GenderID", "data_type": "INT"}, {"column_name": "VictimPolice", "data_type": "BOOLEAN"}]},
+        {"table_name": "Accused", "columns": [{"column_name": "AccusedMasterID", "data_type": "INT"}, {"column_name": "CaseMasterID", "data_type": "INT"}, {"column_name": "AccusedName", "data_type": "VARCHAR"}, {"column_name": "AgeYear", "data_type": "INT"}, {"column_name": "GenderID", "data_type": "INT"}, {"column_name": "PersonID", "data_type": "VARCHAR"}]},
+        {"table_name": "ActSectionAssociation", "columns": [{"column_name": "CaseMasterID", "data_type": "INT"}, {"column_name": "ActID", "data_type": "INT"}, {"column_name": "SectionID", "data_type": "INT"}, {"column_name": "ActOrderID", "data_type": "INT"}, {"column_name": "SectionOrderID", "data_type": "INT"}]},
+        {"table_name": "CrimeHeadActSection", "columns": [{"column_name": "CrimeHeadID", "data_type": "INT"}, {"column_name": "ActCode", "data_type": "VARCHAR"}, {"column_name": "SectionCode", "data_type": "VARCHAR"}]},
+        # Batch E
+        {"table_name": "HotspotCluster", "columns": [{"column_name": "ClusterID", "data_type": "INT"}, {"column_name": "DistrictID", "data_type": "INT"}, {"column_name": "UnitID", "data_type": "INT"}, {"column_name": "CrimeMajorHeadID", "data_type": "INT"}, {"column_name": "CentroidLat", "data_type": "DOUBLE"}, {"column_name": "CentroidLng", "data_type": "DOUBLE"}, {"column_name": "IncidentCount", "data_type": "INT"}, {"column_name": "TimeWindowStart", "data_type": "DATE"}, {"column_name": "TimeWindowEnd", "data_type": "DATE"}, {"column_name": "ComputedAt", "data_type": "DATETIME"}]},
+        {"table_name": "AnomalyFlag", "columns": [{"column_name": "AnomalyID", "data_type": "INT"}, {"column_name": "DistrictID", "data_type": "INT"}, {"column_name": "UnitID", "data_type": "INT"}, {"column_name": "CrimeMajorHeadID", "data_type": "INT"}, {"column_name": "ObservedCount", "data_type": "INT"}, {"column_name": "ExpectedCount", "data_type": "DOUBLE"}, {"column_name": "AnomalyScore", "data_type": "DOUBLE"}, {"column_name": "FlagReason", "data_type": "VARCHAR"}, {"column_name": "WindowStart", "data_type": "DATE"}, {"column_name": "WindowEnd", "data_type": "DATE"}]},
+        {"table_name": "StationResolutionMetric", "columns": [{"column_name": "MetricID", "data_type": "INT"}, {"column_name": "UnitID", "data_type": "INT"}, {"column_name": "PeriodStart", "data_type": "DATE"}, {"column_name": "PeriodEnd", "data_type": "DATE"}, {"column_name": "TotalCases", "data_type": "INT"}, {"column_name": "Chargesheeted", "data_type": "INT"}, {"column_name": "FalseCases", "data_type": "INT"}, {"column_name": "Undetected", "data_type": "INT"}, {"column_name": "AvgDaysToResolution", "data_type": "DOUBLE"}, {"column_name": "ResolutionRatePct", "data_type": "DOUBLE"}]},
+        {"table_name": "RiskScore", "columns": [{"column_name": "RiskScoreID", "data_type": "INT"}, {"column_name": "DistrictID", "data_type": "INT"}, {"column_name": "UnitID", "data_type": "INT"}, {"column_name": "CrimeMajorHeadID", "data_type": "INT"}, {"column_name": "RiskLevel", "data_type": "VARCHAR"}, {"column_name": "RiskValue", "data_type": "DOUBLE"}, {"column_name": "ModelVersion", "data_type": "VARCHAR"}, {"column_name": "ComputedAt", "data_type": "DATETIME"}]}
+    ]
+
+    results = []
+    requester = catalyst_app.datastore()._requester
+
+    for schema in table_schemas:
+        tbl_name = schema["table_name"]
+        try:
+            resp = requester.request(
+                method="POST",
+                path="/table",
+                body=schema
+            )
+            results.append({"table": tbl_name, "status": "created", "response": resp.response_json})
+        except Exception as e:
+            results.append({"table": tbl_name, "status": "failed", "error": str(e)})
+
+    return {"status": "ok", "results": results}
+
 @app.get("/admin/query_datastore")
 @app.post("/admin/query_datastore")
 def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
