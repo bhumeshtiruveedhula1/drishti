@@ -24,7 +24,6 @@ def generate_chargesheet_details():
             elif status_id == 5:
                 cstype = "C"
             else:
-                # Random distribution: 80% A, 10% B, 10% C
                 rand_val = random.random()
                 if rand_val < 0.8:
                     cstype = "A"
@@ -34,14 +33,12 @@ def generate_chargesheet_details():
                     cstype = "C"
 
             csdate = f"{reg_date} 10:00:00"
-            police_person_id = (case_id % 50) + 1  # 1 to 50
 
             rows.append({
                 "CSID": idx,
                 "CaseMasterID": case_id,
                 "csdate": csdate,
-                "cstype": cstype,
-                "PolicePersonID": police_person_id
+                "cstype": cstype
             })
 
     output_dir = os.path.join(base_dir, "seeds", "batch_d")
@@ -49,7 +46,7 @@ def generate_chargesheet_details():
     out_file = os.path.join(output_dir, "ChargesheetDetails.csv")
     
     with open(out_file, "w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["CSID", "CaseMasterID", "csdate", "cstype", "PolicePersonID"])
+        writer = csv.DictWriter(f, fieldnames=["CSID", "CaseMasterID", "csdate", "cstype"])
         writer.writeheader()
         writer.writerows(rows)
     
