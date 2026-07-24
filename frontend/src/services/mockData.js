@@ -2,8 +2,8 @@
  * mockData.js - Live Endpoint Data Service & Mock Data Source for Drishti Spatial Portal.
  * Complies strictly with drishti_catalyst_schema.md & BETA_TRD.md.
  * 
- * Task 1 Status: Swapped NetworkGraphPanel to Alpha's live AppSail GET /network endpoint.
- * Task 2 Status: Holding ResolutionLoopPanel on schema mock data waiting for Alpha's new GET /stations/resolution endpoint.
+ * Network Graph: Connected to Alpha's real deployed AppSail URL (https://drishti-backend-50044277235.development.catalystappsail.in/network).
+ * Resolution Feedback Loop: Holding on mock data waiting for Alpha's new GET /stations/resolution endpoint deployment.
  */
 
 export const MOCK_INCIDENTS = [
@@ -182,48 +182,19 @@ export const MOCK_RESOLUTION_METRICS = [
 
 export const MOCK_NETWORK_GRAPH = {
   summary: {
-    total_nodes: 14,
-    total_edges: 13,
-    repeat_offenders_count: 2
+    total_nodes: 591,
+    total_edges: 1142,
+    repeat_offenders_count: 10
   },
-  nodes: [
-    { id: "accused_ramesh_kumar", label: "Ramesh Kumar", type: "Accused", metadata: { is_repeat_offender: true, total_incidents: 2 } },
-    { id: "case_1001", label: "FIR-2026-00101", type: "CaseMaster", metadata: { CaseMasterID: 1001, CaseNo: "BLR-URB-2026-014", CrimeRegisteredDate: "2026-07-20", latitude: 12.9348, longitude: 77.6200 } },
-    { id: "victim_201", label: "Anand Rao", type: "Victim", metadata: { VictimMasterID: 201, CaseMasterID: 1001 } },
-    { id: "unit_101", label: "Koramangala PS", type: "Unit", metadata: { UnitID: 101 } },
-    { id: "case_1002", label: "FIR-2026-00102", type: "CaseMaster", metadata: { CaseMasterID: 1002, CaseNo: "BLR-URB-2026-022", CrimeRegisteredDate: "2026-07-21", latitude: 12.9698, longitude: 77.7499 } },
-    { id: "victim_202", label: "Priya Sharma", type: "Victim", metadata: { VictimMasterID: 202, CaseMasterID: 1002 } },
-    { id: "unit_102", label: "Whitefield PS", type: "Unit", metadata: { UnitID: 102 } },
-    { id: "accused_suresh_gowda", label: "Suresh Gowda", type: "Accused", metadata: { is_repeat_offender: true, total_incidents: 2 } },
-    { id: "case_1003", label: "FIR-2026-00103", type: "CaseMaster", metadata: { CaseMasterID: 1003, CaseNo: "MYS-2026-089", CrimeRegisteredDate: "2026-07-18", latitude: 12.3052, longitude: 76.6552 } },
-    { id: "victim_203", label: "Mahadevappa", type: "Victim", metadata: { VictimMasterID: 203, CaseMasterID: 1003 } },
-    { id: "unit_105", label: "Devaraja PS", type: "Unit", metadata: { UnitID: 105 } },
-    { id: "case_1006", label: "FIR-2026-00106", type: "CaseMaster", metadata: { CaseMasterID: 1006, CaseNo: "BGM-2026-034", CrimeRegisteredDate: "2026-07-17", latitude: 15.8497, longitude: 74.5086 } },
-    { id: "victim_204", label: "Silk Warehouse Corp", type: "Victim", metadata: { VictimMasterID: 204, CaseMasterID: 1006 } },
-    { id: "unit_120", label: "Market PS", type: "Unit", metadata: { UnitID: 120 } }
-  ],
-  edges: [
-    { source: "accused_ramesh_kumar", target: "case_1001", relationship: "ACCUSED_IN", metadata: { case_id: 1001 } },
-    { source: "case_1001", target: "victim_201", relationship: "VICTIM_OF", metadata: { case_id: 1001 } },
-    { source: "case_1001", target: "unit_101", relationship: "JURISDICTION_UNIT", metadata: { unit_id: 101 } },
-    { source: "accused_ramesh_kumar", target: "case_1002", relationship: "ACCUSED_IN", metadata: { case_id: 1002 } },
-    { source: "case_1002", target: "victim_202", relationship: "VICTIM_OF", metadata: { case_id: 1002 } },
-    { source: "case_1002", target: "unit_102", relationship: "JURISDICTION_UNIT", metadata: { unit_id: 102 } },
-    { source: "case_1001", target: "case_1002", relationship: "SPATIAL_PROXIMITY_CLUSTER", metadata: { distance_km: 14.6, cluster_id: "cluster_1", offender_name: "Ramesh Kumar" } },
-    { source: "accused_suresh_gowda", target: "case_1003", relationship: "ACCUSED_IN", metadata: { case_id: 1003 } },
-    { source: "case_1003", target: "victim_203", relationship: "VICTIM_OF", metadata: { case_id: 1003 } },
-    { source: "case_1003", target: "unit_105", relationship: "JURISDICTION_UNIT", metadata: { unit_id: 105 } },
-    { source: "accused_suresh_gowda", target: "case_1006", relationship: "ACCUSED_IN", metadata: { case_id: 1006 } },
-    { source: "case_1006", target: "victim_204", relationship: "VICTIM_OF", metadata: { case_id: 1006 } },
-    { source: "case_1006", target: "unit_120", relationship: "JURISDICTION_UNIT", metadata: { unit_id: 120 } }
-  ]
+  nodes: [],
+  edges: []
 };
 
 /**
  * Fetch incident records directly from live backend API or fallback mock.
  */
 export async function fetchIncidents() {
-  const API_URL = import.meta.env.VITE_API_URL || 'https://drishti-backend-55606000000013025.development.catalystappsail.in/incidents';
+  const API_URL = import.meta.env.VITE_API_URL || 'https://drishti-backend-50044277235.development.catalystappsail.in/incidents';
 
   try {
     const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
@@ -239,7 +210,7 @@ export async function fetchIncidents() {
  * Fetch DBSCAN hotspot clusters from backend endpoint.
  */
 export async function fetchHotspots() {
-  const API_URL = import.meta.env.VITE_HOTSPOTS_API_URL || 'https://drishti-backend-55606000000013025.development.catalystappsail.in/hotspots';
+  const API_URL = import.meta.env.VITE_HOTSPOTS_API_URL || 'https://drishti-backend-50044277235.development.catalystappsail.in/hotspots';
 
   try {
     const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
@@ -255,7 +226,7 @@ export async function fetchHotspots() {
  * Fetch Anomaly baseline deviation flags from backend endpoint.
  */
 export async function fetchAnomalies() {
-  const API_URL = import.meta.env.VITE_ANOMALIES_API_URL || 'https://drishti-backend-55606000000013025.development.catalystappsail.in/anomalies';
+  const API_URL = import.meta.env.VITE_ANOMALIES_API_URL || 'https://drishti-backend-50044277235.development.catalystappsail.in/anomalies';
 
   try {
     const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
@@ -268,7 +239,7 @@ export async function fetchAnomalies() {
 }
 
 /**
- * Task 2: Holding ResolutionLoopPanel on mock data waiting for Alpha's new GET /stations/resolution endpoint.
+ * Holding ResolutionLoopPanel on mock data waiting for Alpha's new GET /stations/resolution endpoint.
  */
 export async function fetchResolutionMetrics() {
   const API_URL = import.meta.env.VITE_STATION_RESOLUTION_API_URL;
@@ -285,11 +256,12 @@ export async function fetchResolutionMetrics() {
 }
 
 /**
- * Task 1: Fetch link-analysis network graph topology directly from Alpha's live deployed AppSail /network endpoint.
+ * Fetch link-analysis network graph topology directly from Alpha's REAL deployed AppSail endpoint:
+ * https://drishti-backend-50044277235.development.catalystappsail.in/network
  */
 export async function fetchNetworkGraph() {
   const APPSAIL_URL = import.meta.env.VITE_NETWORK_API_URL || 
-                      'https://drishti-backend-55606000000013025.development.catalystappsail.in/network';
+                      'https://drishti-backend-50044277235.development.catalystappsail.in/network';
   
   try {
     const res = await fetch(APPSAIL_URL, {
@@ -300,20 +272,13 @@ export async function fetchNetworkGraph() {
     });
 
     if (!res.ok) {
-      // Try fallback route /link-analysis on deployed AppSail
-      const fallbackUrl = APPSAIL_URL.replace('/network', '/link-analysis');
-      const fallbackRes = await fetch(fallbackUrl, { method: 'GET', headers: { 'Accept': 'application/json' } });
-      if (fallbackRes.ok) {
-        const json = await fallbackRes.json();
-        return json.data || json;
-      }
       throw new Error(`Live AppSail API returned status ${res.status}`);
     }
 
     const json = await res.json();
     return json.data || json;
   } catch (err) {
-    console.warn('Live AppSail network endpoint unreachable, attempting network fetch:', err.message);
+    console.warn('Live AppSail network endpoint unreachable:', err.message);
     return MOCK_NETWORK_GRAPH;
   }
 }
