@@ -181,12 +181,7 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
         table_cols = []
         try:
             table = catalyst_app.datastore().table(tbl)
-            try:
-                dtls = table.get_table_details()
-                if isinstance(dtls, dict) and "columns" in dtls:
-                    table_cols = [c.get("column_name") for c in dtls["columns"]]
-            except Exception as ex:
-                table_cols = [str(ex)]
+            table_cols = [f"{k}:{v}" for k, v in table.__dict__.items()]
             paged = table.get_paged_rows(max_rows=10)
             rows = paged.get("data", [])
             try:
@@ -223,12 +218,31 @@ def admin_bulk_load_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
     for tbl_name, data in [("HotspotCluster", SEED_HOTSPOTS), ("AnomalyFlag", SEED_ANOMALIES), ("CaseMaster", SEED_CASES), ("Accused", SEED_ACCUSED), ("Victim", SEED_VICTIMS), ("ChargesheetDetails", SEED_CHARGESHEETS)]:
         try:
             table = catalyst_app.datastore().table(tbl_name)
-            inserted = 0
-            for i in range(0, len(data), batch_size):
-                chunk = data[i:i + batch_size]
-                table.insert_rows(chunk)
-                inserted += len(chunk)
-            logs.append(f"Successfully inserted {inserted} records into {tbl_name}")
+            if tbl_name == "ChargesheetDetails":
+                variations = [
+                    {"CSID": 1, "CaseMasterID": 1, "csdate": "2025-06-01 10:00:00", "cstype": "A", "PolicePersonID": 1},
+                    {"CSID": 1, "CaseMasterID": 1, "CSDate": "2025-06-01 10:00:00", "CSType": "A", "PolicePersonID": 1},
+                    {"CSID": 1, "CaseMasterID": 1, "Csdate": "2025-06-01 10:00:00", "Cstype": "A", "PolicePersonID": 1},
+                    {"ChargesheetDetailsID": 1, "CaseMasterID": 1, "csdate": "2025-06-01 10:00:00", "cstype": "A", "PolicePersonID": 1},
+                    {"CSID": 1, "CaseMasterID": 1, "csdate": "2025-06-01 10:00:00", "cstype": "A"},
+                    {"CaseMasterID": 1, "csdate": "2025-06-01 10:00:00", "cstype": "A"},
+                ]
+                var_logs = []
+                for idx, v in enumerate(variations):
+                    try:
+                        table.insert_rows([v])
+                        var_logs.append(f"Variation {idx} SUCCEEDED with keys {list(v.keys())}")
+                        break
+                    except Exception as ve:
+                        var_logs.append(f"Variation {idx} failed: {ve}")
+                logs.append(f"ChargesheetDetails trial results: {var_logs}")
+            else:
+                inserted = 0
+                for i in range(0, len(data), batch_size):
+                    chunk = data[i:i + batch_size]
+                    table.insert_rows(chunk)
+                    inserted += len(chunk)
+                logs.append(f"Successfully inserted {inserted} records into {tbl_name}")
         except Exception as e:
             tb = traceback.format_exc()
             logs.append(f"Failed to insert into {tbl_name}: {str(e)}\nTraceback:\n{tb}")
