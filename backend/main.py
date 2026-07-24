@@ -149,8 +149,7 @@ def admin_create_tables(catalyst_app: Any = Depends(get_catalyst_app)):
             resp = requester.request(
                 method="POST",
                 path="/table",
-                data=json.dumps(schema),
-                headers={"Content-Type": "application/json"}
+                json=schema
             )
             results.append({"table": tbl_name, "status": "created", "response": resp.response_json})
         except Exception as e:
