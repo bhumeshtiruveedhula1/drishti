@@ -1,0 +1,46 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Local environment and Catalyst CLI state
+.catalystrc
+.env
+.vscode/
+.idea/
+
+# Backend vendor/installed dependencies directory contents
+backend/anyio/
+backend/anyio-*/
+backend/certifi/
+backend/certifi-*/
+backend/charset_normalizer/
+backend/charset_normalizer-*/
+backend/click/
+backend/click-*/
+backend/colorama/
+backend/colorama-*/
+backend/fastapi/
+backend/fastapi-*/
+backend/h11/
+backend/h11-*/
+backend/idna/
+backend/idna-*/
+backend/pydantic/
+backend/pydantic-*/
+backend/requests/
+backend/requests-*/
+backend/starlette/
+backend/starlette-*/
+backend/typing_extensions*
+backend/urllib3/
+backend/urllib3-*/
+backend/uvicorn/
+backend/uvicorn-*/
+backend/zcatalyst_sdk/
+backend/zcatalyst_sdk-*/
+backend/bin/
+backend/*.dist-info/
+backend/*.so
