@@ -145,6 +145,9 @@ def admin_create_tables(catalyst_app: Any = Depends(get_catalyst_app)):
 
     for schema in table_schemas:
         tbl_name = schema["table_name"]
+        for col in schema["columns"]:
+            if col.get("data_type") == "VARCHAR" and "max_length" not in col:
+                col["max_length"] = 255
         try:
             resp = requester.request(
                 method="POST",
