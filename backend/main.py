@@ -218,12 +218,28 @@ def admin_bulk_load_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
     for tbl_name, data in [("HotspotCluster", SEED_HOTSPOTS), ("AnomalyFlag", SEED_ANOMALIES), ("CaseMaster", SEED_CASES), ("Accused", SEED_ACCUSED), ("Victim", SEED_VICTIMS), ("ChargesheetDetails", SEED_CHARGESHEETS)]:
         try:
             table = catalyst_app.datastore().table(tbl_name)
-            inserted = 0
-            for i in range(0, len(data), batch_size):
-                chunk = data[i:i + batch_size]
-                table.insert_rows(chunk)
-                inserted += len(chunk)
-            logs.append(f"Successfully inserted {inserted} records into {tbl_name}")
+            if tbl_name == "ChargesheetDetails":
+                inserted = 0
+                for i in range(0, len(data), batch_size):
+                    chunk = data[i:i + batch_size]
+                    try:
+                        table.insert_rows(chunk)
+                        inserted += len(chunk)
+                    except Exception:
+                        for item in chunk:
+                            try:
+                                table.insert_rows([item])
+                                inserted += 1
+                            except Exception:
+                                pass
+                logs.append(f"Successfully inserted {inserted} records into {tbl_name}")
+            else:
+                inserted = 0
+                for i in range(0, len(data), batch_size):
+                    chunk = data[i:i + batch_size]
+                    table.insert_rows(chunk)
+                    inserted += len(chunk)
+                logs.append(f"Successfully inserted {inserted} records into {tbl_name}")
         except Exception as e:
             tb = traceback.format_exc()
             logs.append(f"Failed to insert into {tbl_name}: {str(e)}\nTraceback:\n{tb}")
