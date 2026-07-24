@@ -1,0 +1,9 @@
+{
+  "CaseMasterID": 9999,
+  "CrimeNo": "TEST-FIR-2026-ALPHA-VERIFY",
+  "CaseNo": "TEST-CASE-9999",
+  "CrimeRegisteredDate": "2026-07-24",
+  "latitude": 12.9716,
+  "longitude": 77.5946,
+  "BriefFacts": "ALPHA_TEST_DATA: Explicit test record for POST persistence verification before Gamma seed data load"
+}
