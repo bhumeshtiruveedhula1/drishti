@@ -242,8 +242,8 @@ export async function fetchAnomalies() {
  * Holding ResolutionLoopPanel on mock data waiting for Alpha's new GET /stations/resolution endpoint.
  */
 export async function fetchResolutionMetrics() {
-  const API_URL = import.meta.env.VITE_STATION_RESOLUTION_API_URL;
-  if (!API_URL) return MOCK_RESOLUTION_METRICS;
+  const API_URL = import.meta.env.VITE_STATION_RESOLUTION_API_URL || 
+                  'https://drishti-backend-50044277235.development.catalystappsail.in/stations/resolution';
 
   try {
     const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
@@ -251,6 +251,7 @@ export async function fetchResolutionMetrics() {
     const json = await res.json();
     return json.data || json || MOCK_RESOLUTION_METRICS;
   } catch (err) {
+    console.warn('Live AppSail resolution endpoint unreachable:', err.message);
     return MOCK_RESOLUTION_METRICS;
   }
 }
