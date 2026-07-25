@@ -166,6 +166,31 @@ def admin_create_tables(catalyst_app: Any = Depends(get_catalyst_app)):
 
     return {"status": "ok", "results": results}
 
+def fetch_all_datastore_rows(table: Any, max_rows: int = 200) -> List[Dict[str, Any]]:
+    all_rows = []
+    next_token = None
+    while True:
+        try:
+            if next_token:
+                paged = table.get_paged_rows(max_rows=max_rows, next_token=next_token)
+            else:
+                paged = table.get_paged_rows(max_rows=max_rows)
+        except Exception:
+            try:
+                paged = table.get_paged_rows(max_rows=max_rows)
+            except Exception:
+                break
+        rows = paged.get("data", [])
+        if not rows:
+            break
+        all_rows.extend(rows)
+        if not paged.get("has_more_rows", False):
+            break
+        next_token = paged.get("next_token")
+        if not next_token:
+            break
+    return all_rows
+
 @app.get("/admin/query_datastore")
 @app.post("/admin/query_datastore")
 def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
@@ -186,18 +211,8 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
             paged = table.get_paged_rows(max_rows=10)
             rows = paged.get("data", [])
             try:
-                all_p = []
-                pg = 1
-                while True:
-                    pr = table.get_paged_rows(page=pg, max_rows=200)
-                    r_list = pr.get("data", [])
-                    if not r_list:
-                        break
-                    all_p.extend(r_list)
-                    if not pr.get("has_more_rows", False) or len(r_list) < 200:
-                        break
-                    pg += 1
-                total_count = len(all_p)
+                all_p = fetch_all_datastore_rows(table, max_rows=200)
+                total_count = len(all_p) if all_p else len(rows)
             except Exception:
                 total_count = len(rows)
         except Exception as e:
@@ -220,17 +235,7 @@ def admin_verify_chargesheets(catalyst_app: Any = Depends(get_catalyst_app)):
 
     try:
         table = catalyst_app.datastore().table("ChargesheetDetails")
-        all_rows = []
-        page = 1
-        while True:
-            paged = table.get_paged_rows(page=page, max_rows=200)
-            rows = paged.get("data", [])
-            if not rows:
-                break
-            all_rows.extend(rows)
-            if not paged.get("has_more_rows", False) or len(rows) < 200:
-                break
-            page += 1
+        all_rows = fetch_all_datastore_rows(table, max_rows=200)
 
         total_count = len(all_rows)
         duplicates_removed = 0
