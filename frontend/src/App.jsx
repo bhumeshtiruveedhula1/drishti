@@ -5,12 +5,14 @@ import IncidentMap from './components/IncidentMap';
 import StationConsole from './components/StationConsole';
 import CommandConsole from './components/CommandConsole';
 import RoleGateLanding from './components/RoleGateLanding';
+import AnomalyAlertBanner from './components/AnomalyAlertBanner';
 import {
   fetchIncidents,
   fetchHotspots,
   fetchAnomalies,
   fetchResolutionMetrics,
-  fetchNetworkGraph
+  fetchNetworkGraph,
+  fetchOccupationOverlay
 } from './services/mockData';
 import { Loader2, AlertTriangle, Filter } from 'lucide-react';
 
@@ -20,6 +22,7 @@ export default function App() {
   const [anomalies, setAnomalies] = useState([]);
   const [resolutionMetrics, setResolutionMetrics] = useState([]);
   const [networkData, setNetworkData] = useState({ summary: {}, nodes: [], edges: [] });
+  const [occupationData, setOccupationData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -38,26 +41,32 @@ export default function App() {
   const [showHotspots, setShowHotspots] = useState(true);
   const [showAnomalies, setShowAnomalies] = useState(true);
 
+  // Task 4: Hotspot Time-Slider Filter State
+  const [hotspotTimeStart, setHotspotTimeStart] = useState('2026-07-01');
+  const [hotspotTimeEnd, setHotspotTimeEnd] = useState('2026-07-31');
+
   // Mobile Spatial Filter Drawer State
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
-  // Fetch Incidents, Hotspots, Anomalies, Resolution Metrics & Network Graph on Load
+  // Fetch Incidents, Hotspots, Anomalies, Resolution Metrics, Network Graph & Occupation Overlay on Load
   useEffect(() => {
     async function loadData() {
       try {
         setLoading(true);
-        const [incData, hsData, anomData, resData, netData] = await Promise.all([
+        const [incData, hsData, anomData, resData, netData, occData] = await Promise.all([
           fetchIncidents(),
           fetchHotspots(),
           fetchAnomalies(),
           fetchResolutionMetrics(),
-          fetchNetworkGraph()
+          fetchNetworkGraph(),
+          fetchOccupationOverlay()
         ]);
         setIncidents(incData);
         setHotspots(hsData);
         setAnomalies(anomData);
         setResolutionMetrics(resData);
         setNetworkData(netData);
+        setOccupationData(occData);
         setError(null);
       } catch (err) {
         console.error('Failed to fetch data from live backend API:', err);
@@ -68,6 +77,18 @@ export default function App() {
     }
     loadData();
   }, []);
+
+  // Task 4: Filter Hotspot clusters by TimeWindowStart and TimeWindowEnd bounds
+  const filteredHotspots = useMemo(() => {
+    return (hotspots || []).filter((h) => {
+      if (!h) return false;
+      const hStart = h.TimeWindowStart || '2026-07-01';
+      const hEnd = h.TimeWindowEnd || '2026-07-31';
+
+      return hStart <= hotspotTimeEnd && hEnd >= hotspotTimeStart;
+    });
+  }, [hotspots, hotspotTimeStart, hotspotTimeEnd]);
+
 
   // Unique Categories for dropdown
   const categories = useMemo(() => {
@@ -155,6 +176,9 @@ export default function App() {
         onSwitchRole={() => setUserAuth(null)}
       />
 
+      {/* Task 3: Anomaly Alert Banner (Polling 45s, Auto-refreshing label) */}
+      <AnomalyAlertBanner initialAnomalies={anomalies} />
+
       {/* Main Content Body */}
       {loading ? (
         <div className="flex-1 bg-slate-950 flex flex-col items-center justify-center space-y-3">
@@ -182,6 +206,7 @@ export default function App() {
           anomalies={anomalies}
           resolutionMetrics={resolutionMetrics}
           networkData={networkData}
+          occupationData={occupationData}
         />
       ) : (
         <div className="flex flex-1 relative overflow-hidden">
@@ -213,6 +238,10 @@ export default function App() {
             setShowHotspots={setShowHotspots}
             showAnomalies={showAnomalies}
             setShowAnomalies={setShowAnomalies}
+            hotspotTimeStart={hotspotTimeStart}
+            setHotspotTimeStart={setHotspotTimeStart}
+            hotspotTimeEnd={hotspotTimeEnd}
+            setHotspotTimeEnd={setHotspotTimeEnd}
             categories={categories}
             onResetFilters={resetFilters}
             totalFilteredCount={filteredIncidents.length}
@@ -223,7 +252,7 @@ export default function App() {
           <main className="flex-1 relative h-full">
             <IncidentMap
               incidents={filteredIncidents}
-              hotspots={hotspots}
+              hotspots={filteredHotspots}
               anomalies={anomalies}
               showChoropleth={showChoropleth}
               showHotspots={showHotspots}
@@ -236,3 +265,4 @@ export default function App() {
     </div>
   );
 }
+

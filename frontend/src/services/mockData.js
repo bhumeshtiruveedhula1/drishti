@@ -282,3 +282,22 @@ export async function fetchNetworkGraph() {
     return MOCK_NETWORK_GRAPH;
   }
 }
+
+/**
+ * Fetch Occupation Overlay breakdown from Alpha's live /overlays/occupation endpoint.
+ */
+export async function fetchOccupationOverlay() {
+  const API_URL = import.meta.env.VITE_OCCUPATION_API_URL || 
+                  'https://drishti-backend-50044277235.development.catalystappsail.in/overlays/occupation';
+
+  try {
+    const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
+    if (!res.ok) throw new Error(`API returned status ${res.status}`);
+    const json = await res.json();
+    return json.data || json || [];
+  } catch (err) {
+    console.warn('Live AppSail occupation overlay endpoint unreachable:', err.message);
+    return [];
+  }
+}
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Filter, ShieldAlert, Tag, CheckCircle2, RotateCcw, MapPin, TrendingUp, X } from 'lucide-react';
+import { Search, Filter, ShieldAlert, Tag, CheckCircle2, RotateCcw, MapPin, TrendingUp, X, Clock } from 'lucide-react';
 
 export default function ControlPanel({
   isMobileOpen = false,
@@ -18,6 +18,10 @@ export default function ControlPanel({
   setShowHotspots,
   showAnomalies,
   setShowAnomalies,
+  hotspotTimeStart = '2026-07-01',
+  _setHotspotTimeStart,
+  hotspotTimeEnd = '2026-07-31',
+  setHotspotTimeEnd,
   categories,
   onResetFilters,
   totalFilteredCount,
@@ -108,6 +112,42 @@ export default function ControlPanel({
             />
           </label>
         </div>
+
+        {/* Task 4: Hotspot Time-Slider Control */}
+        {showHotspots && (
+          <div className="bg-slate-950/80 p-3 rounded-xl border border-red-500/20 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-bold text-red-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-red-400" />
+                Hotspot Time-Window Slider
+              </span>
+              <span className="text-[10px] font-mono text-slate-400">July 2026</span>
+            </div>
+
+            <div className="space-y-1.5 pt-1">
+              <div className="flex items-center justify-between text-[11px] font-mono text-slate-300">
+                <span>Start: <strong className="text-cyan-400">{hotspotTimeStart}</strong></span>
+                <span>End: <strong className="text-cyan-400">{hotspotTimeEnd}</strong></span>
+              </div>
+
+              <div className="space-y-1">
+                <input
+                  type="range"
+                  min="2026-07-01"
+                  max="2026-07-31"
+                  value={hotspotTimeEnd}
+                  onChange={(e) => setHotspotTimeEnd && setHotspotTimeEnd(e.target.value)}
+                  className="w-full accent-cyan-500 bg-slate-900 h-1.5 rounded-lg cursor-pointer"
+                />
+              </div>
+
+              <p className="text-[10px] text-slate-500 italic">
+                Filters hotspot cluster polygons by TimeWindowStart / TimeWindowEnd
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Search Bar */}
         <div>
           <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1.5">

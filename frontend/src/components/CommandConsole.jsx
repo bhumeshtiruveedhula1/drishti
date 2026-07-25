@@ -4,6 +4,8 @@ import L from 'leaflet';
 import karnatakaGeoJSON from '../data/karnatakaDistricts.json';
 import ResolutionLoopPanel from './ResolutionLoopPanel';
 import NetworkGraphPanel from './NetworkGraphPanel';
+import OccupationOverlayPanel from './OccupationOverlayPanel';
+import { generateDistrictPDFReport } from '../utils/pdfGenerator';
 import {
   Shield,
   Activity,
@@ -20,8 +22,10 @@ import {
   CheckCircle2,
   Calendar,
   FilterX,
-  RotateCcw
+  RotateCcw,
+  Download
 } from 'lucide-react';
+
 
 const createMiniMarkerIcon = (gravity) => {
   const isHeinous = gravity === 'Heinous';
@@ -39,11 +43,31 @@ export default function CommandConsole({
   incidents = [],
   anomalies = [],
   resolutionMetrics = [],
-  networkData = { summary: {}, nodes: [], edges: [] }
+  networkData = { summary: {}, nodes: [], edges: [] },
+  occupationData = []
 }) {
   const [streamSearch, setStreamSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [selectedCaseModal, setSelectedCaseModal] = useState(null);
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+
+  const handleGeneratePDF = () => {
+    try {
+      setIsGeneratingPDF(true);
+      generateDistrictPDFReport({
+        districtName: 'Bengaluru Urban',
+        incidents,
+        anomalies,
+        resolutionMetrics,
+        occupationData
+      });
+    } catch (err) {
+      console.error('PDF report generation error:', err);
+    } finally {
+      setTimeout(() => setIsGeneratingPDF(false), 1000);
+    }
+  };
+
 
   // Safeguard incident coordinates
   const safeIncidents = useMemo(() => {
@@ -186,6 +210,17 @@ export default function CommandConsole({
               <div className="text-xs font-bold text-emerald-400">{investigatingRate}% Rate</div>
             </div>
           </div>
+
+          {/* Task 2: PDF Report Button */}
+          <button
+            onClick={handleGeneratePDF}
+            disabled={isGeneratingPDF}
+            className="bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-semibold text-xs px-3 py-2 rounded-xl border border-cyan-400/40 shadow-lg shadow-cyan-950/50 flex items-center space-x-1.5 transition-all cursor-pointer shrink-0"
+            title="Generate & Download District Intelligence PDF Report"
+          >
+            <Download className={`w-3.5 h-3.5 ${isGeneratingPDF ? 'animate-bounce' : ''}`} />
+            <span>{isGeneratingPDF ? 'Generating PDF...' : 'Generate District Report'}</span>
+          </button>
         </div>
       </div>
 
@@ -471,6 +506,11 @@ export default function CommandConsole({
             </MapContainer>
           </div>
         </div>
+      </div>
+
+      {/* Task 1: Socio-Economic Occupation Overlay Chart Section */}
+      <div className="shrink-0 w-full p-4 border-t border-slate-800 bg-slate-950/90 overflow-x-auto">
+        <OccupationOverlayPanel occupationData={occupationData} />
       </div>
 
       {/* Resolution Feedback Loop Section */}
