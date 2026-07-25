@@ -64,6 +64,9 @@ SEED_ACCUSED = load_seed_csv("batch_bc/Accused.csv")
 SEED_VICTIMS = load_seed_csv("batch_bc/Victim.csv")
 SEED_UNITS = load_seed_csv("batch_bc/Unit.csv")
 SEED_CHARGESHEETS = load_seed_csv("batch_d/ChargesheetDetails.csv")
+SEED_OCCUPATIONS = load_seed_csv("batch_a/OccupationMaster.csv")
+SEED_COMPLAINANTS = load_seed_csv("batch_bc/ComplainantDetails.csv")
+SEED_CRIME_HEADS = load_seed_csv("batch_a/CrimeHead.csv")
 
 CREATED_INCIDENTS: List[Dict[str, Any]] = []
 
@@ -500,6 +503,122 @@ def get_anomalies(catalyst_app: Any = Depends(get_catalyst_app)):
         data_store_rows = SEED_ANOMALIES
 
     return {"status": "ok", "data": data_store_rows}
+
+def compute_occupation_overlay(
+    complainants: List[Dict[str, Any]],
+    cases: List[Dict[str, Any]],
+    occupations: List[Dict[str, Any]],
+    crime_heads: List[Dict[str, Any]]
+) -> List[Dict[str, Any]]:
+    occ_map = {}
+    for o in occupations:
+        if isinstance(o, dict) and "OccupationID" in o:
+            try:
+                occ_map[int(o["OccupationID"])] = str(o.get("OccupationName", f"Occupation #{o['OccupationID']}"))
+            except (ValueError, TypeError):
+                pass
+
+    head_map = {}
+    for h in crime_heads:
+        if isinstance(h, dict) and "CrimeHeadID" in h:
+            try:
+                head_map[int(h["CrimeHeadID"])] = str(h.get("CrimeGroupName", f"Category #{h['CrimeHeadID']}"))
+            except (ValueError, TypeError):
+                pass
+
+    case_head_map = {}
+    for c in cases:
+        if isinstance(c, dict) and "CaseMasterID" in c:
+            try:
+                cmid = int(c["CaseMasterID"])
+                hid = c.get("CrimeMajorHeadID")
+                if hid is not None:
+                    case_head_map[cmid] = int(hid)
+            except (ValueError, TypeError):
+                pass
+
+    agg: Dict[int, Dict[str, Any]] = {}
+    for occ_id, occ_name in occ_map.items():
+        agg[occ_id] = {
+            "OccupationID": occ_id,
+            "OccupationName": occ_name,
+            "total_count": 0,
+            "categories": {hname: 0 for hname in head_map.values()}
+        }
+
+    for comp in complainants:
+        if not isinstance(comp, dict):
+            continue
+        occ_id = comp.get("OccupationID")
+        case_id = comp.get("CaseMasterID")
+        if occ_id is None:
+            continue
+        try:
+            occ_id = int(occ_id)
+        except (ValueError, TypeError):
+            continue
+
+        if occ_id not in agg:
+            occ_name = occ_map.get(occ_id, f"Occupation #{occ_id}")
+            agg[occ_id] = {
+                "OccupationID": occ_id,
+                "OccupationName": occ_name,
+                "total_count": 0,
+                "categories": {hname: 0 for hname in head_map.values()}
+            }
+
+        agg[occ_id]["total_count"] += 1
+
+        if case_id is not None:
+            try:
+                case_id = int(case_id)
+                hid = case_head_map.get(case_id)
+                if hid is not None and hid in head_map:
+                    hname = head_map[hid]
+                    agg[occ_id]["categories"][hname] = agg[occ_id]["categories"].get(hname, 0) + 1
+            except (ValueError, TypeError):
+                pass
+
+    result = []
+    for occ_id in sorted(agg.keys()):
+        result.append(agg[occ_id])
+    return result
+
+@app.get("/overlays/occupation")
+def get_occupation_overlay(catalyst_app: Any = Depends(get_catalyst_app)):
+    comp_rows = []
+    case_rows = []
+    occ_rows = []
+    head_rows = []
+
+    if catalyst_app is not None:
+        try:
+            zcql = catalyst_app.zcql()
+            try:
+                q_comp = zcql.execute_query("SELECT ComplainantID, CaseMasterID, OccupationID FROM ComplainantDetails LIMIT 5000")
+                comp_rows = [r.get("ComplainantDetails") for r in q_comp if isinstance(r, dict) and "ComplainantDetails" in r]
+            except Exception:
+                pass
+
+            try:
+                q_case = zcql.execute_query("SELECT CaseMasterID, CrimeMajorHeadID FROM CaseMaster LIMIT 5000")
+                case_rows = [r.get("CaseMaster") for r in q_case if isinstance(r, dict) and "CaseMaster" in r]
+            except Exception:
+                pass
+        except Exception:
+            pass
+
+    if not comp_rows:
+        comp_rows = SEED_COMPLAINANTS
+    if not case_rows:
+        case_rows = SEED_CASES
+    if not occ_rows:
+        occ_rows = SEED_OCCUPATIONS
+    if not head_rows:
+        head_rows = SEED_CRIME_HEADS
+
+    overlay_data = compute_occupation_overlay(comp_rows, case_rows, occ_rows, head_rows)
+    return {"status": "ok", "data": overlay_data}
 
 @app.get("/incidents/{id}/accused")
 def get_incident_accused(id: int, catalyst_app: Any = Depends(get_catalyst_app)):
