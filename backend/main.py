@@ -235,7 +235,13 @@ def admin_verify_chargesheets(catalyst_app: Any = Depends(get_catalyst_app)):
 
     try:
         table = catalyst_app.datastore().table("ChargesheetDetails")
-        all_rows = fetch_all_datastore_rows(table, max_rows=200)
+        all_rows = []
+        try:
+            zcql = catalyst_app.zcql()
+            q_res = zcql.execute_query("SELECT ChargesheetDetails.CSID, ChargesheetDetails.CaseMasterID, ChargesheetDetails.ROWID FROM ChargesheetDetails LIMIT 5000")
+            all_rows = [r.get("ChargesheetDetails") for r in q_res if isinstance(r, dict) and "ChargesheetDetails" in r]
+        except Exception:
+            all_rows = fetch_all_datastore_rows(table, max_rows=200)
 
         total_count = len(all_rows)
         duplicates_removed = 0
