@@ -2,16 +2,13 @@ import React, { useState, useMemo } from 'react';
 import {
   Share2,
   Users,
-  Shield,
-  Building2,
-  FileText,
   Filter,
-  Eye,
   X,
-  Sparkles,
   Link,
   Layers,
-  Search
+  Search,
+  FilterX,
+  RotateCcw
 } from 'lucide-react';
 
 // Custom position generator for graph nodes in SVG canvas
@@ -210,7 +207,34 @@ export default function NetworkGraphPanel({ networkData = { summary: {}, nodes: 
 
       {/* Interactive SVG Network Topology Canvas */}
       <div className="relative bg-slate-950 border border-slate-800/90 rounded-2xl h-[480px] overflow-hidden flex items-center justify-center shadow-inner">
-        <svg className="w-full h-full" viewBox="0 0 800 480">
+        {positionedNodes.length === 0 ? (
+          <div className="flex flex-col items-center justify-center text-center p-6 space-y-3 z-10">
+            <div className="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center">
+              <FilterX className="w-6 h-6 text-violet-400" />
+            </div>
+            <div>
+              <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+                No Network Topology Nodes Matched
+              </h4>
+              <p className="text-xs text-slate-400 mt-1 max-w-sm">
+                No relationship entities match type filter "{filterType}" or search term "{searchTerm}".
+              </p>
+            </div>
+            {(searchTerm || filterType !== 'All') && (
+              <button
+                onClick={() => {
+                  setSearchTerm('');
+                  setFilterType('All');
+                }}
+                className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-violet-300 text-xs font-semibold rounded-lg border border-slate-700 flex items-center space-x-1.5 transition-colors"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset Topology Filters</span>
+              </button>
+            )}
+          </div>
+        ) : (
+          <svg className="w-full h-full" viewBox="0 0 800 480">
           {/* Render Relationship Edges */}
           {edges.map((edge, idx) => {
             const src = nodePosMap[edge.source];
@@ -317,6 +341,7 @@ export default function NetworkGraphPanel({ networkData = { summary: {}, nodes: 
             );
           })}
         </svg>
+        )}
 
         {/* Floating Node Inspector Drawer */}
         {selectedNode && (

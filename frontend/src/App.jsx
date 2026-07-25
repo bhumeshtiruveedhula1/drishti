@@ -77,15 +77,17 @@ export default function App() {
 
   // Filtered Incidents computation
   const filteredIncidents = useMemo(() => {
-    return incidents.filter((incident) => {
+    return (incidents || []).filter((incident) => {
+      if (!incident) return false;
+      const q = (searchTerm || '').toLowerCase();
       // Search filter
       const matchesSearch =
-        !searchTerm ||
-        incident.CrimeNo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        incident.DistrictName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        incident.PoliceStationName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        incident.BriefFacts.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        incident.CrimeMajorHeadName.toLowerCase().includes(searchTerm.toLowerCase());
+        !q ||
+        (incident.CrimeNo || '').toLowerCase().includes(q) ||
+        (incident.DistrictName || '').toLowerCase().includes(q) ||
+        (incident.PoliceStationName || '').toLowerCase().includes(q) ||
+        (incident.BriefFacts || '').toLowerCase().includes(q) ||
+        (incident.CrimeMajorHeadName || '').toLowerCase().includes(q);
 
       // Gravity filter
       const matchesGravity =
@@ -226,6 +228,7 @@ export default function App() {
               showChoropleth={showChoropleth}
               showHotspots={showHotspots}
               showAnomalies={showAnomalies}
+              onResetFilters={resetFilters}
             />
           </main>
         </div>

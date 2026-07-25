@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { MapContainer, TileLayer, GeoJSON, Marker, Popup, Circle } from 'react-leaflet';
 import L from 'leaflet';
 import karnatakaGeoJSON from '../data/karnatakaDistricts.json';
-import { Shield, MapPin, Building2, FileText, Calendar, Clock, Layers, Flame, AlertCircle, TrendingUp } from 'lucide-react';
+import { Shield, MapPin, Building2, FileText, Calendar, Clock, Layers, Flame, AlertCircle, TrendingUp, FilterX, RotateCcw } from 'lucide-react';
 
 // Create custom animated SVG/HTML divIcon pins for Leaflet
 const createCustomMarkerIcon = (gravity) => {
@@ -385,6 +385,34 @@ export default function IncidentMap({
           </Marker>
         ))}
       </MapContainer>
+
+      {/* Empty State Banner Overlay */}
+      {safeIncidents.length === 0 && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
+          <div className="bg-slate-900/95 border border-slate-800 rounded-2xl p-6 max-w-sm w-full text-center space-y-3.5 shadow-2xl">
+            <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mx-auto">
+              <FilterX className="w-6 h-6 text-cyan-400" />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider">
+                No Spatial Incidents Matched
+              </h3>
+              <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                No active pins match your current search query, gravity level, or category filters.
+              </p>
+            </div>
+            {onResetFilters && (
+              <button
+                onClick={onResetFilters}
+                className="w-full py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-cyan-500/20 flex items-center justify-center space-x-1.5 transition-all"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset All Spatial Filters</span>
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* District Choropleth Legend Overlay */}
       {showChoropleth && (

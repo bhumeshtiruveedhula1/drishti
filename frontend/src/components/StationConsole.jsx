@@ -14,8 +14,8 @@ import {
   Eye,
   X,
   Phone,
-  BadgeCheck,
-  Briefcase
+  FilterX,
+  RotateCcw
 } from 'lucide-react';
 
 // Marker icon for station map
@@ -272,9 +272,29 @@ export default function StationConsole({ incidents }) {
           {/* Table Container */}
           <div className="flex-1 overflow-y-auto custom-scrollbar p-4">
             {filteredStationIncidents.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-slate-500 space-y-2">
-                <FileText className="w-8 h-8 text-slate-600" />
-                <div className="text-xs">No FIR records found for this station.</div>
+              <div className="h-full min-h-[220px] flex flex-col items-center justify-center text-center p-6 bg-slate-950/60 rounded-xl border border-slate-800 space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
+                  <FilterX className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+                    No FIR Records Found for {activeStation.name}
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-1 max-w-sm">
+                    {tableSearch
+                      ? `No case records match your query "${tableSearch}".`
+                      : 'No criminal incidents currently registered under this station jurisdiction.'}
+                  </p>
+                </div>
+                {tableSearch && (
+                  <button
+                    onClick={() => setTableSearch('')}
+                    className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-cyan-300 text-xs font-semibold rounded-lg border border-slate-700 flex items-center space-x-1.5 transition-colors"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Clear Search Filter</span>
+                  </button>
+                )}
               </div>
             ) : (
               <div className="overflow-x-auto custom-scrollbar rounded-xl border border-slate-800 bg-slate-950/60 shadow-xl">

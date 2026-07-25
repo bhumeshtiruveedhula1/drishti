@@ -12,16 +12,15 @@ import {
   MapPin,
   Search,
   FileText,
-  PieChart,
   BarChart3,
   Layers,
-  Eye,
   X,
   TrendingUp,
   Radio,
   CheckCircle2,
   Calendar,
-  Clock
+  FilterX,
+  RotateCcw
 } from 'lucide-react';
 
 const createMiniMarkerIcon = (gravity) => {
@@ -191,7 +190,7 @@ export default function CommandConsole({
       </div>
 
       {/* Main Grid Layout: 3 Columns */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
+      <div className="min-h-[500px] shrink-0 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
         {/* Left Column: District Performance & Crime Category Analytics (4 cols) */}
         <div className="lg:col-span-4 h-full border-r border-slate-800 bg-slate-900/40 p-4 space-y-4 overflow-y-auto custom-scrollbar">
           
@@ -349,51 +348,79 @@ export default function CommandConsole({
 
           {/* FIR Stream Feed List */}
           <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
-            {filteredStream.map((incident) => (
-              <div
-                key={incident.CaseMasterID}
-                onClick={() => setSelectedCaseModal(incident)}
-                className="bg-slate-900/80 border border-slate-800 rounded-xl p-3.5 hover:border-cyan-500/50 transition-all cursor-pointer space-y-2 group shadow-md"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <Shield className="w-3.5 h-3.5 text-cyan-400" />
-                    <span className="text-xs font-bold text-cyan-300 group-hover:text-cyan-200">
-                      {incident.CrimeNo}
+            {filteredStream.length === 0 ? (
+              <div className="h-full min-h-[250px] flex flex-col items-center justify-center text-center p-6 bg-slate-900/60 rounded-xl border border-slate-800 space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
+                  <FilterX className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+                    No Statewide FIR Stream Matches
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-1 max-w-sm">
+                    No crime records match your current search query or category filter.
+                  </p>
+                </div>
+                {(streamSearch || categoryFilter !== 'All') && (
+                  <button
+                    onClick={() => {
+                      setStreamSearch('');
+                      setCategoryFilter('All');
+                    }}
+                    className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-cyan-300 text-xs font-semibold rounded-lg border border-slate-700 flex items-center space-x-1.5 transition-colors"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Reset Stream Filters</span>
+                  </button>
+                )}
+              </div>
+            ) : (
+              filteredStream.map((incident) => (
+                <div
+                  key={incident.CaseMasterID}
+                  onClick={() => setSelectedCaseModal(incident)}
+                  className="bg-slate-900/80 border border-slate-800 rounded-xl p-3.5 hover:border-cyan-500/50 transition-all cursor-pointer space-y-2 group shadow-md"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <Shield className="w-3.5 h-3.5 text-cyan-400" />
+                      <span className="text-xs font-bold text-cyan-300 group-hover:text-cyan-200">
+                        {incident.CrimeNo}
+                      </span>
+                    </div>
+                    <span
+                      className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
+                        incident.GravityOffenceName === 'Heinous'
+                          ? 'bg-red-950 text-red-400 border border-red-800/80'
+                          : 'bg-amber-950 text-amber-400 border border-amber-800/80'
+                      }`}
+                    >
+                      {incident.GravityOffenceName}
                     </span>
                   </div>
-                  <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
-                      incident.GravityOffenceName === 'Heinous'
-                        ? 'bg-red-950 text-red-400 border border-red-800/80'
-                        : 'bg-amber-950 text-amber-400 border border-amber-800/80'
-                    }`}
-                  >
-                    {incident.GravityOffenceName}
-                  </span>
-                </div>
 
-                <div>
-                  <h4 className="text-xs font-bold text-slate-200 leading-snug">
-                    {incident.CrimeMajorHeadName}
-                  </h4>
-                  <div className="text-[11px] font-medium text-cyan-400 mt-0.5">
-                    {incident.CaseCategoryName}
+                  <div>
+                    <h4 className="text-xs font-bold text-slate-200 leading-snug">
+                      {incident.CrimeMajorHeadName}
+                    </h4>
+                    <div className="text-[11px] font-medium text-cyan-400 mt-0.5">
+                      {incident.CaseCategoryName}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-800/60">
+                    <span className="flex items-center space-x-1">
+                      <Building2 className="w-3 h-3 text-slate-500" />
+                      <span className="truncate max-w-[150px]">{incident.PoliceStationName} ({incident.DistrictName})</span>
+                    </span>
+                    <span className="flex items-center space-x-1">
+                      <Calendar className="w-3 h-3 text-slate-500" />
+                      <span>{incident.CrimeRegisteredDate}</span>
+                    </span>
                   </div>
                 </div>
-
-                <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-800/60">
-                  <span className="flex items-center space-x-1">
-                    <Building2 className="w-3 h-3 text-slate-500" />
-                    <span className="truncate max-w-[150px]">{incident.PoliceStationName} ({incident.DistrictName})</span>
-                  </span>
-                  <span className="flex items-center space-x-1">
-                    <Calendar className="w-3 h-3 text-slate-500" />
-                    <span>{incident.CrimeRegisteredDate}</span>
-                  </span>
-                </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
 
