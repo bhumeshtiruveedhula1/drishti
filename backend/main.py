@@ -710,6 +710,136 @@ def get_station_resolution(id: int, catalyst_app: Any = Depends(get_catalyst_app
 
     return {"status": "ok", "data": st_metric}
 
+def compute_predictive_risk_scores(hotspots: List[Dict[str, Any]], anomalies: List[Dict[str, Any]], resolution_metrics: List[Dict[str, Any]], units: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    res_dict = {m.get("UnitID"): m for m in resolution_metrics if isinstance(m, dict)}
+
+    hotspot_incidents_by_unit: Dict[int, float] = {}
+    hotspot_mh_by_unit: Dict[int, int] = {}
+    for h in hotspots:
+        if not isinstance(h, dict):
+            continue
+        uid = h.get("UnitID")
+        if uid is not None:
+            try:
+                uid_int = int(uid)
+                inc = float(h.get("IncidentCount") or 0)
+                hotspot_incidents_by_unit[uid_int] = hotspot_incidents_by_unit.get(uid_int, 0.0) + inc
+                if uid_int not in hotspot_mh_by_unit and h.get("CrimeMajorHeadID") is not None:
+                    hotspot_mh_by_unit[uid_int] = int(h.get("CrimeMajorHeadID"))
+            except (ValueError, TypeError):
+                pass
+
+    anomaly_by_unit: Dict[int, float] = {}
+    for a in anomalies:
+        if not isinstance(a, dict):
+            continue
+        uid = a.get("UnitID")
+        if uid is not None:
+            try:
+                uid_int = int(uid)
+                score = float(a.get("AnomalyScore") or 1.0)
+                anomaly_by_unit[uid_int] = max(anomaly_by_unit.get(uid_int, 1.0), score)
+            except (ValueError, TypeError):
+                pass
+
+    computed_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    risk_records = []
+
+    for idx, u in enumerate(units):
+        if not isinstance(u, dict):
+            continue
+        uid_raw = u.get("UnitID")
+        if uid_raw is None:
+            continue
+        try:
+            uid = int(uid_raw)
+        except (ValueError, TypeError):
+            continue
+
+        did = u.get("DistrictID") or 1
+        try:
+            did = int(did)
+        except (ValueError, TypeError):
+            did = 1
+
+        cmhid = hotspot_mh_by_unit.get(uid, 1)
+
+        h_inc = hotspot_incidents_by_unit.get(uid, 0.0)
+        h_score = min(10.0, h_inc / 8.0)
+
+        a_val = anomaly_by_unit.get(uid, 1.0)
+        a_score = min(10.0, a_val * 2.2)
+
+        res_m = res_dict.get(uid, {})
+        res_rate = float(res_m.get("ResolutionRatePct", 50.0))
+        u_score = (100.0 - res_rate) / 10.0
+
+        risk_val = round((0.40 * h_score) + (0.35 * a_score) + (0.25 * u_score), 2)
+        if risk_val >= 7.0:
+            level = "High"
+        elif risk_val >= 4.5:
+            level = "Medium"
+        else:
+            level = "Low"
+
+        risk_records.append({
+            "RiskScoreID": idx + 1,
+            "DistrictID": did,
+            "UnitID": uid,
+            "CrimeMajorHeadID": cmhid,
+            "RiskLevel": level,
+            "RiskValue": risk_val,
+            "ModelVersion": "v1.0-weighted",
+            "ComputedAt": computed_time
+        })
+
+    return risk_records
+
+@app.get("/risk-scores")
+def get_risk_scores(catalyst_app: Any = Depends(get_catalyst_app)):
+    rows = []
+    if catalyst_app is not None:
+        try:
+            zcql = catalyst_app.zcql()
+            q_res = zcql.execute_query("SELECT * FROM RiskScore LIMIT 200")
+            rows = [r.get("RiskScore") for r in q_res if isinstance(r, dict) and "RiskScore" in r]
+        except Exception:
+            try:
+                table = catalyst_app.datastore().table("RiskScore")
+                rows = table.get_paged_rows(max_rows=200).get("data", [])
+            except Exception:
+                pass
+
+    if not rows:
+        cs_rows = []
+        if catalyst_app is not None:
+            try:
+                zcql = catalyst_app.zcql()
+                q_res = zcql.execute_query("SELECT * FROM ChargesheetDetails LIMIT 5000")
+                cs_rows = [r.get("ChargesheetDetails") for r in q_res if isinstance(r, dict) and "ChargesheetDetails" in r]
+            except Exception:
+                pass
+        if not cs_rows:
+            cs_rows = SEED_CHARGESHEETS
+
+        res_metrics = compute_station_resolution_metrics(cs_rows, SEED_CASES, SEED_UNITS)
+        computed_scores = compute_predictive_risk_scores(SEED_HOTSPOTS, SEED_ANOMALIES, res_metrics, SEED_UNITS)
+
+        if catalyst_app is not None:
+            try:
+                table = catalyst_app.datastore().table("RiskScore")
+                for row in computed_scores:
+                    try:
+                        table.insert_row(row)
+                    except Exception:
+                        pass
+            except Exception:
+                pass
+
+        rows = computed_scores
+
+    return {"status": "ok", "data": rows}
+
 @app.get("/auth/me")
 def get_auth_me(request: Request, catalyst_app: Any = Depends(get_catalyst_app)):
     role = request.headers.get("X-Catalyst-Role") or request.query_params.get("role") or "Station"
