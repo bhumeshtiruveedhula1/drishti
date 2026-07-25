@@ -175,7 +175,25 @@ def reshape_batch_bc():
 
     comp_first_names = ["Priya", "Rahul", "Deepak", "Aisha", "Siddharth", "Meena", "Kavita", "Sanjay", "Rajesh", "Anita"]
     comp_last_names = ["Sharma", "Verma", "Joshi", "Nair", "Reddy", "Chavan", "Bhat", "Menon", "Singh", "Das"]
-    accused_first_names = ["Suresh", "Vijay", "Ramesh", "Mahesh", "Ganesh", "Prakash", "Dinesh", "Naveen", "Satish", "Ashok", "Lokesh", "Kishore", "Santosh", "Ravi", "Harish"]
+    
+    accused_first_names = [
+        "Suresh", "Vijay", "Ramesh", "Mahesh", "Ganesh", "Prakash", "Dinesh", "Naveen", "Satish", "Ashok",
+        "Lokesh", "Kishore", "Santosh", "Ravi", "Harish", "Anand", "Sunil", "Pradeep", "Dharmesh", "Kiran",
+        "Rajesh", "Sanjay", "Manoj", "Pravin", "Sachin", "Deepak", "Vikram", "Ajay", "Arun", "Mohan",
+        "Gopal", "Venkatesh", "Manjunath", "Basavaraj", "Raghu", "Chetan", "Karthik", "Girish", "Shiva", "Vinay",
+        "Prashant", "Nithin", "Sharath", "Rohit", "Sandeep", "Bharath", "Pavan", "Yashwant", "Tejas", "Abhishek",
+        "Varun", "Nikhil", "Suraj", "Kalyan", "Tushar", "Tarun", "Murali", "Narayana", "Prasad", "Sridhar",
+        "Upendra", "Vishwa", "Yogesh", "Zameer", "Raman"
+    ]
+    accused_last_names = [
+        "Sharma", "Verma", "Joshi", "Nair", "Reddy", "Chavan", "Bhat", "Menon", "Singh", "Das",
+        "Patil", "Kulkarni", "Deshmukh", "Pujari", "Hegde", "Gowda", "Kumar", "Naik", "Rao", "Shetty",
+        "Pawar", "Kadam", "Shinde", "Jadhav", "More", "Gaikwad", "Chougule", "Inamdar", "Nadig", "Shenoy",
+        "Pai", "Kamath", "Nayak", "Prabhu", "Mallya", "Rai", "Alva", "Bhandary", "Poojary", "Karkera",
+        "Moolya", "Kotian", "Suvarna", "Kuckian", "Bangera", "Amin", "Anchan", "Salian", "Karkada", "Kunder",
+        "Soans", "Jathanna", "Maben", "Sanil", "Palan", "Tirodkar", "Savant", "Salvi", "Sardesai", "Kirloskar",
+        "Bandodkar", "Rane", "Sawant", "Phadke", "Dabholkar"
+    ]
 
     for idx, row in df.iterrows():
         case_id = int(row['incident_id'])
@@ -266,8 +284,8 @@ def reshape_batch_bc():
             accused_name = ro_name
             person_id = ro_pid
         else:
-            a_fn = accused_first_names[(case_id * 3) % len(accused_first_names)]
-            a_ln = comp_last_names[(case_id * 5) % len(comp_last_names)]
+            a_fn = accused_first_names[case_id % len(accused_first_names)]
+            a_ln = accused_last_names[(case_id // len(accused_first_names)) % len(accused_last_names)]
             accused_name = f"{a_fn} {a_ln}"
             person_id = f"A{case_id:04d}"
 
