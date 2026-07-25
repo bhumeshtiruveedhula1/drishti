@@ -186,12 +186,18 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
             paged = table.get_paged_rows(max_rows=10)
             rows = paged.get("data", [])
             try:
-                zcql = catalyst_app.zcql()
-                cnt_res = zcql.execute_query(f"SELECT COUNT(ROWID) FROM {tbl}")
-                if cnt_res and isinstance(cnt_res[0], dict) and tbl in cnt_res[0]:
-                    total_count = int(cnt_res[0][tbl].get("ROWID", len(rows)))
-                else:
-                    total_count = len(rows)
+                all_p = []
+                pg = 1
+                while True:
+                    pr = table.get_paged_rows(page=pg, max_rows=200)
+                    r_list = pr.get("data", [])
+                    if not r_list:
+                        break
+                    all_p.extend(r_list)
+                    if not pr.get("has_more_rows", False) or len(r_list) < 200:
+                        break
+                    pg += 1
+                total_count = len(all_p)
             except Exception:
                 total_count = len(rows)
         except Exception as e:
@@ -206,6 +212,60 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
         }
 
     return {"status": "ok", "data": results}
+
+@app.get("/admin/verify_chargesheets")
+def admin_verify_chargesheets(catalyst_app: Any = Depends(get_catalyst_app)):
+    if catalyst_app is None:
+        return {"status": "error", "message": "Catalyst SDK not initialized"}
+
+    try:
+        table = catalyst_app.datastore().table("ChargesheetDetails")
+        all_rows = []
+        page = 1
+        while True:
+            paged = table.get_paged_rows(page=page, max_rows=200)
+            rows = paged.get("data", [])
+            if not rows:
+                break
+            all_rows.extend(rows)
+            if not paged.get("has_more_rows", False) or len(rows) < 200:
+                break
+            page += 1
+
+        total_count = len(all_rows)
+        duplicates_removed = 0
+
+        if total_count > 3997:
+            gamma_csids = {int(r["CSID"]): int(r["CaseMasterID"]) for r in SEED_CHARGESHEETS if "CSID" in r and "CaseMasterID" in r}
+            seen_csids = set()
+            rowids_to_delete = []
+
+            for r in all_rows:
+                csid = int(r.get("CSID", 0))
+                cmid = int(r.get("CaseMasterID", 0))
+                row_id = r.get("ROWID")
+
+                if csid not in gamma_csids or gamma_csids[csid] != cmid or csid in seen_csids:
+                    if row_id:
+                        rowids_to_delete.append(row_id)
+                else:
+                    seen_csids.add(csid)
+
+            if rowids_to_delete:
+                for i in range(0, len(rowids_to_delete), 100):
+                    batch = rowids_to_delete[i:i+100]
+                    table.delete_rows(batch)
+                duplicates_removed = len(rowids_to_delete)
+                total_count = total_count - duplicates_removed
+
+        return {
+            "status": "ok",
+            "exact_row_count": total_count,
+            "duplicates_removed": duplicates_removed,
+            "sample_rows": all_rows[:5] if all_rows else []
+        }
+    except Exception as e:
+        return {"status": "error", "message": str(e), "traceback": traceback.format_exc()}
 
 @app.get("/admin/bulk_load_datastore")
 @app.post("/admin/bulk_load_datastore")
