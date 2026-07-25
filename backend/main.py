@@ -505,6 +505,68 @@ def get_anomalies(catalyst_app: Any = Depends(get_catalyst_app)):
 
     return {"status": "ok", "data": data_store_rows}
 
+@app.get("/alerts")
+def get_alerts(
+    district_id: Optional[int] = None,
+    recent_only: bool = False,
+    catalyst_app: Any = Depends(get_catalyst_app)
+):
+    data_store_rows = []
+    if catalyst_app is not None:
+        try:
+            table = catalyst_app.datastore().table("AnomalyFlag")
+            paged_res = table.get_paged_rows(max_rows=200)
+            data_store_rows = paged_res.get("data", [])
+        except Exception:
+            try:
+                zcql = catalyst_app.zcql()
+                q_res = zcql.execute_query("SELECT * FROM AnomalyFlag LIMIT 200")
+                data_store_rows = [r.get("AnomalyFlag") for r in q_res if isinstance(r, dict) and "AnomalyFlag" in r]
+            except Exception:
+                pass
+
+    if not data_store_rows:
+        data_store_rows = SEED_ANOMALIES
+
+    alerts = []
+    for row in data_store_rows:
+        if not isinstance(row, dict):
+            continue
+
+        did = row.get("DistrictID")
+        if district_id is not None and str(did) != str(district_id):
+            continue
+
+        score = float(row.get("AnomalyScore") or 1.0)
+        severity = "CRITICAL" if score >= 2.5 else ("HIGH" if score >= 2.0 else "MEDIUM")
+        reason = str(row.get("FlagReason", "Crime anomaly detected"))
+
+        alerts.append({
+            "AnomalyID": row.get("AnomalyID"),
+            "DistrictID": row.get("DistrictID"),
+            "UnitID": row.get("UnitID"),
+            "CrimeMajorHeadID": row.get("CrimeMajorHeadID"),
+            "ObservedCount": row.get("ObservedCount"),
+            "ExpectedCount": row.get("ExpectedCount"),
+            "AnomalyScore": score,
+            "FlagReason": reason,
+            "Severity": severity,
+            "WindowStart": str(row.get("WindowStart", "")),
+            "WindowEnd": str(row.get("WindowEnd", "")),
+            "DetectedAt": str(row.get("WindowEnd", datetime.now().strftime("%Y-%m-%d")))
+        })
+
+    if recent_only:
+        alerts = sorted(alerts, key=lambda x: str(x.get("WindowEnd", "")), reverse=True)[:10]
+
+    return {
+        "status": "ok",
+        "data": alerts,
+        "count": len(alerts),
+        "polling_interval_seconds": 15,
+        "mechanism": "frontend_polling"
+    }
+
 def compute_occupation_overlay(
     complainants: List[Dict[str, Any]],
     cases: List[Dict[str, Any]],
