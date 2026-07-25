@@ -12,7 +12,7 @@ import {
   fetchResolutionMetrics,
   fetchNetworkGraph
 } from './services/mockData';
-import { Loader2, AlertTriangle } from 'lucide-react';
+import { Loader2, AlertTriangle, Filter } from 'lucide-react';
 
 export default function App() {
   const [incidents, setIncidents] = useState([]);
@@ -37,6 +37,9 @@ export default function App() {
   const [showChoropleth, setShowChoropleth] = useState(true);
   const [showHotspots, setShowHotspots] = useState(true);
   const [showAnomalies, setShowAnomalies] = useState(true);
+
+  // Mobile Spatial Filter Drawer State
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
   // Fetch Incidents, Hotspots, Anomalies, Resolution Metrics & Network Graph on Load
   useEffect(() => {
@@ -180,8 +183,20 @@ export default function App() {
         />
       ) : (
         <div className="flex flex-1 relative overflow-hidden">
+          {/* Mobile Filter Toggle Button */}
+          <button
+            onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
+            className="md:hidden absolute top-3 left-3 z-30 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-cyan-400 px-3 py-1.5 rounded-xl shadow-2xl flex items-center space-x-1.5 text-xs font-bold transition-all"
+            title="Toggle Spatial Filters"
+          >
+            <Filter className="w-4 h-4 text-cyan-400" />
+            <span>Filters</span>
+          </button>
+
           {/* Left Control Panel */}
           <ControlPanel
+            isMobileOpen={isMobileFiltersOpen}
+            onCloseMobile={() => setIsMobileFiltersOpen(false)}
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             selectedGravity={selectedGravity}

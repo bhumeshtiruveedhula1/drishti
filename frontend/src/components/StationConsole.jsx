@@ -44,18 +44,18 @@ export default function StationConsole({ incidents }) {
   // Extract unique police stations
   const stationsList = useMemo(() => {
     const map = new Map();
-    incidents.forEach((inc) => {
-      if (inc.PoliceStationID && !map.has(inc.PoliceStationID)) {
+    (incidents || []).forEach((inc) => {
+      if (inc && inc.PoliceStationID && !map.has(inc.PoliceStationID)) {
         map.set(inc.PoliceStationID, {
           id: inc.PoliceStationID,
-          name: inc.PoliceStationName,
-          district: inc.DistrictName,
+          name: inc.PoliceStationName || `Station #${inc.PoliceStationID}`,
+          district: inc.DistrictName || 'Karnataka Police',
           sho: `Insp. R. V. Patil (KGID #${inc.PolicePersonID || 501})`,
           phone: "+91 80 2294 2200"
         });
       }
     });
-    return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
+    return Array.from(map.values()).sort((a, b) => (a.name || '').localeCompare(b.name || ''));
   }, [incidents]);
 
   // Active Selected Station
@@ -78,10 +78,22 @@ export default function StationConsole({ incidents }) {
 
   // Filter incidents for active station
   const stationIncidents = useMemo(() => {
-    return incidents.filter(
-      (inc) => Number(inc.PoliceStationID) === Number(activeStation.id)
+    return (incidents || []).filter(
+      (inc) => inc && Number(inc.PoliceStationID) === Number(activeStation.id)
     );
   }, [incidents, activeStation]);
+
+  // Safeguard coordinates for Leaflet rendering
+  const safeStationIncidents = useMemo(() => {
+    return stationIncidents.filter(
+      (inc) =>
+        inc &&
+        typeof inc.latitude === 'number' &&
+        typeof inc.longitude === 'number' &&
+        !isNaN(inc.latitude) &&
+        !isNaN(inc.longitude)
+    );
+  }, [stationIncidents]);
 
   // Table search & filter
   const [tableSearch, setTableSearch] = useState('');
@@ -92,11 +104,11 @@ export default function StationConsole({ incidents }) {
       if (!tableSearch) return true;
       const q = tableSearch.toLowerCase();
       return (
-        inc.CrimeNo.toLowerCase().includes(q) ||
-        inc.CaseNo.toLowerCase().includes(q) ||
-        inc.CaseCategoryName.toLowerCase().includes(q) ||
-        inc.CrimeMajorHeadName.toLowerCase().includes(q) ||
-        inc.BriefFacts.toLowerCase().includes(q)
+        (inc.CrimeNo || '').toLowerCase().includes(q) ||
+        (inc.CaseNo || '').toLowerCase().includes(q) ||
+        (inc.CaseCategoryName || '').toLowerCase().includes(q) ||
+        (inc.CrimeMajorHeadName || '').toLowerCase().includes(q) ||
+        (inc.BriefFacts || '').toLowerCase().includes(q)
       );
     });
   }, [stationIncidents, tableSearch]);
@@ -115,30 +127,30 @@ export default function StationConsole({ incidents }) {
 
   // Station Map Center
   const mapCenter = useMemo(() => {
-    if (stationIncidents.length > 0) {
-      return [stationIncidents[0].latitude, stationIncidents[0].longitude];
+    if (safeStationIncidents.length > 0) {
+      return [safeStationIncidents[0].latitude, safeStationIncidents[0].longitude];
     }
     return [12.9348, 77.62]; // Default Koramangala
-  }, [stationIncidents]);
+  }, [safeStationIncidents]);
 
   return (
-    <div className="flex-1 flex flex-col h-[calc(100vh-4rem)] bg-slate-950 text-slate-100 overflow-hidden">
+    <div className="flex-1 flex flex-col h-[calc(100vh-4rem)] bg-slate-950 text-slate-100 overflow-y-auto lg:overflow-hidden">
       {/* Top Station Control Bar */}
-      <div className="bg-slate-900/90 border-b border-slate-800 px-6 py-3.5 flex flex-wrap items-center justify-between gap-4 z-20">
+      <div className="bg-slate-900/90 border-b border-slate-800 px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 z-20">
         {/* Left: Station Info & Selector */}
-        <div className="flex items-center space-x-4">
-          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
-            <Building2 className="w-5 h-5 text-cyan-400" />
+        <div className="flex items-center space-x-3 sm:space-x-4">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0">
+            <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
           </div>
           <div>
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
               Police Station Jurisdiction Console
             </div>
-            <div className="flex items-center space-x-3 mt-0.5">
+            <div className="flex flex-wrap items-center gap-2 mt-0.5">
               <select
                 value={selectedStationId}
                 onChange={(e) => setSelectedStationId(e.target.value)}
-                className="bg-slate-950 border border-cyan-500/40 rounded-lg px-3 py-1 text-sm font-bold text-cyan-300 focus:outline-none focus:border-cyan-400 transition-colors cursor-pointer"
+                className="bg-slate-950 border border-cyan-500/40 rounded-lg px-2.5 py-1 text-xs sm:text-sm font-bold text-cyan-300 focus:outline-none focus:border-cyan-400 transition-colors cursor-pointer"
               >
                 {stationsList.map((st) => (
                   <option key={st.id} value={st.id}>
@@ -148,18 +160,18 @@ export default function StationConsole({ incidents }) {
               </select>
               <span className="text-xs text-slate-400 flex items-center space-x-1">
                 <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-                <span>{activeStation.district} District</span>
+                <span>{activeStation.district}</span>
               </span>
             </div>
           </div>
         </div>
 
         {/* Middle: Station Officer Metadata */}
-        <div className="hidden md:flex items-center space-x-6 text-xs bg-slate-950/80 px-4 py-2 rounded-xl border border-slate-800">
+        <div className="hidden lg:flex items-center space-x-4 text-xs bg-slate-950/80 px-3.5 py-1.5 rounded-xl border border-slate-800">
           <div className="flex items-center space-x-2">
             <User className="w-4 h-4 text-cyan-400" />
             <div>
-              <div className="text-[10px] text-slate-400 uppercase">Station House Officer</div>
+              <div className="text-[9px] text-slate-400 uppercase">Station House Officer</div>
               <div className="font-semibold text-slate-200">{activeStation.sho}</div>
             </div>
           </div>
@@ -174,30 +186,30 @@ export default function StationConsole({ incidents }) {
         </div>
 
         {/* Right: Station Incident Counters */}
-        <div className="flex items-center space-x-3">
-          <div className="bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Station FIRs</div>
-            <div className="text-sm font-bold text-cyan-400 leading-tight">{totalCases}</div>
+        <div className="grid grid-cols-2 sm:flex items-center gap-2 text-xs">
+          <div className="bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-center min-w-[70px]">
+            <div className="text-[9px] text-slate-400 uppercase font-semibold">Station FIRs</div>
+            <div className="text-xs sm:text-sm font-bold text-cyan-400 leading-tight">{totalCases}</div>
           </div>
-          <div className="bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Heinous</div>
-            <div className="text-sm font-bold text-red-400 leading-tight">{heinousCount}</div>
+          <div className="bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-center min-w-[70px]">
+            <div className="text-[9px] text-slate-400 uppercase font-semibold">Heinous</div>
+            <div className="text-xs sm:text-sm font-bold text-red-400 leading-tight">{heinousCount}</div>
           </div>
-          <div className="bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Investigating</div>
-            <div className="text-sm font-bold text-amber-400 leading-tight">{investigatingCount}</div>
+          <div className="bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-center min-w-[70px]">
+            <div className="text-[9px] text-slate-400 uppercase font-semibold">Investigating</div>
+            <div className="text-xs sm:text-sm font-bold text-amber-400 leading-tight">{investigatingCount}</div>
           </div>
-          <div className="bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Chargesheeted</div>
-            <div className="text-sm font-bold text-emerald-400 leading-tight">{chargesheetedCount}</div>
+          <div className="bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-center min-w-[70px]">
+            <div className="text-[9px] text-slate-400 uppercase font-semibold">Chargesheeted</div>
+            <div className="text-xs sm:text-sm font-bold text-emerald-400 leading-tight">{chargesheetedCount}</div>
           </div>
         </div>
       </div>
 
       {/* Main Split View: Left Station Map, Right Station Roster */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-y-auto lg:overflow-hidden">
         {/* Left Column: Station Jurisdiction Map (5 cols) */}
-        <div className="lg:col-span-5 h-full relative border-r border-slate-800">
+        <div className="lg:col-span-5 h-64 sm:h-80 lg:h-full relative border-b lg:border-b-0 lg:border-r border-slate-800">
           <MapContainer
             key={`station-map-${activeStation.id}`}
             center={mapCenter}
@@ -209,7 +221,7 @@ export default function StationConsole({ incidents }) {
               attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
             />
-            {stationIncidents.map((incident) => (
+            {safeStationIncidents.map((incident) => (
               <Marker
                 key={incident.CaseMasterID}
                 position={[incident.latitude, incident.longitude]}
@@ -265,7 +277,7 @@ export default function StationConsole({ incidents }) {
                 <div className="text-xs">No FIR records found for this station.</div>
               </div>
             ) : (
-              <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-950/60 shadow-xl">
+              <div className="overflow-x-auto custom-scrollbar rounded-xl border border-slate-800 bg-slate-950/60 shadow-xl">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
                     <tr className="bg-slate-900 border-b border-slate-800 text-slate-400 font-semibold uppercase text-[10px] tracking-wider">

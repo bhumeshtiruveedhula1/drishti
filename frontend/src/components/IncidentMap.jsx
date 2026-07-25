@@ -82,16 +82,53 @@ export default function IncidentMap({
 }) {
   const karnatakaCenter = [14.8, 76.2];
 
+  // Safeguard array inputs and filter out missing or invalid coordinates
+  const safeIncidents = useMemo(() => {
+    if (!Array.isArray(incidents)) return [];
+    return incidents.filter(
+      (i) =>
+        i &&
+        typeof i.latitude === 'number' &&
+        typeof i.longitude === 'number' &&
+        !isNaN(i.latitude) &&
+        !isNaN(i.longitude)
+    );
+  }, [incidents]);
+
+  const safeHotspots = useMemo(() => {
+    if (!Array.isArray(hotspots)) return [];
+    return hotspots.filter(
+      (h) =>
+        h &&
+        typeof h.latitude === 'number' &&
+        typeof h.longitude === 'number' &&
+        !isNaN(h.latitude) &&
+        !isNaN(h.longitude)
+    );
+  }, [hotspots]);
+
+  const safeAnomalies = useMemo(() => {
+    if (!Array.isArray(anomalies)) return [];
+    return anomalies.filter(
+      (a) =>
+        a &&
+        typeof a.latitude === 'number' &&
+        typeof a.longitude === 'number' &&
+        !isNaN(a.latitude) &&
+        !isNaN(a.longitude)
+    );
+  }, [anomalies]);
+
   // Map incident counts by district name
   const districtCounts = useMemo(() => {
     const counts = {};
-    incidents.forEach((inc) => {
+    safeIncidents.forEach((inc) => {
       if (inc.DistrictName) {
         counts[inc.DistrictName] = (counts[inc.DistrictName] || 0) + 1;
       }
     });
     return counts;
-  }, [incidents]);
+  }, [safeIncidents]);
 
   // Dynamic GeoJSON polygon styling
   const districtStyle = (feature) => {
@@ -165,7 +202,7 @@ export default function IncidentMap({
 
         {/* DBSCAN Hotspot Cluster Overlay Layer */}
         {showHotspots &&
-          hotspots.map((hs) => (
+          safeHotspots.map((hs) => (
             <React.Fragment key={`hotspot-group-${hs.HotspotClusterID}`}>
               {/* Cluster Radius Circle Boundary */}
               <Circle
@@ -187,7 +224,7 @@ export default function IncidentMap({
               >
                 <Popup className="hotspot-popup">
                   <div className="p-3.5 max-w-sm space-y-2.5">
-                    <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                    <div className="flex items-center justify-between border-b border-[#0f172a] pb-2">
                       <div className="flex items-center space-x-1.5 text-red-400 font-bold text-xs uppercase tracking-wider">
                         <Flame className="w-4 h-4 text-red-500 animate-bounce" />
                         <span>DBSCAN Hotspot Cluster</span>
@@ -224,7 +261,7 @@ export default function IncidentMap({
 
         {/* Anomaly Baseline Deviation Layer */}
         {showAnomalies &&
-          anomalies.map((anom) => (
+          safeAnomalies.map((anom) => (
             <Marker
               key={`anomaly-${anom.AnomalyFlagID}`}
               position={[anom.latitude, anom.longitude]}
@@ -271,7 +308,7 @@ export default function IncidentMap({
           ))}
 
         {/* Raw Incident Marker Pins */}
-        {incidents.map((incident) => (
+        {safeIncidents.map((incident) => (
           <Marker
             key={incident.CaseMasterID}
             position={[incident.latitude, incident.longitude]}

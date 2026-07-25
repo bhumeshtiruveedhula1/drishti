@@ -1,7 +1,9 @@
 import React from 'react';
-import { Search, Filter, ShieldAlert, Tag, CheckCircle2, RotateCcw, MapPin, TrendingUp } from 'lucide-react';
+import { Search, Filter, ShieldAlert, Tag, CheckCircle2, RotateCcw, MapPin, TrendingUp, X } from 'lucide-react';
 
 export default function ControlPanel({
+  isMobileOpen = false,
+  onCloseMobile,
   searchTerm,
   setSearchTerm,
   selectedGravity,
@@ -22,21 +24,45 @@ export default function ControlPanel({
   totalCount
 }) {
   return (
-    <aside className="w-80 bg-slate-900/95 backdrop-blur-xl border-r border-slate-800 flex flex-col h-[calc(100vh-4rem)] z-20 shadow-2xl">
-      {/* Panel Header */}
-      <div className="p-4 border-b border-slate-800/80 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <Filter className="w-4 h-4 text-cyan-400" />
-          <h2 className="text-sm font-bold text-slate-200 uppercase tracking-wider">Spatial Filters</h2>
+    <>
+      {/* Mobile Backdrop */}
+      {isMobileOpen && (
+        <div
+          onClick={onCloseMobile}
+          className="md:hidden fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-30 transition-opacity"
+        />
+      )}
+
+      <aside
+        className={`fixed md:relative inset-y-0 left-0 z-40 w-80 max-w-[85vw] bg-slate-900/95 backdrop-blur-xl border-r border-slate-800 flex flex-col h-[calc(100vh-4rem)] shadow-2xl transition-transform duration-300 ${
+          isMobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+        }`}
+      >
+        {/* Panel Header */}
+        <div className="p-4 border-b border-slate-800/80 flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Filter className="w-4 h-4 text-cyan-400" />
+            <h2 className="text-sm font-bold text-slate-200 uppercase tracking-wider">Spatial Filters</h2>
+          </div>
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={onResetFilters}
+              className="text-xs text-slate-400 hover:text-cyan-400 flex items-center space-x-1 transition-colors px-2 py-1 rounded bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50"
+            >
+              <RotateCcw className="w-3 h-3" />
+              <span>Reset</span>
+            </button>
+            {onCloseMobile && (
+              <button
+                onClick={onCloseMobile}
+                className="md:hidden p-1 text-slate-400 hover:text-white rounded bg-slate-800"
+                title="Close Filters"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
         </div>
-        <button
-          onClick={onResetFilters}
-          className="text-xs text-slate-400 hover:text-cyan-400 flex items-center space-x-1 transition-colors px-2 py-1 rounded bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50"
-        >
-          <RotateCcw className="w-3 h-3" />
-          <span>Reset</span>
-        </button>
-      </div>
 
       <div className="p-4 space-y-5 overflow-y-auto flex-1 custom-scrollbar">
         {/* Layer Toggles */}
@@ -182,5 +208,6 @@ export default function ControlPanel({
         </span>
       </div>
     </aside>
+    </>
   );
 }

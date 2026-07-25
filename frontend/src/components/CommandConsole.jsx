@@ -37,7 +37,7 @@ const createMiniMarkerIcon = (gravity) => {
 };
 
 export default function CommandConsole({
-  incidents,
+  incidents = [],
   anomalies = [],
   resolutionMetrics = [],
   networkData = { summary: {}, nodes: [], edges: [] }
@@ -45,6 +45,18 @@ export default function CommandConsole({
   const [streamSearch, setStreamSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [selectedCaseModal, setSelectedCaseModal] = useState(null);
+
+  // Safeguard incident coordinates
+  const safeIncidents = useMemo(() => {
+    return (incidents || []).filter(
+      (i) =>
+        i &&
+        typeof i.latitude === 'number' &&
+        typeof i.longitude === 'number' &&
+        !isNaN(i.latitude) &&
+        !isNaN(i.longitude)
+    );
+  }, [incidents]);
 
   // Executive Statewide Metrics
   const totalIncidents = incidents.length;
@@ -107,11 +119,11 @@ export default function CommandConsole({
     return incidents.filter((inc) => {
       const matchesSearch =
         !streamSearch ||
-        inc.CrimeNo.toLowerCase().includes(streamSearch.toLowerCase()) ||
-        inc.DistrictName.toLowerCase().includes(streamSearch.toLowerCase()) ||
-        inc.PoliceStationName.toLowerCase().includes(streamSearch.toLowerCase()) ||
-        inc.BriefFacts.toLowerCase().includes(streamSearch.toLowerCase()) ||
-        inc.CrimeMajorHeadName.toLowerCase().includes(streamSearch.toLowerCase());
+        (inc.CrimeNo || '').toLowerCase().includes(streamSearch.toLowerCase()) ||
+        (inc.DistrictName || '').toLowerCase().includes(streamSearch.toLowerCase()) ||
+        (inc.PoliceStationName || '').toLowerCase().includes(streamSearch.toLowerCase()) ||
+        (inc.BriefFacts || '').toLowerCase().includes(streamSearch.toLowerCase()) ||
+        (inc.CrimeMajorHeadName || '').toLowerCase().includes(streamSearch.toLowerCase());
 
       const matchesCat =
         categoryFilter === 'All' || inc.CaseCategoryName === categoryFilter;
@@ -125,51 +137,51 @@ export default function CommandConsole({
   return (
     <div className="flex-1 flex flex-col h-[calc(100vh-4rem)] bg-slate-950 text-slate-100 overflow-y-auto custom-scrollbar">
       {/* Executive Command Banner */}
-      <div className="bg-slate-900/90 border-b border-slate-800 px-6 py-3 flex flex-wrap items-center justify-between gap-4 z-20">
+      <div className="bg-slate-900/90 border-b border-slate-800 px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 z-20">
         <div className="flex items-center space-x-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 p-0.5 shadow-lg shadow-cyan-500/20 flex items-center justify-center">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 p-0.5 shadow-lg shadow-cyan-500/20 flex items-center justify-center shrink-0">
             <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
               <Shield className="w-4 h-4 text-cyan-400" />
             </div>
           </div>
           <div>
-            <h2 className="text-sm font-bold text-slate-100 uppercase tracking-wider">
+            <h2 className="text-xs sm:text-sm font-bold text-slate-100 uppercase tracking-wider">
               Statewide Command Console
             </h2>
-            <p className="text-[11px] text-slate-400">
-              Karnataka Police Headquarters • Multi-District Operational Oversight
+            <p className="text-[10px] sm:text-[11px] text-slate-400">
+              Karnataka Police HQ • Operational Oversight
             </p>
           </div>
         </div>
 
         {/* High-Level Executive Metrics */}
-        <div className="flex items-center space-x-4 text-xs">
-          <div className="bg-slate-950/80 px-3.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-3">
-            <Activity className="w-4 h-4 text-cyan-400" />
+        <div className="grid grid-cols-2 sm:flex items-center gap-2 text-xs">
+          <div className="bg-slate-950/80 px-2.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
+            <Activity className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
             <div>
               <div className="text-[9px] text-slate-400 uppercase font-semibold">Active Districts</div>
               <div className="text-xs font-bold text-cyan-300">{districtPerformance.length} Districts</div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 px-3.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-3">
-            <AlertTriangle className="w-4 h-4 text-red-400" />
+          <div className="bg-slate-950/80 px-2.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
+            <AlertTriangle className="w-3.5 h-3.5 text-red-400 shrink-0" />
             <div>
               <div className="text-[9px] text-slate-400 uppercase font-semibold">Heinous Ratio</div>
               <div className="text-xs font-bold text-red-400">{heinousRatio}% of Cases</div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 px-3.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-3">
-            <TrendingUp className="w-4 h-4 text-amber-400" />
+          <div className="bg-slate-950/80 px-2.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
+            <TrendingUp className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <div>
               <div className="text-[9px] text-slate-400 uppercase font-semibold">Anomaly Spikes</div>
               <div className="text-xs font-bold text-amber-400">{anomalies.length} Critical Alerts</div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 px-3.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-3">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <div className="bg-slate-950/80 px-2.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
             <div>
               <div className="text-[9px] text-slate-400 uppercase font-semibold">Active Investigations</div>
               <div className="text-xs font-bold text-emerald-400">{investigatingRate}% Rate</div>
@@ -386,7 +398,7 @@ export default function CommandConsole({
         </div>
 
         {/* Right Column: Statewide Spatial Minimap (3 cols) */}
-        <div className="lg:col-span-3 h-full relative flex flex-col bg-slate-950">
+        <div className="lg:col-span-3 h-64 sm:h-80 lg:h-full relative flex flex-col bg-slate-950">
           <div className="p-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center space-x-1.5">
               <Layers className="w-3.5 h-3.5 text-cyan-400" />
@@ -417,7 +429,7 @@ export default function CommandConsole({
                   fillOpacity: 0.2
                 }}
               />
-              {incidents.map((incident) => (
+              {safeIncidents.map((incident) => (
                 <Marker
                   key={incident.CaseMasterID}
                   position={[incident.latitude, incident.longitude]}
