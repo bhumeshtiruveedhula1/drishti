@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Radio, Activity, AlertTriangle, Database, Map, Building2, LayoutDashboard } from 'lucide-react';
+import { Shield, Radio, Activity, AlertTriangle, Database, Map, Building2, LayoutDashboard, User, LogOut } from 'lucide-react';
 
 export default function Header({
   incidentsCount,
@@ -7,7 +7,9 @@ export default function Header({
   cyberCount,
   investigatingCount,
   viewMode,
-  setViewMode
+  setViewMode,
+  userAuth,
+  onSwitchRole
 }) {
   return (
     <header className="h-16 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-6 flex items-center justify-between z-30 relative shadow-xl">
@@ -106,8 +108,29 @@ export default function Header({
         </div>
       </div>
 
-      {/* Connection Mode Indicator */}
+      {/* Authenticated User Badge & Connection Mode Indicator */}
       <div className="flex items-center space-x-3">
+        {userAuth && (
+          <div className="flex items-center space-x-2 bg-slate-950 px-3 py-1 rounded-xl border border-slate-800">
+            <User className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="text-[11px] leading-tight">
+              <span className="text-slate-300 font-medium block">{userAuth.email || 'officer@drishti.gov.in'}</span>
+              <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider">
+                Role: {userAuth.selectedRole || userAuth.role}
+              </span>
+            </div>
+            {onSwitchRole && (
+              <button
+                onClick={onSwitchRole}
+                title="Switch Operational Role"
+                className="ml-2 p-1 text-slate-400 hover:text-red-400 hover:bg-slate-900 rounded-lg transition-colors"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        )}
+
         <div className="flex items-center space-x-2 bg-emerald-950/50 border border-emerald-800/80 px-3 py-1 rounded-full">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <span className="text-xs font-semibold text-emerald-300">Live API Feed (GET /incidents)</span>

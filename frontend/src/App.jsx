@@ -4,6 +4,7 @@ import ControlPanel from './components/ControlPanel';
 import IncidentMap from './components/IncidentMap';
 import StationConsole from './components/StationConsole';
 import CommandConsole from './components/CommandConsole';
+import RoleGateLanding from './components/RoleGateLanding';
 import {
   fetchIncidents,
   fetchHotspots,
@@ -21,6 +22,9 @@ export default function App() {
   const [networkData, setNetworkData] = useState({ summary: {}, nodes: [], edges: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // User Auth State from /auth/me?role=<choice>
+  const [userAuth, setUserAuth] = useState(null);
 
   // View Mode: 'stateMap', 'stationConsole', or 'commandConsole'
   const [viewMode, setViewMode] = useState('stateMap');
@@ -117,6 +121,21 @@ export default function App() {
     setSelectedStatus('All');
   };
 
+  if (!userAuth) {
+    return (
+      <RoleGateLanding
+        onAuthenticate={(authData) => {
+          setUserAuth(authData);
+          if (authData.selectedRole === 'Station') {
+            setViewMode('stationConsole');
+          } else if (authData.selectedRole === 'Command') {
+            setViewMode('commandConsole');
+          }
+        }}
+      />
+    );
+  }
+
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden bg-slate-950 text-slate-100">
       {/* Top Header with Navigation Tabs */}
@@ -127,6 +146,8 @@ export default function App() {
         investigatingCount={investigatingCount}
         viewMode={viewMode}
         setViewMode={setViewMode}
+        userAuth={userAuth}
+        onSwitchRole={() => setUserAuth(null)}
       />
 
       {/* Main Content Body */}
