@@ -8,8 +8,9 @@ from datetime import datetime
 
 print("Starting AppSail server...", flush=True)
 
-import uvicorn
+from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 app = FastAPI(title="Drishti Backend API - Catalyst Data Store Integration")
 
