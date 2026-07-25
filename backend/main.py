@@ -9,7 +9,7 @@ from datetime import datetime
 print("Starting AppSail server...", flush=True)
 
 import uvicorn
-from fastapi import FastAPI, Request, HTTPException, Depends
+from fastapi import FastAPI, Request, HTTPException, Depends, Response
 from starlette.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -67,6 +67,7 @@ SEED_CHARGESHEETS = load_seed_csv("batch_d/ChargesheetDetails.csv")
 SEED_OCCUPATIONS = load_seed_csv("batch_a/OccupationMaster.csv")
 SEED_COMPLAINANTS = load_seed_csv("batch_bc/ComplainantDetails.csv")
 SEED_CRIME_HEADS = load_seed_csv("batch_a/CrimeHead.csv")
+SEED_DISTRICTS = load_seed_csv("batch_a/District.csv")
 
 CREATED_INCIDENTS: List[Dict[str, Any]] = []
 
@@ -619,6 +620,302 @@ def get_occupation_overlay(catalyst_app: Any = Depends(get_catalyst_app)):
 
     overlay_data = compute_occupation_overlay(comp_rows, case_rows, occ_rows, head_rows)
     return {"status": "ok", "data": overlay_data}
+
+def compute_district_report_stats(
+    district_id: int,
+    cases: List[Dict[str, Any]],
+    units: List[Dict[str, Any]],
+    chargesheets: List[Dict[str, Any]],
+    hotspots: List[Dict[str, Any]],
+    crime_heads: List[Dict[str, Any]],
+    districts: List[Dict[str, Any]]
+) -> Dict[str, Any]:
+    dist_name = f"District #{district_id}"
+    for d in districts:
+        if isinstance(d, dict) and str(d.get("DistrictID")) == str(district_id):
+            dist_name = d.get("DistrictName", dist_name)
+            break
+
+    unit_ids = set()
+    for u in units:
+        if isinstance(u, dict) and str(u.get("DistrictID")) == str(district_id):
+            try:
+                unit_ids.add(int(u["UnitID"]))
+            except (ValueError, TypeError):
+                pass
+
+    head_map = {}
+    for h in crime_heads:
+        if isinstance(h, dict) and "CrimeHeadID" in h:
+            try:
+                head_map[int(h["CrimeHeadID"])] = str(h.get("CrimeGroupName", f"Category #{h['CrimeHeadID']}"))
+            except (ValueError, TypeError):
+                pass
+
+    dist_cases = []
+    cat_counts = {}
+    case_ids = set()
+
+    for c in cases:
+        if not isinstance(c, dict):
+            continue
+        psid = c.get("PoliceStationID") or c.get("UnitID")
+        try:
+            psid = int(psid) if psid is not None else None
+        except (ValueError, TypeError):
+            psid = None
+
+        if psid in unit_ids or not unit_ids:
+            dist_cases.append(c)
+            cid = c.get("CaseMasterID")
+            if cid is not None:
+                try:
+                    case_ids.add(int(cid))
+                except (ValueError, TypeError):
+                    pass
+
+            hid = c.get("CrimeMajorHeadID")
+            if hid is not None:
+                try:
+                    hid_int = int(hid)
+                    hname = head_map.get(hid_int, f"Category #{hid_int}")
+                    cat_counts[hname] = cat_counts.get(hname, 0) + 1
+                except (ValueError, TypeError):
+                    pass
+
+    total_incidents = len(dist_cases)
+    top_categories = sorted(cat_counts.items(), key=lambda x: x[1], reverse=True)
+
+    cs_set = set()
+    for cs in chargesheets:
+        if isinstance(cs, dict):
+            cmid = cs.get("CaseMasterID")
+            cstype = str(cs.get("cstype", "")).strip().upper()
+            if cmid is not None and cstype in ("A", "CHARGESHEET", "CHARGESHEETED"):
+                try:
+                    cs_set.add(int(cmid))
+                except (ValueError, TypeError):
+                    pass
+
+    resolved_count = len(case_ids.intersection(cs_set)) if case_ids else 0
+    res_rate = round((resolved_count / total_incidents * 100), 1) if total_incidents > 0 else 0.0
+
+    dist_hotspots = []
+    for h in hotspots:
+        if not isinstance(h, dict):
+            continue
+        did = h.get("DistrictID")
+        uid = h.get("UnitID")
+        if str(did) == str(district_id) or (uid is not None and int(uid) in unit_ids):
+            dist_hotspots.append(h)
+
+    return {
+        "DistrictID": district_id,
+        "DistrictName": dist_name,
+        "IncidentCount": total_incidents,
+        "TopCategories": top_categories,
+        "ResolutionRate": res_rate,
+        "ActiveHotspots": dist_hotspots,
+        "GeneratedAt": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+
+def generate_pure_pdf_bytes(stats: Dict[str, Any]) -> bytes:
+    dist_name = stats.get("DistrictName", "District Report")
+    inc_cnt = stats.get("IncidentCount", 0)
+    res_rate = stats.get("ResolutionRate", 0.0)
+    cats = stats.get("TopCategories", [])
+    hotspots = stats.get("ActiveHotspots", [])
+    gen_time = stats.get("GeneratedAt", "")
+
+    lines = [
+        f"DRISHTI DISTRICT CRIME INTELLIGENCE REPORT",
+        f"==================================================================",
+        f"District: {dist_name} (ID: {stats.get('DistrictID', 1)})",
+        f"Generated At: {gen_time}",
+        f"",
+        f"SUMMARY METRICS",
+        f"------------------------------------------------------------------",
+        f"  * Total Incidents Reported: {inc_cnt}",
+        f"  * Resolution Rate (Chargesheeted): {res_rate}%",
+        f"  * Active Hotspot Clusters: {len(hotspots)}",
+        f"",
+        f"TOP CRIME CATEGORIES",
+        f"------------------------------------------------------------------"
+    ]
+
+    for cat_name, cnt in cats:
+        pct = round((cnt / inc_cnt * 100), 1) if inc_cnt > 0 else 0.0
+        lines.append(f"  * {cat_name}: {cnt} incidents ({pct}%)")
+
+    if not cats:
+        lines.append("  * No category breakdown available")
+
+    lines.extend([
+        f"",
+        f"ACTIVE HOTSPOT CLUSTERS",
+        f"------------------------------------------------------------------"
+    ])
+
+    for idx, h in enumerate(hotspots[:6], 1):
+        cid = h.get("ClusterID", idx)
+        lat = h.get("CentroidLat", 0.0)
+        lng = h.get("CentroidLng", 0.0)
+        icnt = h.get("IncidentCount", 0)
+        tw_start = h.get("TimeWindowStart", "")
+        tw_end = h.get("TimeWindowEnd", "")
+        lines.append(f"  * Cluster #{cid}: Centroid ({lat:.4f}, {lng:.4f}) | Incidents: {icnt} | Window: {tw_start} to {tw_end}")
+
+    if not hotspots:
+        lines.append("  * No active hotspots recorded for this district")
+
+    lines.extend([
+        f"",
+        f"==================================================================",
+        f"Karnataka State Police - Official Drishti Analytics Platform"
+    ])
+
+    text_cmds = ["BT", "/F1 14 Tf", "36 750 Td", "15 TL"]
+    for l in lines:
+        safe_l = str(l).replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
+        if l.startswith("DRISHTI"):
+            text_cmds.append("/F1 16 Tf")
+            text_cmds.append(f"({safe_l}) Tj")
+            text_cmds.append("T*")
+            text_cmds.append("/F1 10 Tf")
+        elif "SUMMARY METRICS" in l or "TOP CRIME CATEGORIES" in l or "ACTIVE HOTSPOT CLUSTERS" in l:
+            text_cmds.append("/F1 12 Tf")
+            text_cmds.append(f"({safe_l}) Tj")
+            text_cmds.append("T*")
+            text_cmds.append("/F1 10 Tf")
+        else:
+            text_cmds.append(f"({safe_l}) Tj")
+            text_cmds.append("T*")
+    text_cmds.append("ET")
+
+    cs = "\n".join(text_cmds).encode('latin-1', 'replace')
+
+    objs = [
+        b"1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n",
+        b"2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n",
+        b"3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n",
+        f"4 0 obj\n<< /Length {len(cs)} >>\nstream\n".encode('latin-1') + cs + b"\nendstream\nendobj\n",
+        b"5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n"
+    ]
+
+    buf = [b"%PDF-1.4\n"]
+    offs = []
+    c = len(buf[0])
+    for o in objs:
+        offs.append(c)
+        buf.append(o)
+        c += len(o)
+
+    xoff = c
+    xref = [f"xref\n0 {len(objs)+1}\n0000000000 65535 f \n".encode('latin-1')]
+    for off in offs:
+        xref.append(f"{off:010d} 00000 n \n".encode('latin-1'))
+    buf.extend(xref)
+    buf.append(f"trailer\n<< /Size {len(objs)+1} /Root 1 0 R >>\nstartxref\n{xoff}\n%%EOF\n".encode('latin-1'))
+
+    return b"".join(buf)
+
+def generate_report_pdf_bytes(district_id: int, stats: Dict[str, Any], catalyst_app: Any = None) -> bytes:
+    dist_name = stats.get("DistrictName", f"District #{district_id}")
+    inc_cnt = stats.get("IncidentCount", 0)
+    res_rate = stats.get("ResolutionRate", 0.0)
+    cats = stats.get("TopCategories", [])
+    hotspots = stats.get("ActiveHotspots", [])
+    gen_time = stats.get("GeneratedAt", "")
+
+    cat_rows_html = "".join([
+        f"<tr><td>{cname}</td><td>{cnt}</td><td>{round((cnt/inc_cnt*100), 1) if inc_cnt > 0 else 0}%</td></tr>"
+        for cname, cnt in cats
+    ])
+
+    hotspot_rows_html = "".join([
+        f"<tr><td>Cluster #{h.get('ClusterID', '-') }</td><td>{h.get('CentroidLat', 0):.4f}, {h.get('CentroidLng', 0):.4f}</td><td>{h.get('IncidentCount', 0)}</td><td>{h.get('TimeWindowStart', '')} - {h.get('TimeWindowEnd', '')}</td></tr>"
+        for h in hotspots[:10]
+    ])
+
+    html_content = f"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body {{ font-family: Arial, sans-serif; margin: 30px; color: #1e293b; }}
+  h1 {{ color: #1e3a8a; border-bottom: 2px solid #1e3a8a; padding-bottom: 10px; }}
+  .metrics {{ display: flex; gap: 20px; margin: 20px 0; }}
+  .card {{ background: #f8fafc; border: 1px solid #cbd5e1; padding: 15px; border-radius: 6px; flex: 1; text-align: center; }}
+  .card h3 {{ margin: 0; font-size: 12px; color: #64748b; text-transform: uppercase; }}
+  .card p {{ margin: 5px 0 0 0; font-size: 22px; font-weight: bold; color: #0f172a; }}
+  table {{ width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 25px; }}
+  th, td {{ border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; font-size: 13px; }}
+  th {{ background: #f1f5f9; }}
+</style>
+</head>
+<body>
+  <h1>Drishti District Crime Intelligence Report</h1>
+  <p><strong>District:</strong> {dist_name} (ID: {district_id}) | <strong>Generated:</strong> {gen_time}</p>
+  <div class="metrics">
+    <div class="card"><h3>Total Incidents</h3><p>{inc_cnt}</p></div>
+    <div class="card"><h3>Resolution Rate</h3><p>{res_rate}%</p></div>
+    <div class="card"><h3>Active Hotspots</h3><p>{len(hotspots)}</p></div>
+  </div>
+  <h2>Top Crime Categories</h2>
+  <table>
+    <thead><tr><th>Category</th><th>Incidents</th><th>Percentage</th></tr></thead>
+    <tbody>{cat_rows_html}</tbody>
+  </table>
+  <h2>Active Hotspots</h2>
+  <table>
+    <thead><tr><th>Cluster</th><th>Centroid Lat / Lng</th><th>Incidents</th><th>Time Window</th></tr></thead>
+    <tbody>{hotspot_rows_html}</tbody>
+  </table>
+</body>
+</html>"""
+
+    pdf_bytes = None
+    if catalyst_app is not None:
+        try:
+            sb = catalyst_app.smartbrowz()
+            res = sb.convert_to_pdf(source=html_content)
+            if isinstance(res, bytes):
+                pdf_bytes = res
+            elif hasattr(res, 'content') and isinstance(res.content, bytes):
+                pdf_bytes = res.content
+            elif hasattr(res, 'read'):
+                pdf_bytes = res.read()
+            elif isinstance(res, dict) and "content" in res:
+                content_val = res["content"]
+                pdf_bytes = content_val.encode('utf-8') if isinstance(content_val, str) else content_val
+        except Exception as e:
+            print(f"SmartBrowz PDF conversion exception: {e}", flush=True)
+
+    if not pdf_bytes or not isinstance(pdf_bytes, bytes) or not pdf_bytes.startswith(b"%PDF"):
+        pdf_bytes = generate_pure_pdf_bytes(stats)
+
+    return pdf_bytes
+
+@app.post("/reports/generate")
+@app.get("/reports/generate")
+def generate_report(district_id: int = 1, catalyst_app: Any = Depends(get_catalyst_app)):
+    stats = compute_district_report_stats(
+        district_id,
+        SEED_CASES,
+        SEED_UNITS,
+        SEED_CHARGESHEETS,
+        SEED_HOTSPOTS,
+        SEED_CRIME_HEADS,
+        SEED_DISTRICTS
+    )
+    pdf_bytes = generate_report_pdf_bytes(district_id, stats, catalyst_app)
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f"attachment; filename=drishti_report_district_{district_id}.pdf"
+        }
+    )
 
 @app.get("/incidents/{id}/accused")
 def get_incident_accused(id: int, catalyst_app: Any = Depends(get_catalyst_app)):
