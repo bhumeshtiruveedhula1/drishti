@@ -474,12 +474,12 @@ export default function CommandConsole({
       </div>
 
       {/* Resolution Feedback Loop Section */}
-      <div className="p-4 border-t border-slate-800 bg-slate-900/60 overflow-y-auto">
+      <div className="shrink-0 w-full p-4 border-t border-slate-800 bg-slate-900/60 overflow-x-auto">
         <ResolutionLoopPanel resolutionMetrics={resolutionMetrics} />
       </div>
 
       {/* Link-Analysis Network Graph Section */}
-      <div className="p-4 border-t border-slate-800 bg-slate-900/80 overflow-y-auto">
+      <div className="shrink-0 w-full p-4 border-t border-slate-800 bg-slate-900/80 overflow-x-auto">
         <NetworkGraphPanel networkData={networkData} />
       </div>
 
