@@ -159,22 +159,23 @@ def reshape_batch_bc():
     accused_data = []
     act_sec_assoc_data = []
 
-    # Prepare repeat offender names pool for Accused table link analysis
+    # Prepare repeat offender names pool for Accused table link analysis (plain realistic names only)
     repeat_offenders = [
-        ("Ramesh 'Syndicate' Gowda", "REC_OFF_001"),
-        ("Kiran 'Blade' Kumar", "REC_OFF_002"),
-        ("Manjunath 'Spider' Naik", "REC_OFF_003"),
-        ("Venkatesh 'Phantom' Rao", "REC_OFF_004"),
-        ("Basavaraj 'Shadow' Patil", "REC_OFF_005"),
-        ("Anand 'Slick' Kulkarni", "REC_OFF_006"),
-        ("Sunil 'Chotta' Shetty", "REC_OFF_007"),
-        ("Pradeep 'Pistol' Deshmukh", "REC_OFF_008"),
-        ("Dharmesh 'Razor' Pujari", "REC_OFF_009"),
-        ("Ganesh 'Viper' Hegde", "REC_OFF_010")
+        ("Ramesh Gowda", "REC_OFF_001"),
+        ("Kiran Kumar", "REC_OFF_002"),
+        ("Manjunath Naik", "REC_OFF_003"),
+        ("Venkatesh Rao", "REC_OFF_004"),
+        ("Basavaraj Patil", "REC_OFF_005"),
+        ("Anand Kulkarni", "REC_OFF_006"),
+        ("Sunil Shetty", "REC_OFF_007"),
+        ("Pradeep Deshmukh", "REC_OFF_008"),
+        ("Dharmesh Pujari", "REC_OFF_009"),
+        ("Ganesh Hegde", "REC_OFF_010")
     ]
 
     comp_first_names = ["Priya", "Rahul", "Deepak", "Aisha", "Siddharth", "Meena", "Kavita", "Sanjay", "Rajesh", "Anita"]
     comp_last_names = ["Sharma", "Verma", "Joshi", "Nair", "Reddy", "Chavan", "Bhat", "Menon", "Singh", "Das"]
+    accused_first_names = ["Suresh", "Vijay", "Ramesh", "Mahesh", "Ganesh", "Prakash", "Dinesh", "Naveen", "Satish", "Ashok", "Lokesh", "Kishore", "Santosh", "Ravi", "Harish"]
 
     for idx, row in df.iterrows():
         case_id = int(row['incident_id'])
@@ -265,8 +266,10 @@ def reshape_batch_bc():
             accused_name = ro_name
             person_id = ro_pid
         else:
-            accused_name = f"Accused_{case_id}_{comp_last_names[(case_id * 5) % len(comp_last_names)]}"
-            person_id = f"A{case_id}"
+            a_fn = accused_first_names[(case_id * 3) % len(accused_first_names)]
+            a_ln = comp_last_names[(case_id * 5) % len(comp_last_names)]
+            accused_name = f"{a_fn} {a_ln}"
+            person_id = f"A{case_id:04d}"
 
         accused_data.append({
             'AccusedMasterID': case_id,
