@@ -296,6 +296,52 @@ def admin_verify_chargesheets(catalyst_app: Any = Depends(get_catalyst_app)):
     except Exception as e:
         return {"status": "error", "message": str(e), "traceback": traceback.format_exc()}
 
+@app.get("/admin/clear_and_reload_accused")
+@app.post("/admin/clear_and_reload_accused")
+def admin_clear_and_reload_accused(catalyst_app: Any = Depends(get_catalyst_app)):
+    if catalyst_app is None:
+        return {"status": "error", "message": "Catalyst SDK not initialized"}
+
+    try:
+        table = catalyst_app.datastore().table("Accused")
+        cleared = 0
+        while True:
+            p_data = table.get_paged_rows(max_rows=100).get("data", [])
+            if not p_data:
+                break
+            row_ids = [r["ROWID"] for r in p_data if "ROWID" in r]
+            if not row_ids:
+                break
+            table.delete_rows(row_ids)
+            cleared += len(row_ids)
+
+        clean_accused = []
+        for r in SEED_ACCUSED:
+            clean_accused.append({
+                "AccusedMasterID": int(r["AccusedMasterID"]),
+                "CaseMasterID": int(r["CaseMasterID"]),
+                "AccusedName": str(r["AccusedName"]),
+                "AgeYear": int(r["AgeYear"]) if r.get("AgeYear") is not None else 0,
+                "GenderID": int(r["GenderID"]) if r.get("GenderID") is not None else 1,
+                "PersonID": str(r.get("PersonID", ""))
+            })
+
+        batch_size = 50
+        inserted = 0
+        for i in range(0, len(clean_accused), batch_size):
+            chunk = clean_accused[i:i + batch_size]
+            table.insert_rows(chunk)
+            inserted += len(chunk)
+
+        return {
+            "status": "ok",
+            "cleared_count": cleared,
+            "inserted_count": inserted,
+            "sample": clean_accused[:3]
+        }
+    except Exception as e:
+        return {"status": "error", "message": str(e), "traceback": traceback.format_exc()}
+
 @app.get("/admin/bulk_load_datastore")
 @app.post("/admin/bulk_load_datastore")
 def admin_bulk_load_datastore(catalyst_app: Any = Depends(get_catalyst_app)):

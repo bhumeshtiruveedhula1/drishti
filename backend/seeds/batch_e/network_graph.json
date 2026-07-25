@@ -1,13 +1,13 @@
 {
   "summary": {
-    "total_nodes": 591,
-    "total_edges": 1142,
+    "total_nodes": 601,
+    "total_edges": 1162,
     "repeat_offenders_count": 10
   },
   "nodes": [
     {
-      "id": "acc_Pradeep_'Pistol'_Deshmukh",
-      "label": "Pradeep 'Pistol' Deshmukh",
+      "id": "acc_Pradeep_Deshmukh",
+      "label": "Pradeep Deshmukh",
       "type": "Accused",
       "person_id": "REC_OFF_008"
     },
@@ -123,6 +123,15 @@
       "district_id": 1,
       "lat": 13.100036,
       "lng": 77.523567
+    },
+    {
+      "id": "case_797",
+      "label": "FIR FIR/0797/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 4,
+      "district_id": 1,
+      "lat": 13.100758,
+      "lng": 77.517385
     },
     {
       "id": "case_847",
@@ -539,8 +548,8 @@
       "lng": 74.395721
     },
     {
-      "id": "acc_Basavaraj_'Shadow'_Patil",
-      "label": "Basavaraj 'Shadow' Patil",
+      "id": "acc_Basavaraj_Patil",
+      "label": "Basavaraj Patil",
       "type": "Accused",
       "person_id": "REC_OFF_005"
     },
@@ -638,6 +647,20 @@
       "district_id": 1,
       "lat": 13.124751,
       "lng": 77.707142
+    },
+    {
+      "id": "case_683",
+      "label": "FIR FIR/0683/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 5,
+      "district_id": 1,
+      "lat": 12.923691,
+      "lng": 77.353459
+    },
+    {
+      "id": "vic_Kavita_Das",
+      "label": "Kavita Das",
+      "type": "Victim"
     },
     {
       "id": "case_714",
@@ -1063,8 +1086,8 @@
       "lng": 74.388038
     },
     {
-      "id": "acc_Kiran_'Blade'_Kumar",
-      "label": "Kiran 'Blade' Kumar",
+      "id": "acc_Kiran_Kumar",
+      "label": "Kiran Kumar",
       "type": "Accused",
       "person_id": "REC_OFF_002"
     },
@@ -1207,6 +1230,20 @@
       "district_id": 1,
       "lat": 12.936779,
       "lng": 77.364251
+    },
+    {
+      "id": "case_1059",
+      "label": "FIR FIR/1059/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 1,
+      "district_id": 1,
+      "lat": 13.131958,
+      "lng": 77.719738
+    },
+    {
+      "id": "vic_Deepak_Menon",
+      "label": "Deepak Menon",
+      "type": "Victim"
     },
     {
       "id": "case_1071",
@@ -1587,8 +1624,8 @@
       "lng": 74.387781
     },
     {
-      "id": "acc_Dharmesh_'Razor'_Pujari",
-      "label": "Dharmesh 'Razor' Pujari",
+      "id": "acc_Dharmesh_Pujari",
+      "label": "Dharmesh Pujari",
       "type": "Accused",
       "person_id": "REC_OFF_009"
     },
@@ -1704,6 +1741,15 @@
       "district_id": 1,
       "lat": 13.008073,
       "lng": 77.693748
+    },
+    {
+      "id": "case_863",
+      "label": "FIR FIR/0863/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 3,
+      "district_id": 1,
+      "lat": 13.087833,
+      "lng": 77.521971
     },
     {
       "id": "case_868",
@@ -2111,8 +2157,8 @@
       "lng": 74.622406
     },
     {
-      "id": "acc_Anand_'Slick'_Kulkarni",
-      "label": "Anand 'Slick' Kulkarni",
+      "id": "acc_Anand_Kulkarni",
+      "label": "Anand Kulkarni",
       "type": "Accused",
       "person_id": "REC_OFF_006"
     },
@@ -2210,6 +2256,20 @@
       "district_id": 1,
       "lat": 13.040286,
       "lng": 77.712632
+    },
+    {
+      "id": "case_730",
+      "label": "FIR FIR/0730/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 5,
+      "district_id": 1,
+      "lat": 12.838807,
+      "lng": 77.558569
+    },
+    {
+      "id": "vic_Aisha_Sharma",
+      "label": "Aisha Sharma",
+      "type": "Victim"
     },
     {
       "id": "case_735",
@@ -2635,8 +2695,8 @@
       "lng": 74.752003
     },
     {
-      "id": "acc_Manjunath_'Spider'_Naik",
-      "label": "Manjunath 'Spider' Naik",
+      "id": "acc_Manjunath_Naik",
+      "label": "Manjunath Naik",
       "type": "Accused",
       "person_id": "REC_OFF_003"
     },
@@ -2788,6 +2848,15 @@
       "district_id": 1,
       "lat": 13.041084,
       "lng": 77.70777
+    },
+    {
+      "id": "case_1137",
+      "label": "FIR FIR/1137/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 1,
+      "district_id": 1,
+      "lat": 13.03145,
+      "lng": 77.71593
     },
     {
       "id": "case_1162",
@@ -3159,8 +3228,8 @@
       "lng": 74.611277
     },
     {
-      "id": "acc_Ganesh_'Viper'_Hegde",
-      "label": "Ganesh 'Viper' Hegde",
+      "id": "acc_Ganesh_Hegde",
+      "label": "Ganesh Hegde",
       "type": "Accused",
       "person_id": "REC_OFF_010"
     },
@@ -3172,11 +3241,6 @@
       "district_id": 1,
       "lat": 16.053027,
       "lng": 75.777727
-    },
-    {
-      "id": "vic_Deepak_Menon",
-      "label": "Deepak Menon",
-      "type": "Victim"
     },
     {
       "id": "case_119",
@@ -3285,6 +3349,15 @@
       "district_id": 1,
       "lat": 12.919189,
       "lng": 77.365303
+    },
+    {
+      "id": "case_914",
+      "label": "FIR FIR/0914/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 2,
+      "district_id": 1,
+      "lat": 13.036836,
+      "lng": 77.719089
     },
     {
       "id": "case_959",
@@ -3683,8 +3756,8 @@
       "lng": 74.631634
     },
     {
-      "id": "acc_Sunil_'Chotta'_Shetty",
-      "label": "Sunil 'Chotta' Shetty",
+      "id": "acc_Sunil_Shetty",
+      "label": "Sunil Shetty",
       "type": "Accused",
       "person_id": "REC_OFF_007"
     },
@@ -3854,6 +3927,15 @@
       "district_id": 1,
       "lat": 13.024425,
       "lng": 77.71277
+    },
+    {
+      "id": "case_1251",
+      "label": "FIR FIR/1251/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 1,
+      "district_id": 1,
+      "lat": 13.110054,
+      "lng": 77.510278
     },
     {
       "id": "case_1316",
@@ -4207,8 +4289,8 @@
       "lng": 74.411318
     },
     {
-      "id": "acc_Venkatesh_'Phantom'_Rao",
-      "label": "Venkatesh 'Phantom' Rao",
+      "id": "acc_Venkatesh_Rao",
+      "label": "Venkatesh Rao",
       "type": "Accused",
       "person_id": "REC_OFF_004"
     },
@@ -4220,11 +4302,6 @@
       "district_id": 1,
       "lat": 16.166599,
       "lng": 76.121034
-    },
-    {
-      "id": "vic_Kavita_Das",
-      "label": "Kavita Das",
-      "type": "Victim"
     },
     {
       "id": "case_133",
@@ -4369,6 +4446,15 @@
       "district_id": 1,
       "lat": 13.010292,
       "lng": 77.686739
+    },
+    {
+      "id": "case_1201",
+      "label": "FIR FIR/1201/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 1,
+      "district_id": 1,
+      "lat": 12.923979,
+      "lng": 77.368586
     },
     {
       "id": "case_1253",
@@ -4731,8 +4817,8 @@
       "lng": 74.405882
     },
     {
-      "id": "acc_Ramesh_'Syndicate'_Gowda",
-      "label": "Ramesh 'Syndicate' Gowda",
+      "id": "acc_Ramesh_Gowda",
+      "label": "Ramesh Gowda",
       "type": "Accused",
       "person_id": "REC_OFF_001"
     },
@@ -4744,11 +4830,6 @@
       "district_id": 1,
       "lat": 16.046834,
       "lng": 76.055341
-    },
-    {
-      "id": "vic_Aisha_Sharma",
-      "label": "Aisha Sharma",
-      "type": "Victim"
     },
     {
       "id": "case_140",
@@ -4857,6 +4938,15 @@
       "district_id": 1,
       "lat": 13.004263,
       "lng": 77.682457
+    },
+    {
+      "id": "case_977",
+      "label": "FIR FIR/0977/2025",
+      "type": "CaseMaster",
+      "crime_head_id": 2,
+      "district_id": 1,
+      "lat": 13.092475,
+      "lng": 77.508532
     },
     {
       "id": "case_980",
@@ -5257,7 +5347,7 @@
   ],
   "edges": [
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_7",
       "relation": "CHARGED_IN"
     },
@@ -5267,7 +5357,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_77",
       "relation": "CHARGED_IN"
     },
@@ -5277,7 +5367,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_147",
       "relation": "CHARGED_IN"
     },
@@ -5287,7 +5377,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_217",
       "relation": "CHARGED_IN"
     },
@@ -5297,7 +5387,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_287",
       "relation": "CHARGED_IN"
     },
@@ -5307,7 +5397,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_357",
       "relation": "CHARGED_IN"
     },
@@ -5317,7 +5407,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_427",
       "relation": "CHARGED_IN"
     },
@@ -5327,7 +5417,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_497",
       "relation": "CHARGED_IN"
     },
@@ -5337,7 +5427,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_567",
       "relation": "CHARGED_IN"
     },
@@ -5347,7 +5437,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_637",
       "relation": "CHARGED_IN"
     },
@@ -5357,7 +5447,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_707",
       "relation": "CHARGED_IN"
     },
@@ -5367,7 +5457,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_777",
       "relation": "CHARGED_IN"
     },
@@ -5377,7 +5467,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
+      "target": "case_797",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_797",
+      "target": "vic_Priya_Verma",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_847",
       "relation": "CHARGED_IN"
     },
@@ -5387,7 +5487,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_917",
       "relation": "CHARGED_IN"
     },
@@ -5397,7 +5497,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_987",
       "relation": "CHARGED_IN"
     },
@@ -5407,7 +5507,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1057",
       "relation": "CHARGED_IN"
     },
@@ -5417,7 +5517,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1127",
       "relation": "CHARGED_IN"
     },
@@ -5427,7 +5527,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1197",
       "relation": "CHARGED_IN"
     },
@@ -5437,7 +5537,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1267",
       "relation": "CHARGED_IN"
     },
@@ -5447,7 +5547,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1337",
       "relation": "CHARGED_IN"
     },
@@ -5457,7 +5557,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1407",
       "relation": "CHARGED_IN"
     },
@@ -5467,7 +5567,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1477",
       "relation": "CHARGED_IN"
     },
@@ -5477,7 +5577,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1547",
       "relation": "CHARGED_IN"
     },
@@ -5487,7 +5587,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1617",
       "relation": "CHARGED_IN"
     },
@@ -5497,7 +5597,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1687",
       "relation": "CHARGED_IN"
     },
@@ -5507,7 +5607,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1757",
       "relation": "CHARGED_IN"
     },
@@ -5517,7 +5617,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1827",
       "relation": "CHARGED_IN"
     },
@@ -5527,7 +5627,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1897",
       "relation": "CHARGED_IN"
     },
@@ -5537,7 +5637,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_1967",
       "relation": "CHARGED_IN"
     },
@@ -5547,7 +5647,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2037",
       "relation": "CHARGED_IN"
     },
@@ -5557,7 +5657,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2107",
       "relation": "CHARGED_IN"
     },
@@ -5567,7 +5667,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2177",
       "relation": "CHARGED_IN"
     },
@@ -5577,7 +5677,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2247",
       "relation": "CHARGED_IN"
     },
@@ -5587,7 +5687,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2317",
       "relation": "CHARGED_IN"
     },
@@ -5597,7 +5697,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2387",
       "relation": "CHARGED_IN"
     },
@@ -5607,7 +5707,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2457",
       "relation": "CHARGED_IN"
     },
@@ -5617,7 +5717,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2527",
       "relation": "CHARGED_IN"
     },
@@ -5627,7 +5727,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2597",
       "relation": "CHARGED_IN"
     },
@@ -5637,7 +5737,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2667",
       "relation": "CHARGED_IN"
     },
@@ -5647,7 +5747,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2737",
       "relation": "CHARGED_IN"
     },
@@ -5657,7 +5757,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2807",
       "relation": "CHARGED_IN"
     },
@@ -5667,7 +5767,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2877",
       "relation": "CHARGED_IN"
     },
@@ -5677,7 +5777,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_2947",
       "relation": "CHARGED_IN"
     },
@@ -5687,7 +5787,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3017",
       "relation": "CHARGED_IN"
     },
@@ -5697,7 +5797,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3087",
       "relation": "CHARGED_IN"
     },
@@ -5707,7 +5807,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3157",
       "relation": "CHARGED_IN"
     },
@@ -5717,7 +5817,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3227",
       "relation": "CHARGED_IN"
     },
@@ -5727,7 +5827,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3297",
       "relation": "CHARGED_IN"
     },
@@ -5737,7 +5837,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3367",
       "relation": "CHARGED_IN"
     },
@@ -5747,7 +5847,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3437",
       "relation": "CHARGED_IN"
     },
@@ -5757,7 +5857,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3507",
       "relation": "CHARGED_IN"
     },
@@ -5767,7 +5867,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3577",
       "relation": "CHARGED_IN"
     },
@@ -5777,7 +5877,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3647",
       "relation": "CHARGED_IN"
     },
@@ -5787,7 +5887,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3717",
       "relation": "CHARGED_IN"
     },
@@ -5797,7 +5897,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3787",
       "relation": "CHARGED_IN"
     },
@@ -5807,7 +5907,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3857",
       "relation": "CHARGED_IN"
     },
@@ -5817,7 +5917,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3927",
       "relation": "CHARGED_IN"
     },
@@ -5827,7 +5927,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Pradeep_'Pistol'_Deshmukh",
+      "source": "acc_Pradeep_Deshmukh",
       "target": "case_3997",
       "relation": "CHARGED_IN"
     },
@@ -5837,7 +5937,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_14",
       "relation": "CHARGED_IN"
     },
@@ -5847,7 +5947,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_84",
       "relation": "CHARGED_IN"
     },
@@ -5857,7 +5957,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_154",
       "relation": "CHARGED_IN"
     },
@@ -5867,7 +5967,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_224",
       "relation": "CHARGED_IN"
     },
@@ -5877,7 +5977,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_294",
       "relation": "CHARGED_IN"
     },
@@ -5887,7 +5987,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_364",
       "relation": "CHARGED_IN"
     },
@@ -5897,7 +5997,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_434",
       "relation": "CHARGED_IN"
     },
@@ -5907,7 +6007,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_504",
       "relation": "CHARGED_IN"
     },
@@ -5917,7 +6017,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_574",
       "relation": "CHARGED_IN"
     },
@@ -5927,7 +6027,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_644",
       "relation": "CHARGED_IN"
     },
@@ -5937,7 +6037,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
+      "target": "case_683",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_683",
+      "target": "vic_Kavita_Das",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Basavaraj_Patil",
       "target": "case_714",
       "relation": "CHARGED_IN"
     },
@@ -5947,7 +6057,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_784",
       "relation": "CHARGED_IN"
     },
@@ -5957,7 +6067,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_854",
       "relation": "CHARGED_IN"
     },
@@ -5967,7 +6077,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_924",
       "relation": "CHARGED_IN"
     },
@@ -5977,7 +6087,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_994",
       "relation": "CHARGED_IN"
     },
@@ -5987,7 +6097,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1064",
       "relation": "CHARGED_IN"
     },
@@ -5997,7 +6107,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1134",
       "relation": "CHARGED_IN"
     },
@@ -6007,7 +6117,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1204",
       "relation": "CHARGED_IN"
     },
@@ -6017,7 +6127,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1274",
       "relation": "CHARGED_IN"
     },
@@ -6027,7 +6137,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1344",
       "relation": "CHARGED_IN"
     },
@@ -6037,7 +6147,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1414",
       "relation": "CHARGED_IN"
     },
@@ -6047,7 +6157,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1484",
       "relation": "CHARGED_IN"
     },
@@ -6057,7 +6167,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1554",
       "relation": "CHARGED_IN"
     },
@@ -6067,7 +6177,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1624",
       "relation": "CHARGED_IN"
     },
@@ -6077,7 +6187,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1694",
       "relation": "CHARGED_IN"
     },
@@ -6087,7 +6197,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1764",
       "relation": "CHARGED_IN"
     },
@@ -6097,7 +6207,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1834",
       "relation": "CHARGED_IN"
     },
@@ -6107,7 +6217,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1904",
       "relation": "CHARGED_IN"
     },
@@ -6117,7 +6227,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_1974",
       "relation": "CHARGED_IN"
     },
@@ -6127,7 +6237,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2044",
       "relation": "CHARGED_IN"
     },
@@ -6137,7 +6247,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2114",
       "relation": "CHARGED_IN"
     },
@@ -6147,7 +6257,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2184",
       "relation": "CHARGED_IN"
     },
@@ -6157,7 +6267,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2254",
       "relation": "CHARGED_IN"
     },
@@ -6167,7 +6277,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2324",
       "relation": "CHARGED_IN"
     },
@@ -6177,7 +6287,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2394",
       "relation": "CHARGED_IN"
     },
@@ -6187,7 +6297,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2464",
       "relation": "CHARGED_IN"
     },
@@ -6197,7 +6307,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2534",
       "relation": "CHARGED_IN"
     },
@@ -6207,7 +6317,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2604",
       "relation": "CHARGED_IN"
     },
@@ -6217,7 +6327,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2674",
       "relation": "CHARGED_IN"
     },
@@ -6227,7 +6337,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2744",
       "relation": "CHARGED_IN"
     },
@@ -6237,7 +6347,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2814",
       "relation": "CHARGED_IN"
     },
@@ -6247,7 +6357,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2884",
       "relation": "CHARGED_IN"
     },
@@ -6257,7 +6367,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_2954",
       "relation": "CHARGED_IN"
     },
@@ -6267,7 +6377,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3024",
       "relation": "CHARGED_IN"
     },
@@ -6277,7 +6387,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3094",
       "relation": "CHARGED_IN"
     },
@@ -6287,7 +6397,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3164",
       "relation": "CHARGED_IN"
     },
@@ -6297,7 +6407,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3234",
       "relation": "CHARGED_IN"
     },
@@ -6307,7 +6417,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3304",
       "relation": "CHARGED_IN"
     },
@@ -6317,7 +6427,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3374",
       "relation": "CHARGED_IN"
     },
@@ -6327,7 +6437,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3444",
       "relation": "CHARGED_IN"
     },
@@ -6337,7 +6447,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3514",
       "relation": "CHARGED_IN"
     },
@@ -6347,7 +6457,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3584",
       "relation": "CHARGED_IN"
     },
@@ -6357,7 +6467,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3654",
       "relation": "CHARGED_IN"
     },
@@ -6367,7 +6477,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3724",
       "relation": "CHARGED_IN"
     },
@@ -6377,7 +6487,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3794",
       "relation": "CHARGED_IN"
     },
@@ -6387,7 +6497,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3864",
       "relation": "CHARGED_IN"
     },
@@ -6397,7 +6507,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Basavaraj_'Shadow'_Patil",
+      "source": "acc_Basavaraj_Patil",
       "target": "case_3934",
       "relation": "CHARGED_IN"
     },
@@ -6407,7 +6517,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_21",
       "relation": "CHARGED_IN"
     },
@@ -6417,7 +6527,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_91",
       "relation": "CHARGED_IN"
     },
@@ -6427,7 +6537,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_161",
       "relation": "CHARGED_IN"
     },
@@ -6437,7 +6547,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_231",
       "relation": "CHARGED_IN"
     },
@@ -6447,7 +6557,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_301",
       "relation": "CHARGED_IN"
     },
@@ -6457,7 +6567,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_371",
       "relation": "CHARGED_IN"
     },
@@ -6467,7 +6577,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_441",
       "relation": "CHARGED_IN"
     },
@@ -6477,7 +6587,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_511",
       "relation": "CHARGED_IN"
     },
@@ -6487,7 +6597,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_581",
       "relation": "CHARGED_IN"
     },
@@ -6497,7 +6607,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_651",
       "relation": "CHARGED_IN"
     },
@@ -6507,7 +6617,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_721",
       "relation": "CHARGED_IN"
     },
@@ -6517,7 +6627,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_791",
       "relation": "CHARGED_IN"
     },
@@ -6527,7 +6637,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_861",
       "relation": "CHARGED_IN"
     },
@@ -6537,7 +6647,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_931",
       "relation": "CHARGED_IN"
     },
@@ -6547,7 +6657,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1001",
       "relation": "CHARGED_IN"
     },
@@ -6557,7 +6667,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
+      "target": "case_1059",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_1059",
+      "target": "vic_Deepak_Menon",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Kiran_Kumar",
       "target": "case_1071",
       "relation": "CHARGED_IN"
     },
@@ -6567,7 +6687,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1141",
       "relation": "CHARGED_IN"
     },
@@ -6577,7 +6697,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1211",
       "relation": "CHARGED_IN"
     },
@@ -6587,7 +6707,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1281",
       "relation": "CHARGED_IN"
     },
@@ -6597,7 +6717,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1351",
       "relation": "CHARGED_IN"
     },
@@ -6607,7 +6727,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1421",
       "relation": "CHARGED_IN"
     },
@@ -6617,7 +6737,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1491",
       "relation": "CHARGED_IN"
     },
@@ -6627,7 +6747,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1561",
       "relation": "CHARGED_IN"
     },
@@ -6637,7 +6757,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1631",
       "relation": "CHARGED_IN"
     },
@@ -6647,7 +6767,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1701",
       "relation": "CHARGED_IN"
     },
@@ -6657,7 +6777,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1771",
       "relation": "CHARGED_IN"
     },
@@ -6667,7 +6787,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1841",
       "relation": "CHARGED_IN"
     },
@@ -6677,7 +6797,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1911",
       "relation": "CHARGED_IN"
     },
@@ -6687,7 +6807,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_1981",
       "relation": "CHARGED_IN"
     },
@@ -6697,7 +6817,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2051",
       "relation": "CHARGED_IN"
     },
@@ -6707,7 +6827,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2121",
       "relation": "CHARGED_IN"
     },
@@ -6717,7 +6837,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2191",
       "relation": "CHARGED_IN"
     },
@@ -6727,7 +6847,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2261",
       "relation": "CHARGED_IN"
     },
@@ -6737,7 +6857,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2331",
       "relation": "CHARGED_IN"
     },
@@ -6747,7 +6867,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2401",
       "relation": "CHARGED_IN"
     },
@@ -6757,7 +6877,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2471",
       "relation": "CHARGED_IN"
     },
@@ -6767,7 +6887,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2541",
       "relation": "CHARGED_IN"
     },
@@ -6777,7 +6897,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2611",
       "relation": "CHARGED_IN"
     },
@@ -6787,7 +6907,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2681",
       "relation": "CHARGED_IN"
     },
@@ -6797,7 +6917,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2751",
       "relation": "CHARGED_IN"
     },
@@ -6807,7 +6927,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2821",
       "relation": "CHARGED_IN"
     },
@@ -6817,7 +6937,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2891",
       "relation": "CHARGED_IN"
     },
@@ -6827,7 +6947,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_2961",
       "relation": "CHARGED_IN"
     },
@@ -6837,7 +6957,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3031",
       "relation": "CHARGED_IN"
     },
@@ -6847,7 +6967,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3101",
       "relation": "CHARGED_IN"
     },
@@ -6857,7 +6977,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3171",
       "relation": "CHARGED_IN"
     },
@@ -6867,7 +6987,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3241",
       "relation": "CHARGED_IN"
     },
@@ -6877,7 +6997,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3311",
       "relation": "CHARGED_IN"
     },
@@ -6887,7 +7007,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3381",
       "relation": "CHARGED_IN"
     },
@@ -6897,7 +7017,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3451",
       "relation": "CHARGED_IN"
     },
@@ -6907,7 +7027,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3521",
       "relation": "CHARGED_IN"
     },
@@ -6917,7 +7037,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3591",
       "relation": "CHARGED_IN"
     },
@@ -6927,7 +7047,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3661",
       "relation": "CHARGED_IN"
     },
@@ -6937,7 +7057,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3731",
       "relation": "CHARGED_IN"
     },
@@ -6947,7 +7067,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3801",
       "relation": "CHARGED_IN"
     },
@@ -6957,7 +7077,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3871",
       "relation": "CHARGED_IN"
     },
@@ -6967,7 +7087,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Kiran_'Blade'_Kumar",
+      "source": "acc_Kiran_Kumar",
       "target": "case_3941",
       "relation": "CHARGED_IN"
     },
@@ -6977,7 +7097,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_28",
       "relation": "CHARGED_IN"
     },
@@ -6987,7 +7107,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_98",
       "relation": "CHARGED_IN"
     },
@@ -6997,7 +7117,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_168",
       "relation": "CHARGED_IN"
     },
@@ -7007,7 +7127,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_238",
       "relation": "CHARGED_IN"
     },
@@ -7017,7 +7137,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_308",
       "relation": "CHARGED_IN"
     },
@@ -7027,7 +7147,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_378",
       "relation": "CHARGED_IN"
     },
@@ -7037,7 +7157,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_448",
       "relation": "CHARGED_IN"
     },
@@ -7047,7 +7167,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_518",
       "relation": "CHARGED_IN"
     },
@@ -7057,7 +7177,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_588",
       "relation": "CHARGED_IN"
     },
@@ -7067,7 +7187,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_658",
       "relation": "CHARGED_IN"
     },
@@ -7077,7 +7197,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_728",
       "relation": "CHARGED_IN"
     },
@@ -7087,7 +7207,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_798",
       "relation": "CHARGED_IN"
     },
@@ -7097,7 +7217,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
+      "target": "case_863",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_863",
+      "target": "vic_Kavita_Das",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_868",
       "relation": "CHARGED_IN"
     },
@@ -7107,7 +7237,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_938",
       "relation": "CHARGED_IN"
     },
@@ -7117,7 +7247,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1008",
       "relation": "CHARGED_IN"
     },
@@ -7127,7 +7257,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1078",
       "relation": "CHARGED_IN"
     },
@@ -7137,7 +7267,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1148",
       "relation": "CHARGED_IN"
     },
@@ -7147,7 +7277,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1218",
       "relation": "CHARGED_IN"
     },
@@ -7157,7 +7287,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1288",
       "relation": "CHARGED_IN"
     },
@@ -7167,7 +7297,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1358",
       "relation": "CHARGED_IN"
     },
@@ -7177,7 +7307,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1428",
       "relation": "CHARGED_IN"
     },
@@ -7187,7 +7317,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1498",
       "relation": "CHARGED_IN"
     },
@@ -7197,7 +7327,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1568",
       "relation": "CHARGED_IN"
     },
@@ -7207,7 +7337,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1638",
       "relation": "CHARGED_IN"
     },
@@ -7217,7 +7347,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1708",
       "relation": "CHARGED_IN"
     },
@@ -7227,7 +7357,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1778",
       "relation": "CHARGED_IN"
     },
@@ -7237,7 +7367,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1848",
       "relation": "CHARGED_IN"
     },
@@ -7247,7 +7377,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1918",
       "relation": "CHARGED_IN"
     },
@@ -7257,7 +7387,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_1988",
       "relation": "CHARGED_IN"
     },
@@ -7267,7 +7397,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2058",
       "relation": "CHARGED_IN"
     },
@@ -7277,7 +7407,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2128",
       "relation": "CHARGED_IN"
     },
@@ -7287,7 +7417,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2198",
       "relation": "CHARGED_IN"
     },
@@ -7297,7 +7427,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2268",
       "relation": "CHARGED_IN"
     },
@@ -7307,7 +7437,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2338",
       "relation": "CHARGED_IN"
     },
@@ -7317,7 +7447,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2408",
       "relation": "CHARGED_IN"
     },
@@ -7327,7 +7457,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2478",
       "relation": "CHARGED_IN"
     },
@@ -7337,7 +7467,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2548",
       "relation": "CHARGED_IN"
     },
@@ -7347,7 +7477,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2618",
       "relation": "CHARGED_IN"
     },
@@ -7357,7 +7487,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2688",
       "relation": "CHARGED_IN"
     },
@@ -7367,7 +7497,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2758",
       "relation": "CHARGED_IN"
     },
@@ -7377,7 +7507,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2828",
       "relation": "CHARGED_IN"
     },
@@ -7387,7 +7517,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2898",
       "relation": "CHARGED_IN"
     },
@@ -7397,7 +7527,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_2968",
       "relation": "CHARGED_IN"
     },
@@ -7407,7 +7537,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3038",
       "relation": "CHARGED_IN"
     },
@@ -7417,7 +7547,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3108",
       "relation": "CHARGED_IN"
     },
@@ -7427,7 +7557,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3178",
       "relation": "CHARGED_IN"
     },
@@ -7437,7 +7567,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3248",
       "relation": "CHARGED_IN"
     },
@@ -7447,7 +7577,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3318",
       "relation": "CHARGED_IN"
     },
@@ -7457,7 +7587,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3388",
       "relation": "CHARGED_IN"
     },
@@ -7467,7 +7597,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3458",
       "relation": "CHARGED_IN"
     },
@@ -7477,7 +7607,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3528",
       "relation": "CHARGED_IN"
     },
@@ -7487,7 +7617,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3598",
       "relation": "CHARGED_IN"
     },
@@ -7497,7 +7627,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3668",
       "relation": "CHARGED_IN"
     },
@@ -7507,7 +7637,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3738",
       "relation": "CHARGED_IN"
     },
@@ -7517,7 +7647,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3808",
       "relation": "CHARGED_IN"
     },
@@ -7527,7 +7657,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3878",
       "relation": "CHARGED_IN"
     },
@@ -7537,7 +7667,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Dharmesh_'Razor'_Pujari",
+      "source": "acc_Dharmesh_Pujari",
       "target": "case_3948",
       "relation": "CHARGED_IN"
     },
@@ -7547,7 +7677,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_35",
       "relation": "CHARGED_IN"
     },
@@ -7557,7 +7687,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_105",
       "relation": "CHARGED_IN"
     },
@@ -7567,7 +7697,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_175",
       "relation": "CHARGED_IN"
     },
@@ -7577,7 +7707,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_245",
       "relation": "CHARGED_IN"
     },
@@ -7587,7 +7717,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_315",
       "relation": "CHARGED_IN"
     },
@@ -7597,7 +7727,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_385",
       "relation": "CHARGED_IN"
     },
@@ -7607,7 +7737,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_455",
       "relation": "CHARGED_IN"
     },
@@ -7617,7 +7747,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_525",
       "relation": "CHARGED_IN"
     },
@@ -7627,7 +7757,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_595",
       "relation": "CHARGED_IN"
     },
@@ -7637,7 +7767,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_665",
       "relation": "CHARGED_IN"
     },
@@ -7647,7 +7777,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
+      "target": "case_730",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_730",
+      "target": "vic_Aisha_Sharma",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Anand_Kulkarni",
       "target": "case_735",
       "relation": "CHARGED_IN"
     },
@@ -7657,7 +7797,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_805",
       "relation": "CHARGED_IN"
     },
@@ -7667,7 +7807,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_875",
       "relation": "CHARGED_IN"
     },
@@ -7677,7 +7817,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_945",
       "relation": "CHARGED_IN"
     },
@@ -7687,7 +7827,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1015",
       "relation": "CHARGED_IN"
     },
@@ -7697,7 +7837,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1085",
       "relation": "CHARGED_IN"
     },
@@ -7707,7 +7847,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1155",
       "relation": "CHARGED_IN"
     },
@@ -7717,7 +7857,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1225",
       "relation": "CHARGED_IN"
     },
@@ -7727,7 +7867,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1295",
       "relation": "CHARGED_IN"
     },
@@ -7737,7 +7877,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1365",
       "relation": "CHARGED_IN"
     },
@@ -7747,7 +7887,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1435",
       "relation": "CHARGED_IN"
     },
@@ -7757,7 +7897,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1505",
       "relation": "CHARGED_IN"
     },
@@ -7767,7 +7907,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1575",
       "relation": "CHARGED_IN"
     },
@@ -7777,7 +7917,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1645",
       "relation": "CHARGED_IN"
     },
@@ -7787,7 +7927,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1715",
       "relation": "CHARGED_IN"
     },
@@ -7797,7 +7937,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1785",
       "relation": "CHARGED_IN"
     },
@@ -7807,7 +7947,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1855",
       "relation": "CHARGED_IN"
     },
@@ -7817,7 +7957,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1925",
       "relation": "CHARGED_IN"
     },
@@ -7827,7 +7967,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_1995",
       "relation": "CHARGED_IN"
     },
@@ -7837,7 +7977,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2065",
       "relation": "CHARGED_IN"
     },
@@ -7847,7 +7987,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2135",
       "relation": "CHARGED_IN"
     },
@@ -7857,7 +7997,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2205",
       "relation": "CHARGED_IN"
     },
@@ -7867,7 +8007,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2275",
       "relation": "CHARGED_IN"
     },
@@ -7877,7 +8017,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2345",
       "relation": "CHARGED_IN"
     },
@@ -7887,7 +8027,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2415",
       "relation": "CHARGED_IN"
     },
@@ -7897,7 +8037,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2485",
       "relation": "CHARGED_IN"
     },
@@ -7907,7 +8047,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2555",
       "relation": "CHARGED_IN"
     },
@@ -7917,7 +8057,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2625",
       "relation": "CHARGED_IN"
     },
@@ -7927,7 +8067,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2695",
       "relation": "CHARGED_IN"
     },
@@ -7937,7 +8077,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2765",
       "relation": "CHARGED_IN"
     },
@@ -7947,7 +8087,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2835",
       "relation": "CHARGED_IN"
     },
@@ -7957,7 +8097,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2905",
       "relation": "CHARGED_IN"
     },
@@ -7967,7 +8107,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_2975",
       "relation": "CHARGED_IN"
     },
@@ -7977,7 +8117,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3045",
       "relation": "CHARGED_IN"
     },
@@ -7987,7 +8127,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3115",
       "relation": "CHARGED_IN"
     },
@@ -7997,7 +8137,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3185",
       "relation": "CHARGED_IN"
     },
@@ -8007,7 +8147,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3255",
       "relation": "CHARGED_IN"
     },
@@ -8017,7 +8157,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3325",
       "relation": "CHARGED_IN"
     },
@@ -8027,7 +8167,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3395",
       "relation": "CHARGED_IN"
     },
@@ -8037,7 +8177,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3465",
       "relation": "CHARGED_IN"
     },
@@ -8047,7 +8187,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3535",
       "relation": "CHARGED_IN"
     },
@@ -8057,7 +8197,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3605",
       "relation": "CHARGED_IN"
     },
@@ -8067,7 +8207,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3675",
       "relation": "CHARGED_IN"
     },
@@ -8077,7 +8217,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3745",
       "relation": "CHARGED_IN"
     },
@@ -8087,7 +8227,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3815",
       "relation": "CHARGED_IN"
     },
@@ -8097,7 +8237,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3885",
       "relation": "CHARGED_IN"
     },
@@ -8107,7 +8247,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Anand_'Slick'_Kulkarni",
+      "source": "acc_Anand_Kulkarni",
       "target": "case_3955",
       "relation": "CHARGED_IN"
     },
@@ -8117,7 +8257,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_42",
       "relation": "CHARGED_IN"
     },
@@ -8127,7 +8267,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_112",
       "relation": "CHARGED_IN"
     },
@@ -8137,7 +8277,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_182",
       "relation": "CHARGED_IN"
     },
@@ -8147,7 +8287,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_252",
       "relation": "CHARGED_IN"
     },
@@ -8157,7 +8297,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_322",
       "relation": "CHARGED_IN"
     },
@@ -8167,7 +8307,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_392",
       "relation": "CHARGED_IN"
     },
@@ -8177,7 +8317,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_462",
       "relation": "CHARGED_IN"
     },
@@ -8187,7 +8327,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_532",
       "relation": "CHARGED_IN"
     },
@@ -8197,7 +8337,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_602",
       "relation": "CHARGED_IN"
     },
@@ -8207,7 +8347,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_672",
       "relation": "CHARGED_IN"
     },
@@ -8217,7 +8357,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_742",
       "relation": "CHARGED_IN"
     },
@@ -8227,7 +8367,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_812",
       "relation": "CHARGED_IN"
     },
@@ -8237,7 +8377,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_882",
       "relation": "CHARGED_IN"
     },
@@ -8247,7 +8387,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_952",
       "relation": "CHARGED_IN"
     },
@@ -8257,7 +8397,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1022",
       "relation": "CHARGED_IN"
     },
@@ -8267,7 +8407,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1092",
       "relation": "CHARGED_IN"
     },
@@ -8277,7 +8417,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
+      "target": "case_1137",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_1137",
+      "target": "vic_Priya_Verma",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Manjunath_Naik",
       "target": "case_1162",
       "relation": "CHARGED_IN"
     },
@@ -8287,7 +8437,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1232",
       "relation": "CHARGED_IN"
     },
@@ -8297,7 +8447,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1302",
       "relation": "CHARGED_IN"
     },
@@ -8307,7 +8457,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1372",
       "relation": "CHARGED_IN"
     },
@@ -8317,7 +8467,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1442",
       "relation": "CHARGED_IN"
     },
@@ -8327,7 +8477,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1512",
       "relation": "CHARGED_IN"
     },
@@ -8337,7 +8487,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1582",
       "relation": "CHARGED_IN"
     },
@@ -8347,7 +8497,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1652",
       "relation": "CHARGED_IN"
     },
@@ -8357,7 +8507,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1722",
       "relation": "CHARGED_IN"
     },
@@ -8367,7 +8517,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1792",
       "relation": "CHARGED_IN"
     },
@@ -8377,7 +8527,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1862",
       "relation": "CHARGED_IN"
     },
@@ -8387,7 +8537,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_1932",
       "relation": "CHARGED_IN"
     },
@@ -8397,7 +8547,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2002",
       "relation": "CHARGED_IN"
     },
@@ -8407,7 +8557,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2072",
       "relation": "CHARGED_IN"
     },
@@ -8417,7 +8567,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2142",
       "relation": "CHARGED_IN"
     },
@@ -8427,7 +8577,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2212",
       "relation": "CHARGED_IN"
     },
@@ -8437,7 +8587,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2282",
       "relation": "CHARGED_IN"
     },
@@ -8447,7 +8597,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2352",
       "relation": "CHARGED_IN"
     },
@@ -8457,7 +8607,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2422",
       "relation": "CHARGED_IN"
     },
@@ -8467,7 +8617,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2492",
       "relation": "CHARGED_IN"
     },
@@ -8477,7 +8627,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2562",
       "relation": "CHARGED_IN"
     },
@@ -8487,7 +8637,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2632",
       "relation": "CHARGED_IN"
     },
@@ -8497,7 +8647,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2702",
       "relation": "CHARGED_IN"
     },
@@ -8507,7 +8657,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2772",
       "relation": "CHARGED_IN"
     },
@@ -8517,7 +8667,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2842",
       "relation": "CHARGED_IN"
     },
@@ -8527,7 +8677,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2912",
       "relation": "CHARGED_IN"
     },
@@ -8537,7 +8687,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_2982",
       "relation": "CHARGED_IN"
     },
@@ -8547,7 +8697,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3052",
       "relation": "CHARGED_IN"
     },
@@ -8557,7 +8707,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3122",
       "relation": "CHARGED_IN"
     },
@@ -8567,7 +8717,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3192",
       "relation": "CHARGED_IN"
     },
@@ -8577,7 +8727,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3262",
       "relation": "CHARGED_IN"
     },
@@ -8587,7 +8737,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3332",
       "relation": "CHARGED_IN"
     },
@@ -8597,7 +8747,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3402",
       "relation": "CHARGED_IN"
     },
@@ -8607,7 +8757,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3472",
       "relation": "CHARGED_IN"
     },
@@ -8617,7 +8767,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3542",
       "relation": "CHARGED_IN"
     },
@@ -8627,7 +8777,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3612",
       "relation": "CHARGED_IN"
     },
@@ -8637,7 +8787,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3682",
       "relation": "CHARGED_IN"
     },
@@ -8647,7 +8797,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3752",
       "relation": "CHARGED_IN"
     },
@@ -8657,7 +8807,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3822",
       "relation": "CHARGED_IN"
     },
@@ -8667,7 +8817,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3892",
       "relation": "CHARGED_IN"
     },
@@ -8677,7 +8827,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Manjunath_'Spider'_Naik",
+      "source": "acc_Manjunath_Naik",
       "target": "case_3962",
       "relation": "CHARGED_IN"
     },
@@ -8687,7 +8837,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_49",
       "relation": "CHARGED_IN"
     },
@@ -8697,7 +8847,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_119",
       "relation": "CHARGED_IN"
     },
@@ -8707,7 +8857,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_189",
       "relation": "CHARGED_IN"
     },
@@ -8717,7 +8867,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_259",
       "relation": "CHARGED_IN"
     },
@@ -8727,7 +8877,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_329",
       "relation": "CHARGED_IN"
     },
@@ -8737,7 +8887,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_399",
       "relation": "CHARGED_IN"
     },
@@ -8747,7 +8897,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_469",
       "relation": "CHARGED_IN"
     },
@@ -8757,7 +8907,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_539",
       "relation": "CHARGED_IN"
     },
@@ -8767,7 +8917,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_609",
       "relation": "CHARGED_IN"
     },
@@ -8777,7 +8927,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_679",
       "relation": "CHARGED_IN"
     },
@@ -8787,7 +8937,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_749",
       "relation": "CHARGED_IN"
     },
@@ -8797,7 +8947,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_819",
       "relation": "CHARGED_IN"
     },
@@ -8807,7 +8957,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_889",
       "relation": "CHARGED_IN"
     },
@@ -8817,7 +8967,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
+      "target": "case_914",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_914",
+      "target": "vic_Sanjay_Joshi",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Ganesh_Hegde",
       "target": "case_959",
       "relation": "CHARGED_IN"
     },
@@ -8827,7 +8987,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1029",
       "relation": "CHARGED_IN"
     },
@@ -8837,7 +8997,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1099",
       "relation": "CHARGED_IN"
     },
@@ -8847,7 +9007,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1169",
       "relation": "CHARGED_IN"
     },
@@ -8857,7 +9017,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1239",
       "relation": "CHARGED_IN"
     },
@@ -8867,7 +9027,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1309",
       "relation": "CHARGED_IN"
     },
@@ -8877,7 +9037,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1379",
       "relation": "CHARGED_IN"
     },
@@ -8887,7 +9047,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1449",
       "relation": "CHARGED_IN"
     },
@@ -8897,7 +9057,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1519",
       "relation": "CHARGED_IN"
     },
@@ -8907,7 +9067,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1589",
       "relation": "CHARGED_IN"
     },
@@ -8917,7 +9077,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1659",
       "relation": "CHARGED_IN"
     },
@@ -8927,7 +9087,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1729",
       "relation": "CHARGED_IN"
     },
@@ -8937,7 +9097,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1799",
       "relation": "CHARGED_IN"
     },
@@ -8947,7 +9107,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1869",
       "relation": "CHARGED_IN"
     },
@@ -8957,7 +9117,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_1939",
       "relation": "CHARGED_IN"
     },
@@ -8967,7 +9127,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2009",
       "relation": "CHARGED_IN"
     },
@@ -8977,7 +9137,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2079",
       "relation": "CHARGED_IN"
     },
@@ -8987,7 +9147,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2149",
       "relation": "CHARGED_IN"
     },
@@ -8997,7 +9157,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2219",
       "relation": "CHARGED_IN"
     },
@@ -9007,7 +9167,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2289",
       "relation": "CHARGED_IN"
     },
@@ -9017,7 +9177,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2359",
       "relation": "CHARGED_IN"
     },
@@ -9027,7 +9187,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2429",
       "relation": "CHARGED_IN"
     },
@@ -9037,7 +9197,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2499",
       "relation": "CHARGED_IN"
     },
@@ -9047,7 +9207,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2569",
       "relation": "CHARGED_IN"
     },
@@ -9057,7 +9217,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2639",
       "relation": "CHARGED_IN"
     },
@@ -9067,7 +9227,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2709",
       "relation": "CHARGED_IN"
     },
@@ -9077,7 +9237,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2779",
       "relation": "CHARGED_IN"
     },
@@ -9087,7 +9247,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2849",
       "relation": "CHARGED_IN"
     },
@@ -9097,7 +9257,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2919",
       "relation": "CHARGED_IN"
     },
@@ -9107,7 +9267,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_2989",
       "relation": "CHARGED_IN"
     },
@@ -9117,7 +9277,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3059",
       "relation": "CHARGED_IN"
     },
@@ -9127,7 +9287,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3129",
       "relation": "CHARGED_IN"
     },
@@ -9137,7 +9297,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3199",
       "relation": "CHARGED_IN"
     },
@@ -9147,7 +9307,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3269",
       "relation": "CHARGED_IN"
     },
@@ -9157,7 +9317,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3339",
       "relation": "CHARGED_IN"
     },
@@ -9167,7 +9327,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3409",
       "relation": "CHARGED_IN"
     },
@@ -9177,7 +9337,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3479",
       "relation": "CHARGED_IN"
     },
@@ -9187,7 +9347,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3549",
       "relation": "CHARGED_IN"
     },
@@ -9197,7 +9357,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3619",
       "relation": "CHARGED_IN"
     },
@@ -9207,7 +9367,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3689",
       "relation": "CHARGED_IN"
     },
@@ -9217,7 +9377,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3759",
       "relation": "CHARGED_IN"
     },
@@ -9227,7 +9387,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3829",
       "relation": "CHARGED_IN"
     },
@@ -9237,7 +9397,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3899",
       "relation": "CHARGED_IN"
     },
@@ -9247,7 +9407,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ganesh_'Viper'_Hegde",
+      "source": "acc_Ganesh_Hegde",
       "target": "case_3969",
       "relation": "CHARGED_IN"
     },
@@ -9257,7 +9417,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_56",
       "relation": "CHARGED_IN"
     },
@@ -9267,7 +9427,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_126",
       "relation": "CHARGED_IN"
     },
@@ -9277,7 +9437,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_196",
       "relation": "CHARGED_IN"
     },
@@ -9287,7 +9447,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_266",
       "relation": "CHARGED_IN"
     },
@@ -9297,7 +9457,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_336",
       "relation": "CHARGED_IN"
     },
@@ -9307,7 +9467,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_406",
       "relation": "CHARGED_IN"
     },
@@ -9317,7 +9477,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_476",
       "relation": "CHARGED_IN"
     },
@@ -9327,7 +9487,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_546",
       "relation": "CHARGED_IN"
     },
@@ -9337,7 +9497,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_616",
       "relation": "CHARGED_IN"
     },
@@ -9347,7 +9507,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_686",
       "relation": "CHARGED_IN"
     },
@@ -9357,7 +9517,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_756",
       "relation": "CHARGED_IN"
     },
@@ -9367,7 +9527,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_826",
       "relation": "CHARGED_IN"
     },
@@ -9377,7 +9537,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_896",
       "relation": "CHARGED_IN"
     },
@@ -9387,7 +9547,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_966",
       "relation": "CHARGED_IN"
     },
@@ -9397,7 +9557,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1036",
       "relation": "CHARGED_IN"
     },
@@ -9407,7 +9567,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1106",
       "relation": "CHARGED_IN"
     },
@@ -9417,7 +9577,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1176",
       "relation": "CHARGED_IN"
     },
@@ -9427,7 +9587,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1246",
       "relation": "CHARGED_IN"
     },
@@ -9437,7 +9597,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
+      "target": "case_1251",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_1251",
+      "target": "vic_Siddharth_Nair",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Sunil_Shetty",
       "target": "case_1316",
       "relation": "CHARGED_IN"
     },
@@ -9447,7 +9617,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1386",
       "relation": "CHARGED_IN"
     },
@@ -9457,7 +9627,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1456",
       "relation": "CHARGED_IN"
     },
@@ -9467,7 +9637,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1526",
       "relation": "CHARGED_IN"
     },
@@ -9477,7 +9647,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1596",
       "relation": "CHARGED_IN"
     },
@@ -9487,7 +9657,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1666",
       "relation": "CHARGED_IN"
     },
@@ -9497,7 +9667,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1736",
       "relation": "CHARGED_IN"
     },
@@ -9507,7 +9677,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1806",
       "relation": "CHARGED_IN"
     },
@@ -9517,7 +9687,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1876",
       "relation": "CHARGED_IN"
     },
@@ -9527,7 +9697,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_1946",
       "relation": "CHARGED_IN"
     },
@@ -9537,7 +9707,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2016",
       "relation": "CHARGED_IN"
     },
@@ -9547,7 +9717,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2086",
       "relation": "CHARGED_IN"
     },
@@ -9557,7 +9727,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2156",
       "relation": "CHARGED_IN"
     },
@@ -9567,7 +9737,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2226",
       "relation": "CHARGED_IN"
     },
@@ -9577,7 +9747,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2296",
       "relation": "CHARGED_IN"
     },
@@ -9587,7 +9757,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2366",
       "relation": "CHARGED_IN"
     },
@@ -9597,7 +9767,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2436",
       "relation": "CHARGED_IN"
     },
@@ -9607,7 +9777,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2506",
       "relation": "CHARGED_IN"
     },
@@ -9617,7 +9787,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2576",
       "relation": "CHARGED_IN"
     },
@@ -9627,7 +9797,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2646",
       "relation": "CHARGED_IN"
     },
@@ -9637,7 +9807,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2716",
       "relation": "CHARGED_IN"
     },
@@ -9647,7 +9817,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2786",
       "relation": "CHARGED_IN"
     },
@@ -9657,7 +9827,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2856",
       "relation": "CHARGED_IN"
     },
@@ -9667,7 +9837,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2926",
       "relation": "CHARGED_IN"
     },
@@ -9677,7 +9847,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_2996",
       "relation": "CHARGED_IN"
     },
@@ -9687,7 +9857,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3066",
       "relation": "CHARGED_IN"
     },
@@ -9697,7 +9867,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3136",
       "relation": "CHARGED_IN"
     },
@@ -9707,7 +9877,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3206",
       "relation": "CHARGED_IN"
     },
@@ -9717,7 +9887,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3276",
       "relation": "CHARGED_IN"
     },
@@ -9727,7 +9897,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3346",
       "relation": "CHARGED_IN"
     },
@@ -9737,7 +9907,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3416",
       "relation": "CHARGED_IN"
     },
@@ -9747,7 +9917,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3486",
       "relation": "CHARGED_IN"
     },
@@ -9757,7 +9927,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3556",
       "relation": "CHARGED_IN"
     },
@@ -9767,7 +9937,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3626",
       "relation": "CHARGED_IN"
     },
@@ -9777,7 +9947,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3696",
       "relation": "CHARGED_IN"
     },
@@ -9787,7 +9957,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3766",
       "relation": "CHARGED_IN"
     },
@@ -9797,7 +9967,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3836",
       "relation": "CHARGED_IN"
     },
@@ -9807,7 +9977,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3906",
       "relation": "CHARGED_IN"
     },
@@ -9817,7 +9987,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Sunil_'Chotta'_Shetty",
+      "source": "acc_Sunil_Shetty",
       "target": "case_3976",
       "relation": "CHARGED_IN"
     },
@@ -9827,7 +9997,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_63",
       "relation": "CHARGED_IN"
     },
@@ -9837,7 +10007,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_133",
       "relation": "CHARGED_IN"
     },
@@ -9847,7 +10017,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_203",
       "relation": "CHARGED_IN"
     },
@@ -9857,7 +10027,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_273",
       "relation": "CHARGED_IN"
     },
@@ -9867,7 +10037,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_343",
       "relation": "CHARGED_IN"
     },
@@ -9877,7 +10047,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_413",
       "relation": "CHARGED_IN"
     },
@@ -9887,7 +10057,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_483",
       "relation": "CHARGED_IN"
     },
@@ -9897,7 +10067,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_553",
       "relation": "CHARGED_IN"
     },
@@ -9907,7 +10077,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_623",
       "relation": "CHARGED_IN"
     },
@@ -9917,7 +10087,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_693",
       "relation": "CHARGED_IN"
     },
@@ -9927,7 +10097,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_763",
       "relation": "CHARGED_IN"
     },
@@ -9937,7 +10107,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_833",
       "relation": "CHARGED_IN"
     },
@@ -9947,7 +10117,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_903",
       "relation": "CHARGED_IN"
     },
@@ -9957,7 +10127,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_973",
       "relation": "CHARGED_IN"
     },
@@ -9967,7 +10137,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1043",
       "relation": "CHARGED_IN"
     },
@@ -9977,7 +10147,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1113",
       "relation": "CHARGED_IN"
     },
@@ -9987,7 +10157,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1183",
       "relation": "CHARGED_IN"
     },
@@ -9997,7 +10167,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
+      "target": "case_1201",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_1201",
+      "target": "vic_Siddharth_Nair",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1253",
       "relation": "CHARGED_IN"
     },
@@ -10007,7 +10187,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1323",
       "relation": "CHARGED_IN"
     },
@@ -10017,7 +10197,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1393",
       "relation": "CHARGED_IN"
     },
@@ -10027,7 +10207,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1463",
       "relation": "CHARGED_IN"
     },
@@ -10037,7 +10217,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1533",
       "relation": "CHARGED_IN"
     },
@@ -10047,7 +10227,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1603",
       "relation": "CHARGED_IN"
     },
@@ -10057,7 +10237,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1673",
       "relation": "CHARGED_IN"
     },
@@ -10067,7 +10247,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1743",
       "relation": "CHARGED_IN"
     },
@@ -10077,7 +10257,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1813",
       "relation": "CHARGED_IN"
     },
@@ -10087,7 +10267,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1883",
       "relation": "CHARGED_IN"
     },
@@ -10097,7 +10277,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_1953",
       "relation": "CHARGED_IN"
     },
@@ -10107,7 +10287,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2023",
       "relation": "CHARGED_IN"
     },
@@ -10117,7 +10297,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2093",
       "relation": "CHARGED_IN"
     },
@@ -10127,7 +10307,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2163",
       "relation": "CHARGED_IN"
     },
@@ -10137,7 +10317,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2233",
       "relation": "CHARGED_IN"
     },
@@ -10147,7 +10327,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2303",
       "relation": "CHARGED_IN"
     },
@@ -10157,7 +10337,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2373",
       "relation": "CHARGED_IN"
     },
@@ -10167,7 +10347,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2443",
       "relation": "CHARGED_IN"
     },
@@ -10177,7 +10357,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2513",
       "relation": "CHARGED_IN"
     },
@@ -10187,7 +10367,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2583",
       "relation": "CHARGED_IN"
     },
@@ -10197,7 +10377,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2653",
       "relation": "CHARGED_IN"
     },
@@ -10207,7 +10387,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2723",
       "relation": "CHARGED_IN"
     },
@@ -10217,7 +10397,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2793",
       "relation": "CHARGED_IN"
     },
@@ -10227,7 +10407,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2863",
       "relation": "CHARGED_IN"
     },
@@ -10237,7 +10417,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_2933",
       "relation": "CHARGED_IN"
     },
@@ -10247,7 +10427,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3003",
       "relation": "CHARGED_IN"
     },
@@ -10257,7 +10437,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3073",
       "relation": "CHARGED_IN"
     },
@@ -10267,7 +10447,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3143",
       "relation": "CHARGED_IN"
     },
@@ -10277,7 +10457,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3213",
       "relation": "CHARGED_IN"
     },
@@ -10287,7 +10467,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3283",
       "relation": "CHARGED_IN"
     },
@@ -10297,7 +10477,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3353",
       "relation": "CHARGED_IN"
     },
@@ -10307,7 +10487,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3423",
       "relation": "CHARGED_IN"
     },
@@ -10317,7 +10497,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3493",
       "relation": "CHARGED_IN"
     },
@@ -10327,7 +10507,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3563",
       "relation": "CHARGED_IN"
     },
@@ -10337,7 +10517,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3633",
       "relation": "CHARGED_IN"
     },
@@ -10347,7 +10527,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3703",
       "relation": "CHARGED_IN"
     },
@@ -10357,7 +10537,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3773",
       "relation": "CHARGED_IN"
     },
@@ -10367,7 +10547,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3843",
       "relation": "CHARGED_IN"
     },
@@ -10377,7 +10557,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3913",
       "relation": "CHARGED_IN"
     },
@@ -10387,7 +10567,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Venkatesh_'Phantom'_Rao",
+      "source": "acc_Venkatesh_Rao",
       "target": "case_3983",
       "relation": "CHARGED_IN"
     },
@@ -10397,7 +10577,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_70",
       "relation": "CHARGED_IN"
     },
@@ -10407,7 +10587,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_140",
       "relation": "CHARGED_IN"
     },
@@ -10417,7 +10597,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_210",
       "relation": "CHARGED_IN"
     },
@@ -10427,7 +10607,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_280",
       "relation": "CHARGED_IN"
     },
@@ -10437,7 +10617,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_350",
       "relation": "CHARGED_IN"
     },
@@ -10447,7 +10627,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_420",
       "relation": "CHARGED_IN"
     },
@@ -10457,7 +10637,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_490",
       "relation": "CHARGED_IN"
     },
@@ -10467,7 +10647,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_560",
       "relation": "CHARGED_IN"
     },
@@ -10477,7 +10657,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_630",
       "relation": "CHARGED_IN"
     },
@@ -10487,7 +10667,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_700",
       "relation": "CHARGED_IN"
     },
@@ -10497,7 +10677,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_770",
       "relation": "CHARGED_IN"
     },
@@ -10507,7 +10687,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_840",
       "relation": "CHARGED_IN"
     },
@@ -10517,7 +10697,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_910",
       "relation": "CHARGED_IN"
     },
@@ -10527,7 +10707,17 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
+      "target": "case_977",
+      "relation": "CHARGED_IN"
+    },
+    {
+      "source": "case_977",
+      "target": "vic_Priya_Verma",
+      "relation": "VICTIM_OF"
+    },
+    {
+      "source": "acc_Ramesh_Gowda",
       "target": "case_980",
       "relation": "CHARGED_IN"
     },
@@ -10537,7 +10727,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1050",
       "relation": "CHARGED_IN"
     },
@@ -10547,7 +10737,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1120",
       "relation": "CHARGED_IN"
     },
@@ -10557,7 +10747,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1190",
       "relation": "CHARGED_IN"
     },
@@ -10567,7 +10757,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1260",
       "relation": "CHARGED_IN"
     },
@@ -10577,7 +10767,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1330",
       "relation": "CHARGED_IN"
     },
@@ -10587,7 +10777,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1400",
       "relation": "CHARGED_IN"
     },
@@ -10597,7 +10787,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1470",
       "relation": "CHARGED_IN"
     },
@@ -10607,7 +10797,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1540",
       "relation": "CHARGED_IN"
     },
@@ -10617,7 +10807,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1610",
       "relation": "CHARGED_IN"
     },
@@ -10627,7 +10817,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1680",
       "relation": "CHARGED_IN"
     },
@@ -10637,7 +10827,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1750",
       "relation": "CHARGED_IN"
     },
@@ -10647,7 +10837,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1820",
       "relation": "CHARGED_IN"
     },
@@ -10657,7 +10847,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1890",
       "relation": "CHARGED_IN"
     },
@@ -10667,7 +10857,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_1960",
       "relation": "CHARGED_IN"
     },
@@ -10677,7 +10867,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2030",
       "relation": "CHARGED_IN"
     },
@@ -10687,7 +10877,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2100",
       "relation": "CHARGED_IN"
     },
@@ -10697,7 +10887,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2170",
       "relation": "CHARGED_IN"
     },
@@ -10707,7 +10897,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2240",
       "relation": "CHARGED_IN"
     },
@@ -10717,7 +10907,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2310",
       "relation": "CHARGED_IN"
     },
@@ -10727,7 +10917,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2380",
       "relation": "CHARGED_IN"
     },
@@ -10737,7 +10927,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2450",
       "relation": "CHARGED_IN"
     },
@@ -10747,7 +10937,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2520",
       "relation": "CHARGED_IN"
     },
@@ -10757,7 +10947,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2590",
       "relation": "CHARGED_IN"
     },
@@ -10767,7 +10957,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2660",
       "relation": "CHARGED_IN"
     },
@@ -10777,7 +10967,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2730",
       "relation": "CHARGED_IN"
     },
@@ -10787,7 +10977,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2800",
       "relation": "CHARGED_IN"
     },
@@ -10797,7 +10987,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2870",
       "relation": "CHARGED_IN"
     },
@@ -10807,7 +10997,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_2940",
       "relation": "CHARGED_IN"
     },
@@ -10817,7 +11007,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3010",
       "relation": "CHARGED_IN"
     },
@@ -10827,7 +11017,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3080",
       "relation": "CHARGED_IN"
     },
@@ -10837,7 +11027,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3150",
       "relation": "CHARGED_IN"
     },
@@ -10847,7 +11037,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3220",
       "relation": "CHARGED_IN"
     },
@@ -10857,7 +11047,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3290",
       "relation": "CHARGED_IN"
     },
@@ -10867,7 +11057,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3360",
       "relation": "CHARGED_IN"
     },
@@ -10877,7 +11067,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3430",
       "relation": "CHARGED_IN"
     },
@@ -10887,7 +11077,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3500",
       "relation": "CHARGED_IN"
     },
@@ -10897,7 +11087,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3570",
       "relation": "CHARGED_IN"
     },
@@ -10907,7 +11097,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3640",
       "relation": "CHARGED_IN"
     },
@@ -10917,7 +11107,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3710",
       "relation": "CHARGED_IN"
     },
@@ -10927,7 +11117,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3780",
       "relation": "CHARGED_IN"
     },
@@ -10937,7 +11127,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3850",
       "relation": "CHARGED_IN"
     },
@@ -10947,7 +11137,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3920",
       "relation": "CHARGED_IN"
     },
@@ -10957,7 +11147,7 @@
       "relation": "VICTIM_OF"
     },
     {
-      "source": "acc_Ramesh_'Syndicate'_Gowda",
+      "source": "acc_Ramesh_Gowda",
       "target": "case_3990",
       "relation": "CHARGED_IN"
     },
