@@ -1,0 +1,167 @@
+{
+  "type": "FeatureCollection",
+  "name": "karnataka_districts",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 1, "DistrictName": "Bengaluru Urban", "Code": "KA-BU", "IncidentsCount": 2 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[77.45, 12.80], [77.75, 12.80], [77.80, 13.15], [77.45, 13.15], [77.45, 12.80]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 2, "DistrictName": "Bengaluru Rural", "Code": "KA-BR", "IncidentsCount": 0 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[77.20, 13.05], [77.95, 13.05], [77.95, 13.60], [77.20, 13.60], [77.20, 13.05]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 3, "DistrictName": "Mysuru", "Code": "KA-MY", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.90, 11.95], [77.10, 11.95], [77.10, 12.65], [75.90, 12.65], [75.90, 11.95]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 4, "DistrictName": "Dakshina Kannada", "Code": "KA-DK", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.70, 12.45], [75.55, 12.45], [75.55, 13.20], [74.70, 13.20], [74.70, 12.45]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 5, "DistrictName": "Udupi", "Code": "KA-UD", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.50, 13.10], [75.25, 13.10], [75.25, 13.90], [74.50, 13.90], [74.50, 13.10]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 6, "DistrictName": "Belagavi", "Code": "KA-BG", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.05, 15.35], [75.40, 15.35], [75.40, 16.95], [74.05, 16.95], [74.05, 15.35]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 7, "DistrictName": "Dharwad", "Code": "KA-DH", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.80, 15.10], [75.45, 15.10], [75.45, 15.70], [74.80, 15.70], [74.80, 15.10]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 8, "DistrictName": "Kalaburagi", "Code": "KA-KL", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.40, 16.80], [77.65, 16.80], [77.65, 17.75], [76.40, 17.75], [76.40, 16.80]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 9, "DistrictName": "Shivamogga", "Code": "KA-SM", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.85, 13.60], [75.95, 13.60], [75.95, 14.50], [74.85, 14.50], [74.85, 13.60]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 10, "DistrictName": "Tumakuru", "Code": "KA-TU", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.40, 12.75], [77.40, 12.75], [77.40, 14.35], [76.40, 14.35], [76.40, 12.75]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 11, "DistrictName": "Ballari", "Code": "KA-BL", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.45, 14.85], [77.30, 14.85], [77.30, 15.80], [76.45, 15.80], [76.45, 14.85]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 12, "DistrictName": "Davanagere", "Code": "KA-DV", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.50, 13.95], [76.35, 13.95], [76.35, 14.75], [75.50, 14.75], [75.50, 13.95]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 13, "DistrictName": "Vijayapura", "Code": "KA-VJ", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.25, 16.20], [76.35, 16.20], [76.35, 17.30], [75.25, 17.30], [75.25, 16.20]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 14, "DistrictName": "Hassan", "Code": "KA-HS", "IncidentsCount": 1 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.55, 12.55], [76.60, 12.55], [76.60, 13.55], [75.55, 13.55], [75.55, 12.55]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 15, "DistrictName": "Uttara Kannada", "Code": "KA-UK", "IncidentsCount": 0 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.15, 13.90], [75.15, 13.90], [75.15, 15.55], [74.15, 15.55], [74.15, 13.90]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 16, "DistrictName": "Chikkamagaluru", "Code": "KA-CK", "IncidentsCount": 0 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.10, 13.05], [76.25, 13.05], [76.25, 13.90], [75.10, 13.90], [75.10, 13.05]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 17, "DistrictName": "Chitradurga", "Code": "KA-CTA", "IncidentsCount": 0 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.05, 13.60], [76.85, 13.60], [76.85, 14.70], [76.05, 14.70], [76.05, 13.60]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 18, "DistrictName": "Raichur", "Code": "KA-RC", "IncidentsCount": 0 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.20, 15.70], [77.60, 15.70], [77.60, 16.50], [76.20, 16.50], [76.20, 15.70]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 19, "DistrictName": "Bidar", "Code": "KA-BD", "IncidentsCount": 0 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.75, 17.55], [77.60, 17.55], [77.60, 18.45], [76.75, 18.45], [76.75, 17.55]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DistrictID": 20, "DistrictName": "Bagalkote", "Code": "KA-BK", "IncidentsCount": 0 },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.05, 15.80], [76.20, 15.80], [76.20, 16.50], [75.05, 16.50], [75.05, 15.80]]]
+      }
+    }
+  ]
+}
