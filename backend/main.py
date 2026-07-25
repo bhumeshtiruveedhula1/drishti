@@ -207,7 +207,7 @@ def admin_query_datastore(catalyst_app: Any = Depends(get_catalyst_app)):
         return {"status": "error", "message": "Catalyst SDK initialization returned None"}
 
     results = {}
-    tables = ["CaseMaster", "HotspotCluster", "AnomalyFlag", "Victim", "ChargesheetDetails"]
+    tables = ["CaseMaster", "HotspotCluster", "AnomalyFlag", "Victim", "ChargesheetDetails", "RiskScore"]
 
     for tbl in tables:
         err_msg = None
