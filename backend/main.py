@@ -9,10 +9,17 @@ from datetime import datetime
 print("Starting AppSail server...", flush=True)
 
 import uvicorn
-from fastapi import FastAPI, Request, HTTPException, Depends
-from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Drishti Backend API - Catalyst Data Store Integration")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 SEED_DIR = os.path.join(os.path.dirname(__file__), "seeds")
 
