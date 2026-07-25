@@ -301,3 +301,22 @@ export async function fetchOccupationOverlay() {
   }
 }
 
+/**
+ * Fetch Modus Operandi (MO) Method-Tag matching data from live /mo-matching endpoint.
+ */
+export async function fetchMOMatching() {
+  const API_URL = import.meta.env.VITE_MO_MATCHING_API_URL || 
+                  'https://drishti-backend-50044277235.development.catalystappsail.in/mo-matching';
+
+  try {
+    const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });
+    if (!res.ok) throw new Error(`API returned status ${res.status}`);
+    const json = await res.json();
+    return json;
+  } catch (err) {
+    console.warn('Live AppSail MO matching endpoint unreachable:', err.message);
+    return { status: 'error', data: [] };
+  }
+}
+
+

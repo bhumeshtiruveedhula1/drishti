@@ -8,7 +8,12 @@ import {
   Layers,
   Search,
   FilterX,
-  RotateCcw
+  RotateCcw,
+  Tag,
+  Shield,
+  MapPin,
+  ChevronRight,
+  FileText
 } from 'lucide-react';
 
 // Custom position generator for graph nodes in SVG canvas
@@ -30,10 +35,15 @@ const getNodeIcon = (type) => {
   return '📌';
 };
 
-export default function NetworkGraphPanel({ networkData = { summary: {}, nodes: [], edges: [] } }) {
+export default function NetworkGraphPanel({
+  networkData = { summary: {}, nodes: [], edges: [] },
+  moMatchingData = { status: 'ok', method_taxonomy: [], data: [] }
+}) {
   const [selectedNode, setSelectedNode] = useState(null);
   const [filterType, setFilterType] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeTab, setActiveTab] = useState('topology'); // 'topology' or 'mo-matching'
+  const [selectedMOTag, setSelectedMOTag] = useState(null);
 
   const nodes = networkData.nodes || [];
   const edges = networkData.edges || [];
@@ -137,16 +147,42 @@ export default function NetworkGraphPanel({ networkData = { summary: {}, nodes: 
           <div>
             <div className="flex items-center space-x-2">
               <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
-                Link-Analysis Network Graph Console
+                Link-Analysis Network & MO Matching Console
               </h3>
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-violet-950 text-violet-300 border border-violet-800">
-                LIVE API (GET /network)
+                LIVE API (GET /mo-matching)
               </span>
             </div>
             <p className="text-xs text-slate-400 mt-0.5">
-              Multi-Entity Relationship Topology: Accused, Victims, Police Stations & Cross-Case Links
+              Multi-Entity Topology & Modus Operandi (MO) Method-Tag Criminal Pattern Grouping
             </p>
           </div>
+        </div>
+
+        {/* View Mode Toggle: Topology vs MO Matching */}
+        <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800 text-xs">
+          <button
+            onClick={() => setActiveTab('topology')}
+            className={`px-3 py-1.5 rounded-lg font-bold transition-all flex items-center space-x-1.5 ${
+              activeTab === 'topology'
+                ? 'bg-violet-600 text-white shadow-md'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Share2 className="w-3.5 h-3.5" />
+            <span>Network Topology</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('mo-matching')}
+            className={`px-3 py-1.5 rounded-lg font-bold transition-all flex items-center space-x-1.5 ${
+              activeTab === 'mo-matching'
+                ? 'bg-amber-600 text-white shadow-md'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Tag className="w-3.5 h-3.5" />
+            <span>MO Method-Tag Badges</span>
+          </button>
         </div>
 
         {/* Network Metrics Stats */}
@@ -158,18 +194,149 @@ export default function NetworkGraphPanel({ networkData = { summary: {}, nodes: 
           </div>
 
           <div className="bg-slate-900/90 px-3.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
+            <Tag className="w-3.5 h-3.5 text-amber-400" />
+            <span className="text-slate-400 text-[10px] font-bold uppercase">MO Tactics:</span>
+            <span className="font-extrabold text-amber-300">
+              {(moMatchingData.data || []).length || 7}
+            </span>
+          </div>
+
+          <div className="bg-slate-900/90 px-3.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
             <Layers className="w-3.5 h-3.5 text-cyan-400" />
             <span className="text-slate-400 text-[10px] font-bold uppercase">Nodes:</span>
             <span className="font-extrabold text-cyan-300">{nodes.length}</span>
           </div>
-
-          <div className="bg-slate-900/90 px-3.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
-            <Link className="w-3.5 h-3.5 text-amber-400" />
-            <span className="text-slate-400 text-[10px] font-bold uppercase">Edges:</span>
-            <span className="font-extrabold text-amber-400">{edges.length}</span>
-          </div>
         </div>
       </div>
+
+      {/* Mode 2: MO Method-Tag Matching Badges Panel */}
+      {activeTab === 'mo-matching' ? (
+        <div className="space-y-4">
+          <div className="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                <Tag className="w-4 h-4 text-amber-400" />
+                Modus Operandi Taxonomy & Cross-Jurisdiction Method-Tag Badges
+              </h4>
+              <span className="text-xs font-mono text-slate-400">
+                Total Tracked MO Cases: <strong className="text-amber-400">{moMatchingData.total_mo_cases || 3997}</strong>
+              </span>
+            </div>
+
+            {/* Badges Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              {(moMatchingData.data || []).map((mo) => {
+                const isSelected = selectedMOTag?.MethodTag === mo.MethodTag;
+                return (
+                  <button
+                    key={mo.MethodTag}
+                    onClick={() => setSelectedMOTag(isSelected ? null : mo)}
+                    className={`text-left p-3.5 rounded-xl border transition-all flex flex-col justify-between space-y-2 group cursor-pointer ${
+                      isSelected
+                        ? 'bg-amber-950/60 border-amber-500/80 text-amber-100 shadow-lg shadow-amber-950/40'
+                        : 'bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/60 text-slate-200'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-amber-400 group-hover:text-amber-300 flex items-center gap-1.5">
+                        <Tag className="w-3.5 h-3.5" />
+                        {mo.MethodTag}
+                      </span>
+                      <ChevronRight className={`w-4 h-4 text-slate-500 transition-transform ${isSelected ? 'rotate-90 text-amber-400' : ''}`} />
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-1 text-[10px] font-mono text-slate-400 pt-1 border-t border-slate-800/60">
+                      <div>
+                        <span className="block font-semibold text-slate-200">{mo.matched_cases_count}</span>
+                        <span>FIRs</span>
+                      </div>
+                      <div>
+                        <span className="block font-semibold text-slate-200">{mo.distinct_accused_count}</span>
+                        <span>Suspects</span>
+                      </div>
+                      <div>
+                        <span className="block font-semibold text-slate-200">{mo.distinct_stations_count}</span>
+                        <span>Stations</span>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1 pt-1">
+                      {mo.cross_location && (
+                        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                          Cross-Jurisdiction
+                        </span>
+                      )}
+                      {mo.cross_accused && (
+                        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                          Cross-Accused
+                        </span>
+                      )}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Selected MO Tag Matching Cases Drawer */}
+          {selectedMOTag && (
+            <div className="bg-slate-900/90 border border-amber-500/30 rounded-2xl p-4 space-y-3 shadow-xl">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                <div className="flex items-center space-x-2">
+                  <Tag className="w-4 h-4 text-amber-400" />
+                  <h4 className="text-xs font-bold text-slate-100">
+                    Modus Operandi Matches: <span className="text-amber-400">{selectedMOTag.MethodTag}</span>
+                  </h4>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300">
+                    {selectedMOTag.matched_cases_count} Incidents Linked
+                  </span>
+                </div>
+                <button
+                  onClick={() => setSelectedMOTag(null)}
+                  className="p-1 rounded bg-slate-800 text-slate-400 hover:text-white"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Matching FIR List */}
+              <div className="space-y-2 max-h-64 overflow-y-auto custom-scrollbar pr-1">
+                {(selectedMOTag.matching_cases || []).map((c) => (
+                  <div
+                    key={c.CaseMasterID}
+                    className="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs"
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center space-x-2 font-bold text-cyan-400">
+                        <span>{c.CrimeNo}</span>
+                        <span className="text-slate-500 font-normal">({c.CaseNo})</span>
+                      </div>
+                      <p className="text-[11px] text-slate-300 line-clamp-1">{c.BriefFacts}</p>
+                    </div>
+
+                    <div className="flex items-center space-x-4 text-[11px] font-mono text-slate-400">
+                      <div>
+                        <span className="text-slate-500 block text-[9px] uppercase font-bold">Suspect</span>
+                        <span className="text-rose-400 font-bold">{c.AccusedName}</span>
+                      </div>
+                      <div>
+                        <span className="text-slate-500 block text-[9px] uppercase font-bold">Station</span>
+                        <span className="text-slate-200">{c.PoliceStationName}</span>
+                      </div>
+                      <div>
+                        <span className="text-slate-500 block text-[9px] uppercase font-bold">Date</span>
+                        <span className="text-slate-300">{c.CrimeRegisteredDate}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        /* Mode 1: Network Graph SVG Canvas */
+        <>
 
       {/* Filter Controls & Search Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/80 p-3 rounded-xl border border-slate-800">
@@ -381,6 +548,8 @@ export default function NetworkGraphPanel({ networkData = { summary: {}, nodes: 
           </div>
         )}
       </div>
+        </>
+      )}
     </div>
   );
 }

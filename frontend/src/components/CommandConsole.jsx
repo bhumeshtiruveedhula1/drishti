@@ -44,7 +44,8 @@ export default function CommandConsole({
   anomalies = [],
   resolutionMetrics = [],
   networkData = { summary: {}, nodes: [], edges: [] },
-  occupationData = []
+  occupationData = [],
+  moMatchingData = { status: 'ok', method_taxonomy: [], data: [] }
 }) {
   const [streamSearch, setStreamSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('All');
@@ -518,9 +519,9 @@ export default function CommandConsole({
         <ResolutionLoopPanel resolutionMetrics={resolutionMetrics} />
       </div>
 
-      {/* Link-Analysis Network Graph Section */}
+      {/* Link-Analysis Network Graph & MO Matching Section */}
       <div className="shrink-0 w-full p-4 border-t border-slate-800 bg-slate-900/80 overflow-x-auto">
-        <NetworkGraphPanel networkData={networkData} />
+        <NetworkGraphPanel networkData={networkData} moMatchingData={moMatchingData} />
       </div>
 
       {/* Case Details Inspection Drawer Modal */}

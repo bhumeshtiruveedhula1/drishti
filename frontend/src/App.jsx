@@ -12,7 +12,8 @@ import {
   fetchAnomalies,
   fetchResolutionMetrics,
   fetchNetworkGraph,
-  fetchOccupationOverlay
+  fetchOccupationOverlay,
+  fetchMOMatching
 } from './services/mockData';
 import { Loader2, AlertTriangle, Filter } from 'lucide-react';
 
@@ -23,6 +24,7 @@ export default function App() {
   const [resolutionMetrics, setResolutionMetrics] = useState([]);
   const [networkData, setNetworkData] = useState({ summary: {}, nodes: [], edges: [] });
   const [occupationData, setOccupationData] = useState([]);
+  const [moMatchingData, setMoMatchingData] = useState({ status: 'ok', method_taxonomy: [], data: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -48,18 +50,19 @@ export default function App() {
   // Mobile Spatial Filter Drawer State
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
-  // Fetch Incidents, Hotspots, Anomalies, Resolution Metrics, Network Graph & Occupation Overlay on Load
+  // Fetch Incidents, Hotspots, Anomalies, Resolution Metrics, Network Graph, Occupation Overlay & MO Matching on Load
   useEffect(() => {
     async function loadData() {
       try {
         setLoading(true);
-        const [incData, hsData, anomData, resData, netData, occData] = await Promise.all([
+        const [incData, hsData, anomData, resData, netData, occData, moData] = await Promise.all([
           fetchIncidents(),
           fetchHotspots(),
           fetchAnomalies(),
           fetchResolutionMetrics(),
           fetchNetworkGraph(),
-          fetchOccupationOverlay()
+          fetchOccupationOverlay(),
+          fetchMOMatching()
         ]);
         setIncidents(incData);
         setHotspots(hsData);
@@ -67,6 +70,7 @@ export default function App() {
         setResolutionMetrics(resData);
         setNetworkData(netData);
         setOccupationData(occData);
+        setMoMatchingData(moData);
         setError(null);
       } catch (err) {
         console.error('Failed to fetch data from live backend API:', err);
@@ -207,6 +211,7 @@ export default function App() {
           resolutionMetrics={resolutionMetrics}
           networkData={networkData}
           occupationData={occupationData}
+          moMatchingData={moMatchingData}
         />
       ) : (
         <div className="flex flex-1 relative overflow-hidden">
