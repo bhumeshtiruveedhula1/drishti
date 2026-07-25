@@ -242,8 +242,7 @@ export async function fetchAnomalies() {
  * Holding ResolutionLoopPanel on mock data waiting for Alpha's new GET /stations/resolution endpoint.
  */
 export async function fetchResolutionMetrics() {
-  const API_URL = import.meta.env.VITE_STATION_RESOLUTION_API_URL || 
-                  'https://drishti-backend-50044277235.development.catalystappsail.in/stations/resolution';
+    const API_URL = import.meta.env.VITE_STATION_RESOLUTION_API_URL || 'https://drishti-backend-50044277235.catalystappsail.in/stations/resolution';
 
   try {
     const res = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' } });

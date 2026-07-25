@@ -10,7 +10,7 @@ export default function RoleGateLanding({ onAuthenticate }) {
       setLoadingRole(roleChoice);
       setError(null);
 
-      const API_URL = `https://drishti-backend-50044277235.development.catalystappsail.in/auth/me?role=${roleChoice}`;
+      const API_URL = `https://drishti-backend-50044277235.catalystappsail.in/auth/me?role=${roleChoice}`;
       
       const res = await fetch(API_URL, {
         method: 'GET',
