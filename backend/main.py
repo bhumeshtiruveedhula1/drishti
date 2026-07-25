@@ -238,8 +238,17 @@ def admin_verify_chargesheets(catalyst_app: Any = Depends(get_catalyst_app)):
         all_rows = []
         try:
             zcql = catalyst_app.zcql()
-            q_res = zcql.execute_query("SELECT ChargesheetDetails.CSID, ChargesheetDetails.CaseMasterID, ChargesheetDetails.ROWID FROM ChargesheetDetails LIMIT 5000")
-            all_rows = [r.get("ChargesheetDetails") for r in q_res if isinstance(r, dict) and "ChargesheetDetails" in r]
+            offset = 0
+            while True:
+                q_stmt = f"SELECT ChargesheetDetails.CSID, ChargesheetDetails.CaseMasterID, ChargesheetDetails.ROWID FROM ChargesheetDetails LIMIT 200 OFFSET {offset}"
+                q_res = zcql.execute_query(q_stmt)
+                batch = [r.get("ChargesheetDetails") for r in q_res if isinstance(r, dict) and "ChargesheetDetails" in r]
+                if not batch:
+                    break
+                all_rows.extend(batch)
+                if len(batch) < 200:
+                    break
+                offset += len(batch)
         except Exception:
             all_rows = fetch_all_datastore_rows(table, max_rows=200)
 
