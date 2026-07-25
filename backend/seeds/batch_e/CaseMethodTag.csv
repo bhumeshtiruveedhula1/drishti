@@ -1,0 +1,3998 @@
+CaseMasterID,MethodTag
+1,Vehicle Theft
+2,Vehicle Theft
+3,Break-in
+4,Vehicle Theft
+5,Vehicle Theft
+6,Pickpocket
+7,Vehicle Theft
+8,Vehicle Theft
+9,Break-in
+10,Vehicle Theft
+11,Vehicle Theft
+12,Vehicle Theft
+13,Pickpocket
+14,Pickpocket
+15,Vehicle Theft
+16,Pickpocket
+17,Vehicle Theft
+18,Vehicle Theft
+19,Break-in
+20,Pickpocket
+21,Break-in
+22,Pickpocket
+23,Vehicle Theft
+24,Pickpocket
+25,Break-in
+26,Vehicle Theft
+27,Vehicle Theft
+28,Vehicle Theft
+29,Break-in
+30,Pickpocket
+31,Break-in
+32,Pickpocket
+33,Vehicle Theft
+34,Vehicle Theft
+35,Pickpocket
+36,Vehicle Theft
+37,Vehicle Theft
+38,Pickpocket
+39,Break-in
+40,Pickpocket
+41,Vehicle Theft
+42,Pickpocket
+43,Vehicle Theft
+44,Vehicle Theft
+45,Vehicle Theft
+46,Vehicle Theft
+47,Vehicle Theft
+48,Vehicle Theft
+49,Break-in
+50,Pickpocket
+51,Pickpocket
+52,Vehicle Theft
+53,Pickpocket
+54,Vehicle Theft
+55,Break-in
+56,Vehicle Theft
+57,Vehicle Theft
+58,Pickpocket
+59,Vehicle Theft
+60,Pickpocket
+61,Armed Robbery
+62,Armed Robbery
+63,Armed Robbery
+64,Armed Robbery
+65,Armed Robbery
+66,Snatch-and-Run
+67,Armed Robbery
+68,Armed Robbery
+69,Armed Robbery
+70,Armed Robbery
+71,Snatch-and-Run
+72,Snatch-and-Run
+73,Snatch-and-Run
+74,Snatch-and-Run
+75,Armed Robbery
+76,Break-in
+77,Break-in
+78,Break-in
+79,Break-in
+80,Break-in
+81,Break-in
+82,Break-in
+83,Break-in
+84,Break-in
+85,Break-in
+86,Break-in
+87,Break-in
+88,Break-in
+89,Break-in
+90,Break-in
+91,Break-in
+92,Break-in
+93,Break-in
+94,Break-in
+95,Break-in
+96,Physical Assault
+97,Physical Assault
+98,Armed Attack
+99,Armed Attack
+100,Physical Assault
+101,Physical Assault
+102,Physical Assault
+103,Armed Attack
+104,Armed Attack
+105,Armed Attack
+106,Physical Assault
+107,Armed Attack
+108,Armed Attack
+109,Armed Attack
+110,Physical Assault
+111,Armed Attack
+112,Physical Assault
+113,Armed Attack
+114,Physical Assault
+115,Armed Attack
+116,Armed Attack
+117,Armed Attack
+118,Physical Assault
+119,Armed Attack
+120,Armed Attack
+121,Armed Attack
+122,Armed Attack
+123,Armed Attack
+124,Physical Assault
+125,Armed Attack
+126,Pickpocket
+127,Vehicle Theft
+128,Pickpocket
+129,Break-in
+130,Pickpocket
+131,Break-in
+132,Vehicle Theft
+133,Vehicle Theft
+134,Pickpocket
+135,Break-in
+136,Pickpocket
+137,Vehicle Theft
+138,Pickpocket
+139,Vehicle Theft
+140,Vehicle Theft
+141,Pickpocket
+142,Vehicle Theft
+143,Pickpocket
+144,Vehicle Theft
+145,Vehicle Theft
+146,Vehicle Theft
+147,Break-in
+148,Vehicle Theft
+149,Pickpocket
+150,Pickpocket
+151,Vehicle Theft
+152,Pickpocket
+153,Break-in
+154,Vehicle Theft
+155,Pickpocket
+156,Pickpocket
+157,Break-in
+158,Pickpocket
+159,Vehicle Theft
+160,Pickpocket
+161,Vehicle Theft
+162,Vehicle Theft
+163,Vehicle Theft
+164,Vehicle Theft
+165,Break-in
+166,Pickpocket
+167,Pickpocket
+168,Vehicle Theft
+169,Vehicle Theft
+170,Pickpocket
+171,Vehicle Theft
+172,Pickpocket
+173,Vehicle Theft
+174,Vehicle Theft
+175,Break-in
+176,Pickpocket
+177,Vehicle Theft
+178,Vehicle Theft
+179,Vehicle Theft
+180,Pickpocket
+181,Break-in
+182,Vehicle Theft
+183,Vehicle Theft
+184,Vehicle Theft
+185,Break-in
+186,Pickpocket
+187,Break-in
+188,Pickpocket
+189,Break-in
+190,Vehicle Theft
+191,Break-in
+192,Pickpocket
+193,Pickpocket
+194,Pickpocket
+195,Vehicle Theft
+196,Pickpocket
+197,Break-in
+198,Vehicle Theft
+199,Vehicle Theft
+200,Vehicle Theft
+201,Vehicle Theft
+202,Vehicle Theft
+203,Vehicle Theft
+204,Vehicle Theft
+205,Vehicle Theft
+206,Vehicle Theft
+207,Vehicle Theft
+208,Pickpocket
+209,Vehicle Theft
+210,Vehicle Theft
+211,Pickpocket
+212,Pickpocket
+213,Break-in
+214,Vehicle Theft
+215,Break-in
+216,Armed Robbery
+217,Armed Robbery
+218,Armed Robbery
+219,Armed Robbery
+220,Armed Robbery
+221,Armed Robbery
+222,Snatch-and-Run
+223,Armed Robbery
+224,Snatch-and-Run
+225,Armed Robbery
+226,Snatch-and-Run
+227,Armed Robbery
+228,Armed Robbery
+229,Armed Robbery
+230,Armed Robbery
+231,Armed Robbery
+232,Snatch-and-Run
+233,Armed Robbery
+234,Snatch-and-Run
+235,Armed Robbery
+236,Snatch-and-Run
+237,Armed Robbery
+238,Snatch-and-Run
+239,Armed Robbery
+240,Snatch-and-Run
+241,Snatch-and-Run
+242,Snatch-and-Run
+243,Snatch-and-Run
+244,Snatch-and-Run
+245,Snatch-and-Run
+246,Break-in
+247,Break-in
+248,Break-in
+249,Break-in
+250,Break-in
+251,Break-in
+252,Break-in
+253,Break-in
+254,Break-in
+255,Break-in
+256,Break-in
+257,Break-in
+258,Break-in
+259,Break-in
+260,Break-in
+261,Break-in
+262,Break-in
+263,Break-in
+264,Break-in
+265,Break-in
+266,Break-in
+267,Break-in
+268,Break-in
+269,Break-in
+270,Break-in
+271,Break-in
+272,Break-in
+273,Break-in
+274,Break-in
+275,Break-in
+276,Break-in
+277,Break-in
+278,Break-in
+279,Break-in
+280,Break-in
+281,Break-in
+282,Break-in
+283,Break-in
+284,Break-in
+285,Break-in
+286,Armed Attack
+287,Armed Attack
+288,Physical Assault
+289,Armed Attack
+290,Physical Assault
+291,Armed Attack
+292,Physical Assault
+293,Armed Attack
+294,Physical Assault
+295,Armed Attack
+296,Physical Assault
+297,Armed Attack
+298,Physical Assault
+299,Armed Attack
+300,Physical Assault
+301,Armed Attack
+302,Armed Attack
+303,Armed Attack
+304,Physical Assault
+305,Armed Attack
+306,Physical Assault
+307,Armed Attack
+308,Physical Assault
+309,Physical Assault
+310,Physical Assault
+311,Physical Assault
+312,Physical Assault
+313,Armed Attack
+314,Physical Assault
+315,Armed Attack
+316,Physical Assault
+317,Armed Attack
+318,Physical Assault
+319,Armed Attack
+320,Physical Assault
+321,Armed Attack
+322,Physical Assault
+323,Physical Assault
+324,Armed Attack
+325,Physical Assault
+326,Physical Assault
+327,Armed Attack
+328,Armed Attack
+329,Armed Attack
+330,Armed Attack
+331,Physical Assault
+332,Armed Attack
+333,Armed Attack
+334,Physical Assault
+335,Physical Assault
+336,Physical Assault
+337,Armed Attack
+338,Physical Assault
+339,Physical Assault
+340,Physical Assault
+341,Break-in
+342,Pickpocket
+343,Break-in
+344,Vehicle Theft
+345,Vehicle Theft
+346,Vehicle Theft
+347,Pickpocket
+348,Vehicle Theft
+349,Break-in
+350,Vehicle Theft
+351,Vehicle Theft
+352,Pickpocket
+353,Pickpocket
+354,Vehicle Theft
+355,Pickpocket
+356,Vehicle Theft
+357,Break-in
+358,Vehicle Theft
+359,Break-in
+360,Vehicle Theft
+361,Break-in
+362,Vehicle Theft
+363,Pickpocket
+364,Pickpocket
+365,Vehicle Theft
+366,Pickpocket
+367,Break-in
+368,Pickpocket
+369,Break-in
+370,Vehicle Theft
+371,Vehicle Theft
+372,Vehicle Theft
+373,Vehicle Theft
+374,Pickpocket
+375,Pickpocket
+376,Pickpocket
+377,Vehicle Theft
+378,Vehicle Theft
+379,Break-in
+380,Pickpocket
+381,Break-in
+382,Pickpocket
+383,Vehicle Theft
+384,Vehicle Theft
+385,Break-in
+386,Vehicle Theft
+387,Break-in
+388,Vehicle Theft
+389,Break-in
+390,Pickpocket
+391,Break-in
+392,Pickpocket
+393,Break-in
+394,Pickpocket
+395,Vehicle Theft
+396,Vehicle Theft
+397,Pickpocket
+398,Vehicle Theft
+399,Break-in
+400,Pickpocket
+401,Vehicle Theft
+402,Pickpocket
+403,Break-in
+404,Vehicle Theft
+405,Break-in
+406,Pickpocket
+407,Pickpocket
+408,Vehicle Theft
+409,Break-in
+410,Vehicle Theft
+411,Break-in
+412,Pickpocket
+413,Vehicle Theft
+414,Vehicle Theft
+415,Vehicle Theft
+416,Pickpocket
+417,Vehicle Theft
+418,Pickpocket
+419,Pickpocket
+420,Vehicle Theft
+421,Break-in
+422,Pickpocket
+423,Break-in
+424,Pickpocket
+425,Vehicle Theft
+426,Pickpocket
+427,Vehicle Theft
+428,Vehicle Theft
+429,Break-in
+430,Pickpocket
+431,Vehicle Theft
+432,Vehicle Theft
+433,Break-in
+434,Vehicle Theft
+435,Break-in
+436,Pickpocket
+437,Vehicle Theft
+438,Vehicle Theft
+439,Vehicle Theft
+440,Vehicle Theft
+441,Pickpocket
+442,Vehicle Theft
+443,Vehicle Theft
+444,Vehicle Theft
+445,Break-in
+446,Vehicle Theft
+447,Pickpocket
+448,Pickpocket
+449,Pickpocket
+450,Vehicle Theft
+451,Vehicle Theft
+452,Pickpocket
+453,Vehicle Theft
+454,Pickpocket
+455,Vehicle Theft
+456,Vehicle Theft
+457,Vehicle Theft
+458,Pickpocket
+459,Pickpocket
+460,Pickpocket
+461,Pickpocket
+462,Pickpocket
+463,Vehicle Theft
+464,Vehicle Theft
+465,Break-in
+466,Vehicle Theft
+467,Break-in
+468,Vehicle Theft
+469,Vehicle Theft
+470,Pickpocket
+471,Break-in
+472,Vehicle Theft
+473,Pickpocket
+474,Pickpocket
+475,Vehicle Theft
+476,Vehicle Theft
+477,Vehicle Theft
+478,Vehicle Theft
+479,Pickpocket
+480,Pickpocket
+481,Break-in
+482,Vehicle Theft
+483,Vehicle Theft
+484,Vehicle Theft
+485,Break-in
+486,Vehicle Theft
+487,Vehicle Theft
+488,Vehicle Theft
+489,Vehicle Theft
+490,Pickpocket
+491,Pickpocket
+492,Pickpocket
+493,Vehicle Theft
+494,Vehicle Theft
+495,Pickpocket
+496,Vehicle Theft
+497,Break-in
+498,Pickpocket
+499,Vehicle Theft
+500,Pickpocket
+501,Break-in
+502,Vehicle Theft
+503,Break-in
+504,Vehicle Theft
+505,Vehicle Theft
+506,Pickpocket
+507,Vehicle Theft
+508,Vehicle Theft
+509,Break-in
+510,Vehicle Theft
+511,Vehicle Theft
+512,Pickpocket
+513,Vehicle Theft
+514,Vehicle Theft
+515,Break-in
+516,Pickpocket
+517,Vehicle Theft
+518,Vehicle Theft
+519,Vehicle Theft
+520,Vehicle Theft
+521,Break-in
+522,Pickpocket
+523,Vehicle Theft
+524,Vehicle Theft
+525,Vehicle Theft
+526,Pickpocket
+527,Pickpocket
+528,Vehicle Theft
+529,Pickpocket
+530,Vehicle Theft
+531,Vehicle Theft
+532,Pickpocket
+533,Break-in
+534,Vehicle Theft
+535,Break-in
+536,Vehicle Theft
+537,Vehicle Theft
+538,Pickpocket
+539,Vehicle Theft
+540,Pickpocket
+541,Vehicle Theft
+542,Pickpocket
+543,Vehicle Theft
+544,Vehicle Theft
+545,Break-in
+546,Vehicle Theft
+547,Pickpocket
+548,Pickpocket
+549,Vehicle Theft
+550,Vehicle Theft
+551,Vehicle Theft
+552,Vehicle Theft
+553,Vehicle Theft
+554,Vehicle Theft
+555,Vehicle Theft
+556,Vehicle Theft
+557,Break-in
+558,Vehicle Theft
+559,Vehicle Theft
+560,Vehicle Theft
+561,Pickpocket
+562,Vehicle Theft
+563,Break-in
+564,Vehicle Theft
+565,Break-in
+566,Vehicle Theft
+567,Break-in
+568,Vehicle Theft
+569,Vehicle Theft
+570,Pickpocket
+571,Pickpocket
+572,Vehicle Theft
+573,Break-in
+574,Vehicle Theft
+575,Vehicle Theft
+576,Pickpocket
+577,Break-in
+578,Pickpocket
+579,Break-in
+580,Pickpocket
+581,Pickpocket
+582,Vehicle Theft
+583,Break-in
+584,Vehicle Theft
+585,Vehicle Theft
+586,Vehicle Theft
+587,Break-in
+588,Pickpocket
+589,Pickpocket
+590,Vehicle Theft
+591,Pickpocket
+592,Vehicle Theft
+593,Break-in
+594,Pickpocket
+595,Pickpocket
+596,Vehicle Theft
+597,Vehicle Theft
+598,Pickpocket
+599,Vehicle Theft
+600,Vehicle Theft
+601,Pickpocket
+602,Pickpocket
+603,Break-in
+604,Pickpocket
+605,Pickpocket
+606,Vehicle Theft
+607,Pickpocket
+608,Pickpocket
+609,Break-in
+610,Pickpocket
+611,Vehicle Theft
+612,Vehicle Theft
+613,Pickpocket
+614,Vehicle Theft
+615,Pickpocket
+616,Vehicle Theft
+617,Break-in
+618,Vehicle Theft
+619,Pickpocket
+620,Pickpocket
+621,Break-in
+622,Pickpocket
+623,Pickpocket
+624,Vehicle Theft
+625,Vehicle Theft
+626,Vehicle Theft
+627,Break-in
+628,Pickpocket
+629,Vehicle Theft
+630,Vehicle Theft
+631,Break-in
+632,Vehicle Theft
+633,Break-in
+634,Vehicle Theft
+635,Break-in
+636,Vehicle Theft
+637,Pickpocket
+638,Pickpocket
+639,Vehicle Theft
+640,Pickpocket
+641,Break-in
+642,Vehicle Theft
+643,Break-in
+644,Pickpocket
+645,Vehicle Theft
+646,Pickpocket
+647,Vehicle Theft
+648,Vehicle Theft
+649,Vehicle Theft
+650,Pickpocket
+651,Pickpocket
+652,Pickpocket
+653,Break-in
+654,Vehicle Theft
+655,Vehicle Theft
+656,Vehicle Theft
+657,Pickpocket
+658,Vehicle Theft
+659,Vehicle Theft
+660,Vehicle Theft
+661,Break-in
+662,Pickpocket
+663,Break-in
+664,Vehicle Theft
+665,Break-in
+666,Pickpocket
+667,Break-in
+668,Pickpocket
+669,Vehicle Theft
+670,Pickpocket
+671,Vehicle Theft
+672,Pickpocket
+673,Vehicle Theft
+674,Vehicle Theft
+675,Vehicle Theft
+676,Pickpocket
+677,Pickpocket
+678,Pickpocket
+679,Break-in
+680,Pickpocket
+681,Vehicle Theft
+682,Pickpocket
+683,Vehicle Theft
+684,Pickpocket
+685,Vehicle Theft
+686,Pickpocket
+687,Vehicle Theft
+688,Pickpocket
+689,Vehicle Theft
+690,Pickpocket
+691,Break-in
+692,Vehicle Theft
+693,Vehicle Theft
+694,Vehicle Theft
+695,Break-in
+696,Pickpocket
+697,Pickpocket
+698,Vehicle Theft
+699,Vehicle Theft
+700,Pickpocket
+701,Pickpocket
+702,Vehicle Theft
+703,Vehicle Theft
+704,Pickpocket
+705,Vehicle Theft
+706,Pickpocket
+707,Break-in
+708,Pickpocket
+709,Break-in
+710,Vehicle Theft
+711,Vehicle Theft
+712,Pickpocket
+713,Break-in
+714,Vehicle Theft
+715,Break-in
+716,Vehicle Theft
+717,Vehicle Theft
+718,Pickpocket
+719,Break-in
+720,Pickpocket
+721,Vehicle Theft
+722,Pickpocket
+723,Vehicle Theft
+724,Pickpocket
+725,Vehicle Theft
+726,Pickpocket
+727,Vehicle Theft
+728,Vehicle Theft
+729,Break-in
+730,Vehicle Theft
+731,Break-in
+732,Pickpocket
+733,Vehicle Theft
+734,Vehicle Theft
+735,Break-in
+736,Vehicle Theft
+737,Break-in
+738,Pickpocket
+739,Vehicle Theft
+740,Pickpocket
+741,Break-in
+742,Vehicle Theft
+743,Vehicle Theft
+744,Vehicle Theft
+745,Break-in
+746,Pickpocket
+747,Vehicle Theft
+748,Pickpocket
+749,Vehicle Theft
+750,Pickpocket
+751,Vehicle Theft
+752,Pickpocket
+753,Vehicle Theft
+754,Vehicle Theft
+755,Vehicle Theft
+756,Vehicle Theft
+757,Break-in
+758,Vehicle Theft
+759,Vehicle Theft
+760,Pickpocket
+761,Armed Robbery
+762,Snatch-and-Run
+763,Armed Robbery
+764,Snatch-and-Run
+765,Armed Robbery
+766,Snatch-and-Run
+767,Armed Robbery
+768,Armed Robbery
+769,Armed Robbery
+770,Armed Robbery
+771,Armed Robbery
+772,Snatch-and-Run
+773,Armed Robbery
+774,Snatch-and-Run
+775,Armed Robbery
+776,Armed Robbery
+777,Armed Robbery
+778,Armed Robbery
+779,Armed Robbery
+780,Armed Robbery
+781,Armed Robbery
+782,Snatch-and-Run
+783,Armed Robbery
+784,Armed Robbery
+785,Armed Robbery
+786,Armed Robbery
+787,Armed Robbery
+788,Armed Robbery
+789,Armed Robbery
+790,Armed Robbery
+791,Armed Robbery
+792,Armed Robbery
+793,Armed Robbery
+794,Armed Robbery
+795,Armed Robbery
+796,Snatch-and-Run
+797,Armed Robbery
+798,Armed Robbery
+799,Armed Robbery
+800,Armed Robbery
+801,Armed Robbery
+802,Armed Robbery
+803,Armed Robbery
+804,Armed Robbery
+805,Armed Robbery
+806,Armed Robbery
+807,Armed Robbery
+808,Armed Robbery
+809,Armed Robbery
+810,Armed Robbery
+811,Armed Robbery
+812,Armed Robbery
+813,Armed Robbery
+814,Armed Robbery
+815,Armed Robbery
+816,Snatch-and-Run
+817,Armed Robbery
+818,Armed Robbery
+819,Armed Robbery
+820,Snatch-and-Run
+821,Armed Robbery
+822,Armed Robbery
+823,Armed Robbery
+824,Snatch-and-Run
+825,Armed Robbery
+826,Snatch-and-Run
+827,Armed Robbery
+828,Armed Robbery
+829,Armed Robbery
+830,Armed Robbery
+831,Armed Robbery
+832,Armed Robbery
+833,Armed Robbery
+834,Armed Robbery
+835,Armed Robbery
+836,Snatch-and-Run
+837,Armed Robbery
+838,Snatch-and-Run
+839,Armed Robbery
+840,Snatch-and-Run
+841,Armed Robbery
+842,Armed Robbery
+843,Armed Robbery
+844,Snatch-and-Run
+845,Armed Robbery
+846,Snatch-and-Run
+847,Armed Robbery
+848,Snatch-and-Run
+849,Snatch-and-Run
+850,Snatch-and-Run
+851,Snatch-and-Run
+852,Snatch-and-Run
+853,Armed Robbery
+854,Snatch-and-Run
+855,Snatch-and-Run
+856,Snatch-and-Run
+857,Armed Robbery
+858,Snatch-and-Run
+859,Snatch-and-Run
+860,Snatch-and-Run
+861,Armed Robbery
+862,Snatch-and-Run
+863,Snatch-and-Run
+864,Snatch-and-Run
+865,Snatch-and-Run
+866,Snatch-and-Run
+867,Snatch-and-Run
+868,Snatch-and-Run
+869,Armed Robbery
+870,Snatch-and-Run
+871,Snatch-and-Run
+872,Snatch-and-Run
+873,Snatch-and-Run
+874,Snatch-and-Run
+875,Snatch-and-Run
+876,Snatch-and-Run
+877,Armed Robbery
+878,Snatch-and-Run
+879,Snatch-and-Run
+880,Snatch-and-Run
+881,Armed Robbery
+882,Snatch-and-Run
+883,Snatch-and-Run
+884,Snatch-and-Run
+885,Snatch-and-Run
+886,Snatch-and-Run
+887,Snatch-and-Run
+888,Snatch-and-Run
+889,Snatch-and-Run
+890,Snatch-and-Run
+891,Armed Robbery
+892,Snatch-and-Run
+893,Snatch-and-Run
+894,Snatch-and-Run
+895,Snatch-and-Run
+896,Snatch-and-Run
+897,Armed Robbery
+898,Snatch-and-Run
+899,Snatch-and-Run
+900,Snatch-and-Run
+901,Snatch-and-Run
+902,Snatch-and-Run
+903,Armed Robbery
+904,Snatch-and-Run
+905,Snatch-and-Run
+906,Break-in
+907,Break-in
+908,Break-in
+909,Break-in
+910,Break-in
+911,Break-in
+912,Break-in
+913,Break-in
+914,Break-in
+915,Break-in
+916,Break-in
+917,Break-in
+918,Break-in
+919,Break-in
+920,Break-in
+921,Break-in
+922,Break-in
+923,Break-in
+924,Break-in
+925,Break-in
+926,Break-in
+927,Break-in
+928,Break-in
+929,Break-in
+930,Break-in
+931,Break-in
+932,Break-in
+933,Break-in
+934,Break-in
+935,Break-in
+936,Break-in
+937,Break-in
+938,Break-in
+939,Break-in
+940,Break-in
+941,Break-in
+942,Break-in
+943,Break-in
+944,Break-in
+945,Break-in
+946,Break-in
+947,Break-in
+948,Break-in
+949,Break-in
+950,Break-in
+951,Break-in
+952,Break-in
+953,Break-in
+954,Break-in
+955,Break-in
+956,Break-in
+957,Break-in
+958,Break-in
+959,Break-in
+960,Break-in
+961,Break-in
+962,Break-in
+963,Break-in
+964,Break-in
+965,Break-in
+966,Break-in
+967,Break-in
+968,Break-in
+969,Break-in
+970,Break-in
+971,Break-in
+972,Break-in
+973,Break-in
+974,Break-in
+975,Break-in
+976,Break-in
+977,Break-in
+978,Break-in
+979,Break-in
+980,Break-in
+981,Break-in
+982,Break-in
+983,Break-in
+984,Break-in
+985,Break-in
+986,Break-in
+987,Break-in
+988,Break-in
+989,Break-in
+990,Break-in
+991,Break-in
+992,Break-in
+993,Break-in
+994,Break-in
+995,Break-in
+996,Break-in
+997,Break-in
+998,Break-in
+999,Break-in
+1000,Break-in
+1001,Break-in
+1002,Break-in
+1003,Break-in
+1004,Break-in
+1005,Break-in
+1006,Break-in
+1007,Break-in
+1008,Break-in
+1009,Break-in
+1010,Break-in
+1011,Break-in
+1012,Break-in
+1013,Break-in
+1014,Break-in
+1015,Break-in
+1016,Break-in
+1017,Break-in
+1018,Break-in
+1019,Break-in
+1020,Break-in
+1021,Break-in
+1022,Break-in
+1023,Break-in
+1024,Break-in
+1025,Break-in
+1026,Break-in
+1027,Break-in
+1028,Break-in
+1029,Break-in
+1030,Break-in
+1031,Break-in
+1032,Break-in
+1033,Break-in
+1034,Break-in
+1035,Break-in
+1036,Break-in
+1037,Break-in
+1038,Break-in
+1039,Break-in
+1040,Break-in
+1041,Break-in
+1042,Break-in
+1043,Break-in
+1044,Break-in
+1045,Break-in
+1046,Break-in
+1047,Break-in
+1048,Break-in
+1049,Break-in
+1050,Break-in
+1051,Break-in
+1052,Break-in
+1053,Break-in
+1054,Break-in
+1055,Break-in
+1056,Physical Assault
+1057,Physical Assault
+1058,Physical Assault
+1059,Armed Attack
+1060,Physical Assault
+1061,Armed Attack
+1062,Physical Assault
+1063,Armed Attack
+1064,Armed Attack
+1065,Armed Attack
+1066,Physical Assault
+1067,Armed Attack
+1068,Physical Assault
+1069,Armed Attack
+1070,Physical Assault
+1071,Armed Attack
+1072,Armed Attack
+1073,Physical Assault
+1074,Physical Assault
+1075,Physical Assault
+1076,Physical Assault
+1077,Physical Assault
+1078,Physical Assault
+1079,Armed Attack
+1080,Armed Attack
+1081,Armed Attack
+1082,Physical Assault
+1083,Armed Attack
+1084,Physical Assault
+1085,Armed Attack
+1086,Physical Assault
+1087,Armed Attack
+1088,Physical Assault
+1089,Armed Attack
+1090,Physical Assault
+1091,Physical Assault
+1092,Physical Assault
+1093,Armed Attack
+1094,Physical Assault
+1095,Physical Assault
+1096,Physical Assault
+1097,Armed Attack
+1098,Physical Assault
+1099,Armed Attack
+1100,Physical Assault
+1101,Physical Assault
+1102,Armed Attack
+1103,Armed Attack
+1104,Physical Assault
+1105,Physical Assault
+1106,Physical Assault
+1107,Armed Attack
+1108,Physical Assault
+1109,Armed Attack
+1110,Physical Assault
+1111,Armed Attack
+1112,Armed Attack
+1113,Physical Assault
+1114,Physical Assault
+1115,Armed Attack
+1116,Armed Attack
+1117,Physical Assault
+1118,Physical Assault
+1119,Physical Assault
+1120,Armed Attack
+1121,Armed Attack
+1122,Physical Assault
+1123,Armed Attack
+1124,Physical Assault
+1125,Armed Attack
+1126,Armed Attack
+1127,Armed Attack
+1128,Physical Assault
+1129,Armed Attack
+1130,Physical Assault
+1131,Physical Assault
+1132,Physical Assault
+1133,Armed Attack
+1134,Physical Assault
+1135,Armed Attack
+1136,Physical Assault
+1137,Armed Attack
+1138,Physical Assault
+1139,Armed Attack
+1140,Physical Assault
+1141,Armed Attack
+1142,Armed Attack
+1143,Armed Attack
+1144,Physical Assault
+1145,Armed Attack
+1146,Physical Assault
+1147,Armed Attack
+1148,Physical Assault
+1149,Physical Assault
+1150,Physical Assault
+1151,Armed Attack
+1152,Physical Assault
+1153,Physical Assault
+1154,Physical Assault
+1155,Armed Attack
+1156,Physical Assault
+1157,Armed Attack
+1158,Physical Assault
+1159,Physical Assault
+1160,Physical Assault
+1161,Armed Attack
+1162,Physical Assault
+1163,Armed Attack
+1164,Physical Assault
+1165,Armed Attack
+1166,Armed Attack
+1167,Armed Attack
+1168,Physical Assault
+1169,Armed Attack
+1170,Physical Assault
+1171,Armed Attack
+1172,Physical Assault
+1173,Armed Attack
+1174,Armed Attack
+1175,Physical Assault
+1176,Physical Assault
+1177,Armed Attack
+1178,Physical Assault
+1179,Armed Attack
+1180,Physical Assault
+1181,Armed Attack
+1182,Physical Assault
+1183,Armed Attack
+1184,Physical Assault
+1185,Armed Attack
+1186,Physical Assault
+1187,Armed Attack
+1188,Physical Assault
+1189,Armed Attack
+1190,Armed Attack
+1191,Armed Attack
+1192,Physical Assault
+1193,Armed Attack
+1194,Physical Assault
+1195,Armed Attack
+1196,Physical Assault
+1197,Physical Assault
+1198,Armed Attack
+1199,Armed Attack
+1200,Physical Assault
+1201,Armed Attack
+1202,Physical Assault
+1203,Physical Assault
+1204,Physical Assault
+1205,Armed Attack
+1206,Physical Assault
+1207,Armed Attack
+1208,Physical Assault
+1209,Armed Attack
+1210,Physical Assault
+1211,Physical Assault
+1212,Armed Attack
+1213,Armed Attack
+1214,Physical Assault
+1215,Armed Attack
+1216,Physical Assault
+1217,Armed Attack
+1218,Physical Assault
+1219,Armed Attack
+1220,Physical Assault
+1221,Armed Attack
+1222,Physical Assault
+1223,Physical Assault
+1224,Armed Attack
+1225,Armed Attack
+1226,Armed Attack
+1227,Armed Attack
+1228,Armed Attack
+1229,Armed Attack
+1230,Physical Assault
+1231,Armed Attack
+1232,Physical Assault
+1233,Armed Attack
+1234,Physical Assault
+1235,Armed Attack
+1236,Physical Assault
+1237,Physical Assault
+1238,Armed Attack
+1239,Armed Attack
+1240,Physical Assault
+1241,Armed Attack
+1242,Physical Assault
+1243,Physical Assault
+1244,Physical Assault
+1245,Armed Attack
+1246,Physical Assault
+1247,Armed Attack
+1248,Physical Assault
+1249,Physical Assault
+1250,Physical Assault
+1251,Armed Attack
+1252,Physical Assault
+1253,Physical Assault
+1254,Armed Attack
+1255,Armed Attack
+1256,Vehicle Theft
+1257,Break-in
+1258,Pickpocket
+1259,Pickpocket
+1260,Pickpocket
+1261,Vehicle Theft
+1262,Vehicle Theft
+1263,Vehicle Theft
+1264,Pickpocket
+1265,Break-in
+1266,Pickpocket
+1267,Break-in
+1268,Pickpocket
+1269,Vehicle Theft
+1270,Pickpocket
+1271,Vehicle Theft
+1272,Vehicle Theft
+1273,Vehicle Theft
+1274,Vehicle Theft
+1275,Break-in
+1276,Vehicle Theft
+1277,Pickpocket
+1278,Vehicle Theft
+1279,Vehicle Theft
+1280,Pickpocket
+1281,Vehicle Theft
+1282,Vehicle Theft
+1283,Vehicle Theft
+1284,Pickpocket
+1285,Break-in
+1286,Pickpocket
+1287,Break-in
+1288,Pickpocket
+1289,Vehicle Theft
+1290,Vehicle Theft
+1291,Break-in
+1292,Vehicle Theft
+1293,Break-in
+1294,Pickpocket
+1295,Pickpocket
+1296,Vehicle Theft
+1297,Break-in
+1298,Pickpocket
+1299,Break-in
+1300,Pickpocket
+1301,Vehicle Theft
+1302,Vehicle Theft
+1303,Vehicle Theft
+1304,Vehicle Theft
+1305,Break-in
+1306,Pickpocket
+1307,Break-in
+1308,Vehicle Theft
+1309,Break-in
+1310,Vehicle Theft
+1311,Break-in
+1312,Vehicle Theft
+1313,Pickpocket
+1314,Pickpocket
+1315,Break-in
+1316,Pickpocket
+1317,Pickpocket
+1318,Vehicle Theft
+1319,Vehicle Theft
+1320,Vehicle Theft
+1321,Pickpocket
+1322,Pickpocket
+1323,Break-in
+1324,Vehicle Theft
+1325,Vehicle Theft
+1326,Vehicle Theft
+1327,Vehicle Theft
+1328,Vehicle Theft
+1329,Pickpocket
+1330,Vehicle Theft
+1331,Break-in
+1332,Vehicle Theft
+1333,Pickpocket
+1334,Pickpocket
+1335,Pickpocket
+1336,Pickpocket
+1337,Break-in
+1338,Pickpocket
+1339,Vehicle Theft
+1340,Pickpocket
+1341,Break-in
+1342,Pickpocket
+1343,Break-in
+1344,Pickpocket
+1345,Vehicle Theft
+1346,Vehicle Theft
+1347,Break-in
+1348,Pickpocket
+1349,Break-in
+1350,Vehicle Theft
+1351,Break-in
+1352,Pickpocket
+1353,Vehicle Theft
+1354,Vehicle Theft
+1355,Vehicle Theft
+1356,Vehicle Theft
+1357,Break-in
+1358,Vehicle Theft
+1359,Break-in
+1360,Vehicle Theft
+1361,Vehicle Theft
+1362,Vehicle Theft
+1363,Break-in
+1364,Pickpocket
+1365,Break-in
+1366,Vehicle Theft
+1367,Pickpocket
+1368,Vehicle Theft
+1369,Break-in
+1370,Pickpocket
+1371,Break-in
+1372,Pickpocket
+1373,Vehicle Theft
+1374,Pickpocket
+1375,Vehicle Theft
+1376,Pickpocket
+1377,Vehicle Theft
+1378,Pickpocket
+1379,Vehicle Theft
+1380,Vehicle Theft
+1381,Break-in
+1382,Pickpocket
+1383,Break-in
+1384,Pickpocket
+1385,Pickpocket
+1386,Vehicle Theft
+1387,Vehicle Theft
+1388,Pickpocket
+1389,Pickpocket
+1390,Vehicle Theft
+1391,Break-in
+1392,Vehicle Theft
+1393,Vehicle Theft
+1394,Vehicle Theft
+1395,Vehicle Theft
+1396,Vehicle Theft
+1397,Break-in
+1398,Vehicle Theft
+1399,Break-in
+1400,Pickpocket
+1401,Vehicle Theft
+1402,Pickpocket
+1403,Vehicle Theft
+1404,Vehicle Theft
+1405,Vehicle Theft
+1406,Armed Robbery
+1407,Armed Robbery
+1408,Snatch-and-Run
+1409,Armed Robbery
+1410,Snatch-and-Run
+1411,Armed Robbery
+1412,Snatch-and-Run
+1413,Armed Robbery
+1414,Snatch-and-Run
+1415,Armed Robbery
+1416,Armed Robbery
+1417,Armed Robbery
+1418,Armed Robbery
+1419,Armed Robbery
+1420,Snatch-and-Run
+1421,Armed Robbery
+1422,Snatch-and-Run
+1423,Armed Robbery
+1424,Armed Robbery
+1425,Armed Robbery
+1426,Snatch-and-Run
+1427,Armed Robbery
+1428,Armed Robbery
+1429,Armed Robbery
+1430,Armed Robbery
+1431,Armed Robbery
+1432,Armed Robbery
+1433,Armed Robbery
+1434,Armed Robbery
+1435,Armed Robbery
+1436,Snatch-and-Run
+1437,Snatch-and-Run
+1438,Snatch-and-Run
+1439,Snatch-and-Run
+1440,Snatch-and-Run
+1441,Armed Robbery
+1442,Snatch-and-Run
+1443,Snatch-and-Run
+1444,Snatch-and-Run
+1445,Snatch-and-Run
+1446,Snatch-and-Run
+1447,Armed Robbery
+1448,Snatch-and-Run
+1449,Armed Robbery
+1450,Snatch-and-Run
+1451,Break-in
+1452,Break-in
+1453,Break-in
+1454,Break-in
+1455,Break-in
+1456,Break-in
+1457,Break-in
+1458,Break-in
+1459,Break-in
+1460,Break-in
+1461,Break-in
+1462,Break-in
+1463,Break-in
+1464,Break-in
+1465,Break-in
+1466,Break-in
+1467,Break-in
+1468,Break-in
+1469,Break-in
+1470,Break-in
+1471,Break-in
+1472,Break-in
+1473,Break-in
+1474,Break-in
+1475,Break-in
+1476,Break-in
+1477,Break-in
+1478,Break-in
+1479,Break-in
+1480,Break-in
+1481,Break-in
+1482,Break-in
+1483,Break-in
+1484,Break-in
+1485,Break-in
+1486,Break-in
+1487,Break-in
+1488,Break-in
+1489,Break-in
+1490,Break-in
+1491,Break-in
+1492,Break-in
+1493,Break-in
+1494,Break-in
+1495,Break-in
+1496,Break-in
+1497,Break-in
+1498,Break-in
+1499,Break-in
+1500,Break-in
+1501,Break-in
+1502,Break-in
+1503,Break-in
+1504,Break-in
+1505,Break-in
+1506,Armed Attack
+1507,Physical Assault
+1508,Physical Assault
+1509,Armed Attack
+1510,Physical Assault
+1511,Armed Attack
+1512,Physical Assault
+1513,Armed Attack
+1514,Physical Assault
+1515,Armed Attack
+1516,Physical Assault
+1517,Armed Attack
+1518,Physical Assault
+1519,Armed Attack
+1520,Armed Attack
+1521,Armed Attack
+1522,Physical Assault
+1523,Armed Attack
+1524,Armed Attack
+1525,Armed Attack
+1526,Physical Assault
+1527,Armed Attack
+1528,Physical Assault
+1529,Physical Assault
+1530,Armed Attack
+1531,Armed Attack
+1532,Armed Attack
+1533,Physical Assault
+1534,Physical Assault
+1535,Physical Assault
+1536,Physical Assault
+1537,Armed Attack
+1538,Physical Assault
+1539,Armed Attack
+1540,Physical Assault
+1541,Physical Assault
+1542,Armed Attack
+1543,Armed Attack
+1544,Armed Attack
+1545,Armed Attack
+1546,Physical Assault
+1547,Armed Attack
+1548,Physical Assault
+1549,Physical Assault
+1550,Armed Attack
+1551,Armed Attack
+1552,Physical Assault
+1553,Armed Attack
+1554,Physical Assault
+1555,Physical Assault
+1556,Physical Assault
+1557,Armed Attack
+1558,Physical Assault
+1559,Armed Attack
+1560,Armed Attack
+1561,Armed Attack
+1562,Armed Attack
+1563,Armed Attack
+1564,Armed Attack
+1565,Armed Attack
+1566,Physical Assault
+1567,Physical Assault
+1568,Physical Assault
+1569,Physical Assault
+1570,Physical Assault
+1571,Armed Attack
+1572,Physical Assault
+1573,Armed Attack
+1574,Physical Assault
+1575,Armed Attack
+1576,Physical Assault
+1577,Armed Attack
+1578,Physical Assault
+1579,Physical Assault
+1580,Armed Attack
+1581,Physical Assault
+1582,Physical Assault
+1583,Armed Attack
+1584,Armed Attack
+1585,Armed Attack
+1586,Pickpocket
+1587,Vehicle Theft
+1588,Pickpocket
+1589,Break-in
+1590,Vehicle Theft
+1591,Break-in
+1592,Pickpocket
+1593,Pickpocket
+1594,Pickpocket
+1595,Break-in
+1596,Pickpocket
+1597,Break-in
+1598,Vehicle Theft
+1599,Vehicle Theft
+1600,Pickpocket
+1601,Break-in
+1602,Vehicle Theft
+1603,Vehicle Theft
+1604,Vehicle Theft
+1605,Vehicle Theft
+1606,Pickpocket
+1607,Pickpocket
+1608,Pickpocket
+1609,Break-in
+1610,Pickpocket
+1611,Vehicle Theft
+1612,Vehicle Theft
+1613,Break-in
+1614,Vehicle Theft
+1615,Vehicle Theft
+1616,Pickpocket
+1617,Vehicle Theft
+1618,Vehicle Theft
+1619,Vehicle Theft
+1620,Vehicle Theft
+1621,Break-in
+1622,Vehicle Theft
+1623,Vehicle Theft
+1624,Vehicle Theft
+1625,Break-in
+1626,Vehicle Theft
+1627,Pickpocket
+1628,Vehicle Theft
+1629,Break-in
+1630,Pickpocket
+1631,Vehicle Theft
+1632,Vehicle Theft
+1633,Break-in
+1634,Vehicle Theft
+1635,Break-in
+1636,Pickpocket
+1637,Vehicle Theft
+1638,Vehicle Theft
+1639,Break-in
+1640,Pickpocket
+1641,Break-in
+1642,Pickpocket
+1643,Break-in
+1644,Pickpocket
+1645,Break-in
+1646,Pickpocket
+1647,Break-in
+1648,Pickpocket
+1649,Vehicle Theft
+1650,Pickpocket
+1651,Break-in
+1652,Vehicle Theft
+1653,Vehicle Theft
+1654,Vehicle Theft
+1655,Pickpocket
+1656,Vehicle Theft
+1657,Vehicle Theft
+1658,Pickpocket
+1659,Vehicle Theft
+1660,Pickpocket
+1661,Pickpocket
+1662,Pickpocket
+1663,Break-in
+1664,Vehicle Theft
+1665,Break-in
+1666,Vehicle Theft
+1667,Vehicle Theft
+1668,Pickpocket
+1669,Break-in
+1670,Pickpocket
+1671,Vehicle Theft
+1672,Pickpocket
+1673,Vehicle Theft
+1674,Pickpocket
+1675,Vehicle Theft
+1676,Vehicle Theft
+1677,Break-in
+1678,Vehicle Theft
+1679,Vehicle Theft
+1680,Pickpocket
+1681,Armed Robbery
+1682,Armed Robbery
+1683,Armed Robbery
+1684,Snatch-and-Run
+1685,Armed Robbery
+1686,Snatch-and-Run
+1687,Armed Robbery
+1688,Armed Robbery
+1689,Armed Robbery
+1690,Snatch-and-Run
+1691,Armed Robbery
+1692,Armed Robbery
+1693,Armed Robbery
+1694,Armed Robbery
+1695,Armed Robbery
+1696,Snatch-and-Run
+1697,Armed Robbery
+1698,Snatch-and-Run
+1699,Armed Robbery
+1700,Snatch-and-Run
+1701,Armed Robbery
+1702,Snatch-and-Run
+1703,Snatch-and-Run
+1704,Snatch-and-Run
+1705,Armed Robbery
+1706,Snatch-and-Run
+1707,Snatch-and-Run
+1708,Snatch-and-Run
+1709,Armed Robbery
+1710,Snatch-and-Run
+1711,Break-in
+1712,Break-in
+1713,Break-in
+1714,Break-in
+1715,Break-in
+1716,Break-in
+1717,Break-in
+1718,Break-in
+1719,Break-in
+1720,Break-in
+1721,Break-in
+1722,Break-in
+1723,Break-in
+1724,Break-in
+1725,Break-in
+1726,Break-in
+1727,Break-in
+1728,Break-in
+1729,Break-in
+1730,Break-in
+1731,Break-in
+1732,Break-in
+1733,Break-in
+1734,Break-in
+1735,Break-in
+1736,Break-in
+1737,Break-in
+1738,Break-in
+1739,Break-in
+1740,Break-in
+1741,Break-in
+1742,Break-in
+1743,Break-in
+1744,Break-in
+1745,Break-in
+1746,Physical Assault
+1747,Physical Assault
+1748,Physical Assault
+1749,Armed Attack
+1750,Physical Assault
+1751,Armed Attack
+1752,Physical Assault
+1753,Armed Attack
+1754,Physical Assault
+1755,Armed Attack
+1756,Armed Attack
+1757,Armed Attack
+1758,Armed Attack
+1759,Armed Attack
+1760,Physical Assault
+1761,Armed Attack
+1762,Physical Assault
+1763,Armed Attack
+1764,Physical Assault
+1765,Armed Attack
+1766,Physical Assault
+1767,Physical Assault
+1768,Armed Attack
+1769,Armed Attack
+1770,Physical Assault
+1771,Armed Attack
+1772,Physical Assault
+1773,Armed Attack
+1774,Physical Assault
+1775,Armed Attack
+1776,Armed Attack
+1777,Armed Attack
+1778,Physical Assault
+1779,Armed Attack
+1780,Physical Assault
+1781,Armed Attack
+1782,Armed Attack
+1783,Armed Attack
+1784,Armed Attack
+1785,Armed Attack
+1786,Physical Assault
+1787,Armed Attack
+1788,Physical Assault
+1789,Physical Assault
+1790,Armed Attack
+1791,Armed Attack
+1792,Physical Assault
+1793,Armed Attack
+1794,Armed Attack
+1795,Armed Attack
+1796,Vehicle Theft
+1797,Break-in
+1798,Vehicle Theft
+1799,Vehicle Theft
+1800,Vehicle Theft
+1801,Pickpocket
+1802,Pickpocket
+1803,Vehicle Theft
+1804,Vehicle Theft
+1805,Vehicle Theft
+1806,Vehicle Theft
+1807,Break-in
+1808,Pickpocket
+1809,Pickpocket
+1810,Pickpocket
+1811,Break-in
+1812,Pickpocket
+1813,Break-in
+1814,Pickpocket
+1815,Vehicle Theft
+1816,Vehicle Theft
+1817,Vehicle Theft
+1818,Vehicle Theft
+1819,Vehicle Theft
+1820,Vehicle Theft
+1821,Vehicle Theft
+1822,Vehicle Theft
+1823,Break-in
+1824,Pickpocket
+1825,Vehicle Theft
+1826,Pickpocket
+1827,Break-in
+1828,Pickpocket
+1829,Pickpocket
+1830,Pickpocket
+1831,Vehicle Theft
+1832,Vehicle Theft
+1833,Break-in
+1834,Pickpocket
+1835,Vehicle Theft
+1836,Pickpocket
+1837,Break-in
+1838,Vehicle Theft
+1839,Break-in
+1840,Vehicle Theft
+1841,Pickpocket
+1842,Vehicle Theft
+1843,Pickpocket
+1844,Pickpocket
+1845,Vehicle Theft
+1846,Pickpocket
+1847,Vehicle Theft
+1848,Vehicle Theft
+1849,Pickpocket
+1850,Pickpocket
+1851,Armed Robbery
+1852,Armed Robbery
+1853,Armed Robbery
+1854,Armed Robbery
+1855,Armed Robbery
+1856,Snatch-and-Run
+1857,Armed Robbery
+1858,Armed Robbery
+1859,Armed Robbery
+1860,Snatch-and-Run
+1861,Snatch-and-Run
+1862,Snatch-and-Run
+1863,Snatch-and-Run
+1864,Break-in
+1865,Break-in
+1866,Break-in
+1867,Break-in
+1868,Break-in
+1869,Break-in
+1870,Break-in
+1871,Break-in
+1872,Break-in
+1873,Break-in
+1874,Break-in
+1875,Break-in
+1876,Break-in
+1877,Break-in
+1878,Break-in
+1879,Break-in
+1880,Break-in
+1881,Break-in
+1882,Physical Assault
+1883,Physical Assault
+1884,Armed Attack
+1885,Armed Attack
+1886,Armed Attack
+1887,Armed Attack
+1888,Armed Attack
+1889,Armed Attack
+1890,Physical Assault
+1891,Armed Attack
+1892,Physical Assault
+1893,Armed Attack
+1894,Physical Assault
+1895,Armed Attack
+1896,Physical Assault
+1897,Armed Attack
+1898,Physical Assault
+1899,Physical Assault
+1900,Physical Assault
+1901,Armed Attack
+1902,Physical Assault
+1903,Physical Assault
+1904,Physical Assault
+1905,Armed Attack
+1906,Armed Attack
+1907,Physical Assault
+1908,Physical Assault
+1909,Armed Attack
+1910,Vehicle Theft
+1911,Pickpocket
+1912,Vehicle Theft
+1913,Vehicle Theft
+1914,Vehicle Theft
+1915,Break-in
+1916,Vehicle Theft
+1917,Vehicle Theft
+1918,Vehicle Theft
+1919,Vehicle Theft
+1920,Vehicle Theft
+1921,Vehicle Theft
+1922,Vehicle Theft
+1923,Pickpocket
+1924,Pickpocket
+1925,Pickpocket
+1926,Pickpocket
+1927,Pickpocket
+1928,Vehicle Theft
+1929,Break-in
+1930,Vehicle Theft
+1931,Pickpocket
+1932,Pickpocket
+1933,Vehicle Theft
+1934,Vehicle Theft
+1935,Pickpocket
+1936,Vehicle Theft
+1937,Break-in
+1938,Pickpocket
+1939,Pickpocket
+1940,Pickpocket
+1941,Break-in
+1942,Pickpocket
+1943,Vehicle Theft
+1944,Pickpocket
+1945,Vehicle Theft
+1946,Vehicle Theft
+1947,Vehicle Theft
+1948,Pickpocket
+1949,Vehicle Theft
+1950,Pickpocket
+1951,Vehicle Theft
+1952,Pickpocket
+1953,Break-in
+1954,Vehicle Theft
+1955,Break-in
+1956,Pickpocket
+1957,Vehicle Theft
+1958,Vehicle Theft
+1959,Break-in
+1960,Pickpocket
+1961,Vehicle Theft
+1962,Pickpocket
+1963,Vehicle Theft
+1964,Pickpocket
+1965,Break-in
+1966,Vehicle Theft
+1967,Break-in
+1968,Vehicle Theft
+1969,Pickpocket
+1970,Vehicle Theft
+1971,Pickpocket
+1972,Pickpocket
+1973,Vehicle Theft
+1974,Pickpocket
+1975,Break-in
+1976,Vehicle Theft
+1977,Vehicle Theft
+1978,Vehicle Theft
+1979,Vehicle Theft
+1980,Snatch-and-Run
+1981,Armed Robbery
+1982,Armed Robbery
+1983,Armed Robbery
+1984,Armed Robbery
+1985,Armed Robbery
+1986,Armed Robbery
+1987,Armed Robbery
+1988,Armed Robbery
+1989,Armed Robbery
+1990,Armed Robbery
+1991,Armed Robbery
+1992,Snatch-and-Run
+1993,Snatch-and-Run
+1994,Snatch-and-Run
+1995,Armed Robbery
+1996,Snatch-and-Run
+1997,Snatch-and-Run
+1998,Break-in
+1999,Break-in
+2000,Break-in
+2001,Break-in
+2002,Break-in
+2003,Break-in
+2004,Break-in
+2005,Break-in
+2006,Break-in
+2007,Break-in
+2008,Break-in
+2009,Break-in
+2010,Break-in
+2011,Break-in
+2012,Break-in
+2013,Break-in
+2014,Break-in
+2015,Break-in
+2016,Break-in
+2017,Break-in
+2018,Break-in
+2019,Break-in
+2020,Break-in
+2021,Break-in
+2022,Break-in
+2023,Armed Attack
+2024,Physical Assault
+2025,Armed Attack
+2026,Physical Assault
+2027,Armed Attack
+2028,Physical Assault
+2029,Armed Attack
+2030,Physical Assault
+2031,Armed Attack
+2032,Physical Assault
+2033,Armed Attack
+2034,Physical Assault
+2035,Armed Attack
+2036,Physical Assault
+2037,Physical Assault
+2038,Physical Assault
+2039,Physical Assault
+2040,Physical Assault
+2041,Armed Attack
+2042,Physical Assault
+2043,Physical Assault
+2044,Physical Assault
+2045,Physical Assault
+2046,Armed Attack
+2047,Armed Attack
+2048,Physical Assault
+2049,Armed Attack
+2050,Physical Assault
+2051,Physical Assault
+2052,Armed Attack
+2053,Armed Attack
+2054,Physical Assault
+2055,Armed Attack
+2056,Physical Assault
+2057,Physical Assault
+2058,Pickpocket
+2059,Break-in
+2060,Pickpocket
+2061,Break-in
+2062,Pickpocket
+2063,Break-in
+2064,Pickpocket
+2065,Break-in
+2066,Vehicle Theft
+2067,Vehicle Theft
+2068,Pickpocket
+2069,Vehicle Theft
+2070,Vehicle Theft
+2071,Break-in
+2072,Vehicle Theft
+2073,Vehicle Theft
+2074,Pickpocket
+2075,Break-in
+2076,Pickpocket
+2077,Pickpocket
+2078,Pickpocket
+2079,Break-in
+2080,Pickpocket
+2081,Break-in
+2082,Vehicle Theft
+2083,Break-in
+2084,Vehicle Theft
+2085,Vehicle Theft
+2086,Pickpocket
+2087,Break-in
+2088,Vehicle Theft
+2089,Vehicle Theft
+2090,Pickpocket
+2091,Vehicle Theft
+2092,Vehicle Theft
+2093,Vehicle Theft
+2094,Pickpocket
+2095,Vehicle Theft
+2096,Pickpocket
+2097,Vehicle Theft
+2098,Armed Robbery
+2099,Armed Robbery
+2100,Armed Robbery
+2101,Armed Robbery
+2102,Snatch-and-Run
+2103,Armed Robbery
+2104,Snatch-and-Run
+2105,Snatch-and-Run
+2106,Snatch-and-Run
+2107,Break-in
+2108,Break-in
+2109,Break-in
+2110,Break-in
+2111,Break-in
+2112,Break-in
+2113,Break-in
+2114,Break-in
+2115,Break-in
+2116,Break-in
+2117,Break-in
+2118,Break-in
+2119,Armed Attack
+2120,Armed Attack
+2121,Armed Attack
+2122,Physical Assault
+2123,Armed Attack
+2124,Physical Assault
+2125,Armed Attack
+2126,Armed Attack
+2127,Armed Attack
+2128,Physical Assault
+2129,Armed Attack
+2130,Physical Assault
+2131,Armed Attack
+2132,Physical Assault
+2133,Physical Assault
+2134,Physical Assault
+2135,Armed Attack
+2136,Physical Assault
+2137,Armed Attack
+2138,Physical Assault
+2139,Break-in
+2140,Vehicle Theft
+2141,Vehicle Theft
+2142,Vehicle Theft
+2143,Break-in
+2144,Vehicle Theft
+2145,Vehicle Theft
+2146,Pickpocket
+2147,Vehicle Theft
+2148,Vehicle Theft
+2149,Pickpocket
+2150,Vehicle Theft
+2151,Pickpocket
+2152,Vehicle Theft
+2153,Break-in
+2154,Pickpocket
+2155,Break-in
+2156,Pickpocket
+2157,Pickpocket
+2158,Vehicle Theft
+2159,Break-in
+2160,Pickpocket
+2161,Vehicle Theft
+2162,Pickpocket
+2163,Vehicle Theft
+2164,Pickpocket
+2165,Pickpocket
+2166,Vehicle Theft
+2167,Vehicle Theft
+2168,Pickpocket
+2169,Break-in
+2170,Vehicle Theft
+2171,Break-in
+2172,Vehicle Theft
+2173,Break-in
+2174,Vehicle Theft
+2175,Pickpocket
+2176,Pickpocket
+2177,Pickpocket
+2178,Pickpocket
+2179,Pickpocket
+2180,Pickpocket
+2181,Pickpocket
+2182,Vehicle Theft
+2183,Pickpocket
+2184,Snatch-and-Run
+2185,Armed Robbery
+2186,Armed Robbery
+2187,Armed Robbery
+2188,Armed Robbery
+2189,Armed Robbery
+2190,Armed Robbery
+2191,Snatch-and-Run
+2192,Snatch-and-Run
+2193,Snatch-and-Run
+2194,Break-in
+2195,Break-in
+2196,Break-in
+2197,Break-in
+2198,Break-in
+2199,Break-in
+2200,Break-in
+2201,Break-in
+2202,Break-in
+2203,Break-in
+2204,Break-in
+2205,Break-in
+2206,Break-in
+2207,Break-in
+2208,Break-in
+2209,Armed Attack
+2210,Armed Attack
+2211,Armed Attack
+2212,Armed Attack
+2213,Armed Attack
+2214,Armed Attack
+2215,Physical Assault
+2216,Physical Assault
+2217,Armed Attack
+2218,Armed Attack
+2219,Armed Attack
+2220,Physical Assault
+2221,Armed Attack
+2222,Physical Assault
+2223,Armed Attack
+2224,Physical Assault
+2225,Armed Attack
+2226,Physical Assault
+2227,Physical Assault
+2228,Physical Assault
+2229,Physical Assault
+2230,Physical Assault
+2231,Vehicle Theft
+2232,Vehicle Theft
+2233,Break-in
+2234,Pickpocket
+2235,Break-in
+2236,Pickpocket
+2237,Break-in
+2238,Vehicle Theft
+2239,Vehicle Theft
+2240,Pickpocket
+2241,Break-in
+2242,Pickpocket
+2243,Vehicle Theft
+2244,Vehicle Theft
+2245,Vehicle Theft
+2246,Vehicle Theft
+2247,Pickpocket
+2248,Pickpocket
+2249,Vehicle Theft
+2250,Pickpocket
+2251,Vehicle Theft
+2252,Pickpocket
+2253,Break-in
+2254,Pickpocket
+2255,Break-in
+2256,Vehicle Theft
+2257,Pickpocket
+2258,Vehicle Theft
+2259,Vehicle Theft
+2260,Vehicle Theft
+2261,Break-in
+2262,Pickpocket
+2263,Vehicle Theft
+2264,Vehicle Theft
+2265,Break-in
+2266,Pickpocket
+2267,Vehicle Theft
+2268,Pickpocket
+2269,Pickpocket
+2270,Vehicle Theft
+2271,Armed Robbery
+2272,Snatch-and-Run
+2273,Armed Robbery
+2274,Armed Robbery
+2275,Armed Robbery
+2276,Armed Robbery
+2277,Snatch-and-Run
+2278,Snatch-and-Run
+2279,Snatch-and-Run
+2280,Break-in
+2281,Break-in
+2282,Break-in
+2283,Break-in
+2284,Break-in
+2285,Break-in
+2286,Break-in
+2287,Break-in
+2288,Break-in
+2289,Break-in
+2290,Break-in
+2291,Break-in
+2292,Physical Assault
+2293,Armed Attack
+2294,Physical Assault
+2295,Armed Attack
+2296,Physical Assault
+2297,Armed Attack
+2298,Physical Assault
+2299,Physical Assault
+2300,Armed Attack
+2301,Physical Assault
+2302,Physical Assault
+2303,Armed Attack
+2304,Physical Assault
+2305,Armed Attack
+2306,Armed Attack
+2307,Armed Attack
+2308,Physical Assault
+2309,Armed Attack
+2310,Physical Assault
+2311,Armed Attack
+2312,Pickpocket
+2313,Vehicle Theft
+2314,Pickpocket
+2315,Break-in
+2316,Vehicle Theft
+2317,Pickpocket
+2318,Vehicle Theft
+2319,Break-in
+2320,Pickpocket
+2321,Break-in
+2322,Pickpocket
+2323,Vehicle Theft
+2324,Vehicle Theft
+2325,Vehicle Theft
+2326,Vehicle Theft
+2327,Break-in
+2328,Vehicle Theft
+2329,Break-in
+2330,Vehicle Theft
+2331,Break-in
+2332,Vehicle Theft
+2333,Vehicle Theft
+2334,Vehicle Theft
+2335,Vehicle Theft
+2336,Vehicle Theft
+2337,Break-in
+2338,Vehicle Theft
+2339,Vehicle Theft
+2340,Pickpocket
+2341,Break-in
+2342,Pickpocket
+2343,Vehicle Theft
+2344,Pickpocket
+2345,Pickpocket
+2346,Vehicle Theft
+2347,Vehicle Theft
+2348,Pickpocket
+2349,Vehicle Theft
+2350,Vehicle Theft
+2351,Break-in
+2352,Armed Robbery
+2353,Armed Robbery
+2354,Armed Robbery
+2355,Armed Robbery
+2356,Armed Robbery
+2357,Armed Robbery
+2358,Snatch-and-Run
+2359,Snatch-and-Run
+2360,Snatch-and-Run
+2361,Break-in
+2362,Break-in
+2363,Break-in
+2364,Break-in
+2365,Break-in
+2366,Break-in
+2367,Break-in
+2368,Break-in
+2369,Break-in
+2370,Break-in
+2371,Break-in
+2372,Break-in
+2373,Armed Attack
+2374,Physical Assault
+2375,Armed Attack
+2376,Physical Assault
+2377,Physical Assault
+2378,Physical Assault
+2379,Armed Attack
+2380,Physical Assault
+2381,Armed Attack
+2382,Physical Assault
+2383,Armed Attack
+2384,Physical Assault
+2385,Armed Attack
+2386,Physical Assault
+2387,Armed Attack
+2388,Physical Assault
+2389,Physical Assault
+2390,Armed Attack
+2391,Armed Attack
+2392,Armed Attack
+2393,Break-in
+2394,Vehicle Theft
+2395,Break-in
+2396,Vehicle Theft
+2397,Break-in
+2398,Pickpocket
+2399,Vehicle Theft
+2400,Vehicle Theft
+2401,Vehicle Theft
+2402,Pickpocket
+2403,Break-in
+2404,Pickpocket
+2405,Break-in
+2406,Vehicle Theft
+2407,Vehicle Theft
+2408,Pickpocket
+2409,Vehicle Theft
+2410,Vehicle Theft
+2411,Break-in
+2412,Pickpocket
+2413,Pickpocket
+2414,Vehicle Theft
+2415,Pickpocket
+2416,Vehicle Theft
+2417,Vehicle Theft
+2418,Vehicle Theft
+2419,Break-in
+2420,Vehicle Theft
+2421,Break-in
+2422,Vehicle Theft
+2423,Break-in
+2424,Pickpocket
+2425,Break-in
+2426,Vehicle Theft
+2427,Pickpocket
+2428,Pickpocket
+2429,Vehicle Theft
+2430,Pickpocket
+2431,Break-in
+2432,Vehicle Theft
+2433,Armed Robbery
+2434,Armed Robbery
+2435,Armed Robbery
+2436,Armed Robbery
+2437,Armed Robbery
+2438,Snatch-and-Run
+2439,Armed Robbery
+2440,Snatch-and-Run
+2441,Snatch-and-Run
+2442,Break-in
+2443,Break-in
+2444,Break-in
+2445,Break-in
+2446,Break-in
+2447,Break-in
+2448,Break-in
+2449,Break-in
+2450,Break-in
+2451,Break-in
+2452,Break-in
+2453,Break-in
+2454,Physical Assault
+2455,Armed Attack
+2456,Physical Assault
+2457,Armed Attack
+2458,Physical Assault
+2459,Physical Assault
+2460,Physical Assault
+2461,Armed Attack
+2462,Physical Assault
+2463,Armed Attack
+2464,Physical Assault
+2465,Armed Attack
+2466,Physical Assault
+2467,Physical Assault
+2468,Physical Assault
+2469,Armed Attack
+2470,Armed Attack
+2471,Armed Attack
+2472,Physical Assault
+2473,Armed Attack
+2474,Vehicle Theft
+2475,Vehicle Theft
+2476,Pickpocket
+2477,Break-in
+2478,Vehicle Theft
+2479,Vehicle Theft
+2480,Vehicle Theft
+2481,Vehicle Theft
+2482,Vehicle Theft
+2483,Vehicle Theft
+2484,Vehicle Theft
+2485,Vehicle Theft
+2486,Pickpocket
+2487,Vehicle Theft
+2488,Pickpocket
+2489,Pickpocket
+2490,Vehicle Theft
+2491,Vehicle Theft
+2492,Pickpocket
+2493,Break-in
+2494,Vehicle Theft
+2495,Break-in
+2496,Pickpocket
+2497,Break-in
+2498,Vehicle Theft
+2499,Vehicle Theft
+2500,Vehicle Theft
+2501,Vehicle Theft
+2502,Vehicle Theft
+2503,Vehicle Theft
+2504,Vehicle Theft
+2505,Break-in
+2506,Vehicle Theft
+2507,Vehicle Theft
+2508,Vehicle Theft
+2509,Break-in
+2510,Vehicle Theft
+2511,Break-in
+2512,Vehicle Theft
+2513,Pickpocket
+2514,Armed Robbery
+2515,Armed Robbery
+2516,Snatch-and-Run
+2517,Armed Robbery
+2518,Armed Robbery
+2519,Armed Robbery
+2520,Snatch-and-Run
+2521,Snatch-and-Run
+2522,Snatch-and-Run
+2523,Break-in
+2524,Break-in
+2525,Break-in
+2526,Break-in
+2527,Break-in
+2528,Break-in
+2529,Break-in
+2530,Break-in
+2531,Break-in
+2532,Break-in
+2533,Break-in
+2534,Break-in
+2535,Armed Attack
+2536,Physical Assault
+2537,Armed Attack
+2538,Physical Assault
+2539,Armed Attack
+2540,Physical Assault
+2541,Armed Attack
+2542,Physical Assault
+2543,Armed Attack
+2544,Physical Assault
+2545,Armed Attack
+2546,Physical Assault
+2547,Armed Attack
+2548,Physical Assault
+2549,Physical Assault
+2550,Armed Attack
+2551,Armed Attack
+2552,Physical Assault
+2553,Armed Attack
+2554,Armed Attack
+2555,Vehicle Theft
+2556,Pickpocket
+2557,Pickpocket
+2558,Pickpocket
+2559,Break-in
+2560,Vehicle Theft
+2561,Vehicle Theft
+2562,Pickpocket
+2563,Vehicle Theft
+2564,Pickpocket
+2565,Vehicle Theft
+2566,Vehicle Theft
+2567,Vehicle Theft
+2568,Vehicle Theft
+2569,Vehicle Theft
+2570,Vehicle Theft
+2571,Vehicle Theft
+2572,Pickpocket
+2573,Pickpocket
+2574,Vehicle Theft
+2575,Vehicle Theft
+2576,Vehicle Theft
+2577,Break-in
+2578,Pickpocket
+2579,Vehicle Theft
+2580,Pickpocket
+2581,Break-in
+2582,Pickpocket
+2583,Break-in
+2584,Vehicle Theft
+2585,Break-in
+2586,Pickpocket
+2587,Break-in
+2588,Pickpocket
+2589,Break-in
+2590,Vehicle Theft
+2591,Pickpocket
+2592,Pickpocket
+2593,Vehicle Theft
+2594,Pickpocket
+2595,Armed Robbery
+2596,Armed Robbery
+2597,Armed Robbery
+2598,Armed Robbery
+2599,Armed Robbery
+2600,Snatch-and-Run
+2601,Snatch-and-Run
+2602,Snatch-and-Run
+2603,Snatch-and-Run
+2604,Break-in
+2605,Break-in
+2606,Break-in
+2607,Break-in
+2608,Break-in
+2609,Break-in
+2610,Break-in
+2611,Break-in
+2612,Break-in
+2613,Break-in
+2614,Break-in
+2615,Break-in
+2616,Armed Attack
+2617,Armed Attack
+2618,Armed Attack
+2619,Armed Attack
+2620,Physical Assault
+2621,Armed Attack
+2622,Physical Assault
+2623,Physical Assault
+2624,Physical Assault
+2625,Armed Attack
+2626,Physical Assault
+2627,Armed Attack
+2628,Armed Attack
+2629,Armed Attack
+2630,Physical Assault
+2631,Physical Assault
+2632,Physical Assault
+2633,Physical Assault
+2634,Physical Assault
+2635,Armed Attack
+2636,Pickpocket
+2637,Break-in
+2638,Vehicle Theft
+2639,Vehicle Theft
+2640,Vehicle Theft
+2641,Vehicle Theft
+2642,Vehicle Theft
+2643,Break-in
+2644,Vehicle Theft
+2645,Break-in
+2646,Pickpocket
+2647,Vehicle Theft
+2648,Pickpocket
+2649,Vehicle Theft
+2650,Pickpocket
+2651,Pickpocket
+2652,Vehicle Theft
+2653,Break-in
+2654,Pickpocket
+2655,Pickpocket
+2656,Vehicle Theft
+2657,Vehicle Theft
+2658,Vehicle Theft
+2659,Break-in
+2660,Pickpocket
+2661,Break-in
+2662,Pickpocket
+2663,Vehicle Theft
+2664,Vehicle Theft
+2665,Pickpocket
+2666,Vehicle Theft
+2667,Break-in
+2668,Pickpocket
+2669,Break-in
+2670,Vehicle Theft
+2671,Vehicle Theft
+2672,Vehicle Theft
+2673,Pickpocket
+2674,Pickpocket
+2675,Vehicle Theft
+2676,Snatch-and-Run
+2677,Armed Robbery
+2678,Armed Robbery
+2679,Armed Robbery
+2680,Armed Robbery
+2681,Armed Robbery
+2682,Snatch-and-Run
+2683,Snatch-and-Run
+2684,Snatch-and-Run
+2685,Break-in
+2686,Break-in
+2687,Break-in
+2688,Break-in
+2689,Break-in
+2690,Break-in
+2691,Break-in
+2692,Break-in
+2693,Break-in
+2694,Break-in
+2695,Break-in
+2696,Break-in
+2697,Armed Attack
+2698,Armed Attack
+2699,Armed Attack
+2700,Physical Assault
+2701,Physical Assault
+2702,Armed Attack
+2703,Physical Assault
+2704,Physical Assault
+2705,Armed Attack
+2706,Armed Attack
+2707,Armed Attack
+2708,Physical Assault
+2709,Armed Attack
+2710,Physical Assault
+2711,Physical Assault
+2712,Physical Assault
+2713,Armed Attack
+2714,Physical Assault
+2715,Armed Attack
+2716,Armed Attack
+2717,Vehicle Theft
+2718,Vehicle Theft
+2719,Pickpocket
+2720,Pickpocket
+2721,Break-in
+2722,Pickpocket
+2723,Break-in
+2724,Vehicle Theft
+2725,Break-in
+2726,Vehicle Theft
+2727,Vehicle Theft
+2728,Vehicle Theft
+2729,Break-in
+2730,Pickpocket
+2731,Break-in
+2732,Vehicle Theft
+2733,Vehicle Theft
+2734,Vehicle Theft
+2735,Pickpocket
+2736,Pickpocket
+2737,Pickpocket
+2738,Pickpocket
+2739,Vehicle Theft
+2740,Pickpocket
+2741,Pickpocket
+2742,Vehicle Theft
+2743,Vehicle Theft
+2744,Pickpocket
+2745,Break-in
+2746,Pickpocket
+2747,Pickpocket
+2748,Vehicle Theft
+2749,Break-in
+2750,Vehicle Theft
+2751,Break-in
+2752,Vehicle Theft
+2753,Break-in
+2754,Vehicle Theft
+2755,Vehicle Theft
+2756,Vehicle Theft
+2757,Armed Robbery
+2758,Armed Robbery
+2759,Armed Robbery
+2760,Armed Robbery
+2761,Armed Robbery
+2762,Armed Robbery
+2763,Snatch-and-Run
+2764,Snatch-and-Run
+2765,Snatch-and-Run
+2766,Break-in
+2767,Break-in
+2768,Break-in
+2769,Break-in
+2770,Break-in
+2771,Break-in
+2772,Break-in
+2773,Break-in
+2774,Break-in
+2775,Break-in
+2776,Break-in
+2777,Break-in
+2778,Physical Assault
+2779,Physical Assault
+2780,Physical Assault
+2781,Armed Attack
+2782,Physical Assault
+2783,Physical Assault
+2784,Armed Attack
+2785,Armed Attack
+2786,Physical Assault
+2787,Armed Attack
+2788,Physical Assault
+2789,Physical Assault
+2790,Physical Assault
+2791,Armed Attack
+2792,Physical Assault
+2793,Physical Assault
+2794,Physical Assault
+2795,Armed Attack
+2796,Physical Assault
+2797,Physical Assault
+2798,Pickpocket
+2799,Vehicle Theft
+2800,Pickpocket
+2801,Vehicle Theft
+2802,Pickpocket
+2803,Break-in
+2804,Vehicle Theft
+2805,Break-in
+2806,Pickpocket
+2807,Pickpocket
+2808,Pickpocket
+2809,Pickpocket
+2810,Vehicle Theft
+2811,Vehicle Theft
+2812,Vehicle Theft
+2813,Vehicle Theft
+2814,Vehicle Theft
+2815,Vehicle Theft
+2816,Pickpocket
+2817,Pickpocket
+2818,Pickpocket
+2819,Pickpocket
+2820,Pickpocket
+2821,Break-in
+2822,Vehicle Theft
+2823,Break-in
+2824,Pickpocket
+2825,Vehicle Theft
+2826,Pickpocket
+2827,Vehicle Theft
+2828,Vehicle Theft
+2829,Pickpocket
+2830,Vehicle Theft
+2831,Break-in
+2832,Vehicle Theft
+2833,Break-in
+2834,Pickpocket
+2835,Pickpocket
+2836,Vehicle Theft
+2837,Break-in
+2838,Armed Robbery
+2839,Armed Robbery
+2840,Armed Robbery
+2841,Armed Robbery
+2842,Armed Robbery
+2843,Armed Robbery
+2844,Snatch-and-Run
+2845,Armed Robbery
+2846,Snatch-and-Run
+2847,Break-in
+2848,Break-in
+2849,Break-in
+2850,Break-in
+2851,Break-in
+2852,Break-in
+2853,Break-in
+2854,Break-in
+2855,Break-in
+2856,Break-in
+2857,Break-in
+2858,Break-in
+2859,Armed Attack
+2860,Physical Assault
+2861,Physical Assault
+2862,Physical Assault
+2863,Armed Attack
+2864,Physical Assault
+2865,Armed Attack
+2866,Armed Attack
+2867,Armed Attack
+2868,Armed Attack
+2869,Armed Attack
+2870,Armed Attack
+2871,Armed Attack
+2872,Armed Attack
+2873,Armed Attack
+2874,Armed Attack
+2875,Armed Attack
+2876,Physical Assault
+2877,Physical Assault
+2878,Physical Assault
+2879,Pickpocket
+2880,Pickpocket
+2881,Break-in
+2882,Vehicle Theft
+2883,Vehicle Theft
+2884,Pickpocket
+2885,Vehicle Theft
+2886,Pickpocket
+2887,Vehicle Theft
+2888,Vehicle Theft
+2889,Vehicle Theft
+2890,Pickpocket
+2891,Break-in
+2892,Pickpocket
+2893,Pickpocket
+2894,Vehicle Theft
+2895,Break-in
+2896,Vehicle Theft
+2897,Pickpocket
+2898,Pickpocket
+2899,Vehicle Theft
+2900,Pickpocket
+2901,Break-in
+2902,Pickpocket
+2903,Break-in
+2904,Vehicle Theft
+2905,Pickpocket
+2906,Vehicle Theft
+2907,Vehicle Theft
+2908,Vehicle Theft
+2909,Break-in
+2910,Pickpocket
+2911,Vehicle Theft
+2912,Vehicle Theft
+2913,Break-in
+2914,Vehicle Theft
+2915,Pickpocket
+2916,Vehicle Theft
+2917,Break-in
+2918,Pickpocket
+2919,Armed Robbery
+2920,Armed Robbery
+2921,Armed Robbery
+2922,Armed Robbery
+2923,Armed Robbery
+2924,Snatch-and-Run
+2925,Snatch-and-Run
+2926,Snatch-and-Run
+2927,Armed Robbery
+2928,Break-in
+2929,Break-in
+2930,Break-in
+2931,Break-in
+2932,Break-in
+2933,Break-in
+2934,Break-in
+2935,Break-in
+2936,Break-in
+2937,Break-in
+2938,Break-in
+2939,Break-in
+2940,Physical Assault
+2941,Armed Attack
+2942,Physical Assault
+2943,Armed Attack
+2944,Physical Assault
+2945,Armed Attack
+2946,Physical Assault
+2947,Armed Attack
+2948,Physical Assault
+2949,Armed Attack
+2950,Physical Assault
+2951,Physical Assault
+2952,Physical Assault
+2953,Armed Attack
+2954,Physical Assault
+2955,Armed Attack
+2956,Physical Assault
+2957,Armed Attack
+2958,Physical Assault
+2959,Armed Attack
+2960,Pickpocket
+2961,Vehicle Theft
+2962,Pickpocket
+2963,Pickpocket
+2964,Pickpocket
+2965,Break-in
+2966,Pickpocket
+2967,Break-in
+2968,Pickpocket
+2969,Vehicle Theft
+2970,Vehicle Theft
+2971,Vehicle Theft
+2972,Pickpocket
+2973,Vehicle Theft
+2974,Pickpocket
+2975,Vehicle Theft
+2976,Pickpocket
+2977,Pickpocket
+2978,Vehicle Theft
+2979,Break-in
+2980,Pickpocket
+2981,Pickpocket
+2982,Pickpocket
+2983,Vehicle Theft
+2984,Vehicle Theft
+2985,Vehicle Theft
+2986,Pickpocket
+2987,Break-in
+2988,Vehicle Theft
+2989,Break-in
+2990,Vehicle Theft
+2991,Pickpocket
+2992,Pickpocket
+2993,Vehicle Theft
+2994,Pickpocket
+2995,Break-in
+2996,Pickpocket
+2997,Pickpocket
+2998,Vehicle Theft
+2999,Break-in
+3000,Armed Robbery
+3001,Armed Robbery
+3002,Snatch-and-Run
+3003,Armed Robbery
+3004,Snatch-and-Run
+3005,Armed Robbery
+3006,Snatch-and-Run
+3007,Armed Robbery
+3008,Snatch-and-Run
+3009,Break-in
+3010,Break-in
+3011,Break-in
+3012,Break-in
+3013,Break-in
+3014,Break-in
+3015,Break-in
+3016,Break-in
+3017,Break-in
+3018,Break-in
+3019,Break-in
+3020,Break-in
+3021,Armed Attack
+3022,Physical Assault
+3023,Armed Attack
+3024,Physical Assault
+3025,Armed Attack
+3026,Physical Assault
+3027,Armed Attack
+3028,Physical Assault
+3029,Armed Attack
+3030,Physical Assault
+3031,Armed Attack
+3032,Physical Assault
+3033,Armed Attack
+3034,Armed Attack
+3035,Armed Attack
+3036,Physical Assault
+3037,Armed Attack
+3038,Armed Attack
+3039,Armed Attack
+3040,Physical Assault
+3041,Vehicle Theft
+3042,Vehicle Theft
+3043,Vehicle Theft
+3044,Vehicle Theft
+3045,Pickpocket
+3046,Vehicle Theft
+3047,Pickpocket
+3048,Vehicle Theft
+3049,Vehicle Theft
+3050,Vehicle Theft
+3051,Vehicle Theft
+3052,Vehicle Theft
+3053,Vehicle Theft
+3054,Pickpocket
+3055,Break-in
+3056,Pickpocket
+3057,Break-in
+3058,Vehicle Theft
+3059,Vehicle Theft
+3060,Pickpocket
+3061,Break-in
+3062,Pickpocket
+3063,Break-in
+3064,Vehicle Theft
+3065,Pickpocket
+3066,Vehicle Theft
+3067,Break-in
+3068,Vehicle Theft
+3069,Vehicle Theft
+3070,Pickpocket
+3071,Break-in
+3072,Pickpocket
+3073,Break-in
+3074,Vehicle Theft
+3075,Pickpocket
+3076,Vehicle Theft
+3077,Break-in
+3078,Pickpocket
+3079,Break-in
+3080,Pickpocket
+3081,Armed Robbery
+3082,Snatch-and-Run
+3083,Armed Robbery
+3084,Snatch-and-Run
+3085,Armed Robbery
+3086,Snatch-and-Run
+3087,Snatch-and-Run
+3088,Snatch-and-Run
+3089,Snatch-and-Run
+3090,Break-in
+3091,Break-in
+3092,Break-in
+3093,Break-in
+3094,Break-in
+3095,Break-in
+3096,Break-in
+3097,Break-in
+3098,Break-in
+3099,Break-in
+3100,Break-in
+3101,Break-in
+3102,Physical Assault
+3103,Armed Attack
+3104,Armed Attack
+3105,Armed Attack
+3106,Physical Assault
+3107,Armed Attack
+3108,Physical Assault
+3109,Armed Attack
+3110,Physical Assault
+3111,Armed Attack
+3112,Physical Assault
+3113,Armed Attack
+3114,Physical Assault
+3115,Armed Attack
+3116,Physical Assault
+3117,Armed Attack
+3118,Armed Attack
+3119,Armed Attack
+3120,Physical Assault
+3121,Armed Attack
+3122,Pickpocket
+3123,Vehicle Theft
+3124,Vehicle Theft
+3125,Pickpocket
+3126,Pickpocket
+3127,Vehicle Theft
+3128,Pickpocket
+3129,Vehicle Theft
+3130,Pickpocket
+3131,Vehicle Theft
+3132,Vehicle Theft
+3133,Break-in
+3134,Pickpocket
+3135,Pickpocket
+3136,Pickpocket
+3137,Pickpocket
+3138,Pickpocket
+3139,Pickpocket
+3140,Vehicle Theft
+3141,Pickpocket
+3142,Vehicle Theft
+3143,Vehicle Theft
+3144,Vehicle Theft
+3145,Vehicle Theft
+3146,Pickpocket
+3147,Vehicle Theft
+3148,Vehicle Theft
+3149,Vehicle Theft
+3150,Vehicle Theft
+3151,Break-in
+3152,Vehicle Theft
+3153,Pickpocket
+3154,Pickpocket
+3155,Vehicle Theft
+3156,Pickpocket
+3157,Vehicle Theft
+3158,Pickpocket
+3159,Vehicle Theft
+3160,Pickpocket
+3161,Pickpocket
+3162,Armed Robbery
+3163,Armed Robbery
+3164,Armed Robbery
+3165,Armed Robbery
+3166,Armed Robbery
+3167,Armed Robbery
+3168,Snatch-and-Run
+3169,Snatch-and-Run
+3170,Snatch-and-Run
+3171,Break-in
+3172,Break-in
+3173,Break-in
+3174,Break-in
+3175,Break-in
+3176,Break-in
+3177,Break-in
+3178,Break-in
+3179,Break-in
+3180,Break-in
+3181,Break-in
+3182,Break-in
+3183,Armed Attack
+3184,Physical Assault
+3185,Armed Attack
+3186,Physical Assault
+3187,Physical Assault
+3188,Armed Attack
+3189,Armed Attack
+3190,Physical Assault
+3191,Armed Attack
+3192,Physical Assault
+3193,Armed Attack
+3194,Physical Assault
+3195,Armed Attack
+3196,Physical Assault
+3197,Armed Attack
+3198,Armed Attack
+3199,Physical Assault
+3200,Physical Assault
+3201,Armed Attack
+3202,Armed Attack
+3203,Vehicle Theft
+3204,Vehicle Theft
+3205,Vehicle Theft
+3206,Vehicle Theft
+3207,Vehicle Theft
+3208,Vehicle Theft
+3209,Pickpocket
+3210,Pickpocket
+3211,Break-in
+3212,Vehicle Theft
+3213,Break-in
+3214,Vehicle Theft
+3215,Break-in
+3216,Pickpocket
+3217,Vehicle Theft
+3218,Pickpocket
+3219,Break-in
+3220,Pickpocket
+3221,Break-in
+3222,Pickpocket
+3223,Break-in
+3224,Vehicle Theft
+3225,Pickpocket
+3226,Pickpocket
+3227,Pickpocket
+3228,Vehicle Theft
+3229,Break-in
+3230,Vehicle Theft
+3231,Vehicle Theft
+3232,Pickpocket
+3233,Pickpocket
+3234,Pickpocket
+3235,Pickpocket
+3236,Vehicle Theft
+3237,Vehicle Theft
+3238,Vehicle Theft
+3239,Break-in
+3240,Vehicle Theft
+3241,Break-in
+3242,Vehicle Theft
+3243,Vehicle Theft
+3244,Pickpocket
+3245,Break-in
+3246,Vehicle Theft
+3247,Break-in
+3248,Pickpocket
+3249,Vehicle Theft
+3250,Pickpocket
+3251,Pickpocket
+3252,Pickpocket
+3253,Vehicle Theft
+3254,Vehicle Theft
+3255,Vehicle Theft
+3256,Vehicle Theft
+3257,Break-in
+3258,Vehicle Theft
+3259,Vehicle Theft
+3260,Pickpocket
+3261,Break-in
+3262,Vehicle Theft
+3263,Break-in
+3264,Pickpocket
+3265,Break-in
+3266,Vehicle Theft
+3267,Break-in
+3268,Vehicle Theft
+3269,Pickpocket
+3270,Vehicle Theft
+3271,Vehicle Theft
+3272,Pickpocket
+3273,Vehicle Theft
+3274,Pickpocket
+3275,Break-in
+3276,Pickpocket
+3277,Vehicle Theft
+3278,Pickpocket
+3279,Pickpocket
+3280,Vehicle Theft
+3281,Vehicle Theft
+3282,Vehicle Theft
+3283,Break-in
+3284,Pickpocket
+3285,Vehicle Theft
+3286,Vehicle Theft
+3287,Break-in
+3288,Vehicle Theft
+3289,Vehicle Theft
+3290,Pickpocket
+3291,Break-in
+3292,Pickpocket
+3293,Vehicle Theft
+3294,Pickpocket
+3295,Pickpocket
+3296,Vehicle Theft
+3297,Break-in
+3298,Vehicle Theft
+3299,Vehicle Theft
+3300,Pickpocket
+3301,Vehicle Theft
+3302,Vehicle Theft
+3303,Pickpocket
+3304,Vehicle Theft
+3305,Vehicle Theft
+3306,Vehicle Theft
+3307,Vehicle Theft
+3308,Vehicle Theft
+3309,Break-in
+3310,Pickpocket
+3311,Break-in
+3312,Vehicle Theft
+3313,Vehicle Theft
+3314,Vehicle Theft
+3315,Vehicle Theft
+3316,Vehicle Theft
+3317,Pickpocket
+3318,Vehicle Theft
+3319,Break-in
+3320,Vehicle Theft
+3321,Vehicle Theft
+3322,Vehicle Theft
+3323,Vehicle Theft
+3324,Pickpocket
+3325,Vehicle Theft
+3326,Pickpocket
+3327,Break-in
+3328,Pickpocket
+3329,Break-in
+3330,Pickpocket
+3331,Vehicle Theft
+3332,Vehicle Theft
+3333,Vehicle Theft
+3334,Pickpocket
+3335,Break-in
+3336,Pickpocket
+3337,Pickpocket
+3338,Pickpocket
+3339,Vehicle Theft
+3340,Vehicle Theft
+3341,Vehicle Theft
+3342,Pickpocket
+3343,Vehicle Theft
+3344,Pickpocket
+3345,Pickpocket
+3346,Pickpocket
+3347,Break-in
+3348,Vehicle Theft
+3349,Break-in
+3350,Vehicle Theft
+3351,Vehicle Theft
+3352,Vehicle Theft
+3353,Vehicle Theft
+3354,Vehicle Theft
+3355,Break-in
+3356,Pickpocket
+3357,Break-in
+3358,Vehicle Theft
+3359,Vehicle Theft
+3360,Pickpocket
+3361,Break-in
+3362,Vehicle Theft
+3363,Pickpocket
+3364,Vehicle Theft
+3365,Pickpocket
+3366,Vehicle Theft
+3367,Vehicle Theft
+3368,Pickpocket
+3369,Break-in
+3370,Vehicle Theft
+3371,Vehicle Theft
+3372,Pickpocket
+3373,Pickpocket
+3374,Vehicle Theft
+3375,Break-in
+3376,Pickpocket
+3377,Vehicle Theft
+3378,Pickpocket
+3379,Vehicle Theft
+3380,Pickpocket
+3381,Break-in
+3382,Pickpocket
+3383,Armed Robbery
+3384,Snatch-and-Run
+3385,Armed Robbery
+3386,Snatch-and-Run
+3387,Armed Robbery
+3388,Armed Robbery
+3389,Armed Robbery
+3390,Snatch-and-Run
+3391,Armed Robbery
+3392,Armed Robbery
+3393,Armed Robbery
+3394,Snatch-and-Run
+3395,Armed Robbery
+3396,Armed Robbery
+3397,Armed Robbery
+3398,Snatch-and-Run
+3399,Armed Robbery
+3400,Snatch-and-Run
+3401,Armed Robbery
+3402,Armed Robbery
+3403,Armed Robbery
+3404,Armed Robbery
+3405,Armed Robbery
+3406,Snatch-and-Run
+3407,Armed Robbery
+3408,Snatch-and-Run
+3409,Armed Robbery
+3410,Armed Robbery
+3411,Armed Robbery
+3412,Snatch-and-Run
+3413,Armed Robbery
+3414,Armed Robbery
+3415,Armed Robbery
+3416,Snatch-and-Run
+3417,Armed Robbery
+3418,Snatch-and-Run
+3419,Snatch-and-Run
+3420,Snatch-and-Run
+3421,Armed Robbery
+3422,Snatch-and-Run
+3423,Snatch-and-Run
+3424,Snatch-and-Run
+3425,Snatch-and-Run
+3426,Snatch-and-Run
+3427,Snatch-and-Run
+3428,Snatch-and-Run
+3429,Snatch-and-Run
+3430,Snatch-and-Run
+3431,Snatch-and-Run
+3432,Snatch-and-Run
+3433,Snatch-and-Run
+3434,Snatch-and-Run
+3435,Armed Robbery
+3436,Snatch-and-Run
+3437,Snatch-and-Run
+3438,Snatch-and-Run
+3439,Snatch-and-Run
+3440,Snatch-and-Run
+3441,Snatch-and-Run
+3442,Snatch-and-Run
+3443,Break-in
+3444,Break-in
+3445,Break-in
+3446,Break-in
+3447,Break-in
+3448,Break-in
+3449,Break-in
+3450,Break-in
+3451,Break-in
+3452,Break-in
+3453,Break-in
+3454,Break-in
+3455,Break-in
+3456,Break-in
+3457,Break-in
+3458,Break-in
+3459,Break-in
+3460,Break-in
+3461,Break-in
+3462,Break-in
+3463,Break-in
+3464,Break-in
+3465,Break-in
+3466,Break-in
+3467,Break-in
+3468,Break-in
+3469,Break-in
+3470,Break-in
+3471,Break-in
+3472,Break-in
+3473,Break-in
+3474,Break-in
+3475,Break-in
+3476,Break-in
+3477,Break-in
+3478,Break-in
+3479,Break-in
+3480,Break-in
+3481,Break-in
+3482,Break-in
+3483,Break-in
+3484,Break-in
+3485,Break-in
+3486,Break-in
+3487,Break-in
+3488,Break-in
+3489,Break-in
+3490,Break-in
+3491,Break-in
+3492,Break-in
+3493,Break-in
+3494,Break-in
+3495,Break-in
+3496,Break-in
+3497,Break-in
+3498,Break-in
+3499,Break-in
+3500,Break-in
+3501,Break-in
+3502,Break-in
+3503,Armed Attack
+3504,Physical Assault
+3505,Armed Attack
+3506,Physical Assault
+3507,Armed Attack
+3508,Physical Assault
+3509,Armed Attack
+3510,Physical Assault
+3511,Armed Attack
+3512,Armed Attack
+3513,Armed Attack
+3514,Physical Assault
+3515,Armed Attack
+3516,Armed Attack
+3517,Armed Attack
+3518,Physical Assault
+3519,Physical Assault
+3520,Physical Assault
+3521,Armed Attack
+3522,Armed Attack
+3523,Physical Assault
+3524,Physical Assault
+3525,Armed Attack
+3526,Physical Assault
+3527,Armed Attack
+3528,Armed Attack
+3529,Armed Attack
+3530,Physical Assault
+3531,Armed Attack
+3532,Physical Assault
+3533,Armed Attack
+3534,Physical Assault
+3535,Physical Assault
+3536,Armed Attack
+3537,Armed Attack
+3538,Armed Attack
+3539,Armed Attack
+3540,Armed Attack
+3541,Armed Attack
+3542,Physical Assault
+3543,Armed Attack
+3544,Physical Assault
+3545,Armed Attack
+3546,Physical Assault
+3547,Armed Attack
+3548,Physical Assault
+3549,Armed Attack
+3550,Physical Assault
+3551,Physical Assault
+3552,Armed Attack
+3553,Armed Attack
+3554,Armed Attack
+3555,Armed Attack
+3556,Armed Attack
+3557,Armed Attack
+3558,Physical Assault
+3559,Armed Attack
+3560,Physical Assault
+3561,Armed Attack
+3562,Physical Assault
+3563,Armed Attack
+3564,Physical Assault
+3565,Armed Attack
+3566,Armed Attack
+3567,Armed Attack
+3568,Physical Assault
+3569,Armed Attack
+3570,Physical Assault
+3571,Armed Attack
+3572,Armed Attack
+3573,Armed Attack
+3574,Physical Assault
+3575,Physical Assault
+3576,Physical Assault
+3577,Armed Attack
+3578,Physical Assault
+3579,Armed Attack
+3580,Physical Assault
+3581,Armed Attack
+3582,Physical Assault
+3583,Physical Assault
+3584,Physical Assault
+3585,Armed Attack
+3586,Physical Assault
+3587,Armed Attack
+3588,Physical Assault
+3589,Armed Attack
+3590,Armed Attack
+3591,Armed Attack
+3592,Physical Assault
+3593,Break-in
+3594,Pickpocket
+3595,Vehicle Theft
+3596,Pickpocket
+3597,Vehicle Theft
+3598,Pickpocket
+3599,Pickpocket
+3600,Vehicle Theft
+3601,Break-in
+3602,Vehicle Theft
+3603,Vehicle Theft
+3604,Vehicle Theft
+3605,Vehicle Theft
+3606,Vehicle Theft
+3607,Pickpocket
+3608,Vehicle Theft
+3609,Pickpocket
+3610,Vehicle Theft
+3611,Vehicle Theft
+3612,Pickpocket
+3613,Break-in
+3614,Pickpocket
+3615,Break-in
+3616,Vehicle Theft
+3617,Vehicle Theft
+3618,Vehicle Theft
+3619,Pickpocket
+3620,Vehicle Theft
+3621,Pickpocket
+3622,Vehicle Theft
+3623,Pickpocket
+3624,Vehicle Theft
+3625,Vehicle Theft
+3626,Pickpocket
+3627,Break-in
+3628,Pickpocket
+3629,Break-in
+3630,Vehicle Theft
+3631,Vehicle Theft
+3632,Vehicle Theft
+3633,Armed Robbery
+3634,Snatch-and-Run
+3635,Armed Robbery
+3636,Armed Robbery
+3637,Armed Robbery
+3638,Armed Robbery
+3639,Snatch-and-Run
+3640,Snatch-and-Run
+3641,Snatch-and-Run
+3642,Break-in
+3643,Break-in
+3644,Break-in
+3645,Break-in
+3646,Break-in
+3647,Break-in
+3648,Break-in
+3649,Break-in
+3650,Break-in
+3651,Break-in
+3652,Break-in
+3653,Break-in
+3654,Armed Attack
+3655,Armed Attack
+3656,Physical Assault
+3657,Armed Attack
+3658,Physical Assault
+3659,Physical Assault
+3660,Physical Assault
+3661,Armed Attack
+3662,Physical Assault
+3663,Armed Attack
+3664,Physical Assault
+3665,Armed Attack
+3666,Physical Assault
+3667,Armed Attack
+3668,Physical Assault
+3669,Physical Assault
+3670,Armed Attack
+3671,Armed Attack
+3672,Armed Attack
+3673,Armed Attack
+3674,Pickpocket
+3675,Break-in
+3676,Vehicle Theft
+3677,Pickpocket
+3678,Vehicle Theft
+3679,Vehicle Theft
+3680,Vehicle Theft
+3681,Vehicle Theft
+3682,Vehicle Theft
+3683,Vehicle Theft
+3684,Vehicle Theft
+3685,Vehicle Theft
+3686,Pickpocket
+3687,Pickpocket
+3688,Pickpocket
+3689,Break-in
+3690,Pickpocket
+3691,Vehicle Theft
+3692,Pickpocket
+3693,Vehicle Theft
+3694,Vehicle Theft
+3695,Vehicle Theft
+3696,Vehicle Theft
+3697,Break-in
+3698,Pickpocket
+3699,Break-in
+3700,Vehicle Theft
+3701,Break-in
+3702,Pickpocket
+3703,Vehicle Theft
+3704,Vehicle Theft
+3705,Pickpocket
+3706,Vehicle Theft
+3707,Break-in
+3708,Vehicle Theft
+3709,Break-in
+3710,Pickpocket
+3711,Vehicle Theft
+3712,Vehicle Theft
+3713,Vehicle Theft
+3714,Armed Robbery
+3715,Armed Robbery
+3716,Snatch-and-Run
+3717,Armed Robbery
+3718,Armed Robbery
+3719,Armed Robbery
+3720,Snatch-and-Run
+3721,Snatch-and-Run
+3722,Snatch-and-Run
+3723,Break-in
+3724,Break-in
+3725,Break-in
+3726,Break-in
+3727,Break-in
+3728,Break-in
+3729,Break-in
+3730,Break-in
+3731,Break-in
+3732,Break-in
+3733,Break-in
+3734,Break-in
+3735,Armed Attack
+3736,Armed Attack
+3737,Armed Attack
+3738,Physical Assault
+3739,Physical Assault
+3740,Armed Attack
+3741,Armed Attack
+3742,Physical Assault
+3743,Armed Attack
+3744,Physical Assault
+3745,Armed Attack
+3746,Armed Attack
+3747,Armed Attack
+3748,Physical Assault
+3749,Armed Attack
+3750,Physical Assault
+3751,Armed Attack
+3752,Armed Attack
+3753,Armed Attack
+3754,Physical Assault
+3755,Break-in
+3756,Pickpocket
+3757,Pickpocket
+3758,Pickpocket
+3759,Vehicle Theft
+3760,Pickpocket
+3761,Vehicle Theft
+3762,Pickpocket
+3763,Break-in
+3764,Vehicle Theft
+3765,Vehicle Theft
+3766,Vehicle Theft
+3767,Break-in
+3768,Vehicle Theft
+3769,Break-in
+3770,Pickpocket
+3771,Vehicle Theft
+3772,Vehicle Theft
+3773,Pickpocket
+3774,Pickpocket
+3775,Vehicle Theft
+3776,Vehicle Theft
+3777,Pickpocket
+3778,Vehicle Theft
+3779,Break-in
+3780,Pickpocket
+3781,Break-in
+3782,Vehicle Theft
+3783,Vehicle Theft
+3784,Vehicle Theft
+3785,Break-in
+3786,Pickpocket
+3787,Break-in
+3788,Vehicle Theft
+3789,Pickpocket
+3790,Pickpocket
+3791,Vehicle Theft
+3792,Vehicle Theft
+3793,Vehicle Theft
+3794,Vehicle Theft
+3795,Armed Robbery
+3796,Snatch-and-Run
+3797,Armed Robbery
+3798,Armed Robbery
+3799,Armed Robbery
+3800,Armed Robbery
+3801,Snatch-and-Run
+3802,Snatch-and-Run
+3803,Snatch-and-Run
+3804,Break-in
+3805,Break-in
+3806,Break-in
+3807,Break-in
+3808,Break-in
+3809,Break-in
+3810,Break-in
+3811,Break-in
+3812,Break-in
+3813,Break-in
+3814,Break-in
+3815,Break-in
+3816,Armed Attack
+3817,Physical Assault
+3818,Physical Assault
+3819,Armed Attack
+3820,Physical Assault
+3821,Physical Assault
+3822,Physical Assault
+3823,Armed Attack
+3824,Armed Attack
+3825,Armed Attack
+3826,Armed Attack
+3827,Armed Attack
+3828,Physical Assault
+3829,Armed Attack
+3830,Armed Attack
+3831,Physical Assault
+3832,Physical Assault
+3833,Armed Attack
+3834,Physical Assault
+3835,Physical Assault
+3836,Pickpocket
+3837,Vehicle Theft
+3838,Pickpocket
+3839,Break-in
+3840,Vehicle Theft
+3841,Vehicle Theft
+3842,Pickpocket
+3843,Pickpocket
+3844,Pickpocket
+3845,Break-in
+3846,Vehicle Theft
+3847,Break-in
+3848,Pickpocket
+3849,Break-in
+3850,Vehicle Theft
+3851,Break-in
+3852,Vehicle Theft
+3853,Vehicle Theft
+3854,Vehicle Theft
+3855,Break-in
+3856,Vehicle Theft
+3857,Vehicle Theft
+3858,Vehicle Theft
+3859,Break-in
+3860,Pickpocket
+3861,Vehicle Theft
+3862,Vehicle Theft
+3863,Vehicle Theft
+3864,Pickpocket
+3865,Vehicle Theft
+3866,Vehicle Theft
+3867,Break-in
+3868,Vehicle Theft
+3869,Vehicle Theft
+3870,Vehicle Theft
+3871,Break-in
+3872,Vehicle Theft
+3873,Pickpocket
+3874,Pickpocket
+3875,Break-in
+3876,Armed Robbery
+3877,Armed Robbery
+3878,Armed Robbery
+3879,Armed Robbery
+3880,Armed Robbery
+3881,Armed Robbery
+3882,Snatch-and-Run
+3883,Snatch-and-Run
+3884,Snatch-and-Run
+3885,Break-in
+3886,Break-in
+3887,Break-in
+3888,Break-in
+3889,Break-in
+3890,Break-in
+3891,Break-in
+3892,Break-in
+3893,Break-in
+3894,Break-in
+3895,Break-in
+3896,Break-in
+3897,Armed Attack
+3898,Physical Assault
+3899,Armed Attack
+3900,Physical Assault
+3901,Armed Attack
+3902,Physical Assault
+3903,Armed Attack
+3904,Physical Assault
+3905,Armed Attack
+3906,Physical Assault
+3907,Armed Attack
+3908,Physical Assault
+3909,Armed Attack
+3910,Armed Attack
+3911,Armed Attack
+3912,Physical Assault
+3913,Armed Attack
+3914,Physical Assault
+3915,Armed Attack
+3916,Armed Attack
+3917,Vehicle Theft
+3918,Pickpocket
+3919,Vehicle Theft
+3920,Pickpocket
+3921,Pickpocket
+3922,Pickpocket
+3923,Break-in
+3924,Pickpocket
+3925,Pickpocket
+3926,Pickpocket
+3927,Break-in
+3928,Vehicle Theft
+3929,Break-in
+3930,Pickpocket
+3931,Vehicle Theft
+3932,Pickpocket
+3933,Vehicle Theft
+3934,Pickpocket
+3935,Break-in
+3936,Pickpocket
+3937,Vehicle Theft
+3938,Vehicle Theft
+3939,Pickpocket
+3940,Vehicle Theft
+3941,Vehicle Theft
+3942,Pickpocket
+3943,Pickpocket
+3944,Pickpocket
+3945,Vehicle Theft
+3946,Vehicle Theft
+3947,Break-in
+3948,Vehicle Theft
+3949,Vehicle Theft
+3950,Pickpocket
+3951,Pickpocket
+3952,Pickpocket
+3953,Break-in
+3954,Vehicle Theft
+3955,Break-in
+3956,Pickpocket
+3957,Armed Robbery
+3958,Armed Robbery
+3959,Armed Robbery
+3960,Armed Robbery
+3961,Armed Robbery
+3962,Snatch-and-Run
+3963,Armed Robbery
+3964,Snatch-and-Run
+3965,Snatch-and-Run
+3966,Break-in
+3967,Break-in
+3968,Break-in
+3969,Break-in
+3970,Break-in
+3971,Break-in
+3972,Break-in
+3973,Break-in
+3974,Break-in
+3975,Break-in
+3976,Break-in
+3977,Break-in
+3978,Physical Assault
+3979,Physical Assault
+3980,Physical Assault
+3981,Physical Assault
+3982,Physical Assault
+3983,Armed Attack
+3984,Physical Assault
+3985,Armed Attack
+3986,Physical Assault
+3987,Armed Attack
+3988,Physical Assault
+3989,Armed Attack
+3990,Physical Assault
+3991,Physical Assault
+3992,Physical Assault
+3993,Physical Assault
+3994,Physical Assault
+3995,Armed Attack
+3996,Armed Attack
+3997,Armed Attack

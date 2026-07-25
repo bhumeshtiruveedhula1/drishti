@@ -68,6 +68,7 @@ SEED_OCCUPATIONS = load_seed_csv("batch_a/OccupationMaster.csv")
 SEED_COMPLAINANTS = load_seed_csv("batch_bc/ComplainantDetails.csv")
 SEED_CRIME_HEADS = load_seed_csv("batch_a/CrimeHead.csv")
 SEED_DISTRICTS = load_seed_csv("batch_a/District.csv")
+SEED_METHOD_TAGS = load_seed_csv("batch_e/CaseMethodTag.csv")
 
 CREATED_INCIDENTS: List[Dict[str, Any]] = []
 
@@ -1363,6 +1364,163 @@ def get_network_graph():
     if res.get("status") == "error":
         raise HTTPException(status_code=404, detail=res["message"])
     return res
+
+def compute_mo_matching(
+    method_tags: List[Dict[str, Any]],
+    cases: List[Dict[str, Any]],
+    accused_list: List[Dict[str, Any]],
+    units_list: List[Dict[str, Any]],
+    target_method_tag: Optional[str] = None,
+    limit_per_tag: int = 50
+) -> List[Dict[str, Any]]:
+    case_map = {}
+    for c in cases:
+        if isinstance(c, dict) and "CaseMasterID" in c:
+            try:
+                case_map[int(c["CaseMasterID"])] = c
+            except (ValueError, TypeError):
+                pass
+
+    accused_map = {}
+    for a in accused_list:
+        if isinstance(a, dict) and "CaseMasterID" in a:
+            try:
+                cmid = int(a["CaseMasterID"])
+                if cmid not in accused_map:
+                    accused_map[cmid] = a.get("AccusedName", "Unknown Accused")
+            except (ValueError, TypeError):
+                pass
+
+    unit_map = {}
+    for u in units_list:
+        if isinstance(u, dict) and "UnitID" in u:
+            try:
+                unit_map[int(u["UnitID"])] = u.get("UnitName", f"Station #{u['UnitID']}")
+            except (ValueError, TypeError):
+                pass
+
+    grouped_tags: Dict[str, List[Dict[str, Any]]] = {}
+    for m in method_tags:
+        if not isinstance(m, dict):
+            continue
+        tag = str(m.get("MethodTag", "")).strip()
+        cmid = m.get("CaseMasterID")
+        if not tag or cmid is None:
+            continue
+        try:
+            cmid = int(cmid)
+        except (ValueError, TypeError):
+            continue
+
+        if target_method_tag and tag.lower() != target_method_tag.strip().lower():
+            continue
+
+        if tag not in grouped_tags:
+            grouped_tags[tag] = []
+
+        c_obj = case_map.get(cmid, {})
+        psid = c_obj.get("PoliceStationID") or c_obj.get("UnitID") or 1
+        try:
+            psid = int(psid)
+        except (ValueError, TypeError):
+            psid = 1
+
+        grouped_tags[tag].append({
+            "CaseMasterID": cmid,
+            "CrimeNo": str(c_obj.get("CrimeNo", f"FIR-{cmid}")),
+            "CaseNo": str(c_obj.get("CaseNo", f"CASE-{cmid}")),
+            "CrimeRegisteredDate": str(c_obj.get("CrimeRegisteredDate", "")),
+            "PoliceStationID": psid,
+            "PoliceStationName": unit_map.get(psid, f"Station #{psid}"),
+            "AccusedName": accused_map.get(cmid, "Unknown Accused"),
+            "latitude": float(c_obj.get("latitude") or 0.0),
+            "longitude": float(c_obj.get("longitude") or 0.0),
+            "BriefFacts": str(c_obj.get("BriefFacts", ""))
+        })
+
+    result = []
+    for tag in sorted(grouped_tags.keys()):
+        item_list = grouped_tags[tag]
+        distinct_accused = list(set(x["AccusedName"] for x in item_list))
+        distinct_stations = list(set(x["PoliceStationID"] for x in item_list))
+
+        result.append({
+            "MethodTag": tag,
+            "matched_cases_count": len(item_list),
+            "distinct_accused_count": len(distinct_accused),
+            "distinct_stations_count": len(distinct_stations),
+            "cross_accused": len(distinct_accused) > 1,
+            "cross_location": len(distinct_stations) > 1,
+            "matching_cases": item_list[:limit_per_tag]
+        })
+
+    return result
+
+@app.get("/mo-matching")
+@app.get("/cases/mo-matching")
+def get_mo_matching(
+    method_tag: Optional[str] = None,
+    limit: int = 50,
+    catalyst_app: Any = Depends(get_catalyst_app)
+):
+    mt_rows = []
+    if catalyst_app is not None:
+        try:
+            zcql = catalyst_app.zcql()
+            q_res = zcql.execute_query("SELECT * FROM CaseMethodTag LIMIT 5000")
+            mt_rows = [r.get("CaseMethodTag") for r in q_res if isinstance(r, dict) and "CaseMethodTag" in r]
+        except Exception:
+            try:
+                table = catalyst_app.datastore().table("CaseMethodTag")
+                mt_rows = table.get_paged_rows(max_rows=5000).get("data", [])
+            except Exception:
+                pass
+
+    if not mt_rows:
+        mt_rows = SEED_METHOD_TAGS
+
+    mo_results = compute_mo_matching(mt_rows, SEED_CASES, SEED_ACCUSED, SEED_UNITS, target_method_tag=method_tag, limit_per_tag=limit)
+    return {
+        "status": "ok",
+        "method_taxonomy": ["Vehicle Theft", "Break-in", "Pickpocket", "Armed Robbery", "Snatch-and-Run", "Physical Assault", "Armed Attack"],
+        "total_mo_cases": len(mt_rows),
+        "data": mo_results
+    }
+
+@app.get("/incidents/{id}/mo-matches")
+def get_incident_mo_matches(id: int, catalyst_app: Any = Depends(get_catalyst_app)):
+    mt_rows = []
+    if catalyst_app is not None:
+        try:
+            zcql = catalyst_app.zcql()
+            q_res = zcql.execute_query("SELECT * FROM CaseMethodTag LIMIT 5000")
+            mt_rows = [r.get("CaseMethodTag") for r in q_res if isinstance(r, dict) and "CaseMethodTag" in r]
+        except Exception:
+            pass
+
+    if not mt_rows:
+        mt_rows = SEED_METHOD_TAGS
+
+    target_tag = None
+    for m in mt_rows:
+        if isinstance(m, dict) and str(m.get("CaseMasterID")) == str(id):
+            target_tag = m.get("MethodTag")
+            break
+
+    if not target_tag:
+        return {"status": "ok", "CaseMasterID": id, "MethodTag": None, "matching_cases": []}
+
+    mo_results = compute_mo_matching(mt_rows, SEED_CASES, SEED_ACCUSED, SEED_UNITS, target_method_tag=target_tag, limit_per_tag=50)
+    matched_cases = mo_results[0]["matching_cases"] if mo_results else []
+    filtered_matches = [c for c in matched_cases if str(c.get("CaseMasterID")) != str(id)]
+
+    return {
+        "status": "ok",
+        "CaseMasterID": id,
+        "MethodTag": target_tag,
+        "matched_cases_count": len(filtered_matches),
+        "matching_cases": filtered_matches
+    }
 
 if __name__ == "__main__":
     port_env = os.environ.get("X_ZOHO_CATALYST_LISTEN_PORT")
