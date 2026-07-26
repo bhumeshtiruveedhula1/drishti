@@ -249,9 +249,9 @@ export default function CommandConsole({
               </div>
 
               <div className="space-y-2">
-                {anomalies.map((anom) => (
+                {anomalies.map((anom, idx) => (
                   <div
-                    key={`cmd-anom-${anom.AnomalyFlagID}`}
+                    key={`cmd-anom-${anom.AnomalyFlagID || anom.AnomalyID || anom.id || idx}`}
                     className="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800 text-xs space-y-1"
                   >
                     <div className="flex items-center justify-between">
