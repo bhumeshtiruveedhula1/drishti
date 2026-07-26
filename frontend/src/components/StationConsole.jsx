@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
 import L from 'leaflet';
 import {
   Building2,
@@ -134,9 +134,9 @@ export default function StationConsole({ incidents }) {
   }, [safeStationIncidents]);
 
   return (
-    <div className="flex-1 flex flex-col h-[calc(100vh-4rem)] bg-slate-950 text-slate-100 overflow-y-auto lg:overflow-hidden">
+    <div className="flex-1 flex flex-col min-h-0 bg-slate-950 text-slate-100 overflow-hidden">
       {/* Top Station Control Bar */}
-      <div className="bg-slate-900/90 border-b border-slate-800 px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 z-20">
+      <div className="bg-slate-900/90 border-b border-slate-800 px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 shrink-0 z-20">
         {/* Left: Station Info & Selector */}
         <div className="flex items-center space-x-3 sm:space-x-4">
           <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0">
@@ -207,16 +207,18 @@ export default function StationConsole({ incidents }) {
       </div>
 
       {/* Main Split View: Left Station Map, Right Station Roster */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-y-auto lg:overflow-hidden">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-0 overflow-y-auto lg:overflow-hidden">
         {/* Left Column: Station Jurisdiction Map (5 cols) */}
         <div className="lg:col-span-5 h-64 sm:h-80 lg:h-full relative border-b lg:border-b-0 lg:border-r border-slate-800">
           <MapContainer
             key={`station-map-${activeStation.id}`}
             center={mapCenter}
             zoom={12}
+            zoomControl={false}
             scrollWheelZoom={true}
             className="w-full h-full z-10"
           >
+            <ZoomControl position="bottomright" />
             <TileLayer
               attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
@@ -239,7 +241,7 @@ export default function StationConsole({ incidents }) {
           </MapContainer>
 
           {/* Map Overlay Badge */}
-          <div className="absolute top-4 left-4 z-20 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-800 shadow-xl flex items-center space-x-2">
+          <div className="absolute top-3 left-3 z-20 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-800 shadow-xl flex items-center space-x-2 pointer-events-none">
             <Shield className="w-4 h-4 text-cyan-400" />
             <span className="text-xs font-bold text-slate-200">
               {activeStation.name} Local Map
@@ -248,7 +250,7 @@ export default function StationConsole({ incidents }) {
         </div>
 
         {/* Right Column: Station Case Roster Table (7 cols) */}
-        <div className="lg:col-span-7 h-full flex flex-col bg-slate-900/40 overflow-hidden">
+        <div className="lg:col-span-7 h-full flex flex-col bg-slate-900/40 min-h-0 overflow-hidden">
           {/* Table Search & Controls Header */}
           <div className="p-4 border-b border-slate-800 flex items-center justify-between gap-4 bg-slate-900/80">
             <div className="flex items-center space-x-2">

@@ -82,21 +82,33 @@ export default function App() {
     loadData();
   }, []);
 
-  // Task 4: Filter Hotspot clusters by TimeWindowStart and TimeWindowEnd bounds
+  // Task 4: Filter Hotspot clusters by TimeWindowStart and TimeWindowEnd bounds & active filters
   const filteredHotspots = useMemo(() => {
     return (hotspots || []).filter((h) => {
       if (!h) return false;
       const hStart = h.TimeWindowStart || '2026-07-01';
       const hEnd = h.TimeWindowEnd || '2026-07-31';
 
-      return hStart <= hotspotTimeEnd && hEnd >= hotspotTimeStart;
+      const matchesTime = hStart <= hotspotTimeEnd && hEnd >= hotspotTimeStart;
+      const matchesGravity =
+        selectedGravity === 'All' ||
+        !h.GravityOffenceName ||
+        (h.GravityOffenceName || '').toLowerCase().replace('-', '') ===
+          selectedGravity.toLowerCase().replace('-', '');
+
+      const matchesCategory =
+        selectedCategory === 'All' ||
+        !h.CaseCategoryName ||
+        (h.CaseCategoryName || '').toLowerCase().includes(selectedCategory.toLowerCase());
+
+      return matchesTime && matchesGravity && matchesCategory;
     });
-  }, [hotspots, hotspotTimeStart, hotspotTimeEnd]);
+  }, [hotspots, hotspotTimeStart, hotspotTimeEnd, selectedGravity, selectedCategory]);
 
 
   // Unique Categories for dropdown
   const categories = useMemo(() => {
-    const set = new Set(incidents.map((i) => i.CaseCategoryName));
+    const set = new Set(incidents.map((i) => i.CaseCategoryName).filter(Boolean));
     return Array.from(set).sort();
   }, [incidents]);
 
@@ -114,17 +126,33 @@ export default function App() {
         (incident.BriefFacts || '').toLowerCase().includes(q) ||
         (incident.CrimeMajorHeadName || '').toLowerCase().includes(q);
 
-      // Gravity filter
+      // Gravity filter (handles "Heinous", "Non-Heinous", "Non Heinous", ID 1/2)
+      const incGravity = (incident.GravityOffenceName || '').toLowerCase().replace('-', '');
+      const selGravity = selectedGravity.toLowerCase().replace('-', '');
       const matchesGravity =
-        selectedGravity === 'All' || incident.GravityOffenceName === selectedGravity;
+        selectedGravity === 'All' ||
+        incGravity === selGravity ||
+        (selectedGravity === 'Heinous' && incident.GravityOffenceID === 1) ||
+        (selectedGravity === 'Non-Heinous' && incident.GravityOffenceID === 2);
 
       // Category filter
       const matchesCategory =
-        selectedCategory === 'All' || incident.CaseCategoryName === selectedCategory;
+        selectedCategory === 'All' ||
+        incident.CaseCategoryName === selectedCategory ||
+        (incident.CaseCategoryName || '').toLowerCase().includes(selectedCategory.toLowerCase());
 
       // Status filter
       const matchesStatus =
-        selectedStatus === 'All' || incident.CaseStatusName === selectedStatus;
+        selectedStatus === 'All' ||
+        incident.CaseStatusName === selectedStatus ||
+        (selectedStatus === 'Under Investigation' &&
+          (incident.CaseStatusName === 'Under Investigation' || incident.CaseStatusID === 1)) ||
+        (selectedStatus === 'Chargesheeted' &&
+          (incident.CaseStatusName === 'Chargesheeted' || incident.CaseStatusID === 2)) ||
+        (selectedStatus === 'Disposed' &&
+          (incident.CaseStatusName === 'Disposed' || incident.CaseStatusID === 3)) ||
+        (selectedStatus === 'Pending' &&
+          (incident.CaseStatusName === 'Pending' || incident.CaseStatusID === 4));
 
       return matchesSearch && matchesGravity && matchesCategory && matchesStatus;
     });
@@ -203,11 +231,11 @@ export default function App() {
           </button>
         </div>
       ) : viewMode === 'stationConsole' ? (
-        <div className="flex-1 flex flex-col transition-opacity duration-300 ease-in-out">
+        <div className="flex-1 min-h-0 flex flex-col overflow-hidden transition-opacity duration-300 ease-in-out">
           <StationConsole incidents={incidents} />
         </div>
       ) : viewMode === 'commandConsole' ? (
-        <div className="flex-1 flex flex-col transition-opacity duration-300 ease-in-out">
+        <div className="flex-1 min-h-0 flex flex-col overflow-hidden transition-opacity duration-300 ease-in-out">
           <CommandConsole
             incidents={incidents}
             anomalies={anomalies}

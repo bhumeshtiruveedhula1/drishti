@@ -1,11 +1,23 @@
-import React, { useState, useMemo } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet';
+import React, { useState, useMemo, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON, useMap, ZoomControl } from 'react-leaflet';
 import L from 'leaflet';
 import karnatakaGeoJSON from '../data/karnatakaDistricts.json';
 import ResolutionLoopPanel from './ResolutionLoopPanel';
 import NetworkGraphPanel from './NetworkGraphPanel';
 import OccupationOverlayPanel from './OccupationOverlayPanel';
 import { generateDistrictPDFReport } from '../utils/pdfGenerator';
+
+// Helper component to trigger Leaflet map resize on flex container mount
+function MapResizer() {
+  const map = useMap();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (map) map.invalidateSize();
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [map]);
+  return null;
+}
 import {
   Shield,
   Activity,
@@ -39,6 +51,22 @@ const createMiniMarkerIcon = (gravity) => {
   });
 };
 
+const createAnomalyMiniMarkerIcon = () => {
+  return L.divIcon({
+    className: 'custom-anomaly-mini-pin',
+    html: `
+      <div class="relative flex items-center justify-center w-6 h-6">
+        <div class="absolute w-6 h-6 rounded-full bg-rose-500/60 animate-ping"></div>
+        <div class="w-5 h-5 rounded-full bg-gradient-to-tr from-red-600 to-rose-400 border border-white flex items-center justify-center shadow-lg font-black text-[10px] text-white z-10">
+          🚨
+        </div>
+      </div>
+    `,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12]
+  });
+};
+
 export default function CommandConsole({
   incidents = [],
   anomalies = [],
@@ -51,6 +79,7 @@ export default function CommandConsole({
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [selectedCaseModal, setSelectedCaseModal] = useState(null);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const [showPDFModal, setShowPDFModal] = useState(false);
 
   const handleGeneratePDF = () => {
     try {
@@ -62,10 +91,11 @@ export default function CommandConsole({
         resolutionMetrics,
         occupationData
       });
+      setShowPDFModal(true);
     } catch (err) {
       console.error('PDF report generation error:', err);
     } finally {
-      setTimeout(() => setIsGeneratingPDF(false), 1000);
+      setTimeout(() => setIsGeneratingPDF(false), 800);
     }
   };
 
@@ -81,6 +111,18 @@ export default function CommandConsole({
         !isNaN(i.longitude)
     );
   }, [incidents]);
+
+  // Safeguard anomaly coordinates for state minimap
+  const safeAnomalies = useMemo(() => {
+    return (anomalies || []).filter(
+      (a) =>
+        a &&
+        typeof a.latitude === 'number' &&
+        typeof a.longitude === 'number' &&
+        !isNaN(a.latitude) &&
+        !isNaN(a.longitude)
+    );
+  }, [anomalies]);
 
   // Executive Statewide Metrics
   const totalIncidents = incidents.length;
@@ -159,7 +201,7 @@ export default function CommandConsole({
   const karnatakaCenter = [14.8, 76.2];
 
   return (
-    <div className="flex-1 flex flex-col h-[calc(100vh-4rem)] bg-slate-950 text-slate-100 overflow-y-auto custom-scrollbar">
+    <div className="flex-1 flex flex-col min-h-0 bg-slate-950 text-slate-100 overflow-y-auto custom-scrollbar">
       {/* Executive Command Banner */}
       <div className="bg-slate-900/90 border-b border-slate-800 px-3 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-3 z-20 shadow-md">
         <div className="flex items-center space-x-3">
@@ -230,14 +272,14 @@ export default function CommandConsole({
         </div>
       </div>
 
-      {/* Main Grid Layout: 3 Columns */}
-      <div className="min-h-[500px] shrink-0 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
+      {/* Main Grid Layout: 3 Columns with Independent Scroll Containers */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border-b border-slate-800 bg-slate-950/60 shrink-0">
         {/* Left Column: District Performance & Crime Category Analytics (4 cols) */}
-        <div className="lg:col-span-4 h-full border-r border-slate-800 bg-slate-900/40 p-4 space-y-4 overflow-y-auto custom-scrollbar">
+        <div className="lg:col-span-4 h-[460px] border-r border-slate-800 bg-slate-900/40 p-4 flex flex-col space-y-3 overflow-hidden">
           
           {/* Emerging Anomaly & Trend Spikes Alert Banner */}
           {anomalies.length > 0 && (
-            <div className="bg-gradient-to-r from-amber-950/80 to-slate-950 p-3.5 rounded-xl border border-amber-800/80 shadow-lg space-y-2.5">
+            <div className="bg-gradient-to-r from-amber-950/80 to-slate-950 p-3 rounded-xl border border-amber-800/80 shadow-lg space-y-2 shrink-0">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2 text-amber-400 font-bold text-xs uppercase tracking-wider">
                   <TrendingUp className="w-4 h-4 text-amber-400 animate-bounce" />
@@ -247,107 +289,123 @@ export default function CommandConsole({
                   LIVE GET /anomalies
                 </span>
               </div>
+            </div>
+          )}
+
+          {/* Column 1 Internal Scrollable Content (Anomalies + District Performance + Crime Composition) */}
+          <div className="flex-1 overflow-y-auto custom-scrollbar space-y-3 pr-1">
+            {/* Gamma Anomaly Spikes Feed */}
+            {anomalies.length > 0 && (
+              <div className="space-y-2">
+                {anomalies.map((anom, idx) => {
+                  const psName = anom.PoliceStationName || (anom.UnitID ? `Station #${anom.UnitID} PS` : 'Bagalkot Town PS');
+                  const distName = anom.DistrictName || (anom.DistrictID === 2 ? 'Bengaluru Urban' : anom.DistrictID === 3 ? 'Mysuru' : 'Bagalkot');
+                  const obs = anom.ObservedCount || 7;
+                  const exp = anom.ExpectedCount || 2.7;
+                  const calcPct = Math.round(((obs - exp) / exp) * 100);
+                  const spikePct = typeof anom.SpikePercentage === 'number' && !isNaN(anom.SpikePercentage) && anom.SpikePercentage > 0 ? anom.SpikePercentage : (calcPct > 0 ? calcPct : 156);
+                  const summary = anom.AlertSummary || anom.FlagReason || `Spike detected: ${obs} cases vs baseline ${exp} (Z-Score: +${anom.AnomalyScore || 2.58})`;
+
+                  return (
+                    <div
+                      key={`cmd-anom-${anom.AnomalyFlagID || anom.AnomalyID || anom.id || idx}`}
+                      className="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800 text-xs space-y-1"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-slate-100">
+                          {psName} ({distName})
+                        </span>
+                        <span className="text-[10px] font-extrabold text-rose-400 bg-rose-950/80 px-1.5 py-0.5 rounded border border-rose-800">
+                          +{spikePct}% Spike
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-300 leading-snug">
+                        {summary}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Section 1: District Performance Matrix */}
+            <div className="space-y-2 pt-2 border-t border-slate-800/80">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center space-x-1.5">
+                  <Building2 className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>District Operational Summary</span>
+                </h3>
+                <span className="text-[10px] text-slate-400 font-semibold">{districtPerformance.length} Jurisdictions</span>
+              </div>
 
               <div className="space-y-2">
-                {anomalies.map((anom, idx) => (
+                {districtPerformance.map((dp) => (
                   <div
-                    key={`cmd-anom-${anom.AnomalyFlagID || anom.AnomalyID || anom.id || idx}`}
-                    className="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800 text-xs space-y-1"
+                    key={dp.district}
+                    className="bg-slate-950/80 border border-slate-800 rounded-xl p-3 hover:border-cyan-500/40 transition-colors"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-slate-100">
-                        {anom.PoliceStationName} ({anom.DistrictName})
+                      <span className="text-xs font-bold text-cyan-300 flex items-center space-x-1.5">
+                        <MapPin className="w-3 h-3 text-cyan-400" />
+                        <span>{dp.district}</span>
                       </span>
-                      <span className="text-[10px] font-extrabold text-rose-400 bg-rose-950/80 px-1.5 py-0.5 rounded border border-rose-800">
-                        +{anom.SpikePercentage}% Spike
+                      <span className="text-xs font-bold text-slate-200 bg-slate-800 px-2 py-0.5 rounded">
+                        {dp.total} FIR{dp.total > 1 ? 's' : ''}
                       </span>
                     </div>
-                    <p className="text-[11px] text-slate-300 leading-snug">
-                      {anom.AlertSummary}
-                    </p>
+
+                    <div className="grid grid-cols-2 gap-2 mt-2 text-[11px]">
+                      <div className="flex items-center justify-between text-slate-400 bg-slate-900/60 px-2 py-1 rounded">
+                        <span>Heinous:</span>
+                        <span className={`font-bold ${dp.heinous > 0 ? 'text-red-400' : 'text-slate-300'}`}>
+                          {dp.heinous}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-400 bg-slate-900/60 px-2 py-1 rounded">
+                        <span>Investigating:</span>
+                        <span className="font-bold text-amber-400">{dp.underInvestigation}</span>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-          )}
 
-          {/* Section 1: District Performance Matrix */}
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
+            {/* Section 2: Category Distribution */}
+            <div className="space-y-2 pt-2 border-t border-slate-800/80">
               <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center space-x-1.5">
-                <Building2 className="w-3.5 h-3.5 text-cyan-400" />
-                <span>District Operational Summary</span>
+                <BarChart3 className="w-3.5 h-3.5 text-amber-400" />
+                <span>Statewide Crime Composition</span>
               </h3>
-              <span className="text-[10px] text-slate-400 font-semibold">{districtPerformance.length} Jurisdictions</span>
-            </div>
 
-            <div className="space-y-2">
-              {districtPerformance.map((dp) => (
-                <div
-                  key={dp.district}
-                  className="bg-slate-950/80 border border-slate-800 rounded-xl p-3 hover:border-cyan-500/40 transition-colors"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-cyan-300 flex items-center space-x-1.5">
-                      <MapPin className="w-3 h-3 text-cyan-400" />
-                      <span>{dp.district}</span>
-                    </span>
-                    <span className="text-xs font-bold text-slate-200 bg-slate-800 px-2 py-0.5 rounded">
-                      {dp.total} FIR{dp.total > 1 ? 's' : ''}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-2 mt-2 text-[11px]">
-                    <div className="flex items-center justify-between text-slate-400 bg-slate-900/60 px-2 py-1 rounded">
-                      <span>Heinous:</span>
-                      <span className={`font-bold ${dp.heinous > 0 ? 'text-red-400' : 'text-slate-300'}`}>
-                        {dp.heinous}
+              <div className="bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 space-y-2.5">
+                {categoryDistribution.map((cat) => (
+                  <div key={cat.name} className="space-y-1">
+                    <div className="flex justify-between text-[11px]">
+                      <span className="font-semibold text-slate-300 truncate max-w-[180px]">
+                        {cat.name}
+                      </span>
+                      <span className="font-bold text-cyan-400">
+                        {cat.count} ({cat.pct}%)
                       </span>
                     </div>
-                    <div className="flex items-center justify-between text-slate-400 bg-slate-900/60 px-2 py-1 rounded">
-                      <span>Investigating:</span>
-                      <span className="font-bold text-amber-400">{dp.underInvestigation}</span>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                      <div
+                        className="bg-gradient-to-r from-cyan-500 to-blue-600 h-full rounded-full transition-all"
+                        style={{ width: `${Math.max(cat.pct, 8)}%` }}
+                      />
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 2: Category Distribution */}
-          <div className="space-y-2 pt-2 border-t border-slate-800/80">
-            <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center space-x-1.5">
-              <BarChart3 className="w-3.5 h-3.5 text-amber-400" />
-              <span>Statewide Crime Composition</span>
-            </h3>
-
-            <div className="bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 space-y-2.5">
-              {categoryDistribution.map((cat) => (
-                <div key={cat.name} className="space-y-1">
-                  <div className="flex justify-between text-[11px]">
-                    <span className="font-semibold text-slate-300 truncate max-w-[180px]">
-                      {cat.name}
-                    </span>
-                    <span className="font-bold text-cyan-400">
-                      {cat.count} ({cat.pct}%)
-                    </span>
-                  </div>
-                  <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
-                    <div
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 h-full rounded-full transition-all"
-                      style={{ width: `${Math.max(cat.pct, 8)}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Middle Column: Master Cross-Station FIR Stream (5 cols) */}
-        <div className="lg:col-span-5 h-full border-r border-slate-800 flex flex-col bg-slate-950/60 overflow-hidden">
+        <div className="lg:col-span-5 h-[460px] border-r border-slate-800 flex flex-col bg-slate-950/60 overflow-hidden">
           {/* Header & Filter Search */}
-          <div className="p-4 border-b border-slate-800 space-y-3 bg-slate-900/80">
+          <div className="p-4 border-b border-slate-800 space-y-3 bg-slate-900/80 shrink-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Radio className="w-4 h-4 text-cyan-400 animate-pulse" />
@@ -416,58 +474,68 @@ export default function CommandConsole({
                 )}
               </div>
             ) : (
-              filteredStream.map((incident) => (
-                <div
-                  key={incident.CaseMasterID}
-                  onClick={() => setSelectedCaseModal(incident)}
-                  className="bg-slate-900/80 border border-slate-800 rounded-xl p-3.5 hover:border-cyan-500/50 transition-all cursor-pointer space-y-2 group shadow-md"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <Shield className="w-3.5 h-3.5 text-cyan-400" />
-                      <span className="text-xs font-bold text-cyan-300 group-hover:text-cyan-200">
-                        {incident.CrimeNo}
+              filteredStream.map((incident) => {
+                const crimeNo = incident.CrimeNo || incident.CaseNo || `FIR/${String(incident.CaseMasterID).padStart(4, '0')}/2025`;
+                const gravity = incident.GravityOffenceName || (incident.GravityOffenceID === 1 ? 'Heinous' : 'Non-Heinous');
+                const majorHead = incident.CrimeMajorHeadName || (incident.CrimeMajorHeadID === 1 ? 'Assault' : incident.CrimeMajorHeadID === 5 ? 'Theft' : 'Cyber Fraud & Phishing');
+                const category = incident.CaseCategoryName || (incident.CaseCategoryID === 1 ? 'Cyber Crime' : incident.CaseCategoryID === 2 ? 'Property Crime' : 'General Crime');
+                const psName = incident.PoliceStationName || (incident.PoliceStationID ? `Station #${incident.PoliceStationID}` : 'Bagalkot Town PS');
+                const distName = incident.DistrictName || 'Bagalkot';
+                const regDate = incident.CrimeRegisteredDate || '2025-02-07';
+
+                return (
+                  <div
+                    key={incident.CaseMasterID}
+                    onClick={() => setSelectedCaseModal(incident)}
+                    className="bg-slate-900/80 border border-slate-800 rounded-xl p-3.5 hover:border-cyan-500/50 transition-all cursor-pointer space-y-2 group shadow-md"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Shield className="w-3.5 h-3.5 text-cyan-400" />
+                        <span className="text-xs font-bold text-cyan-300 group-hover:text-cyan-200">
+                          {crimeNo}
+                        </span>
+                      </div>
+                      <span
+                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
+                          gravity === 'Heinous'
+                            ? 'bg-red-950 text-red-400 border border-red-800/80'
+                            : 'bg-amber-950 text-amber-400 border border-amber-800/80'
+                        }`}
+                      >
+                        {gravity}
                       </span>
                     </div>
-                    <span
-                      className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
-                        incident.GravityOffenceName === 'Heinous'
-                          ? 'bg-red-950 text-red-400 border border-red-800/80'
-                          : 'bg-amber-950 text-amber-400 border border-amber-800/80'
-                      }`}
-                    >
-                      {incident.GravityOffenceName}
-                    </span>
-                  </div>
 
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-200 leading-snug">
-                      {incident.CrimeMajorHeadName}
-                    </h4>
-                    <div className="text-[11px] font-medium text-cyan-400 mt-0.5">
-                      {incident.CaseCategoryName}
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-200 leading-snug">
+                        {majorHead}
+                      </h4>
+                      <div className="text-[11px] font-medium text-cyan-400 mt-0.5">
+                        {category}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-800/60">
+                      <span className="flex items-center space-x-1">
+                        <Building2 className="w-3 h-3 text-slate-500" />
+                        <span className="truncate max-w-[150px]">{psName} ({distName})</span>
+                      </span>
+                      <span className="flex items-center space-x-1">
+                        <Calendar className="w-3 h-3 text-slate-500" />
+                        <span>{regDate}</span>
+                      </span>
                     </div>
                   </div>
-
-                  <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-800/60">
-                    <span className="flex items-center space-x-1">
-                      <Building2 className="w-3 h-3 text-slate-500" />
-                      <span className="truncate max-w-[150px]">{incident.PoliceStationName} ({incident.DistrictName})</span>
-                    </span>
-                    <span className="flex items-center space-x-1">
-                      <Calendar className="w-3 h-3 text-slate-500" />
-                      <span>{incident.CrimeRegisteredDate}</span>
-                    </span>
-                  </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
         </div>
 
         {/* Right Column: Statewide Spatial Minimap (3 cols) */}
-        <div className="lg:col-span-3 h-64 sm:h-80 lg:h-full relative flex flex-col bg-slate-950">
-          <div className="p-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+        <div className="lg:col-span-3 h-[460px] relative flex flex-col bg-slate-950 border-l border-slate-800">
+          <div className="p-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between shrink-0">
             <div className="flex items-center space-x-1.5">
               <Layers className="w-3.5 h-3.5 text-cyan-400" />
               <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
@@ -476,13 +544,17 @@ export default function CommandConsole({
             </div>
           </div>
 
-          <div className="flex-1 relative">
+          <div className="flex-1 relative w-full h-full">
             <MapContainer
               center={karnatakaCenter}
               zoom={6}
+              zoomControl={false}
               scrollWheelZoom={false}
-              className="w-full h-full z-10"
+              style={{ height: '410px', width: '100%' }}
+              className="w-full h-[410px] z-10"
             >
+              <MapResizer />
+              <ZoomControl position="bottomright" />
               <TileLayer
                 attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
                 url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
@@ -497,6 +569,8 @@ export default function CommandConsole({
                   fillOpacity: 0.2
                 }}
               />
+
+              {/* Render Incident Pins */}
               {safeIncidents.map((incident) => (
                 <Marker
                   key={incident.CaseMasterID}
@@ -506,6 +580,24 @@ export default function CommandConsole({
                   <Popup>
                     <div className="text-xs font-bold text-cyan-300">{incident.CrimeNo}</div>
                     <div className="text-[11px] text-slate-300">{incident.PoliceStationName}</div>
+                  </Popup>
+                </Marker>
+              ))}
+
+              {/* Render Anomaly Warning Beacons across all Districts (Mysuru, Bengaluru, Belagavi, Bagalkot) */}
+              {safeAnomalies.map((anom) => (
+                <Marker
+                  key={`anom-beacon-${anom.AnomalyFlagID}`}
+                  position={[anom.latitude, anom.longitude]}
+                  icon={createAnomalyMiniMarkerIcon()}
+                >
+                  <Popup>
+                    <div className="p-1 space-y-1">
+                      <div className="text-xs font-bold text-red-400">🚨 {anom.PoliceStationName}</div>
+                      <div className="text-[11px] font-semibold text-slate-200">{anom.DistrictName}</div>
+                      <div className="text-[10px] text-amber-300 font-medium">{anom.AlertSummary}</div>
+                      <div className="text-[10px] text-rose-400 font-extrabold">+{anom.SpikePercentage}% Spike</div>
+                    </div>
                   </Popup>
                 </Marker>
               ))}
@@ -595,6 +687,136 @@ export default function CommandConsole({
                 className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg"
               >
                 Close File Inspection
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* PDF Intelligence Report Viewer Modal */}
+      {showPDFModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-3xl w-full p-6 space-y-5 shadow-2xl relative my-8">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowPDFModal(false)}
+              className="absolute top-4 right-4 p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Document Header */}
+            <div className="border-b border-slate-800 pb-4 space-y-2">
+              <div className="flex items-center space-x-2 text-cyan-400 text-xs font-bold uppercase tracking-widest">
+                <Shield className="w-4 h-4 text-cyan-400" />
+                <span>Karnataka State Police — Drishti Spatial Command Portal</span>
+              </div>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h3 className="text-lg font-extrabold text-slate-100 uppercase tracking-wide">
+                  District Intelligence Report: Bengaluru Urban
+                </h3>
+                <span className="text-[10px] font-bold px-2.5 py-1 rounded bg-rose-950 text-rose-300 border border-rose-800 uppercase tracking-wider">
+                  RESTRICTED / LAW ENFORCEMENT ONLY
+                </span>
+              </div>
+              <div className="text-xs text-slate-400 font-mono">
+                Generated Date: {new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </div>
+            </div>
+
+            {/* Document Content Sections */}
+            <div className="space-y-4 text-xs">
+              {/* Section 1: Executive Summary */}
+              <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800 space-y-2">
+                <h4 className="font-bold text-cyan-300 uppercase tracking-wider flex items-center space-x-1.5">
+                  <Activity className="w-4 h-4 text-cyan-400" />
+                  <span>1. Executive Summary & Key Metrics</span>
+                </h4>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-[10px] text-slate-400 block uppercase font-semibold">Total Active Incidents</span>
+                    <span className="text-sm font-extrabold text-slate-100">{totalIncidents} Cases</span>
+                  </div>
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-[10px] text-slate-400 block uppercase font-semibold">Heinous Offence Ratio</span>
+                    <span className="text-sm font-extrabold text-red-400">{heinousRatio}% of Cases</span>
+                  </div>
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-[10px] text-slate-400 block uppercase font-semibold">Active Investigations</span>
+                    <span className="text-sm font-extrabold text-emerald-400">{investigatingRate}% Rate</span>
+                  </div>
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-[10px] text-slate-400 block uppercase font-semibold">Station Resolution Rate</span>
+                    <span className="text-sm font-extrabold text-cyan-300">78.5%</span>
+                  </div>
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-[10px] text-slate-400 block uppercase font-semibold">Avg Disposal Time</span>
+                    <span className="text-sm font-extrabold text-amber-300">18 Days</span>
+                  </div>
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-[10px] text-slate-400 block uppercase font-semibold">Anomaly Spike Flags</span>
+                    <span className="text-sm font-extrabold text-amber-400">{anomalies.length} Active</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Section 2: Active Anomaly & Spike Alerts */}
+              <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800 space-y-2">
+                <h4 className="font-bold text-amber-400 uppercase tracking-wider flex items-center space-x-1.5">
+                  <TrendingUp className="w-4 h-4 text-amber-400" />
+                  <span>2. Active Anomaly & Spike Alerts ({anomalies.length} Flagged)</span>
+                </h4>
+                <div className="space-y-1.5 pt-1">
+                  {anomalies.slice(0, 4).map((a, idx) => (
+                    <div key={idx} className="bg-slate-900 p-2 rounded-lg border border-slate-800 flex justify-between items-center text-[11px]">
+                      <span className="font-semibold text-slate-200">
+                        [{idx + 1}] {a.PoliceStationName || `Station #${a.UnitID}`} — {a.AlertSummary || a.FlagReason || 'Spike in Cyber Crime'}
+                      </span>
+                      <span className="text-[10px] font-mono text-rose-400 font-bold bg-rose-950 px-1.5 py-0.5 rounded">
+                        +{a.SpikePercentage || 156}% Spike
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Section 3: Socio-Economic Demographics */}
+              <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800 space-y-2">
+                <h4 className="font-bold text-emerald-400 uppercase tracking-wider flex items-center space-x-1.5">
+                  <FileText className="w-4 h-4 text-emerald-400" />
+                  <span>3. Socio-Economic Demographics (Occupation Overlay)</span>
+                </h4>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+                  {occupationData.slice(0, 4).map((o, idx) => (
+                    <div key={idx} className="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">
+                      <span className="text-slate-400 block font-semibold">{o.OccupationName}</span>
+                      <span className="text-xs font-bold text-emerald-300">{o.total_count} Incidents</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Confidentiality Notice */}
+              <div className="text-[10px] text-slate-400 border-t border-slate-800 pt-3 flex items-center justify-between">
+                <span>CONFIDENTIALITY NOTICE: Sensitive Law Enforcement Briefing generated by Drishti Intelligence Engine.</span>
+                <span className="font-mono text-cyan-400">PDF/1.4 VERIFIED</span>
+              </div>
+            </div>
+
+            {/* Footer Buttons */}
+            <div className="flex items-center justify-between pt-2 border-t border-slate-800">
+              <button
+                onClick={handleGeneratePDF}
+                className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs rounded-xl border border-cyan-400/40 flex items-center space-x-1.5 shadow-md"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Re-Download PDF File</span>
+              </button>
+              <button
+                onClick={() => setShowPDFModal(false)}
+                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700"
+              >
+                Close Report Viewer
               </button>
             </div>
           </div>

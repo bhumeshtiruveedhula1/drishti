@@ -12,7 +12,7 @@ export default function Header({
   onSwitchRole
 }) {
   return (
-    <header className="min-h-[4rem] py-2 px-3 sm:px-6 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 flex flex-wrap md:flex-nowrap items-center justify-between gap-2.5 z-30 relative shadow-xl">
+    <header className="shrink-0 min-h-[4rem] py-2 px-3 sm:px-6 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 flex flex-wrap md:flex-nowrap items-center justify-between gap-2.5 z-30 relative shadow-xl">
       {/* Brand & Navigation Tabs */}
       <div className="flex flex-wrap items-center gap-3 sm:gap-6">
         <div className="flex items-center space-x-2.5">

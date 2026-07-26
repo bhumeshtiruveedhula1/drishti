@@ -54,6 +54,7 @@ export default function NetworkGraphPanel({
   };
 
   // Pre-calculate circular/grid layout coordinates for nodes in SVG 800x480 viewport
+  // Organic spatial cluster layout coordinates for nodes in SVG 800x480 viewport
   const positionedNodes = useMemo(() => {
     const filtered = nodes.filter((n) => {
       const matchesFilter = filterType === 'All' || n.type === filterType;
@@ -67,58 +68,75 @@ export default function NetworkGraphPanel({
     const total = filtered.length;
     if (total === 0) return [];
 
-    const centerX = 400;
-    const centerY = 240;
+    const result = [];
 
-    // Separate into clusters by node type for structured spatial arrangement
     const accusedNodes = filtered.filter((n) => n.type === 'Accused');
-    const caseNodes = filtered.filter((n) => n.type === 'CaseMaster');
+    const allCaseNodes = filtered.filter((n) => n.type === 'CaseMaster');
     const victimNodes = filtered.filter((n) => n.type === 'Victim');
     const unitNodes = filtered.filter((n) => n.type === 'Unit');
 
-    const result = [];
+    // Filter CaseMaster nodes to connected cases if selected, or top representative cases to keep graph crystal clear
+    let caseNodes = [];
+    if (selectedNode) {
+      const connectedCaseIds = new Set(
+        edges.filter((e) => e.source === selectedNode.id || e.target === selectedNode.id).map((e) => (e.source === selectedNode.id ? e.target : e.source))
+      );
+      const connectedCases = allCaseNodes.filter((c) => connectedCaseIds.has(c.id));
+      const fillerCases = allCaseNodes.filter((c) => !connectedCaseIds.has(c.id)).slice(0, Math.max(0, 14 - connectedCases.length));
+      caseNodes = [...connectedCases, ...fillerCases];
+    } else {
+      caseNodes = filterType === 'CaseMaster' ? allCaseNodes.slice(0, 24) : allCaseNodes.slice(0, 16);
+    }
 
-    // Accused in center ring
+    // Accused nodes in central ring
     accusedNodes.forEach((n, idx) => {
       const angle = (idx / (accusedNodes.length || 1)) * 2 * Math.PI - Math.PI / 2;
-      const r = 110;
+      const r = 95 + (idx % 3) * 30;
       result.push({
         ...n,
-        x: centerX + r * Math.cos(angle),
-        y: centerY + r * Math.sin(angle)
+        x: 400 + r * Math.cos(angle),
+        y: 230 + r * Math.sin(angle)
       });
     });
 
-    // CaseMaster in middle ring
+    // CaseMaster nodes distributed cleanly left & right
     caseNodes.forEach((n, idx) => {
-      const angle = (idx / (caseNodes.length || 1)) * 2 * Math.PI;
-      const r = 190;
+      const isLeft = idx % 2 === 0;
+      const spread = (idx / (caseNodes.length || 1)) * Math.PI * 0.8 - Math.PI * 0.4;
+      const r = 185 + (idx % 3) * 25;
       result.push({
         ...n,
-        x: centerX + r * Math.cos(angle),
-        y: centerY + r * Math.sin(angle)
+        x: (isLeft ? 240 : 560) + r * 0.5 * Math.cos(spread),
+        y: 230 + r * Math.sin(spread)
       });
     });
 
-    // Victims in outer left/right ring
+    // Victim nodes in outer lower arc
     victimNodes.forEach((n, idx) => {
-      const angle = (idx / (victimNodes.length || 1)) * 2 * Math.PI + Math.PI / 4;
-      const r = 270;
+      const angle = (idx / (victimNodes.length || 1)) * Math.PI * 0.8 + Math.PI * 0.1;
+      const r = 210 + (idx % 2) * 35;
       result.push({
         ...n,
-        x: centerX + r * Math.cos(angle),
-        y: centerY + r * Math.sin(angle)
+        x: 400 + r * Math.cos(angle),
+        y: 210 + r * Math.sin(angle)
       });
     });
 
-    // Units in outer top/bottom ring
+    // Unit nodes at perimeter anchors
     unitNodes.forEach((n, idx) => {
-      const angle = (idx / (unitNodes.length || 1)) * 2 * Math.PI + Math.PI / 3;
-      const r = 320;
+      const perimeterPoints = [
+        { x: 120, y: 90 },
+        { x: 680, y: 90 },
+        { x: 120, y: 390 },
+        { x: 680, y: 390 },
+        { x: 400, y: 70 },
+        { x: 400, y: 410 }
+      ];
+      const pos = perimeterPoints[idx % perimeterPoints.length];
       result.push({
         ...n,
-        x: centerX + r * Math.cos(angle),
-        y: centerY + r * Math.sin(angle)
+        x: pos.x,
+        y: pos.y
       });
     });
 
@@ -133,6 +151,32 @@ export default function NetworkGraphPanel({
     });
     return map;
   }, [positionedNodes]);
+
+  // Filter distinct structural edges to avoid rendering 1000+ duplicate line overlaps
+  const visibleEdges = useMemo(() => {
+    if (selectedNode) {
+      const connected = edges.filter(
+        (e) => (e.source === selectedNode.id || e.target === selectedNode.id) && nodePosMap[e.source] && nodePosMap[e.target]
+      );
+      const others = edges.filter(
+        (e) => e.source !== selectedNode.id && e.target !== selectedNode.id && nodePosMap[e.source] && nodePosMap[e.target]
+      ).slice(0, 25);
+      return [...connected, ...others];
+    }
+
+    const uniquePairs = new Set();
+    const result = [];
+    for (const edge of edges) {
+      if (!nodePosMap[edge.source] || !nodePosMap[edge.target]) continue;
+      const pairKey = [edge.source, edge.target].sort().join('--');
+      if (!uniquePairs.has(pairKey)) {
+        uniquePairs.add(pairKey);
+        result.push(edge);
+        if (result.length >= 40) break;
+      }
+    }
+    return result;
+  }, [edges, selectedNode, nodePosMap]);
 
   return (
     <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-5 shadow-2xl">
@@ -403,12 +447,18 @@ export default function NetworkGraphPanel({
         ) : (
           <svg className="w-full h-full" viewBox="0 0 800 480">
           {/* Render Relationship Edges */}
-          {edges.map((edge, idx) => {
+          {visibleEdges.map((edge, idx) => {
             const src = nodePosMap[edge.source];
             const tgt = nodePosMap[edge.target];
             if (!src || !tgt) return null;
 
             const isProximity = edge.relationship === 'SPATIAL_PROXIMITY_CLUSTER';
+            const isConnected = selectedNode && (edge.source === selectedNode.id || edge.target === selectedNode.id);
+            const isDimmed = selectedNode && !isConnected;
+
+            const strokeColor = isConnected ? '#38bdf8' : isProximity ? '#ef4444' : '#60a5fa';
+            const strokeW = isConnected ? 2.5 : isProximity ? 2 : 1.5;
+            const lineOpacity = isDimmed ? 0.15 : isConnected ? 1 : 0.6;
 
             return (
               <g key={`edge-${idx}`}>
@@ -417,19 +467,20 @@ export default function NetworkGraphPanel({
                   y1={src.y}
                   x2={tgt.x}
                   y2={tgt.y}
-                  stroke={isProximity ? '#ef4444' : '#3b82f6'}
-                  strokeWidth={isProximity ? 2 : 1.5}
+                  stroke={strokeColor}
+                  strokeWidth={strokeW}
                   strokeDasharray={isProximity ? '4 4' : ''}
-                  opacity={0.65}
+                  opacity={lineOpacity}
                 />
                 <text
                   x={(src.x + tgt.x) / 2}
                   y={(src.y + tgt.y) / 2}
-                  fill="#94a3b8"
-                  fontSize="8"
+                  fill={isConnected ? '#38bdf8' : '#94a3b8'}
+                  fontSize={isConnected ? '9' : '8'}
                   fontWeight="bold"
                   textAnchor="middle"
                   dy="-4"
+                  opacity={lineOpacity}
                   className="select-none"
                 >
                   {edge.relationship}
@@ -451,13 +502,15 @@ export default function NetworkGraphPanel({
                 onClick={() => setSelectedNode(node)}
                 className="cursor-pointer group"
               >
-                {/* Outer Glow Halo for Selected or Repeat Offender Nodes */}
+                {/* Subtle static Selection / Repeat Offender Halo Ring */}
                 {(isSelected || node.metadata?.is_repeat_offender) && (
                   <circle
-                    r="24"
-                    fill={color}
-                    opacity="0.25"
-                    className="animate-ping"
+                    r="23"
+                    fill="none"
+                    stroke={isSelected ? '#38bdf8' : '#f43f5e'}
+                    strokeWidth="2"
+                    strokeDasharray="3 3"
+                    opacity="0.9"
                   />
                 )}
 
@@ -465,7 +518,7 @@ export default function NetworkGraphPanel({
                 <circle
                   r="18"
                   fill={color}
-                  stroke="#ffffff"
+                  stroke={isSelected ? '#38bdf8' : '#ffffff'}
                   strokeWidth={isSelected ? '3' : '1.5'}
                   className="transition-transform duration-200 group-hover:scale-110 shadow-xl"
                 />
@@ -481,16 +534,18 @@ export default function NetworkGraphPanel({
                 </text>
 
                 {/* Label Text below node */}
-                <text
-                  y="30"
-                  textAnchor="middle"
-                  fill="#f1f5f9"
-                  fontSize="10"
-                  fontWeight="bold"
-                  className="select-none"
-                >
-                  {node.label}
-                </text>
+                {(node.type !== 'CaseMaster' || isSelected || filterType === 'CaseMaster' || (selectedNode && edges.some(e => (e.source === selectedNode.id && e.target === node.id) || (e.target === selectedNode.id && e.source === node.id)))) && (
+                  <text
+                    y="30"
+                    textAnchor="middle"
+                    fill="#f1f5f9"
+                    fontSize="10"
+                    fontWeight="bold"
+                    className="select-none"
+                  >
+                    {node.label}
+                  </text>
+                )}
 
                 {node.metadata?.is_repeat_offender && (
                   <text
