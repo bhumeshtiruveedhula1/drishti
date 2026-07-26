@@ -36,10 +36,11 @@ export default function AnomalyAlertBanner({ initialAnomalies = [] }) {
   const totalCount = anomalies.length;
 
   return (
-    <div className="bg-amber-950/90 border-b border-amber-500/30 text-amber-200 px-4 py-2.5 flex items-center justify-between shadow-lg relative z-20 backdrop-blur-md">
+    <div className="bg-gradient-to-r from-amber-950/95 via-amber-900/90 to-amber-950/95 border-b border-amber-500/40 text-amber-200 px-4 py-2.5 flex items-center justify-between shadow-xl relative z-20 backdrop-blur-md transition-all duration-300">
       <div className="flex items-center space-x-3 truncate">
-        <div className="p-1.5 bg-amber-500/20 rounded-lg text-amber-400 shrink-0">
-          <ShieldAlert className="w-5 h-5 animate-pulse" />
+        <div className="p-1.5 bg-amber-500/20 rounded-lg text-amber-400 shrink-0 relative">
+          <div className="absolute inset-0 rounded-lg bg-amber-400/20 animate-ping opacity-75"></div>
+          <ShieldAlert className="w-5 h-5 relative z-10 animate-pulse text-amber-300" />
         </div>
 
         <div className="flex items-center space-x-2 text-xs truncate">

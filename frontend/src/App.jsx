@@ -203,18 +203,22 @@ export default function App() {
           </button>
         </div>
       ) : viewMode === 'stationConsole' ? (
-        <StationConsole incidents={incidents} />
+        <div className="flex-1 flex flex-col transition-opacity duration-300 ease-in-out">
+          <StationConsole incidents={incidents} />
+        </div>
       ) : viewMode === 'commandConsole' ? (
-        <CommandConsole
-          incidents={incidents}
-          anomalies={anomalies}
-          resolutionMetrics={resolutionMetrics}
-          networkData={networkData}
-          occupationData={occupationData}
-          moMatchingData={moMatchingData}
-        />
+        <div className="flex-1 flex flex-col transition-opacity duration-300 ease-in-out">
+          <CommandConsole
+            incidents={incidents}
+            anomalies={anomalies}
+            resolutionMetrics={resolutionMetrics}
+            networkData={networkData}
+            occupationData={occupationData}
+            moMatchingData={moMatchingData}
+          />
+        </div>
       ) : (
-        <div className="flex flex-1 relative overflow-hidden">
+        <div className="flex flex-1 relative overflow-hidden transition-opacity duration-300 ease-in-out">
           {/* Mobile Filter Toggle Button */}
           <button
             onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}

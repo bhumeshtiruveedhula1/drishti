@@ -161,54 +161,59 @@ export default function CommandConsole({
   return (
     <div className="flex-1 flex flex-col h-[calc(100vh-4rem)] bg-slate-950 text-slate-100 overflow-y-auto custom-scrollbar">
       {/* Executive Command Banner */}
-      <div className="bg-slate-900/90 border-b border-slate-800 px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 z-20">
+      <div className="bg-slate-900/90 border-b border-slate-800 px-3 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-3 z-20 shadow-md">
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 p-0.5 shadow-lg shadow-cyan-500/20 flex items-center justify-center shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700 p-0.5 shadow-lg shadow-cyan-500/20 flex items-center justify-center shrink-0">
             <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-              <Shield className="w-4 h-4 text-cyan-400" />
+              <Shield className="w-5 h-5 text-cyan-400" />
             </div>
           </div>
           <div>
-            <h2 className="text-xs sm:text-sm font-bold text-slate-100 uppercase tracking-wider">
-              Statewide Command Console
-            </h2>
-            <p className="text-[10px] sm:text-[11px] text-slate-400">
-              Karnataka Police HQ • Operational Oversight
+            <div className="flex items-center space-x-2">
+              <h2 className="text-xs sm:text-sm font-extrabold text-slate-100 uppercase tracking-wider">
+                Statewide Command Console
+              </h2>
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/60 shadow-sm">
+                {totalIncidents.toLocaleString()} Total FIRs
+              </span>
+            </div>
+            <p className="text-[10px] sm:text-[11px] text-slate-400 font-medium">
+              Karnataka Police HQ • Operational Oversight & Spatial Intelligence
             </p>
           </div>
         </div>
 
         {/* High-Level Executive Metrics */}
-        <div className="grid grid-cols-2 sm:flex items-center gap-2 text-xs">
-          <div className="bg-slate-950/80 px-2.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
-            <Activity className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+        <div className="grid grid-cols-2 sm:flex items-center gap-2.5 text-xs">
+          <div className="bg-slate-950/90 px-3 py-1.5 rounded-xl border border-slate-800/90 hover:border-cyan-500/40 flex items-center space-x-2.5 shadow-sm transition-all">
+            <Activity className="w-4 h-4 text-cyan-400 shrink-0" />
             <div>
-              <div className="text-[9px] text-slate-400 uppercase font-semibold">Active Districts</div>
-              <div className="text-xs font-bold text-cyan-300">{districtPerformance.length} Districts</div>
+              <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Active Districts</div>
+              <div className="text-xs font-extrabold text-cyan-300">{districtPerformance.length} Districts</div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 px-2.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
-            <AlertTriangle className="w-3.5 h-3.5 text-red-400 shrink-0" />
+          <div className="bg-slate-950/90 px-3 py-1.5 rounded-xl border border-slate-800/90 hover:border-red-500/40 flex items-center space-x-2.5 shadow-sm transition-all">
+            <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
             <div>
-              <div className="text-[9px] text-slate-400 uppercase font-semibold">Heinous Ratio</div>
-              <div className="text-xs font-bold text-red-400">{heinousRatio}% of Cases</div>
+              <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Heinous Ratio</div>
+              <div className="text-xs font-extrabold text-red-400">{heinousRatio}% of Cases</div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 px-2.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
-            <TrendingUp className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+          <div className="bg-slate-950/90 px-3 py-1.5 rounded-xl border border-slate-800/90 hover:border-amber-500/40 flex items-center space-x-2.5 shadow-sm transition-all">
+            <TrendingUp className="w-4 h-4 text-amber-400 shrink-0 animate-pulse" />
             <div>
-              <div className="text-[9px] text-slate-400 uppercase font-semibold">Anomaly Spikes</div>
-              <div className="text-xs font-bold text-amber-400">{anomalies.length} Critical Alerts</div>
+              <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Anomaly Spikes</div>
+              <div className="text-xs font-extrabold text-amber-400">{anomalies.length} Critical Alerts</div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 px-2.5 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-2">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+          <div className="bg-slate-950/90 px-3 py-1.5 rounded-xl border border-slate-800/90 hover:border-emerald-500/40 flex items-center space-x-2.5 shadow-sm transition-all">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
             <div>
-              <div className="text-[9px] text-slate-400 uppercase font-semibold">Active Investigations</div>
-              <div className="text-xs font-bold text-emerald-400">{investigatingRate}% Rate</div>
+              <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Active Investigations</div>
+              <div className="text-xs font-extrabold text-emerald-400">{investigatingRate}% Rate</div>
             </div>
           </div>
 
@@ -216,7 +221,7 @@ export default function CommandConsole({
           <button
             onClick={handleGeneratePDF}
             disabled={isGeneratingPDF}
-            className="bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-semibold text-xs px-3 py-2 rounded-xl border border-cyan-400/40 shadow-lg shadow-cyan-950/50 flex items-center space-x-1.5 transition-all cursor-pointer shrink-0"
+            className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 disabled:opacity-50 text-white font-bold text-xs px-3.5 py-2 rounded-xl border border-cyan-400/40 shadow-lg shadow-cyan-950/60 flex items-center space-x-1.5 transition-all cursor-pointer shrink-0 hover:scale-[1.02] active:scale-[0.98]"
             title="Generate & Download District Intelligence PDF Report"
           >
             <Download className={`w-3.5 h-3.5 ${isGeneratingPDF ? 'animate-bounce' : ''}`} />
